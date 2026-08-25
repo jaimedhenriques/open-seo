@@ -1,8 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  buildAutumnFeatures,
-  buildAutumnProducts,
-} from "./autumn-catalog";
+import { buildAutumnFeatures, buildAutumnProducts } from "./autumn-catalog";
 
 describe("Autumn catalogue", () => {
   it("defines the feature contracts used by runtime billing gates", () => {
