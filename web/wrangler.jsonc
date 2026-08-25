@@ -30,7 +30,7 @@
   "kv_namespaces": [
     {
       "binding": "BACKLINK_CHECK_KV",
-      "id": "b3a051a75a7b478e93b46cdaf6da3572",
+      "id": "f2ac6b34ce7e48c38fb2c185030746b1",
     },
   ],
   "ratelimits": [
@@ -51,7 +51,7 @@
       "kv_namespaces": [
         {
           "binding": "BACKLINK_CHECK_KV",
-          "id": "b3a051a75a7b478e93b46cdaf6da3572",
+          "id": "f2ac6b34ce7e48c38fb2c185030746b1",
         },
       ],
       "ratelimits": [

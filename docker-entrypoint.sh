@@ -7,7 +7,7 @@
 # rebuilds.
 set -e
 
-echo 'SearchCrew sends an anonymous usage heartbeat (counts only). Disable: OPENSEO_TELEMETRY_DISABLED=1. Details: docs/SELF_HOSTING_DOCKER.md#telemetry'
+echo 'SearchCrew sends an anonymous usage heartbeat (counts only). Disable: SEARCHCREW_TELEMETRY_DISABLED=1. Details: docs/SELF_HOSTING_DOCKER.md#telemetry'
 
 # The preflight validates env BEFORE the slow steps, so misconfiguration fails
 # in seconds with the exact fix instead of after a multi-minute build.

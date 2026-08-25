@@ -55,6 +55,9 @@ Good starting points:
 - `competitor-analysis`: studies one competitor's keywords, content themes, backlink profile, and gaps.
 - `local-seo`: audits a Google Business Profile against local competitors and maps Maps visibility around a location.
 - `link-prospecting`: finds likely link opportunities, discovers contact paths, and drafts outreach.
+- `geo-crawlers`: maps which AI crawlers can reach the site across robots.txt, meta tags, and headers. Run first when the goal is AI visibility — blocked crawlers make every other GEO step moot.
+- `geo-citability`: scores how likely ChatGPT, Claude, Perplexity, and Gemini are to quote a page, and suggests the rewrites that raise it.
+- `geo-llmstxt`: validates or generates the site's `llms.txt`, the curated map of what matters that AI systems read.
 
 ## Tool coaching
 

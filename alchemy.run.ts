@@ -285,7 +285,7 @@ const dataEnv = {
   TURNSTILE_SITE_KEY: optionalVar("TURNSTILE_SITE_KEY"),
   // Alchemy reconciles worker vars on every deploy, so the telemetry opt-out
   // must live in the env file — a dashboard-set var would be wiped.
-  OPENSEO_TELEMETRY_DISABLED: optionalVar("OPENSEO_TELEMETRY_DISABLED"),
+  SEARCHCREW_TELEMETRY_DISABLED: optionalVar("SEARCHCREW_TELEMETRY_DISABLED"),
 };
 
 export default Alchemy.Stack(
