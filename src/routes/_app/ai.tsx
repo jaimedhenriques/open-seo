@@ -11,7 +11,7 @@ import {
 } from "@/client/features/ai-mcp/SetupControls";
 
 const DISCORD_URL = "https://discord.gg/c9uGs3cFXr";
-const SUPPORT_EMAIL = "ben@searchcrew.ai";
+const SUPPORT_EMAIL = "support@searchcrew.ai";
 const SAM_GITHUB_URL = "https://github.com/every-app/sam";
 const SKILL_NAMES = [
   "seo-project-setup",
@@ -53,8 +53,9 @@ function AiPage() {
       <div className="mx-auto max-w-3xl">
         <h1 className="text-2xl font-semibold">AI & MCP</h1>
         <p className="mt-2 text-sm text-base-content/70 leading-relaxed">
-          Connect your AI agent to SearchCrew. Run keyword research, SERP analysis,
-          domain lookups, and backlink reviews from your editor or chat.
+          Connect your AI agent to SearchCrew. Run keyword research, SERP
+          analysis, domain lookups, and backlink reviews from your editor or
+          chat.
         </p>
 
         {getAuthMode(import.meta.env.AUTH_MODE) === "cloudflare_access" ? (

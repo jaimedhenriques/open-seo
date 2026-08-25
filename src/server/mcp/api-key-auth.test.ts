@@ -89,7 +89,9 @@ describe("handleMcpApiKeyRequest", () => {
       expect.any(Function),
     );
     expect(mocks.recordMcpAuthorized).toHaveBeenCalledWith("org-1");
-    expect(mocks.handleAuthenticatedSearchCrewMcpRequest).toHaveBeenCalledTimes(1);
+    expect(mocks.handleAuthenticatedSearchCrewMcpRequest).toHaveBeenCalledTimes(
+      1,
+    );
     const [passedRequest, props, passedEnv, passedCtx] =
       mocks.handleAuthenticatedSearchCrewMcpRequest.mock.calls[0];
     expect(passedRequest).toBe(mcpRequest);
@@ -143,7 +145,9 @@ describe("handleMcpApiKeyRequest", () => {
     await expect(response?.json()).resolves.toMatchObject({
       error: "invalid_api_key",
     });
-    expect(mocks.handleAuthenticatedSearchCrewMcpRequest).not.toHaveBeenCalled();
+    expect(
+      mocks.handleAuthenticatedSearchCrewMcpRequest,
+    ).not.toHaveBeenCalled();
   });
 
   it("returns 429 with Retry-After when Better Auth rate-limits the key", async () => {
@@ -168,7 +172,9 @@ describe("handleMcpApiKeyRequest", () => {
     await expect(response?.json()).resolves.toMatchObject({
       error: "rate_limited",
     });
-    expect(mocks.handleAuthenticatedSearchCrewMcpRequest).not.toHaveBeenCalled();
+    expect(
+      mocks.handleAuthenticatedSearchCrewMcpRequest,
+    ).not.toHaveBeenCalled();
   });
 
   it("returns a JSON 500 when auth resolution throws", async () => {
@@ -184,7 +190,9 @@ describe("handleMcpApiKeyRequest", () => {
     await expect(response?.json()).resolves.toMatchObject({
       error: "internal_error",
     });
-    expect(mocks.handleAuthenticatedSearchCrewMcpRequest).not.toHaveBeenCalled();
+    expect(
+      mocks.handleAuthenticatedSearchCrewMcpRequest,
+    ).not.toHaveBeenCalled();
   });
 
   it("leaves non-SearchCrew bearer tokens for OAuth", async () => {

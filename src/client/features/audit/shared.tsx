@@ -1,6 +1,6 @@
 import { AlertCircle, CheckCircle, Loader2 } from "lucide-react";
 
-export const SUPPORT_EMAIL = "ben@searchcrew.ai";
+export const SUPPORT_EMAIL = "support@searchcrew.ai";
 
 export function extractPathname(url: string): string {
   try {

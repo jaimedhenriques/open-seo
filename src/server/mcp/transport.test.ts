@@ -196,7 +196,9 @@ describe("handleSelfHostedSearchCrewMcpRequest", () => {
     expect(
       selfHostedAuthMocks.resolveCloudflareAccessContext,
     ).not.toHaveBeenCalled();
-    expect(selfHostedAuthMocks.createSearchCrewMcpServer).not.toHaveBeenCalled();
+    expect(
+      selfHostedAuthMocks.createSearchCrewMcpServer,
+    ).not.toHaveBeenCalled();
   });
 });
 
@@ -242,7 +244,9 @@ describe("handleAuthenticatedSearchCrewMcpRequest", () => {
     expect(await response.json()).toEqual({ handledBy: "modern" });
     // The modern handler owns server construction; the legacy leg must not
     // have built one.
-    expect(selfHostedAuthMocks.createSearchCrewMcpServer).not.toHaveBeenCalled();
+    expect(
+      selfHostedAuthMocks.createSearchCrewMcpServer,
+    ).not.toHaveBeenCalled();
   });
 
   it("accepts a modern request from the exact SurfMind extension origin", async () => {
@@ -272,7 +276,9 @@ describe("handleAuthenticatedSearchCrewMcpRequest", () => {
     );
 
     expect(response.status).toBe(403);
-    expect(selfHostedAuthMocks.createSearchCrewMcpServer).not.toHaveBeenCalled();
+    expect(
+      selfHostedAuthMocks.createSearchCrewMcpServer,
+    ).not.toHaveBeenCalled();
   });
 
   it("accepts a legacy request from the SurfMind Chrome extension", async () => {

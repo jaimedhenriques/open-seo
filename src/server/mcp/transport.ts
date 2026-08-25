@@ -124,11 +124,14 @@ function createRequestHandler(
   props: McpProps,
   allowedOriginHostnames?: string[],
 ) {
-  const modernHandler = createMcpHandler(() => createSearchCrewMcpServer(props), {
-    route: MCP_ROUTE,
-    allowedOriginHostnames,
-    legacy: "reject",
-  });
+  const modernHandler = createMcpHandler(
+    () => createSearchCrewMcpServer(props),
+    {
+      route: MCP_ROUTE,
+      allowedOriginHostnames,
+      legacy: "reject",
+    },
+  );
 
   return async (request: Request, env: unknown, ctx: ExecutionContext) => {
     if (request.method === "OPTIONS") {

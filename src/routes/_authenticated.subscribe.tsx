@@ -12,17 +12,35 @@ import { getCustomerPlanStatus } from "@/client/features/billing/plan-detection"
 import { normalizeAuthRedirect } from "@/lib/auth-redirect";
 import {
   AUTUMN_MANAGED_ACCESS_FEATURE_ID,
-  AUTUMN_PAID_PLAN_ID,
+  AUTUMN_SEO_DATA_CREDITS_PER_USD,
+  DEFAULT_UPGRADE_PLAN_ID,
+  PLANS,
+  autumnProductId,
+  type BillingPeriod,
+  type PlanDefinition,
+  type PlanTier,
 } from "@/shared/billing";
 
-const SUPPORT_EMAIL = "ben@searchcrew.ai";
+const SUPPORT_EMAIL = "support@searchcrew.ai";
 
-const PLAN_FEATURES = [
-  "Keyword research, backlinks, rank tracking, and site audits",
-  "MCP server and agent skills for Claude, Cursor, and ChatGPT",
-  "Google Search Console Integration",
-  "Includes $10.00 of Usage Credits each month",
-];
+/** Selectable tiers, cheapest first. Free is the default, so it isn't offered. */
+const PAID_PLANS = PLANS.filter((plan) => plan.monthlyUsd > 0);
+
+const usdCredits = (credits: number) =>
+  `$${(credits / AUTUMN_SEO_DATA_CREDITS_PER_USD).toFixed(0)}`;
+
+function planFeatures(plan: PlanDefinition): string[] {
+  return [
+    `${usdCredits(plan.monthlyCredits)} of usage credits each month`,
+    plan.projects === "unlimited"
+      ? "Unlimited projects"
+      : `${plan.projects} project${plan.projects === 1 ? "" : "s"}`,
+    `${plan.seats} team seat${plan.seats === 1 ? "" : "s"}`,
+    `${plan.rankCheckCadence === "daily" ? "Daily" : "Weekly"} rank tracking`,
+    "Full MCP server and agent skills access",
+    "Keyword research, backlinks, and site audits",
+  ];
+}
 
 // How long the post-checkout "finalizing" screen polls Autumn before giving
 // up and letting the user through anyway.
@@ -49,6 +67,10 @@ function SubscribePage() {
   const { data: session } = useSession();
   const [isAttaching, setIsAttaching] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [selectedTier, setSelectedTier] = useState<PlanTier>(
+    DEFAULT_UPGRADE_PLAN_ID,
+  );
+  const [period, setPeriod] = useState<BillingPeriod>("monthly");
   const [finalizingTimedOut, setFinalizingTimedOut] = useState(false);
   const checkoutCompleted = checkout === "success";
 
@@ -188,11 +210,14 @@ function SubscribePage() {
     setIsAttaching(true);
 
     try {
-      captureClientEvent("billing:checkout_start");
+      captureClientEvent("billing:checkout_start", {
+        plan: selectedTier,
+        period,
+      });
       const successUrl = new URL(window.location.href);
       successUrl.searchParams.set("checkout", "success");
       await customerQuery.attach({
-        planId: AUTUMN_PAID_PLAN_ID,
+        planId: autumnProductId(selectedTier, period),
         redirectMode: "always",
         successUrl: successUrl.toString(),
       });
@@ -208,6 +233,10 @@ function SubscribePage() {
   }
 
   const firstName = session?.user?.name?.split(" ")[0] || "";
+  // PAID_PLANS is a non-empty literal, so the fallback is unreachable; it just
+  // keeps the type non-optional without a non-null assertion.
+  const selectedPlan =
+    PAID_PLANS.find((plan) => plan.id === selectedTier) ?? PAID_PLANS[0];
 
   return (
     <div className="w-full max-w-sm space-y-6">
@@ -231,14 +260,77 @@ function SubscribePage() {
         </p>
       </div>
 
+      <div
+        className="flex rounded-lg bg-base-200 p-1"
+        role="radiogroup"
+        aria-label="Billing period"
+      >
+        {(["monthly", "annual"] as const).map((option) => (
+          <button
+            key={option}
+            type="button"
+            role="radio"
+            aria-checked={period === option}
+            onClick={() => setPeriod(option)}
+            className={`flex-1 rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+              period === option
+                ? "bg-base-100 text-base-content shadow-sm"
+                : "text-base-content/60 hover:text-base-content"
+            }`}
+          >
+            {option === "monthly" ? "Monthly" : "Annual"}
+            {option === "annual" ? (
+              <span className="ml-1.5 text-xs font-normal text-success">
+                2 months free
+              </span>
+            ) : null}
+          </button>
+        ))}
+      </div>
+
+      <div className="space-y-2" role="radiogroup" aria-label="Plan">
+        {PAID_PLANS.map((plan) => {
+          const isSelected = plan.id === selectedTier;
+          const priceUsd =
+            period === "annual" ? plan.annualUsd / 12 : plan.monthlyUsd;
+
+          return (
+            <button
+              key={plan.id}
+              type="button"
+              role="radio"
+              aria-checked={isSelected}
+              onClick={() => setSelectedTier(plan.id)}
+              className={`flex w-full items-baseline justify-between gap-4 rounded-lg border px-4 py-3 text-left transition-colors ${
+                isSelected
+                  ? "border-primary bg-primary/5"
+                  : "border-base-300 hover:border-base-content/30"
+              }`}
+            >
+              <span className="font-semibold">{plan.name}</span>
+              <span className="text-sm text-base-content/60">
+                <span className="text-base font-semibold tabular-nums text-base-content">
+                  ${priceUsd % 1 === 0 ? priceUsd : priceUsd.toFixed(2)}
+                </span>
+                /mo
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
       <div className="rounded-lg border border-base-300 p-5 space-y-4">
         <div className="flex items-baseline justify-between gap-4">
-          <span className="font-semibold">Base Plan</span>
-          <span className="text-lg font-semibold tabular-nums">$10/month</span>
+          <span className="font-semibold">{selectedPlan.name}</span>
+          <span className="text-lg font-semibold tabular-nums">
+            {period === "annual"
+              ? `$${selectedPlan.annualUsd}/year`
+              : `$${selectedPlan.monthlyUsd}/month`}
+          </span>
         </div>
 
         <ul className="space-y-2">
-          {PLAN_FEATURES.map((item) => (
+          {planFeatures(selectedPlan).map((item) => (
             <li
               key={item}
               className="flex gap-2.5 text-sm text-base-content/70"

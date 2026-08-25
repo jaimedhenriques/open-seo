@@ -67,8 +67,8 @@ export function WelcomeMessage({
         <div className="space-y-3 text-base-content/80">
           <p>Hey, I’m Sam — welcome to SearchCrew.</p>
           <p>
-            To get full access to SearchCrew, you need to upgrade to the paid plan.
-            But, I’m here if you have any questions.
+            To get full access to SearchCrew, you need to upgrade to the paid
+            plan. But, I’m here if you have any questions.
           </p>
           <p>
             You can also{" "}
@@ -81,8 +81,11 @@ export function WelcomeMessage({
               join the Discord
             </a>{" "}
             or email{" "}
-            <a href="mailto:ben@searchcrew.ai" className="link link-primary">
-              ben@searchcrew.ai
+            <a
+              href="mailto:support@searchcrew.ai"
+              className="link link-primary"
+            >
+              support@searchcrew.ai
             </a>{" "}
             if you have any questions I can’t help you with.
           </p>
@@ -146,7 +149,9 @@ export function UpgradeSidebar({
           <Globe className="size-4" />
         </span>
         <div className="min-w-0">
-          <p className="font-medium text-base-content/80">Previewing SearchCrew</p>
+          <p className="font-medium text-base-content/80">
+            Previewing SearchCrew
+          </p>
           <p className="truncate" title={domain}>
             {domain}
           </p>

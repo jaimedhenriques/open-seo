@@ -1,4 +1,4 @@
-import { AUTUMN_PAID_PLAN_ID } from "@/shared/billing";
+import { isPaidPlanId } from "@/shared/billing";
 
 // The subset of the Autumn SDK's `Customer` we read. The SDK already validates
 // and returns camelCase, so we type against it structurally instead of
@@ -44,9 +44,15 @@ export function deriveBillingCustomerStatusSnapshot(
   };
 }
 
-// A customer is "paying" when they hold the base paid plan. Prefer an active
-// row, but fall back to any paid row so a not-yet-active plan still records its id.
+// A customer is "paying" when they hold any paid tier. Prefer an active row,
+// but fall back to any paid row so a not-yet-active plan still records its id.
+//
+// With several paid tiers a customer can briefly hold two rows at once (an
+// active plan plus a scheduled upgrade or downgrade). Ordering by PLANS rank
+// would pick the more expensive one; preferring the *active* row keeps the
+// snapshot describing what they are entitled to right now, and the scheduled
+// row takes over once Autumn activates it.
 function selectPaidSubscription(subscriptions: AutumnSubscriptionInput[]) {
-  const paid = subscriptions.filter((s) => s.planId === AUTUMN_PAID_PLAN_ID);
+  const paid = subscriptions.filter((s) => isPaidPlanId(s.planId));
   return paid.find((s) => s.status === "active") ?? paid[0] ?? null;
 }

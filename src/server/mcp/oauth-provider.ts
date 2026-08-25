@@ -392,7 +392,12 @@ function createDefaultHandler(
 
 const mcpApiHandler: ExportedHandlerWithFetch<SearchCrewOAuthEnv> = {
   async fetch(request, env, ctx) {
-    return handleAuthenticatedSearchCrewMcpRequest(request, ctx.props, env, ctx);
+    return handleAuthenticatedSearchCrewMcpRequest(
+      request,
+      ctx.props,
+      env,
+      ctx,
+    );
   },
 };
 
@@ -444,7 +449,11 @@ export function createSearchCrewOAuthProvider(appFetch: AppFetch) {
     (provider ??= createProvider(appFetch, getMcpResource(getHostedBaseUrl())));
 
   return {
-    async fetch(request: Request, env: SearchCrewOAuthEnv, ctx: ExecutionContext) {
+    async fetch(
+      request: Request,
+      env: SearchCrewOAuthEnv,
+      ctx: ExecutionContext,
+    ) {
       const url = new URL(request.url);
 
       const apiKeyResponse = await handleMcpApiKeyRequest(request, env, ctx);

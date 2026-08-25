@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { buildPageSeo } from "@/lib/seo";
 
-const SUPPORT_EMAIL = "ben@searchcrew.ai";
+const SUPPORT_EMAIL = "support@searchcrew.ai";
 const DISCORD_URL = "https://discord.gg/c9uGs3cFXr";
 const GITHUB_ISSUES_URL = "https://github.com/every-app/open-seo/issues";
 
