@@ -51,7 +51,7 @@ const toolContext = makeToolContext();
 const createdConfig = {
   id: trackerId,
   projectId,
-  domain: "openseo.so",
+  domain: "searchcrew.ai",
   locationCode: 2840,
   languageCode: "en",
   locationName: null,
@@ -65,7 +65,7 @@ describe("rank tracking management MCP tools", () => {
   beforeEach(() => {
     mocks.getProjectForOrganization.mockResolvedValue({
       id: projectId,
-      domain: "openseo.so",
+      domain: "searchcrew.ai",
       locationCode: 2840,
       languageCode: "en",
     });
@@ -84,11 +84,11 @@ describe("rank tracking management MCP tools", () => {
       projectId,
       projectMarket: {
         id: projectId,
-        domain: "openseo.so",
+        domain: "searchcrew.ai",
         locationCode: 2840,
         languageCode: "en",
       },
-      domain: "openseo.so",
+      domain: "searchcrew.ai",
       locationCode: undefined,
       languageCode: undefined,
       locationName: undefined,
@@ -108,7 +108,7 @@ describe("rank tracking management MCP tools", () => {
       organizationId: "org_123",
       properties: {
         project_id: projectId,
-        domain: "openseo.so",
+        domain: "searchcrew.ai",
         devices: "mobile",
         schedule: "manual",
         source: "mcp",

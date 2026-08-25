@@ -12,10 +12,9 @@ import { SiteFooter } from "@/components/site-footer";
 import { featurePages } from "@/lib/feature-pages";
 import "./landing-page.css";
 
-const SIGNUP_URL = "https://app.openseo.so/sign-up";
+const SIGNUP_URL = "https://app.searchcrew.ai/sign-up";
 const PRODUCT_HUNT_URL =
-  "https://www.producthunt.com/products/openseo?launch=openseo";
-const GITHUB_URL = "https://github.com/every-app/open-seo";
+  "https://www.producthunt.com/products/searchcrew?launch=searchcrew";
 const DISCORD_URL = "https://discord.gg/c9uGs3cFXr";
 
 type Testimonial = {
@@ -31,7 +30,7 @@ type Testimonial = {
 const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "All of the value, none of the bloat. OpenSEO is a no-brainer compared to the expensive alternatives!",
+      "All of the value, none of the bloat. SearchCrew is a no-brainer compared to the expensive alternatives!",
     name: "Fed",
     initial: "F",
     handle: "@foliofed",
@@ -41,7 +40,7 @@ const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "I've been using OpenSEO for the past 3 months, Ben keeps launching features to make it the best. I use it every day to find where my competitors are ranking.",
+      "I've been using SearchCrew for the past 3 months, Ben keeps launching features to make it the best. I use it every day to find where my competitors are ranking.",
     name: "Samik",
     initial: "S",
     handle: "Subclip",
@@ -51,7 +50,7 @@ const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "It's so straightforward and incredibly easy to get started. OpenSEO gives you the complete setup, stripped of all the fluff that you get elsewhere.",
+      "It's so straightforward and incredibly easy to get started. SearchCrew gives you the complete setup, stripped of all the fluff that you get elsewhere.",
     name: "Tom Raine",
     initial: "T",
     handle: "LinkedIn",
@@ -85,21 +84,6 @@ function IconArrowRight({ size = 16, className }: IconProps) {
     <svg {...strokeProps(size, className)}>
       <path d="M5 12h14" />
       <path d="m12 5 7 7-7 7" />
-    </svg>
-  );
-}
-
-function IconGithub({ size = 16, className }: IconProps) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
     </svg>
   );
 }
@@ -217,7 +201,7 @@ function Hero() {
           className="itc-subhead itc-muted itc-hero-subtitle"
           style={{ maxWidth: 640, margin: "24px auto 0" }}
         >
-          Without quality data, AI gives generic advice. OpenSEO is built for
+          Without quality data, AI gives generic advice. SearchCrew is built for
           you and your AI agent to work together on SEO strategy + content
           tailored to your business.
         </p>
@@ -341,12 +325,12 @@ function DemoVideo() {
       autoPlay
       playsInline
       preload="metadata"
-      aria-label="OpenSEO product demo: running keyword research"
+      aria-label="SearchCrew product demo: running keyword research"
     >
       <source src="/demo.mp4" type="video/mp4" />
       <img
         src="/demo-poster.webp"
-        alt="OpenSEO keyword research dashboard"
+        alt="SearchCrew keyword research dashboard"
         width={1280}
         height={966}
         loading="lazy"
@@ -361,7 +345,7 @@ function ProductSection() {
     <section className="itc-section itc-section-demo">
       <Container>
         <div className="itc-narrow">
-          <h2 className="itc-display-lg">See OpenSEO in action</h2>
+          <h2 className="itc-display-lg">See SearchCrew in action</h2>
           <p className="itc-subhead itc-muted" style={{ margin: "20px 0 0" }}>
             Keyword research, competitor analysis, backlinks, rank tracking,
             technical audits, and AI-search visibility, all on real DataForSEO
@@ -433,7 +417,7 @@ function McpSection() {
             <p className="itc-body-lg itc-muted" style={{ margin: "20px 0 0" }}>
               Give your agent real SEO data instead of guesses. It can research
               keywords, competitors, backlinks, and Google Search Console
-              performance, then you can review the work in OpenSEO.
+              performance, then you can review the work in SearchCrew.
             </p>
             <div className="itc-agent-icons">
               {MCP_CLIENTS.map(({ name, Icon }) => (
@@ -470,15 +454,15 @@ function McpSection() {
                 <span className="itc-terminal-dot" />
                 <span className="itc-terminal-dot" />
               </span>
-              <span className="itc-terminal-label">claude · openseo mcp</span>
+              <span className="itc-terminal-label">claude · searchcrew mcp</span>
             </div>
             <pre>
               <code>
                 <span className="t-orange">›</span> find and cluster keywords
-                for <span className="t-bright">openseo.so</span>
+                for <span className="t-bright">searchcrew.ai</span>
                 {"\n\n"}
                 <span className="t-dim">
-                  ⏺ openseo.keyword_research(seed: &quot;open source seo&quot;)
+                  ⏺ searchcrew.keyword_research(seed: &quot;open source seo&quot;)
                 </span>
                 {"\n"}
                 {"  "}keyword{"                      "}volume{"     "}kd{"\n"}
@@ -505,7 +489,7 @@ function McpSection() {
                 {"\n"}
                 <span className="t-orange">↳</span>
                 <span className="t-dim"> View data in app: </span>
-                <span className="t-bright">app.openseo.so/keywords</span>
+                <span className="t-bright">app.searchcrew.ai/keywords</span>
               </code>
             </pre>
           </div>
@@ -795,48 +779,6 @@ function GeminiIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-// ─── Open source ─────────────────────────────────────────────────────
-
-function OpenSourceSection() {
-  return (
-    <section className="itc-section itc-section-open-source">
-      <Container>
-        <div className="itc-narrow">
-          <h2 className="itc-display-lg">100% open source</h2>
-          <p className="itc-subhead itc-muted" style={{ margin: "20px 0 0" }}>
-            People should have the option to self-host and customize their
-            tools. If you ever hear someone talking about building their own
-            tool from scratch, tell them to build on top of OpenSEO.
-          </p>
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            gap: 24,
-            marginTop: 32,
-          }}
-        >
-          <a
-            href={GITHUB_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="itc-btn itc-btn-secondary"
-          >
-            <IconGithub size={16} />
-            Star on GitHub
-          </a>
-          <a href="/open-source-seo" className="itc-textlink">
-            Why Open Source? <IconArrowRight size={15} className="itc-arrow" />
-          </a>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
 // ─── Footer ──────────────────────────────────────────────────────────
 
 function Footer() {
@@ -895,7 +837,6 @@ export function LandingPage() {
       <Hero />
       <McpSection />
       <Testimonial />
-      <OpenSourceSection />
       <ProductSection />
       <Footer />
       <a
@@ -903,7 +844,7 @@ export function LandingPage() {
         target="_blank"
         rel="noopener noreferrer"
         className="itc-discord"
-        aria-label="Join the OpenSEO Discord"
+        aria-label="Join the SearchCrew Discord"
       >
         <IconDiscord size={18} />
         <span>Discord</span>

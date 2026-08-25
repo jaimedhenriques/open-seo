@@ -1,6 +1,6 @@
-# Running OpenSEO on Postgres locally
+# Running SearchCrew on Postgres locally
 
-OpenSEO runs on **Cloudflare D1 (SQLite) by default**. Postgres is an opt-in
+SearchCrew runs on **Cloudflare D1 (SQLite) by default**. Postgres is an opt-in
 backend for installs that outgrow D1's storage ceiling. The application code is
 written once against a provider-aware `db` layer (see `src/db/`), so the only
 difference at runtime is the `DATABASE_PROVIDER` flag and a connection string.
@@ -20,10 +20,10 @@ Port `5433` is used on the host to avoid clashing with a system Postgres on the
 default `5432`.
 
 ```sh
-docker run --name openseo-postgres \
-  -e POSTGRES_USER=openseo \
-  -e POSTGRES_PASSWORD=openseo \
-  -e POSTGRES_DB=openseo \
+docker run --name searchcrew-postgres \
+  -e POSTGRES_USER=searchcrew \
+  -e POSTGRES_PASSWORD=searchcrew \
+  -e POSTGRES_DB=searchcrew \
   -p 5433:5432 \
   -d postgres:16
 ```
@@ -31,13 +31,13 @@ docker run --name openseo-postgres \
 Wait until it accepts connections:
 
 ```sh
-docker exec openseo-postgres pg_isready -U openseo -d openseo
+docker exec searchcrew-postgres pg_isready -U searchcrew -d searchcrew
 ```
 
 The connection string is:
 
 ```
-postgres://openseo:openseo@localhost:5433/openseo
+postgres://searchcrew:searchcrew@localhost:5433/searchcrew
 ```
 
 ## 2. Apply the Postgres migrations
@@ -48,7 +48,7 @@ them with `POSTGRES_DATABASE_URL` set — `drizzle-kit` reads it from the shell
 environment:
 
 ```sh
-POSTGRES_DATABASE_URL=postgres://openseo:openseo@localhost:5433/openseo \
+POSTGRES_DATABASE_URL=postgres://searchcrew:searchcrew@localhost:5433/searchcrew \
   pnpm db:migrate:pg
 ```
 
@@ -90,10 +90,10 @@ restart.
 
 ```sh
 # Tables created by the migrations
-docker exec openseo-postgres psql -U openseo -d openseo -c "\dt"
+docker exec searchcrew-postgres psql -U searchcrew -d searchcrew -c "\dt"
 
 # Inspect rows the app writes (e.g. after creating a project / saving keywords)
-docker exec openseo-postgres psql -U openseo -d openseo -c "select count(*) from projects;"
+docker exec searchcrew-postgres psql -U searchcrew -d searchcrew -c "select count(*) from projects;"
 ```
 
 ## Schema changes
@@ -113,7 +113,7 @@ the change even though the parity test is green.
 ## Teardown
 
 ```sh
-docker rm -f openseo-postgres
+docker rm -f searchcrew-postgres
 ```
 
 This deletes the container and all its data. Re-run from step 1 for a clean slate.

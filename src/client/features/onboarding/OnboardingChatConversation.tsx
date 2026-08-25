@@ -11,7 +11,7 @@ import { useStickToBottom } from "@/client/components/chat/useStickToBottom";
 import { captureClientEvent } from "@/client/lib/posthog";
 import { getStandardErrorMessage } from "@/client/lib/error-messages";
 import { buildCheckoutSuccessUrl } from "@/client/features/billing/checkout-url";
-import { AUTUMN_PAID_PLAN_ID } from "@/shared/billing";
+import { DEFAULT_UPGRADE_PLAN_ID } from "@/shared/billing";
 import { FREE_ONBOARDING_QUESTION_LIMIT } from "@/shared/onboardingChat";
 import {
   ChatComposer,
@@ -62,8 +62,8 @@ const resolveToolLabel: ResolveToolLabel = (partType) =>
   TOOL_LABELS[partType] ?? null;
 
 const SUGGESTED_QUESTIONS = [
-  "How will OpenSEO help me get more traffic?",
-  "Compare OpenSEO and Claude",
+  "How will SearchCrew help me get more traffic?",
+  "Compare SearchCrew and Claude",
   "What do I get after I upgrade?",
   "How does the Google Search Console integration work?",
   "Right fit for consultants and agencies?",
@@ -123,7 +123,7 @@ export function OnboardingChatConversation({
       // After payment, re-enter onboarding at the GSC step (not back into
       // this chat) so the user finishes connecting Search Console + MCP.
       await customerQuery.attach({
-        planId: AUTUMN_PAID_PLAN_ID,
+        planId: DEFAULT_UPGRADE_PLAN_ID,
         redirectMode: "always",
         successUrl: buildCheckoutSuccessUrl("/onboarding?step=3"),
       });

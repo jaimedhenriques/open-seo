@@ -1,38 +1,38 @@
 ---
-title: "Set up OpenSEO MCP"
-description: "Connect OpenSEO MCP to Claude, Codex, and other AI clients."
+title: "Set up SearchCrew MCP"
+description: "Connect SearchCrew MCP to Claude, Codex, and other AI clients."
 ---
 
-OpenSEO MCP lets compatible AI clients call OpenSEO tools for keyword research, SERP inspection, local business research, competitive search intelligence, domain research, backlink overview, saved keywords, rank tracking, shared project context, and Google Search Console performance and URL inspection.
+SearchCrew MCP lets compatible AI clients call SearchCrew tools for keyword research, SERP inspection, local business research, competitive search intelligence, domain research, backlink overview, saved keywords, rank tracking, shared project context, and Google Search Console performance and URL inspection.
 
 The hosted MCP server URL is:
 
 ```txt
-https://app.openseo.so/mcp
+https://app.searchcrew.ai/mcp
 ```
 
-The first connection sends you through OpenSEO login. After authorization, your MCP client can call OpenSEO tools with the project context and account scopes you approved. For headless environments and CI, [connect with an API key](#connect-with-an-api-key) instead.
+The first connection sends you through SearchCrew login. After authorization, your MCP client can call SearchCrew tools with the project context and account scopes you approved. For headless environments and CI, [connect with an API key](#connect-with-an-api-key) instead.
 
-For the most current setup UI and a copyable endpoint, open [AI & MCP in OpenSEO](https://app.openseo.so/ai).
+For the most current setup UI and a copyable endpoint, open [AI & MCP in SearchCrew](https://app.searchcrew.ai/ai).
 
 ## Claude Code
 
-The [OpenSEO plugin](/docs/claude-code-plugin) is the preferred way to connect Claude Code — one install adds MCP and all nine Agent Skills together. Use the steps below only if you want MCP on its own.
+The [SearchCrew plugin](/docs/claude-code-plugin) is the preferred way to connect Claude Code — one install adds MCP and all nine Agent Skills together. Use the steps below only if you want MCP on its own.
 
-Use user scope to make OpenSEO available across projects. Use local scope for the current repository.
+Use user scope to make SearchCrew available across projects. Use local scope for the current repository.
 
 ```bash
-claude mcp add --transport http --scope user openseo https://app.openseo.so/mcp
+claude mcp add --transport http --scope user searchcrew https://app.searchcrew.ai/mcp
 ```
 
-After adding the server, approve the OpenSEO login when prompted.
+After adding the server, approve the SearchCrew login when prompted.
 
 ## Claude Desktop
 
 1. Open Settings -> Connectors.
 2. Click Add custom connector.
-3. Paste `https://app.openseo.so/mcp`.
-4. Approve the OpenSEO login when prompted.
+3. Paste `https://app.searchcrew.ai/mcp`.
+4. Approve the SearchCrew login when prompted.
 
 Claude Desktop custom connectors require a Claude plan that supports custom connectors.
 
@@ -45,23 +45,23 @@ Claude Desktop custom connectors require a Claude plan that supports custom conn
 ```json
 {
   "mcpServers": {
-    "openseo": {
-      "url": "https://app.openseo.so/mcp"
+    "searchcrew": {
+      "url": "https://app.searchcrew.ai/mcp"
     }
   }
 }
 ```
 
-4. Approve the OpenSEO login when prompted.
+4. Approve the SearchCrew login when prompted.
 
 ## Codex CLI
 
-The [OpenSEO plugin](/docs/codex-plugin) is the preferred way to connect Codex CLI — one install adds MCP and all nine Agent Skills together. Use the steps below only if you want MCP on its own.
+The [SearchCrew plugin](/docs/codex-plugin) is the preferred way to connect Codex CLI — one install adds MCP and all nine Agent Skills together. Use the steps below only if you want MCP on its own.
 
 Run this in your terminal:
 
 ```bash
-codex mcp add openseo --url https://app.openseo.so/mcp
+codex mcp add searchcrew --url https://app.searchcrew.ai/mcp
 ```
 
 Approve the login when prompted.
@@ -70,19 +70,19 @@ Approve the login when prompted.
 
 1. Open Settings -> Integrations & MCP.
 2. Click Add your own.
-3. Paste `https://app.openseo.so/mcp`.
-4. Approve the OpenSEO login when prompted.
+3. Paste `https://app.searchcrew.ai/mcp`.
+4. Approve the SearchCrew login when prompted.
 
 ## Connect with an API key
 
 Use an API key in headless environments, CI, or clients where OAuth is inconvenient. API keys are personal: anything an agent does with your key acts as you in your workspace.
 
-In the [OpenSEO app](https://app.openseo.so/settings), open **Settings -> API keys**, create a key, and copy it when it appears. It won't be shown again.
+In the [SearchCrew app](https://app.searchcrew.ai/settings), open **Settings -> API keys**, create a key, and copy it when it appears. It won't be shown again.
 
 For Claude Code, run:
 
 ```bash
-claude mcp add --transport http --scope user openseo https://app.openseo.so/mcp --header "Authorization: Bearer oseo_YOUR_KEY"
+claude mcp add --transport http --scope user searchcrew https://app.searchcrew.ai/mcp --header "Authorization: Bearer oseo_YOUR_KEY"
 ```
 
 For Cursor, add `headers` to the server entry in `mcp.json`:
@@ -90,8 +90,8 @@ For Cursor, add `headers` to the server entry in `mcp.json`:
 ```json
 {
   "mcpServers": {
-    "openseo": {
-      "url": "https://app.openseo.so/mcp",
+    "searchcrew": {
+      "url": "https://app.searchcrew.ai/mcp",
       "headers": {
         "Authorization": "Bearer oseo_YOUR_KEY"
       }
@@ -104,14 +104,14 @@ For Codex CLI, put the key in an environment variable and reference it:
 
 ```bash
 export OPENSEO_API_KEY=oseo_YOUR_KEY
-codex mcp add openseo --url https://app.openseo.so/mcp --bearer-token-env-var OPENSEO_API_KEY
+codex mcp add searchcrew --url https://app.searchcrew.ai/mcp --bearer-token-env-var OPENSEO_API_KEY
 ```
 
 Any other client that supports custom HTTP headers can send `Authorization: Bearer oseo_YOUR_KEY` or `x-api-key: oseo_YOUR_KEY`.
 
 ## Available tools
 
-OpenSEO MCP exposes tools for SEO research workflows:
+SearchCrew MCP exposes tools for SEO research workflows:
 
 - Research keywords with volume, difficulty, and CPC.
 - Fetch live Google organic SERP results for keywords.
@@ -124,8 +124,8 @@ OpenSEO MCP exposes tools for SEO research workflows:
 - Look up valid Google Business category slugs.
 - Check Google Maps rank at each point of a grid around a business.
 - Hydrate keywords with search volume, difficulty, intent, CPC, and trends.
-- List saved keywords from an OpenSEO project.
-- Save useful keywords back to OpenSEO.
+- List saved keywords from an SearchCrew project.
+- Save useful keywords back to SearchCrew.
 - Read rank tracker configs and latest keyword positions.
 - Summarize a domain's organic footprint.
 - Find keywords a domain already ranks for.
@@ -136,7 +136,7 @@ OpenSEO MCP exposes tools for SEO research workflows:
 
 ## What to do after setup
 
-Once OpenSEO MCP is connected, [set up OpenSEO Agent Skills](/docs/skills/setup). MCP gives your agent access to OpenSEO data. Skills are separate `SKILL.md` files that tell your agent how to use that data for specific SEO jobs.
+Once SearchCrew MCP is connected, [set up SearchCrew Agent Skills](/docs/skills/setup). MCP gives your agent access to SearchCrew data. Skills are separate `SKILL.md` files that tell your agent how to use that data for specific SEO jobs.
 
 Start with one focused workflow instead of asking your agent to "do SEO" broadly.
 
@@ -150,10 +150,10 @@ Start with one focused workflow instead of asking your agent to "do SEO" broadly
 
 ## Troubleshooting
 
-If your client cannot connect, check that the server URL is exactly `https://app.openseo.so/mcp`.
+If your client cannot connect, check that the server URL is exactly `https://app.searchcrew.ai/mcp`.
 
-If Codex reports `Authorization server response missing required issuer: expected https://app.openseo.so`, upgrade Codex CLI or the Codex desktop app to 0.147.0 or later. Codex 0.143 through 0.146 drop the issuer from the OAuth callback. You can also [connect with an API key](#connect-with-an-api-key) instead of OAuth.
+If Codex reports `Authorization server response missing required issuer: expected https://app.searchcrew.ai`, upgrade Codex CLI or the Codex desktop app to 0.147.0 or later. Codex 0.143 through 0.146 drop the issuer from the OAuth callback. You can also [connect with an API key](#connect-with-an-api-key) instead of OAuth.
 
-If authorization fails, disconnect the OpenSEO server in your client, add it again, and repeat the login flow.
+If authorization fails, disconnect the SearchCrew server in your client, add it again, and repeat the login flow.
 
-If your agent cannot find a project, ask it to list OpenSEO projects first and use the returned project ID in later tool calls.
+If your agent cannot find a project, ask it to list SearchCrew projects first and use the returned project ID in later tool calls.

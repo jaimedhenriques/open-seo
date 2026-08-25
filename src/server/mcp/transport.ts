@@ -19,7 +19,7 @@ import {
   type McpProps,
 } from "@/server/mcp/context";
 import { getPublicOrigin } from "@/server/mcp/public-origin";
-import { createOpenSeoMcpServer } from "@/server/mcp/server";
+import { createSearchCrewMcpServer } from "@/server/mcp/server";
 
 // Mirrors the agents SDK's DEFAULT_CORS_OPTIONS so legacy responses carry the
 // same CORS surface as the modern handler's.
@@ -96,8 +96,8 @@ async function handleLegacyJsonRequest(request: Request, props: McpProps) {
   // buffers the response and lets the finally below tear everything down
   // before the request completes. JSON mode silently drops server-to-client
   // requests (sampling/elicitation) and would hang the buffered response —
-  // no OpenSEO tool issues them.
-  const server = createOpenSeoMcpServer(props);
+  // no SearchCrew tool issues them.
+  const server = createSearchCrewMcpServer(props);
   const transport = new WebStandardStreamableHTTPServerTransport({
     sessionIdGenerator: undefined,
     enableJsonResponse: true,
@@ -124,11 +124,14 @@ function createRequestHandler(
   props: McpProps,
   allowedOriginHostnames?: string[],
 ) {
-  const modernHandler = createMcpHandler(() => createOpenSeoMcpServer(props), {
-    route: MCP_ROUTE,
-    allowedOriginHostnames,
-    legacy: "reject",
-  });
+  const modernHandler = createMcpHandler(
+    () => createSearchCrewMcpServer(props),
+    {
+      route: MCP_ROUTE,
+      allowedOriginHostnames,
+      legacy: "reject",
+    },
+  );
 
   return async (request: Request, env: unknown, ctx: ExecutionContext) => {
     if (request.method === "OPTIONS") {
@@ -146,7 +149,7 @@ function createRequestHandler(
   };
 }
 
-export async function handleAuthenticatedOpenSeoMcpRequest(
+export async function handleAuthenticatedSearchCrewMcpRequest(
   request: Request,
   props: unknown,
   env: unknown,
@@ -176,7 +179,7 @@ export async function handleAuthenticatedOpenSeoMcpRequest(
   ])(request, env, ctx);
 }
 
-export async function handleSelfHostedOpenSeoMcpRequest(
+export async function handleSelfHostedSearchCrewMcpRequest(
   request: Request,
   authMode: "cloudflare_access" | "local_noauth",
   env: unknown,

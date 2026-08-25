@@ -6,14 +6,14 @@ import {
   MCP_AUTH_CONTEXT_PROP,
 } from "@/server/mcp/context";
 import {
-  handleAuthenticatedOpenSeoMcpRequest,
-  handleSelfHostedOpenSeoMcpRequest,
+  handleAuthenticatedSearchCrewMcpRequest,
+  handleSelfHostedSearchCrewMcpRequest,
 } from "@/server/mcp/transport";
 
 const selfHostedAuthMocks = vi.hoisted(() => ({
   resolveCloudflareAccessContext: vi.fn(),
   resolveLocalNoAuthContext: vi.fn(),
-  createOpenSeoMcpServer: vi.fn(),
+  createSearchCrewMcpServer: vi.fn(),
   createMcpHandler: vi.fn(),
 }));
 
@@ -27,21 +27,21 @@ vi.mock("@/middleware/ensure-user/delegated", () => ({
 }));
 
 vi.mock("@/lib/auth", () => ({
-  getHostedBaseUrl: () => "https://open-seo.test",
+  getHostedBaseUrl: () => "https://searchcrew.test",
 }));
 
 vi.mock("@/server/mcp/server", () => ({
-  createOpenSeoMcpServer: (props?: unknown) => {
-    selfHostedAuthMocks.createOpenSeoMcpServer(props);
+  createSearchCrewMcpServer: (props?: unknown) => {
+    selfHostedAuthMocks.createSearchCrewMcpServer(props);
     return new McpServer({
-      name: "OpenSEO MCP",
-      title: "OpenSEO",
+      name: "SearchCrew MCP",
+      title: "SearchCrew",
       version: "0.0.11",
       description: "SEO research tools for AI agents",
-      websiteUrl: "https://openseo.so",
+      websiteUrl: "https://searchcrew.ai",
       icons: [
         {
-          src: "https://openseo.so/android-chrome-512x512.png",
+          src: "https://searchcrew.ai/android-chrome-512x512.png",
           mimeType: "image/png",
           sizes: ["512x512"],
         },
@@ -67,7 +67,7 @@ const ctx: ExecutionContext = {
 };
 
 function createMcpRequest(headers?: Record<string, string>) {
-  return new Request("https://open-seo.test/mcp", {
+  return new Request("https://searchcrew.test/mcp", {
     method: "POST",
     headers: {
       Accept: "application/json, text/event-stream",
@@ -85,7 +85,7 @@ function createMcpRequest(headers?: Record<string, string>) {
 // The modern (2026-07-28) era is selected by the per-request `_meta` envelope
 // claim; without it every POST classifies as legacy traffic.
 function createModernMcpRequest(headers?: Record<string, string>) {
-  return new Request("https://open-seo.test/mcp", {
+  return new Request("https://searchcrew.test/mcp", {
     method: "POST",
     headers: {
       Accept: "application/json, text/event-stream",
@@ -111,13 +111,13 @@ function hostedProps(scopes: string[] = ["mcp"]) {
     userId: "user-1",
     userEmail: "user@example.com",
     organizationId: "org-1",
-    baseUrl: "https://open-seo.test",
+    baseUrl: "https://searchcrew.test",
     clientId: "client-1",
     scopes,
   });
 }
 
-describe("handleSelfHostedOpenSeoMcpRequest", () => {
+describe("handleSelfHostedSearchCrewMcpRequest", () => {
   beforeEach(() => {
     selfHostedAuthMocks.resolveLocalNoAuthContext.mockResolvedValue({
       userId: "local-admin",
@@ -132,7 +132,7 @@ describe("handleSelfHostedOpenSeoMcpRequest", () => {
   });
 
   it("accepts local no-auth MCP requests with the local admin context", async () => {
-    const response = await handleSelfHostedOpenSeoMcpRequest(
+    const response = await handleSelfHostedSearchCrewMcpRequest(
       createMcpRequest(),
       "local_noauth",
       {},
@@ -143,12 +143,12 @@ describe("handleSelfHostedOpenSeoMcpRequest", () => {
     expect(response.headers.get("content-type")).toContain("application/json");
     expect(response.headers.get("connection")).not.toBe("keep-alive");
     expect(selfHostedAuthMocks.resolveLocalNoAuthContext).toHaveBeenCalled();
-    expect(selfHostedAuthMocks.createOpenSeoMcpServer).toHaveBeenCalledWith({
+    expect(selfHostedAuthMocks.createSearchCrewMcpServer).toHaveBeenCalledWith({
       [MCP_AUTH_CONTEXT_PROP]: {
         userId: "local-admin",
         userEmail: "admin@localhost",
         organizationId: "delegated-local-admin",
-        baseUrl: "https://open-seo.test",
+        baseUrl: "https://searchcrew.test",
       },
     });
     // Self-hosted must not pin Origins to the request's own Host — the
@@ -162,7 +162,7 @@ describe("handleSelfHostedOpenSeoMcpRequest", () => {
   });
 
   it("accepts Cloudflare Access MCP requests through the existing Access resolver", async () => {
-    const response = await handleSelfHostedOpenSeoMcpRequest(
+    const response = await handleSelfHostedSearchCrewMcpRequest(
       createMcpRequest(),
       "cloudflare_access",
       {},
@@ -173,19 +173,19 @@ describe("handleSelfHostedOpenSeoMcpRequest", () => {
     expect(
       selfHostedAuthMocks.resolveCloudflareAccessContext,
     ).toHaveBeenCalledWith(expect.any(Headers));
-    expect(selfHostedAuthMocks.createOpenSeoMcpServer).toHaveBeenCalledWith({
+    expect(selfHostedAuthMocks.createSearchCrewMcpServer).toHaveBeenCalledWith({
       [MCP_AUTH_CONTEXT_PROP]: {
         userId: "cloudflare-user",
         userEmail: "person@example.com",
         organizationId: "delegated-cloudflare-user",
-        baseUrl: "https://open-seo.test",
+        baseUrl: "https://searchcrew.test",
       },
     });
   });
 
   it("answers OPTIONS preflight without resolving an auth context", async () => {
-    const response = await handleSelfHostedOpenSeoMcpRequest(
-      new Request("https://open-seo.test/mcp", { method: "OPTIONS" }),
+    const response = await handleSelfHostedSearchCrewMcpRequest(
+      new Request("https://searchcrew.test/mcp", { method: "OPTIONS" }),
       "cloudflare_access",
       {},
       ctx,
@@ -196,15 +196,17 @@ describe("handleSelfHostedOpenSeoMcpRequest", () => {
     expect(
       selfHostedAuthMocks.resolveCloudflareAccessContext,
     ).not.toHaveBeenCalled();
-    expect(selfHostedAuthMocks.createOpenSeoMcpServer).not.toHaveBeenCalled();
+    expect(
+      selfHostedAuthMocks.createSearchCrewMcpServer,
+    ).not.toHaveBeenCalled();
   });
 });
 
-describe("handleAuthenticatedOpenSeoMcpRequest", () => {
+describe("handleAuthenticatedSearchCrewMcpRequest", () => {
   it("accepts the provider's encrypted identity and MCP scope fallback", async () => {
     const props = hostedProps();
 
-    const response = await handleAuthenticatedOpenSeoMcpRequest(
+    const response = await handleAuthenticatedSearchCrewMcpRequest(
       createMcpRequest(),
       props,
       {},
@@ -217,13 +219,13 @@ describe("handleAuthenticatedOpenSeoMcpRequest", () => {
     expect(selfHostedAuthMocks.createMcpHandler).toHaveBeenCalledWith(
       expect.objectContaining({
         allowedOriginHostnames: [
-          "open-seo.test",
+          "searchcrew.test",
           "pghallcbnfabbgfijhbcldaapmgidnaa",
         ],
         legacy: "reject",
       }),
     );
-    expect(selfHostedAuthMocks.createOpenSeoMcpServer).toHaveBeenCalledWith(
+    expect(selfHostedAuthMocks.createSearchCrewMcpServer).toHaveBeenCalledWith(
       props,
     );
   });
@@ -231,7 +233,7 @@ describe("handleAuthenticatedOpenSeoMcpRequest", () => {
   it("routes modern-era requests to the SDK handler", async () => {
     const props = hostedProps();
 
-    const response = await handleAuthenticatedOpenSeoMcpRequest(
+    const response = await handleAuthenticatedSearchCrewMcpRequest(
       createModernMcpRequest(),
       props,
       {},
@@ -242,13 +244,15 @@ describe("handleAuthenticatedOpenSeoMcpRequest", () => {
     expect(await response.json()).toEqual({ handledBy: "modern" });
     // The modern handler owns server construction; the legacy leg must not
     // have built one.
-    expect(selfHostedAuthMocks.createOpenSeoMcpServer).not.toHaveBeenCalled();
+    expect(
+      selfHostedAuthMocks.createSearchCrewMcpServer,
+    ).not.toHaveBeenCalled();
   });
 
   it("accepts a modern request from the exact SurfMind extension origin", async () => {
     const props = hostedProps();
 
-    const response = await handleAuthenticatedOpenSeoMcpRequest(
+    const response = await handleAuthenticatedSearchCrewMcpRequest(
       createModernMcpRequest({
         Origin: "chrome-extension://pghallcbnfabbgfijhbcldaapmgidnaa",
       }),
@@ -264,7 +268,7 @@ describe("handleAuthenticatedOpenSeoMcpRequest", () => {
   it("rejects a legacy request from a disallowed Origin", async () => {
     const props = hostedProps();
 
-    const response = await handleAuthenticatedOpenSeoMcpRequest(
+    const response = await handleAuthenticatedSearchCrewMcpRequest(
       createMcpRequest({ Origin: "https://evil.com" }),
       props,
       {},
@@ -272,13 +276,15 @@ describe("handleAuthenticatedOpenSeoMcpRequest", () => {
     );
 
     expect(response.status).toBe(403);
-    expect(selfHostedAuthMocks.createOpenSeoMcpServer).not.toHaveBeenCalled();
+    expect(
+      selfHostedAuthMocks.createSearchCrewMcpServer,
+    ).not.toHaveBeenCalled();
   });
 
   it("accepts a legacy request from the SurfMind Chrome extension", async () => {
     const props = hostedProps();
 
-    const response = await handleAuthenticatedOpenSeoMcpRequest(
+    const response = await handleAuthenticatedSearchCrewMcpRequest(
       createMcpRequest({
         Origin: "chrome-extension://pghallcbnfabbgfijhbcldaapmgidnaa",
       }),
@@ -288,7 +294,7 @@ describe("handleAuthenticatedOpenSeoMcpRequest", () => {
     );
 
     expect(response.status).toBe(200);
-    expect(selfHostedAuthMocks.createOpenSeoMcpServer).toHaveBeenCalledWith(
+    expect(selfHostedAuthMocks.createSearchCrewMcpServer).toHaveBeenCalledWith(
       props,
     );
   });
@@ -305,7 +311,7 @@ describe("handleAuthenticatedOpenSeoMcpRequest", () => {
   ])("rejects a request from %s", async (_label, origin) => {
     const props = hostedProps();
 
-    const response = await handleAuthenticatedOpenSeoMcpRequest(
+    const response = await handleAuthenticatedSearchCrewMcpRequest(
       createMcpRequest({ Origin: origin }),
       props,
       {},
@@ -322,10 +328,10 @@ describe("handleAuthenticatedOpenSeoMcpRequest", () => {
       userId: "user-1",
       userEmail: "user@example.com",
       organizationId: "org-1",
-      baseUrl: "https://open-seo.test",
+      baseUrl: "https://searchcrew.test",
     });
 
-    const response = await handleAuthenticatedOpenSeoMcpRequest(
+    const response = await handleAuthenticatedSearchCrewMcpRequest(
       createMcpRequest(),
       props,
       {},
@@ -338,7 +344,7 @@ describe("handleAuthenticatedOpenSeoMcpRequest", () => {
   it("rejects an OAuth client without the MCP scope", async () => {
     const props = hostedProps(["offline_access"]);
 
-    const response = await handleAuthenticatedOpenSeoMcpRequest(
+    const response = await handleAuthenticatedSearchCrewMcpRequest(
       createMcpRequest(),
       props,
       {},

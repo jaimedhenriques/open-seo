@@ -7,9 +7,9 @@ export const Route = createFileRoute("/_marketing/pricing")({
     buildPageSeo({
       title: "Pricing estimator",
       description:
-        "Start at $10/mo. The $10 includes $10 of usage, enough for most people. Move the sliders to estimate what your month would cost.",
+        "Free to start, $29 when you outgrow it. Every plan includes the full MCP server and agent skills. Move the sliders to estimate your month.",
       path: "/pricing",
-      titleSuffix: "OpenSEO",
+      titleSuffix: "SearchCrew",
     }),
   component: Pricing,
 });
@@ -22,10 +22,25 @@ export const Route = createFileRoute("/_marketing/pricing")({
  *   creditsCharged = ceil(billedUsd * 1000)
  *   1 credit = $0.001  (1,000 credits = $1.00)
  * ------------------------------------------------------------------ */
-const MARKUP = 1.28; // OpenSEO's flat 28% premium over raw DataForSEO cost
+const MARKUP = 1.28; // SearchCrew's flat 28% premium over raw DataForSEO cost
 const CREDIT_USD = 0.001; // $ value of a single credit
-const BASE_PRICE_USD = 10; // Base Plan / month
-const BASE_INCLUDED_CREDIT_USD = 10; // $10 of usage credits included, reset monthly
+/* Tier lineup. `web` is a separate workspace and cannot import the app's
+ * src/shared/billing.ts, so this mirrors PLANS there — keep the two in step,
+ * same as the cost model above. Prices are monthly; annual is 2 months free. */
+const TIERS = [
+  { id: "free", name: "Free", priceUsd: 0, includedUsageUsd: 2 },
+  { id: "solo", name: "Solo", priceUsd: 29, includedUsageUsd: 20 },
+  { id: "pro", name: "Pro", priceUsd: 79, includedUsageUsd: 60 },
+  { id: "agency", name: "Agency", priceUsd: 199, includedUsageUsd: 140 },
+] as const;
+
+/** Cheapest tier whose included usage covers the estimate, or the largest. */
+function recommendTier(usageUsd: number) {
+  return (
+    TIERS.find((tier) => usageUsd <= tier.includedUsageUsd) ??
+    TIERS[TIERS.length - 1]
+  );
+}
 const WEEKS_PER_MONTH = 4.345; // 52 / 12
 const DEFAULT_RANK_DEPTH = 40;
 const DEFAULT_LOCAL_SERP_DEPTH = 20;
@@ -37,7 +52,7 @@ const RANK_CHECK_LABELS: Record<number, string> = {
   7: "Daily",
 };
 
-// Raw DataForSEO per-call cost in USD (NOT including OpenSEO's markup).
+// Raw DataForSEO per-call cost in USD (NOT including SearchCrew's markup).
 const RAW_COST_USD = {
   // Scheduled checks use the queued API. The app defaults to one device and
   // the top 40 results: $0.0006 for page one + $0.00045 per extra page.
@@ -176,11 +191,20 @@ function Pricing() {
 
     const totalCredits = lines.reduce((sum, l) => sum + l.credits, 0);
     const usageUsd = totalCredits * CREDIT_USD;
-    const includedInBase = usageUsd <= BASE_INCLUDED_CREDIT_USD;
-    const topUpUsd = Math.max(0, usageUsd - BASE_INCLUDED_CREDIT_USD);
-    const billUsd = Math.max(BASE_PRICE_USD, usageUsd);
+    const tier = recommendTier(usageUsd);
+    // Usage beyond the recommended tier's allowance is bought as top-ups,
+    // which are billed at the same rate and never expire.
+    const topUpUsd = Math.max(0, usageUsd - tier.includedUsageUsd);
+    const billUsd = tier.priceUsd + topUpUsd;
 
-    return { lines, usageUsd, includedInBase, topUpUsd, billUsd };
+    return {
+      lines,
+      usageUsd,
+      tier,
+      includedInBase: topUpUsd === 0,
+      topUpUsd,
+      billUsd,
+    };
   }, [inputs, persona]);
 
   return (
@@ -190,35 +214,54 @@ function Pricing() {
         Pricing
       </p>
       <h1 className="mt-3 max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-neutral-950 md:text-5xl">
-        Starts at $10/month
+        Free to start. $29 when you outgrow it.
       </h1>
       <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--color-brand-muted)]">
-        Other SEO tools are too expensive. OpenSEO grows with you.
+        Semrush starts at $139.95 and hides its API behind a $499.95 plan. Every
+        SearchCrew plan includes the full MCP server and agent skills.
       </p>
 
-      {/* 2. Base Plan */}
-      <section className="mt-10 border-y border-[var(--color-border-subtle)] py-8">
-        <div className="flex items-baseline justify-between gap-4">
-          <div>
-            <p className="font-semibold text-neutral-950">Base Plan</p>
-            <p className="mt-1 text-sm text-[var(--color-brand-muted)]">
-              One plan. Everything included.
+      {/* 2. Tier lineup */}
+      <section className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {TIERS.map((tier) => (
+          <div
+            key={tier.id}
+            className={`rounded-xl border p-5 ${
+              tier.id === "pro"
+                ? "border-[var(--color-brand-accent)] bg-white"
+                : "border-[var(--color-border-subtle)]"
+            }`}
+          >
+            <p className="font-semibold text-neutral-950">{tier.name}</p>
+            <p className="mt-2 text-2xl font-semibold tabular-nums text-neutral-950">
+              ${tier.priceUsd}
+              <span className="text-sm font-normal text-[var(--color-brand-muted)]">
+                /mo
+              </span>
+            </p>
+            <p className="mt-2 text-sm text-[var(--color-brand-muted)]">
+              ${tier.includedUsageUsd} of usage included each month
             </p>
           </div>
-          <p className="text-2xl font-semibold tabular-nums text-neutral-950">
-            $10
-            <span className="text-base font-normal text-[var(--color-brand-muted)]">
-              /mo
-            </span>
-          </p>
-        </div>
+        ))}
+      </section>
+
+      {/* 3. What every plan includes */}
+      <section className="mt-10 border-y border-[var(--color-border-subtle)] py-8">
+        <p className="font-semibold text-neutral-950">
+          Every plan includes
+          <span className="ml-2 font-normal text-[var(--color-brand-muted)]">
+            — including Free
+          </span>
+        </p>
         <ul className="mt-4 space-y-2">
           {[
             "Keyword research, backlinks, rank tracking, and site audits",
+            "The full MCP server and agent skills — no higher tier required",
             "Works inside Claude, Cursor, and ChatGPT",
-            "Google Search Console data is free and doesn't touch your $10",
-            "Includes $10 of usage every month",
+            "Google Search Console data, free and never billed as usage",
             "Buy extra usage anytime; it never expires",
+            "Annual billing saves two months on every paid plan",
           ].map((item) => (
             <li key={item} className="flex gap-2.5 text-sm text-neutral-700">
               <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-brand-accent)]">
@@ -230,7 +273,7 @@ function Pricing() {
         </ul>
         <div className="mt-6 flex items-center gap-4">
           <a
-            href="https://app.openseo.so/sign-up"
+            href="https://app.searchcrew.ai/sign-up"
             className="inline-flex items-center justify-center rounded-lg bg-neutral-950 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
           >
             Get Started
@@ -349,9 +392,7 @@ function Pricing() {
               Your estimated bill
             </p>
             <p className="mt-1 text-4xl font-semibold tabular-nums tracking-tight text-neutral-950">
-              {estimate.includedInBase
-                ? `$${BASE_PRICE_USD}`
-                : usd(estimate.billUsd)}
+              {usd(estimate.billUsd)}
               <span className="text-lg font-normal text-[var(--color-brand-muted)]">
                 /mo
               </span>
@@ -363,12 +404,14 @@ function Pricing() {
                   className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 align-middle"
                 />
                 {usd(estimate.usageUsd)} of estimated usage fits inside the $
-                {BASE_INCLUDED_CREDIT_USD} already included.
+                {estimate.tier.includedUsageUsd} included with{" "}
+                {estimate.tier.name}.
               </p>
             ) : (
               <p className="mt-2 text-sm leading-6 tabular-nums text-[var(--color-brand-muted)]">
-                ${BASE_PRICE_USD} plan + ~{usd(estimate.topUpUsd)} of extra
-                usage. Extra usage never expires.
+                {estimate.tier.name} (${estimate.tier.priceUsd}) + ~
+                {usd(estimate.topUpUsd)} of extra usage. Extra usage never
+                expires.
               </p>
             )}
 
@@ -416,11 +459,11 @@ function Pricing() {
         <dl className="mt-5 divide-y divide-[var(--color-border-subtle)]">
           <div className="py-4 first:pt-0 last:pb-0">
             <dt className="text-sm font-medium text-neutral-950">
-              Is there a free trial?
+              Is there a free plan?
             </dt>
             <dd className="mt-1.5 text-sm leading-6 text-[var(--color-brand-muted)]">
-              Yes. The free trial includes $0.50 of credits so you can test
-              OpenSEO before subscribing.
+              Yes. Free gives you $2 of usage every month, one project, and the
+              full MCP server — no card required, and no trial clock.
             </dd>
           </div>
           <div className="py-4 first:pt-0 last:pb-0">
@@ -449,8 +492,8 @@ function Pricing() {
               Do unused credits roll over?
             </dt>
             <dd className="mt-1.5 text-sm leading-6 text-[var(--color-brand-muted)]">
-              Top-up credits roll over indefinitely. The Usage Credits included
-              with your Base Plan reset each billing cycle.
+              Top-up credits roll over indefinitely. The usage credits included
+              with your plan reset each billing cycle.
             </dd>
           </div>
           <div className="py-4 first:pt-0 last:pb-0">
@@ -464,11 +507,12 @@ function Pricing() {
           </div>
           <div className="py-4 first:pt-0 last:pb-0">
             <dt className="text-sm font-medium text-neutral-950">
-              Do I need a subscription or just usage credits?
+              Do I need a paid plan?
             </dt>
             <dd className="mt-1.5 text-sm leading-6 text-[var(--color-brand-muted)]">
-              While top-up Usage Credits roll over and don&apos;t expire, you
-              need an active subscription in order to use OpenSEO.
+              No. Free works indefinitely within its monthly usage. Paid plans
+              raise that allowance and add projects, seats, and daily rank
+              tracking. Top-up credits roll over and never expire.
             </dd>
           </div>
         </dl>

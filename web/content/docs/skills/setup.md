@@ -1,15 +1,15 @@
 ---
-title: "Set up OpenSEO Agent Skills"
-description: "Add OpenSEO skill files to your AI agent after connecting OpenSEO MCP."
+title: "Set up SearchCrew Agent Skills"
+description: "Add SearchCrew skill files to your AI agent after connecting SearchCrew MCP."
 ---
 
-OpenSEO Agent Skills are separate files from OpenSEO MCP.
+SearchCrew Agent Skills are separate files from SearchCrew MCP.
 
-On Claude Code, skip the steps below and use the [OpenSEO plugin](/docs/claude-code-plugin) instead — it installs MCP and every skill in one step. On Codex CLI, use the [OpenSEO plugin](/docs/codex-plugin) the same way.
+On Claude Code, skip the steps below and use the [SearchCrew plugin](/docs/claude-code-plugin) instead — it installs MCP and every skill in one step. On Codex CLI, use the [SearchCrew plugin](/docs/codex-plugin) the same way.
 
-First, [set up OpenSEO MCP](/docs/mcp). MCP gives your agent access to OpenSEO data.
+First, [set up SearchCrew MCP](/docs/mcp). MCP gives your agent access to SearchCrew data.
 
-Then add the OpenSEO `SKILL.md` files you want your agent to use. Each skill gives your agent one SEO workflow.
+Then add the SearchCrew `SKILL.md` files you want your agent to use. Each skill gives your agent one SEO workflow.
 
 ## Choose an installation option
 
@@ -23,9 +23,9 @@ Use this if you want the installer to show the available skills and agents.
 npx skills add every-app/open-seo
 ```
 
-### Option 2: Install all OpenSEO skills
+### Option 2: Install all SearchCrew skills
 
-Use this if you want every OpenSEO skill.
+Use this if you want every SearchCrew skill.
 
 ```bash
 npx skills add every-app/open-seo --skill '*'
@@ -56,16 +56,16 @@ git clone https://github.com/every-app/open-seo.git
 
 # Codex
 mkdir -p ~/.codex/skills
-cp -R open-seo/.agents/skills/* ~/.codex/skills/
+cp -R searchcrew/.agents/skills/* ~/.codex/skills/
 
 # Claude Code
 mkdir -p ~/.claude/skills
-cp -R open-seo/.agents/skills/* ~/.claude/skills/
+cp -R searchcrew/.agents/skills/* ~/.claude/skills/
 ```
 
 You can also review the source skills on GitHub:
 
-- [OpenSEO Agent Skills on GitHub](https://github.com/every-app/open-seo/tree/main/.agents/skills)
+- [SearchCrew Agent Skills on GitHub](https://github.com/every-app/open-seo/tree/main/.agents/skills)
 
 Each skill page also links to its source `SKILL.md`.
 

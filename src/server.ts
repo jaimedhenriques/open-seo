@@ -12,12 +12,12 @@ import { getOrCreateOrganizationCustomer } from "@/server/billing/subscription";
 import { isHostedServerAuthMode } from "@/server/lib/runtime-env";
 import { getAuthMode, isHostedAuthMode } from "@/lib/auth-mode";
 import {
-  createOpenSeoOAuthProvider,
-  type OpenSeoOAuthEnv,
+  createSearchCrewOAuthProvider,
+  type SearchCrewOAuthEnv,
 } from "@/server/mcp/oauth-provider";
 import { requestWithPublicOrigin } from "@/server/mcp/public-origin";
 import { MCP_ROUTE } from "@/server/mcp/context";
-import { handleSelfHostedOpenSeoMcpRequest } from "@/server/mcp/transport";
+import { handleSelfHostedSearchCrewMcpRequest } from "@/server/mcp/transport";
 import { withPgClient } from "@/db";
 import {
   AUTUMN_WEBHOOK_PATH,
@@ -28,7 +28,7 @@ import { handleGdprStorageErasure } from "@/server/gdpr/storage-erasure";
 import { GDPR_STORAGE_ERASURE_PATH } from "@/shared/gdpr-erasure";
 
 const appFetch = createStartHandler(defaultStreamHandler);
-const openSeoOAuthProvider = createOpenSeoOAuthProvider(appFetch);
+const searchCrewOAuthProvider = createSearchCrewOAuthProvider(appFetch);
 
 // Authorize an onboarding-chat connection in the Worker, before it reaches the
 // Durable Object. The DO instance name is the projectId (set client-side); we
@@ -160,9 +160,9 @@ function handleFetch(
       return handleAutumnWebhookRequest(publicRequest);
     }
 
-    return openSeoOAuthProvider.fetch(
+    return searchCrewOAuthProvider.fetch(
       publicRequest,
-      env as OpenSeoOAuthEnv,
+      env as SearchCrewOAuthEnv,
       ctx,
     );
   }
@@ -171,7 +171,12 @@ function handleFetch(
     (authMode === "cloudflare_access" || authMode === "local_noauth") &&
     pathname === MCP_ROUTE
   ) {
-    return handleSelfHostedOpenSeoMcpRequest(publicRequest, authMode, env, ctx);
+    return handleSelfHostedSearchCrewMcpRequest(
+      publicRequest,
+      authMode,
+      env,
+      ctx,
+    );
   }
 
   return appFetch(request);
@@ -200,8 +205,8 @@ export default {
     if (controller.cron === MCP_OAUTH_PURGE_CRON) {
       // Only hosted mode runs the OAuth provider (and has OAUTH_KV bound).
       if (isHostedAuthMode(getAuthMode(env.AUTH_MODE))) {
-        const result = await openSeoOAuthProvider.purgeExpiredData(
-          env as OpenSeoOAuthEnv,
+        const result = await searchCrewOAuthProvider.purgeExpiredData(
+          env as SearchCrewOAuthEnv,
         );
         console.log("[mcp-oauth] purged expired OAuth data", result);
         if (!result.done) {
