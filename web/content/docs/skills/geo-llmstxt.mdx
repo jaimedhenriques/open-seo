@@ -1,13 +1,13 @@
 ---
 title: "llms.txt Agent Skill"
-description: "Validate an existing llms.txt or generate one from your site, giving AI systems a structured guide to what matters on it."
+description: "Validate or generate the optional proposed llms.txt format without treating it as a ranking requirement."
 ---
 
 <RunSkillCallout command="/geo-llmstxt" />
 
 The llms.txt Agent Skill validates an existing `llms.txt` file or writes one from scratch by reading your site.
 
-`llms.txt` is the emerging convention for telling AI systems what is *most useful* on your site — the inverse of `robots.txt`, which tells crawlers what not to touch. It gives assistants a curated map instead of leaving them to infer structure from your navigation.
+`llms.txt` is a proposed format for publishing a curated map of important pages. Some tools may choose to support it, but it is not a robots directive and major search engines do not require it for AI search visibility. Generating one is an optional publishing choice, not an SEO fix or citation guarantee.
 
 ## What this skill helps your agent do
 
@@ -18,7 +18,7 @@ The llms.txt Agent Skill validates an existing `llms.txt` file or writes one fro
 
 ## When to use it
 
-Once you have [crawler access](/docs/skills/geo-crawlers) sorted, and again whenever you add or restructure a significant section of the site.
+Use it when you deliberately want to support tools that consume the proposal, and again whenever you add or restructure a significant section of the site.
 
 ## What you get back
 

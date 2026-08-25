@@ -31,7 +31,7 @@ MCP connects your agent to SearchCrew data. Skills tell your agent which SEO wor
 
 - [AI Crawler Access](/docs/skills/geo-crawlers): map which AI crawlers can reach your site and fix the blocks costing you visibility.
 - [AI Citability](/docs/skills/geo-citability): score how likely assistants are to quote a page, and get the rewrites that raise it.
-- [llms.txt](/docs/skills/geo-llmstxt): validate or generate the file that tells AI systems what matters on your site.
+- [llms.txt](/docs/skills/geo-llmstxt): validate or generate the optional proposed content-map format.
 
 ## Research workflows
 

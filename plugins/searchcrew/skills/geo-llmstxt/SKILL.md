@@ -1,6 +1,6 @@
 ---
 name: geo-llmstxt
-description: Analyzes and generates llms.txt files -- the emerging standard for helping AI systems understand website structure and content. Can validate existing llms.txt files or generate new ones from scratch by crawling the site.
+description: Analyzes and generates llms.txt files -- an optional proposed format for publishing a curated map of website content. Can validate existing files or generate new ones without claiming a ranking or citation benefit.
 allowed-tools:
   - Read
   - Grep
@@ -24,19 +24,19 @@ The project-context tools are free and shared with the app and other agents.
 
 ## Purpose
 
-This skill handles everything related to the `llms.txt` standard -- an emerging convention (proposed by Jeremy Howard in September 2024, gaining adoption through 2025-2026) that allows websites to provide structured guidance to AI systems about their content, structure, and key information. It is analogous to `robots.txt` (which tells crawlers what NOT to access) but instead tells AI systems what IS most useful to understand about the site.
+This skill handles the proposed `llms.txt` format. It can publish a concise, human-readable map of a site's important pages for tools that explicitly support the proposal. It is not a robots directive, is not required by major search engines, and should never be presented as a ranking or citation lever.
 
 ## Why llms.txt Matters
 
-AI language models face a fundamental challenge when processing websites: they must determine which pages are most important, what the site is about, and how content is organized -- typically by crawling many pages and inferring structure. `llms.txt` solves this by providing an explicit, machine-readable (and human-readable) summary.
+Some tools may choose to read `llms.txt` as an explicit, machine-readable (and human-readable) summary. Support is not universal: Google states that no new machine-readable AI file is required for AI Overviews or AI Mode, and the proposal itself does not guarantee discovery, indexing, ranking, or citation.
 
-**Benefits of having a well-crafted llms.txt:**
+**Potential benefits when a consuming tool explicitly supports it:**
 
-1. **Faster AI comprehension:** AI systems can understand your site's purpose and structure from a single file rather than crawling dozens of pages.
-2. **Controlled narrative:** You choose which pages and facts AI systems see first, shaping how they represent your brand.
-3. **Higher citation accuracy:** AI systems that consult llms.txt can cite the correct, authoritative page for each topic.
-4. **Reduced misrepresentation:** Key facts (pricing, features, locations) are stated explicitly, reducing AI hallucination about your business.
-5. **Early adopter advantage:** As of early 2026, fewer than 5% of websites have an llms.txt file, making it a differentiator.
+1. **Curated navigation:** A supporting tool can find selected pages from one concise file.
+2. **Explicit descriptions:** Page summaries can help a supporting tool choose the intended source.
+3. **Maintainable inventory:** Site owners get a compact, reviewable list of the content they consider authoritative.
+
+Treat these as operational benefits, not measured visibility gains.
 
 ---
 
@@ -44,7 +44,7 @@ AI language models face a fundamental challenge when processing websites: they m
 
 ### File Location
 
-The file MUST be located at the root of the domain:
+The proposal places the file at the root of the domain:
 ```
 https://example.com/llms.txt
 ```
@@ -160,7 +160,7 @@ In addition to `llms.txt`, sites can provide `/llms-full.txt` -- an extended ver
 | **Sections** | 3-6 sections | 8-15 sections |
 | **Key facts** | Business-level facts | Page-level facts and data points |
 
-Both files can coexist. AI systems check for `llms.txt` first, then may optionally load `llms-full.txt` for deeper understanding.
+Both files can coexist. A tool that implements the proposal may choose to load either file; do not claim that AI systems generally check for them.
 
 ---
 
@@ -174,7 +174,7 @@ When checking an existing llms.txt file:
 2. Also check for `[domain]/llms-full.txt`.
 3. Record HTTP status code:
    - **200:** File exists -- proceed to validation.
-   - **404:** File does not exist -- recommend generation.
+   - **404:** File does not exist -- offer generation only if the user wants to support the proposal; absence is not an SEO defect.
    - **403:** File exists but is blocked -- flag as misconfiguration.
    - **301/302:** Redirect -- follow and note the redirect.
 
@@ -218,7 +218,7 @@ Rate the llms.txt on these dimensions:
 - Are the most citation-worthy pages highlighted?
 - Is the organization logical and intuitive?
 
-**Overall llms.txt Score** = (Completeness * 0.40) + (Accuracy * 0.35) + (Usefulness * 0.25)
+**Overall llms.txt maintenance score** = (Completeness * 0.40) + (Accuracy * 0.35) + (Usefulness * 0.25). This rates the file's internal quality only; it does not predict AI visibility.
 
 ### Step 4: Compare Against Site Content
 

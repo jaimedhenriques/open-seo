@@ -7,7 +7,11 @@
 # rebuilds.
 set -e
 
-echo 'SearchCrew sends an anonymous usage heartbeat (counts only). Disable: SEARCHCREW_TELEMETRY_DISABLED=1. Details: docs/SELF_HOSTING_DOCKER.md#telemetry'
+if [ -n "${SELF_HOST_POSTHOG_KEY:-}" ]; then
+  echo 'An anonymous usage telemetry key is configured (counts only); opt-out controls still apply. Details: docs/SELF_HOSTING_DOCKER.md#telemetry'
+else
+  echo 'Anonymous usage telemetry is not configured. Details: docs/SELF_HOSTING_DOCKER.md#telemetry'
+fi
 
 # The preflight validates env BEFORE the slow steps, so misconfiguration fails
 # in seconds with the exact fix instead of after a multi-minute build.

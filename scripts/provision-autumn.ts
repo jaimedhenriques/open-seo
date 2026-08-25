@@ -1,14 +1,8 @@
 import process from "node:process";
 import {
-  AUTUMN_MANAGED_ACCESS_FEATURE_ID,
-  AUTUMN_PAID_PLAN_FEATURE_ID,
-  AUTUMN_SEO_DATA_BALANCE_FEATURE_ID,
-  AUTUMN_SEO_DATA_CREDITS_PER_USD,
-  AUTUMN_SEO_DATA_TOPUP_BALANCE_FEATURE_ID,
-  AUTUMN_SEO_DATA_TOP_UP_PLAN_ID,
-  PLANS,
-  autumnProductId,
-} from "@/shared/billing";
+  buildAutumnFeatures,
+  buildAutumnProducts,
+} from "@/shared/autumn-catalog";
 import { loadLocalEnv, parseArgs } from "./cli-utils";
 
 loadLocalEnv();
@@ -45,126 +39,16 @@ async function main() {
     `Provisioning Autumn (${mode})${dryRun ? " — dry run, no writes" : ""}\n`,
   );
 
-  for (const feature of features()) {
+  for (const feature of buildAutumnFeatures()) {
     await upsert(key, "features", feature.id, feature, dryRun);
   }
-  for (const product of products()) {
+  for (const product of buildAutumnProducts()) {
     await upsert(key, "products", product.id, product, dryRun);
   }
 
   console.log(
     `\nDone. ${mode === "sandbox" ? "This was the sandbox — rerun with the live key before taking real payments." : "Live catalogue is in place."}`,
   );
-}
-
-function features() {
-  return [
-    {
-      id: AUTUMN_PAID_PLAN_FEATURE_ID,
-      name: "Paid Plan",
-      type: "boolean",
-    },
-    {
-      id: AUTUMN_MANAGED_ACCESS_FEATURE_ID,
-      name: "Managed Service Access",
-      type: "boolean",
-    },
-    // Consumable: both pools are spent down by DataForSEO and onboarding-LLM
-    // calls rather than representing a standing limit.
-    {
-      id: AUTUMN_SEO_DATA_BALANCE_FEATURE_ID,
-      name: "Usage Credits",
-      type: "metered",
-      consumable: true,
-    },
-    {
-      id: AUTUMN_SEO_DATA_TOPUP_BALANCE_FEATURE_ID,
-      name: "Top-up Credits",
-      type: "metered",
-      consumable: true,
-    },
-  ];
-}
-
-type AutumnItem = {
-  feature_id: string;
-  included?: number;
-  reset?: { interval: string };
-  price?: Record<string, string | number>;
-};
-
-type AutumnProduct = {
-  id: string;
-  name: string;
-  auto_enable?: boolean;
-  add_on?: boolean;
-  price?: { amount: number; interval: string };
-  items: AutumnItem[];
-};
-
-function products(): AutumnProduct[] {
-  const tiers = PLANS.flatMap<AutumnProduct>((plan) => {
-    // Monthly credits reset each cycle on every tier, including Free; only
-    // top-ups roll over.
-    const grants: AutumnItem[] = [
-      { feature_id: AUTUMN_MANAGED_ACCESS_FEATURE_ID },
-      {
-        feature_id: AUTUMN_SEO_DATA_BALANCE_FEATURE_ID,
-        included: plan.monthlyCredits,
-        reset: { interval: "month" },
-      },
-    ];
-
-    if (plan.monthlyUsd === 0) {
-      // Free is Autumn's default product, so every signed-up customer holds it
-      // without an explicit attach.
-      return [
-        {
-          id: plan.id,
-          name: plan.name,
-          auto_enable: true,
-          items: grants,
-        },
-      ];
-    }
-
-    const paid = [{ feature_id: AUTUMN_PAID_PLAN_FEATURE_ID }, ...grants];
-    return [
-      {
-        id: autumnProductId(plan.id, "monthly"),
-        name: plan.name,
-        price: { amount: plan.monthlyUsd, interval: "month" },
-        items: paid,
-      },
-      {
-        id: autumnProductId(plan.id, "annual"),
-        name: `${plan.name} (Annual)`,
-        price: { amount: plan.annualUsd, interval: "year" },
-        items: paid,
-      },
-    ];
-  });
-
-  return [
-    ...tiers,
-    {
-      // Add-on so it stacks on whatever tier the customer already holds.
-      id: AUTUMN_SEO_DATA_TOP_UP_PLAN_ID,
-      name: "Credit Top-up",
-      add_on: true,
-      items: [
-        {
-          feature_id: AUTUMN_SEO_DATA_TOPUP_BALANCE_FEATURE_ID,
-          price: {
-            amount: 1,
-            interval: "one_off",
-            billing_method: "prepaid",
-            billing_units: AUTUMN_SEO_DATA_CREDITS_PER_USD,
-          },
-        },
-      ],
-    },
-  ];
 }
 
 /** Create the resource, falling back to an update when it already exists. */

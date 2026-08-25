@@ -24,13 +24,15 @@ The project-context tools are free and shared with the app and other agents.
 
 ## Core Insight
 
-AI language models cite passages that meet specific structural criteria. Research from Princeton, Georgia Tech, and IIT Delhi (2024) found that GEO-optimized content achieves 30-115% higher visibility in AI-generated responses. The key finding: AI systems preferentially extract and cite passages that are **134-167 words long**, **self-contained** (understandable without surrounding context), **fact-rich** (containing specific statistics, dates, or named entities), and **directly answer a question** in the first 1-2 sentences.
+The 2023/2024 Generative Engine Optimization study from Princeton, Georgia Tech, IIT Delhi, and the Allen Institute found that adding citations, quotations, and statistics could improve source visibility in its benchmark, with aggregate improvements of up to 40%. Effects varied by query, domain, method, and starting rank. The study did not establish a universal passage length, definition multiplier, or guaranteed citation formula.
 
 This is fundamentally different from traditional SEO copywriting, which optimizes for keyword density and user engagement metrics. GEO citability optimizes for **extractability** -- the ease with which an AI system can pull a passage from your content and present it as a direct answer.
 
 ---
 
-## Citability Scoring Rubric (0-100)
+## Heuristic Citability Review Rubric (0-100)
+
+The score below is a consistent editorial review aid, not a calibrated probability or predicted visibility lift. Always show the underlying observations and suggested edits alongside the number.
 
 ### Category 1: Answer Block Quality (30% of total score)
 
@@ -93,7 +95,7 @@ This measures whether individual passages can be extracted and understood withou
 1. Does the passage explicitly name the subject (not "it," "this," "they")?
 2. Can someone understand the main point reading ONLY this passage?
 3. Does the passage contain at least one specific fact, statistic, or named entity?
-4. Is the passage between 50-200 words (the optimal extraction length)?
+4. Is the passage concise enough to review and reuse without losing necessary context?
 5. Does the passage avoid starting with conjunctions ("But," "However," "And") that imply prior context?
 
 ---
@@ -290,11 +292,11 @@ Generate a file called `GEO-CITABILITY-SCORE.md`:
 
 ## Quick Win Reformatting Recommendations
 
-1. **[Specific recommendation]** -- Expected citability lift: +[X] points
-2. **[Specific recommendation]** -- Expected citability lift: +[X] points
-3. **[Specific recommendation]** -- Expected citability lift: +[X] points
-4. **[Specific recommendation]** -- Expected citability lift: +[X] points
-5. **[Specific recommendation]** -- Expected citability lift: +[X] points
+1. **[Specific recommendation]** -- [Evidence and rationale]
+2. **[Specific recommendation]** -- [Evidence and rationale]
+3. **[Specific recommendation]** -- [Evidence and rationale]
+4. **[Specific recommendation]** -- [Evidence and rationale]
+5. **[Specific recommendation]** -- [Evidence and rationale]
 
 ---
 
@@ -307,26 +309,12 @@ Generate a file called `GEO-CITABILITY-SCORE.md`:
 
 ---
 
-## Reference Data
+## Research Guardrails
 
-### Optimal Passage Characteristics (from GEO Research)
-
-- **Optimal length for AI citation:** 134-167 words (Bortolato 2025 analysis of AI Overview passages)
-- **Definition patterns increase citation rate by:** 2.1x (Georgia Tech 2024)
-- **Adding statistics to passages increases citation by:** 40% (Princeton GEO study 2024)
-- **Adding quotations from authorities increases citation by:** 115% in certain categories (IIT Delhi 2024)
-- **Fluency optimization increases visibility by:** 30% on average across all query types
-- **Content with source citations is cited:** 20-25% more often by Perplexity and ChatGPT search
-
-### AI System Citation Preferences
-
-| AI System | Citation Preference |
-|---|---|
-| **ChatGPT (Search)** | Prefers passages with explicit definitions, named sources, and recent dates. Tends to cite 2-4 sources per response. |
-| **Perplexity** | Heavily favors fact-dense passages with statistics. Cites 4-8 sources per response. Values recency highly. |
-| **Claude** | Prefers well-structured, comprehensive passages. Values nuance and accuracy over brevity. |
-| **Gemini (AI Overviews)** | Prefers concise answer blocks (40-60 words). Values content already ranking in top 10 organic results. |
-| **Copilot (Bing)** | Similar to Gemini. Prefers passages from high-authority domains with clear factual claims. |
+- The GEO benchmark supports testing citations, quotations, and relevant statistics; it does not prove a universal formula for production assistants.
+- Report measured results from the target site's own citation monitoring when available. Do not invent expected point lifts or system-specific citation counts.
+- Treat answer-first structure, self-containment, clear sourcing, and original evidence as review heuristics. Verify claims and preserve readability for people.
+- Re-check current vendor documentation and live outputs before making assistant-specific recommendations; retrieval and citation systems change frequently.
 
 ---
 

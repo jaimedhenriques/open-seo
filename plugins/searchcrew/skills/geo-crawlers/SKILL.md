@@ -24,11 +24,11 @@ The project-context tools are free and shared with the app and other agents.
 
 ## Purpose
 
-This skill analyzes a website's accessibility to AI crawlers -- the bots that AI companies use to discover, index, and train on web content. If AI crawlers are blocked, the site's content cannot appear in AI-generated responses regardless of its quality. Crawler access is the foundational technical requirement for GEO.
+This skill analyzes a website's accessibility to named AI crawlers. Each bot has a different purpose: search indexing, user-directed retrieval, or model training. Access matters only to the product that uses that bot, so never treat a training crawler as a requirement for search visibility.
 
 ## Key Insight
 
-As of early 2026, many websites inadvertently block AI crawlers through overly aggressive robots.txt rules, inherited from legacy SEO configurations. An Originality.ai 2025 study found that over 35% of the top 1,000 websites block at least one major AI crawler, and 5-10% block all AI crawlers. Blocking AI crawlers is the single fastest way to become invisible in AI-generated search results.
+Crawler names and purposes change. Verify the current vendor documentation before recommending a rule, distinguish search/retrieval from training, and explain the consequence for that specific product rather than promising a ranking or citation outcome.
 
 ---
 
@@ -38,21 +38,13 @@ As of early 2026, many websites inadvertently block AI crawlers through overly a
 
 These crawlers power the AI search products where users actively look for answers. Blocking them directly reduces your visibility in AI-generated responses.
 
-#### GPTBot
-- **Operator:** OpenAI
-- **User-Agent:** `GPTBot`
-- **Full User-Agent String:** `Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.2; +https://openai.com/gptbot)`
-- **Purpose:** Fetches content for ChatGPT's web browsing, plugins, and search features. Content accessed by GPTBot may be used to improve OpenAI models.
-- **Impact of Blocking:** Content will NOT appear in ChatGPT Search results or be accessible when users ask ChatGPT to browse the web. This is the highest-impact AI crawler to allow.
-- **Recommendation:** **ALLOW** -- ChatGPT has 300M+ weekly active users as of 2025. Blocking GPTBot removes your content from one of the largest AI search surfaces.
-
 #### OAI-SearchBot
 - **Operator:** OpenAI
 - **User-Agent:** `OAI-SearchBot`
 - **Full User-Agent String:** `Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; OAI-SearchBot/1.0; +https://docs.openai.com/bots/overview)`
 - **Purpose:** Specifically powers ChatGPT's search feature. Unlike GPTBot, content accessed by OAI-SearchBot is NOT used for model training -- only for live search results.
 - **Impact of Blocking:** Content will not appear in ChatGPT's search results even if GPTBot is allowed.
-- **Recommendation:** **ALLOW** -- This is a search-only crawler with no training implications. There is no strategic reason to block it.
+- **Recommendation:** **ALLOW for ChatGPT Search visibility** -- This choice is independent of whether GPTBot is allowed for potential training.
 
 #### ChatGPT-User
 - **Operator:** OpenAI
@@ -62,13 +54,19 @@ These crawlers power the AI search products where users actively look for answer
 - **Impact of Blocking:** ChatGPT cannot visit your pages when users ask it to read or summarize them. This prevents direct user-initiated traffic.
 - **Recommendation:** **ALLOW** -- Blocking this bot prevents users who are actively trying to engage with your content from accessing it through ChatGPT.
 
-#### ClaudeBot
+#### Claude-SearchBot
 - **Operator:** Anthropic
-- **User-Agent:** `ClaudeBot`
-- **Full User-Agent String:** `ClaudeBot/1.0; +https://www.anthropic.com/claude-bot`
-- **Purpose:** Fetches web content for Claude's features including web search, citations, and analysis tools.
-- **Impact of Blocking:** Content will not be accessible to Claude for web search or when users ask Claude to analyze specific URLs.
-- **Recommendation:** **ALLOW** -- Claude is a major AI assistant with growing market share. Blocking ClaudeBot reduces your AI search footprint.
+- **User-Agent:** `Claude-SearchBot`
+- **Purpose:** Indexes content to improve Claude search result relevance and accuracy.
+- **Impact of Blocking:** May reduce the site's visibility and accuracy in Claude search results.
+- **Recommendation:** **ALLOW for Claude search visibility**.
+
+#### Claude-User
+- **Operator:** Anthropic
+- **User-Agent:** `Claude-User`
+- **Purpose:** Retrieves pages in response to user-directed requests.
+- **Impact of Blocking:** Prevents Claude from retrieving the content for those user requests.
+- **Recommendation:** **ALLOW for user-directed retrieval**.
 
 #### PerplexityBot
 - **Operator:** Perplexity AI
@@ -78,18 +76,18 @@ These crawlers power the AI search products where users actively look for answer
 - **Impact of Blocking:** Content will not appear in Perplexity search results. Perplexity is one of the best referral traffic sources among AI search products because it always displays source links.
 - **Recommendation:** **ALLOW** -- Perplexity drives actual referral traffic and always attributes sources. High-value AI crawler for publishers and businesses.
 
+#### Googlebot
+- **Operator:** Google
+- **User-Agent:** `Googlebot`
+- **Purpose:** Crawls and indexes Google Search, including eligibility for supporting links in AI Overviews and AI Mode.
+- **Impact of Blocking:** The page may not be indexed or eligible for Google Search AI features.
+- **Recommendation:** **ALLOW for Google Search visibility**. Google documents no additional crawler or machine-readable file requirement for AI Overviews or AI Mode.
+
 ---
 
 ### Tier 2: Important for Broader AI Ecosystem (RECOMMEND: ALLOW)
 
 These crawlers serve large AI platforms or search ecosystems. Allowing them increases your content's reach.
-
-#### Google-Extended
-- **Operator:** Google
-- **User-Agent:** `Google-Extended`
-- **Purpose:** Controls whether Google uses your content for Gemini model training and AI Overviews improvement. **CRITICAL NOTE:** Blocking Google-Extended does NOT affect your Google Search rankings or your appearance in Google Search results. That is controlled by the standard Googlebot.
-- **Impact of Blocking:** Content may not be used for Gemini training or to improve AI Overviews. However, your content can still appear in AI Overviews based on standard search indexing.
-- **Recommendation:** **ALLOW** -- Blocking provides minimal content protection upside while reducing your presence in Google's AI features. Since it does not affect standard search ranking, the only reason to block is philosophical objection to training data usage.
 
 #### GoogleOther
 - **Operator:** Google
@@ -122,9 +120,30 @@ These crawlers serve large AI platforms or search ecosystems. Allowing them incr
 
 ---
 
-### Tier 3: Training-Only Crawlers (ALLOW or BLOCK Based on Strategy)
+### Tier 3: Training and non-Search controls (ALLOW or BLOCK Based on Strategy)
 
-These crawlers are primarily used for AI model training rather than live search features. Blocking them does not affect AI search visibility.
+These controls are independent of the named search crawlers above. Decide based on training and product-grounding preferences, not search visibility.
+
+#### GPTBot
+- **Operator:** OpenAI
+- **User-Agent:** `GPTBot`
+- **Purpose:** Crawls content that may be used to improve or train OpenAI models.
+- **Impact of Blocking:** Signals that the content should be excluded from potential training. It does not exclude the site from ChatGPT Search when OAI-SearchBot is allowed.
+- **Recommendation:** **CONTEXT-DEPENDENT** -- follow the site's training-data preference.
+
+#### ClaudeBot
+- **Operator:** Anthropic
+- **User-Agent:** `ClaudeBot`
+- **Purpose:** Collects content that may contribute to Anthropic model training.
+- **Impact of Blocking:** Signals that future site material should be excluded from Anthropic training datasets. Claude search and user retrieval have separate bots.
+- **Recommendation:** **CONTEXT-DEPENDENT** -- follow the site's training-data preference.
+
+#### Google-Extended
+- **Operator:** Google
+- **User-Agent token:** `Google-Extended`
+- **Purpose:** A standalone product token controlling some Gemini training and grounding uses; it is not a Google Search crawler.
+- **Impact of Blocking:** Does not affect Google Search ranking or eligibility for AI Overviews and AI Mode, which use Googlebot and normal Search eligibility.
+- **Recommendation:** **CONTEXT-DEPENDENT** -- follow the site's training and grounding preference.
 
 #### CCBot
 - **Operator:** Common Crawl (nonprofit)
@@ -133,13 +152,6 @@ These crawlers are primarily used for AI model training rather than live search 
 - **Purpose:** Builds the Common Crawl dataset, which is used as training data by many AI companies (Google, Meta, Stability AI, and others).
 - **Impact of Blocking:** Content will not appear in future Common Crawl datasets. Does NOT affect any live AI search product.
 - **Recommendation:** **CONTEXT-DEPENDENT** -- Allow if you want maximum long-term AI training presence. Block if you want to control training data usage. No impact on search visibility.
-
-#### anthropic-ai
-- **Operator:** Anthropic
-- **User-Agent:** `anthropic-ai`
-- **Purpose:** Used by Anthropic for AI safety research and Claude model training. Separate from ClaudeBot (which powers live features).
-- **Impact of Blocking:** Content will not be used for Claude training. Does NOT affect Claude's live search or web browsing features (controlled by ClaudeBot).
-- **Recommendation:** **CONTEXT-DEPENDENT** -- Similar to CCBot. Allow for training presence, block for training data control. No impact on live AI search.
 
 #### Bytespider
 - **Operator:** ByteDance
@@ -161,18 +173,20 @@ These crawlers are primarily used for AI model training rather than live search 
 
 | Crawler | Tier | Recommendation | Reason |
 |---|---|---|---|
-| GPTBot | 1 | **ALLOW** | Powers ChatGPT Search (300M+ users) |
 | OAI-SearchBot | 1 | **ALLOW** | Search-only, no training use |
 | ChatGPT-User | 1 | **ALLOW** | User-initiated browsing |
-| ClaudeBot | 1 | **ALLOW** | Claude web search and analysis |
+| Claude-SearchBot | 1 | **ALLOW** | Claude search indexing |
+| Claude-User | 1 | **ALLOW** | User-directed retrieval |
 | PerplexityBot | 1 | **ALLOW** | Best referral traffic AI search |
-| Google-Extended | 2 | **ALLOW** | Gemini features; no search rank impact |
+| Googlebot | 1 | **ALLOW** | Google Search, AI Overviews, and AI Mode |
 | GoogleOther | 2 | **ALLOW** | Google AI research |
 | Applebot-Extended | 2 | **ALLOW** | Apple Intelligence (2B+ devices) |
 | Amazonbot | 2 | **ALLOW** | Alexa and Amazon AI |
 | FacebookBot | 2 | **ALLOW** | Meta AI (3B+ app users) |
+| GPTBot | 3 | Context | OpenAI training control |
+| ClaudeBot | 3 | Context | Anthropic training control |
+| Google-Extended | 3 | Context | Gemini training/grounding control; not Search |
 | CCBot | 3 | Context | Training data only |
-| anthropic-ai | 3 | Context | Training data only |
 | Bytespider | 3 | **BLOCK** | Aggressive crawler, low benefit |
 | cohere-ai | 3 | Context | Training data only |
 
@@ -181,26 +195,23 @@ These crawlers are primarily used for AI model training rather than live search 
 For sites wanting maximum AI search visibility:
 
 ```
-# AI Crawlers - ALLOWED for AI search visibility
-User-agent: GPTBot
-Allow: /
-
+# Search and user-retrieval crawlers
 User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: ClaudeBot
+User-agent: Claude-SearchBot
 Allow: /
 
-User-agent: anthropic-ai
+User-agent: Claude-User
 Allow: /
 
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: Google-Extended
+User-agent: Googlebot
 Allow: /
 
 User-agent: GoogleOther
@@ -213,6 +224,16 @@ User-agent: Amazonbot
 Allow: /
 
 User-agent: FacebookBot
+Allow: /
+
+# Training/grounding controls: choose based on the site's policy
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 # AI Crawlers - BLOCKED (aggressive/low value)
@@ -259,7 +280,7 @@ Disallow: /
 
 ### Step 4: Check for AI-Specific Files
 
-1. Check for `/llms.txt` (emerging standard for AI crawler guidance).
+1. Check for `/llms.txt` (optional proposed content map; not a crawler-control file).
 2. Check for `/.well-known/ai-plugin.json` (OpenAI plugin manifest).
 3. Check for `/ai.txt` (proposed standard, similar to ads.txt for AI).
 4. Record presence/absence and quality of each file.
@@ -267,12 +288,8 @@ Disallow: /
 ### Step 5: Assess JavaScript Rendering Requirements
 
 1. Check if the site is a Single Page Application (SPA) or heavily JavaScript-rendered.
-2. AI crawlers vary in their JavaScript rendering capabilities:
-   - GPTBot: Limited JS rendering
-   - ClaudeBot: Limited JS rendering
-   - PerplexityBot: Limited JS rendering
-   - Googlebot: Full JS rendering (but Google-Extended inherits this)
-3. If critical content requires JS rendering, flag this as a potential issue.
+2. Do not assume rendering support from the bot name. Fetch representative pages as the relevant crawler where possible and verify that critical content is present in the returned HTML.
+3. If critical content requires client-side rendering and cannot be fetched by the relevant crawler, flag this as a potential issue.
 4. Check for Server-Side Rendering (SSR) or Static Site Generation (SSG) as mitigations.
 
 ### Step 6: Parse Content Signals
@@ -309,26 +326,28 @@ Generate a file called `GEO-CRAWLER-ACCESS.md`:
 
 | Crawler | Operator | Tier | Status | Impact |
 |---|---|---|---|---|
-| GPTBot | OpenAI | 1 | [Allowed/Blocked/Not Mentioned] | [Impact description] |
 | OAI-SearchBot | OpenAI | 1 | [Status] | [Impact] |
 | ChatGPT-User | OpenAI | 1 | [Status] | [Impact] |
-| ClaudeBot | Anthropic | 1 | [Status] | [Impact] |
+| Claude-SearchBot | Anthropic | 1 | [Status] | [Impact] |
+| Claude-User | Anthropic | 1 | [Status] | [Impact] |
 | PerplexityBot | Perplexity | 1 | [Status] | [Impact] |
-| Google-Extended | Google | 2 | [Status] | [Impact] |
+| Googlebot | Google | 1 | [Status] | [Impact] |
 | GoogleOther | Google | 2 | [Status] | [Impact] |
 | Applebot-Extended | Apple | 2 | [Status] | [Impact] |
 | Amazonbot | Amazon | 2 | [Status] | [Impact] |
 | FacebookBot | Meta | 2 | [Status] | [Impact] |
+| GPTBot | OpenAI | 3 | [Status] | [Training preference impact] |
+| ClaudeBot | Anthropic | 3 | [Status] | [Training preference impact] |
+| Google-Extended | Google | 3 | [Status] | [Training/grounding preference impact] |
 | CCBot | Common Crawl | 3 | [Status] | [Impact] |
-| anthropic-ai | Anthropic | 3 | [Status] | [Impact] |
 | Bytespider | ByteDance | 3 | [Status] | [Impact] |
 | cohere-ai | Cohere | 3 | [Status] | [Impact] |
 
 ## AI Visibility Score: [X]/100
 
-**Tier 1 Access:** [X/5 crawlers allowed]
-**Tier 2 Access:** [X/5 crawlers allowed]
-**Tier 3 Access:** [X/4 crawlers allowed]
+**Tier 1 Access:** [X/6 crawlers allowed]
+**Tier 2 Access:** [X/4 crawlers allowed]
+**Tier 3 Preferences:** [Summarize the site's declared training/grounding choices; do not score them as visibility defects]
 
 ---
 
@@ -379,12 +398,11 @@ The AI Crawler Access Score is calculated as:
 
 | Component | Weight | Scoring |
 |---|---|---|
-| Tier 1 Crawlers Allowed | 50% | 20 points per Tier 1 crawler allowed (5 crawlers = 100 points max, scaled to 50) |
-| Tier 2 Crawlers Allowed | 25% | 20 points per Tier 2 crawler allowed (5 crawlers = 100 points max, scaled to 25) |
+| Tier 1 Crawlers Allowed | 60% | Equal credit for each of the 6 search/retrieval crawlers |
+| Tier 2 Crawlers Allowed | 25% | Equal credit for each of the 4 broader-ecosystem crawlers |
 | No Blanket AI Blocks | 15% | Full points if no `User-agent: *` Disallow: / and no noai meta tags |
-| AI-Specific Files Present | 10% | 5 points for llms.txt, 5 points for sitemap accessible to AI crawlers |
 
-Final score = sum of all weighted components, capped at 100.
+This is a heuristic access score, not a prediction of ranking or citation. Training/grounding choices and `llms.txt` presence do not add or subtract points.
 
 ---
 
