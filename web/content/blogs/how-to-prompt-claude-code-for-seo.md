@@ -128,7 +128,7 @@ Yes, and that's the point of working this way. The parts that used to require an
 
 ### How much does SEO cost?
 
-Your time, plus data. The data runs $10 a month with [SearchCrew](/pricing), $100 and up with the big suites, or a $50 minimum deposit with a raw data provider if you [self-host](/open-source-seo). Content costs whatever your time is worth. You don't need an agency to start.
+Your time, plus data. The data starts free with [SearchCrew](/pricing) and is $29 a month once you outgrow that, versus $100 and up with the big suites. Content costs whatever your time is worth. You don't need an agency to start.
 
 ### How long does SEO take?
 

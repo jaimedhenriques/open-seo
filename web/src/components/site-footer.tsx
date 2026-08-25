@@ -44,7 +44,6 @@ export function SiteFooter({ className }: { className?: string }) {
             <a href="/docs/mcp">MCP</a>
             <a href="/docs/skills">Skills</a>
             <Link to="/library">Strategy Library</Link>
-            <Link to="/open-source-seo">Why Open Source?</Link>
             <Link to="/blogs">Blog</Link>
             <a href="/docs">Docs</a>
           </div>
@@ -63,20 +62,6 @@ export function SiteFooter({ className }: { className?: string }) {
             <Link to="/support">Support</Link>
             <Link to="/roadmap">Roadmap</Link>
             <Link to="/pricing">Pricing</Link>
-            <a
-              href="https://github.com/every-app/open-seo"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://discord.gg/c9uGs3cFXr"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Discord
-            </a>
             <Link to="/privacy">Privacy</Link>
             <Link to="/terms-and-conditions">Terms</Link>
           </div>

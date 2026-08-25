@@ -9,7 +9,7 @@ There are a lot of open source SEO projects on GitHub, but only a handful are ma
 
 In the past, open source SEO tools struggled because they lacked quality data. Beyond auditing, most SEO tasks have a cost, so most of the projects in this guide aren't totally free. For example, rank tracking requires SERP results from around the world. Coming up with a content strategy means you need accurate search volumes and backlink indexes. Most of the tools in this list rely on paid third-party services, but they still cost far less than the equivalent legacy SaaS tools.
 
-Note: SearchCrew publishes this guide, and SearchCrew is one of the tools listed, as the project has 2,000+ stars on GitHub. We have tried to make this useful even if you never touch it. We love open source and think it's the future of SEO tools: [searchcrew.ai/open-source-seo](/open-source-seo).
+Note: SearchCrew publishes this guide. SearchCrew is a commercial product, not an open-source one, so it is not listed among the tools below — we have tried to make this useful even if you never touch it.
 
 ## The main tools at a glance
 
