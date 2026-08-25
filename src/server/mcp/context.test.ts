@@ -11,10 +11,10 @@ const applicationContext = {
   userId: "user_123",
   userEmail: "alice@example.com",
   organizationId: "org_123",
-  baseUrl: "https://open-seo.test",
+  baseUrl: "https://searchcrew.test",
 };
 
-describe("OpenSEO tool auth context", () => {
+describe("SearchCrew tool auth context", () => {
   it("stores only application-specific identity in Workers OAuth props", () => {
     const props = createWorkersOAuthMcpProps(applicationContext);
 

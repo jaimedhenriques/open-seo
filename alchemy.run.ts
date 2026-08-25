@@ -16,7 +16,7 @@ import {
   workerName,
 } from "./alchemy.access.ts";
 
-// Preview hostnames are `open-seo-<stage>.<WORKERS_SUBDOMAIN>` — the naming
+// Preview hostnames are `searchcrew-<stage>.<WORKERS_SUBDOMAIN>` — the naming
 // lives in alchemy.access.ts, shared with the Access wildcard the security
 // boundary depends on. The shell copy in .github/workflows/pr-preview.yml
 // must be kept in sync by hand.
@@ -28,7 +28,7 @@ import {
 // - Any stage except "hosted-prod": fresh stage-suffixed resources. Previews
 //   deploy via `pnpm deploy:preview --stage <name>`; self-hosters via
 //   `pnpm deploy:selfhost` (stage "selfhost", no flag to pass).
-// - Stage "hosted-prod": names the EXISTING openseo.so production resources
+// - Stage "hosted-prod": names the EXISTING searchcrew.ai production resources
 //   so `--adopt` imports them. Deploy via `pnpm deploy:postgres` (--adopt and
 //   the stage baked in).
 //
@@ -69,11 +69,11 @@ const wrangler = z
 // Physical names of the wrangler-era production resources (see git history of
 // wrangler.jsonc). Adoption matches on these exact names/titles.
 const PROD_NAMES = {
-  d1: "open-seo",
-  r2: "open-seo",
+  d1: "searchcrew",
+  r2: "searchcrew",
   kv: "every-super-seo",
   oauthKv: "OAUTH_KV",
-  hyperdrive: "openseo",
+  hyperdrive: "searchcrew",
 } as const;
 
 const makeResources = (stage: string) => {
@@ -84,14 +84,14 @@ const makeResources = (stage: string) => {
   const keep = Alchemy.RemovalPolicy.retain(prod);
   return {
     DB: Cloudflare.D1.Database("DB", {
-      name: prod ? PROD_NAMES.d1 : `open-seo-db-${stage}`,
+      name: prod ? PROD_NAMES.d1 : `searchcrew-db-${stage}`,
       // drizzle-generated SQL migrations; tracked in the same
       // wrangler-compatible table prod already uses.
       migrationsDir: "drizzle",
       migrationsTable: "d1_migrations",
     }).pipe(keep),
     R2: Cloudflare.R2.Bucket("R2", {
-      name: prod ? PROD_NAMES.r2 : `open-seo-r2-${stage}`,
+      name: prod ? PROD_NAMES.r2 : `searchcrew-r2-${stage}`,
       // Expire cached DataForSEO responses. Prod's lifecycle rules are
       // dashboard-managed; its props stay omitted so alchemy leaves them be.
       ...(prod
@@ -109,10 +109,10 @@ const makeResources = (stage: string) => {
           }),
     }).pipe(keep),
     KV: Cloudflare.KV.Namespace("KV", {
-      title: prod ? PROD_NAMES.kv : `open-seo-kv-${stage}`,
+      title: prod ? PROD_NAMES.kv : `searchcrew-kv-${stage}`,
     }).pipe(keep),
     OAUTH_KV: Cloudflare.KV.Namespace("OAUTH_KV", {
-      title: prod ? PROD_NAMES.oauthKv : `open-seo-oauth-kv-${stage}`,
+      title: prod ? PROD_NAMES.oauthKv : `searchcrew-oauth-kv-${stage}`,
     }).pipe(keep),
   };
 };
@@ -244,8 +244,8 @@ const resolveSelfHostAccess = (
       const application = yield* emailAccessGate({
         policyId: "SelfHostAllowUsers",
         applicationId: "SelfHostAccess",
-        policyName: `open-seo ${stage} self-host users`,
-        applicationName: `open-seo ${stage}`,
+        policyName: `searchcrew ${stage} self-host users`,
+        applicationName: `searchcrew ${stage}`,
         domain: `${workerName(stage)}.${subdomain}`,
         emails: allowedEmails,
       });
@@ -289,7 +289,7 @@ const dataEnv = {
 };
 
 export default Alchemy.Stack(
-  "open-seo",
+  "searchcrew",
   {
     providers: Cloudflare.providers(),
     // Durable state in the Cloudflare state store (an `alchemy-state-store`
@@ -318,7 +318,7 @@ export default Alchemy.Stack(
       if (!authUrl) {
         return yield* Effect.die(
           new Error(
-            "Set BETTER_AUTH_URL (https://app.openseo.so) in .env.production.",
+            "Set BETTER_AUTH_URL (https://app.searchcrew.ai) in .env.production.",
           ),
         );
       }
@@ -351,10 +351,10 @@ export default Alchemy.Stack(
       workersSubdomain,
     );
 
-    const app = yield* Cloudflare.Worker("open-seo", {
+    const app = yield* Cloudflare.Worker("searchcrew", {
       name: workerName(stage),
       // Prod serves the real domains; the zone is inferred from the hostname.
-      domain: prod ? ["app.openseo.so", "www.app.openseo.so"] : undefined,
+      domain: prod ? ["app.searchcrew.ai", "www.app.searchcrew.ai"] : undefined,
       // Prebuilt worker from `vite build` (@cloudflare/vite-plugin). The entry
       // exports the DO + WorkflowEntrypoint classes (re-exported by
       // src/server.ts), which `bundle: false` requires. Sibling chunks under
@@ -426,7 +426,7 @@ export default Alchemy.Stack(
         ),
       },
     }).pipe(
-      // Prod adopts the live worker serving app.openseo.so; never delete it
+      // Prod adopts the live worker serving app.searchcrew.ai; never delete it
       // on destroy. (Workflow registrations aren't individually retainable —
       // they're created inside the worker provider — but re-registering them
       // is a lossless upsert, unlike deleting the data-bearing resources.)

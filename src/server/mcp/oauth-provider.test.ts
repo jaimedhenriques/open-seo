@@ -5,7 +5,7 @@ import {
 } from "@cloudflare/workers-oauth-provider";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { z } from "zod";
-import type { createOpenSeoOAuthProvider } from "./oauth-provider";
+import type { createSearchCrewOAuthProvider } from "./oauth-provider";
 
 const mocks = vi.hoisted(() => ({
   options: [] as OAuthProviderOptions<unknown>[],
@@ -86,7 +86,7 @@ vi.mock("@cloudflare/workers-oauth-provider", () => {
 });
 
 vi.mock("@/lib/auth", () => ({
-  getHostedBaseUrl: () => "https://app.openseo.so",
+  getHostedBaseUrl: () => "https://app.searchcrew.ai",
 }));
 
 vi.mock("@/middleware/ensure-user/hosted", () => ({
@@ -102,7 +102,7 @@ vi.mock("@/server/lib/posthog", () => ({
 }));
 
 vi.mock("@/server/mcp/transport", () => ({
-  handleAuthenticatedOpenSeoMcpRequest: vi.fn(),
+  handleAuthenticatedSearchCrewMcpRequest: vi.fn(),
 }));
 
 const executionContext = {
@@ -112,7 +112,7 @@ const executionContext = {
 } as ExecutionContext;
 
 async function dispatch(
-  provider: ReturnType<typeof createOpenSeoOAuthProvider>,
+  provider: ReturnType<typeof createSearchCrewOAuthProvider>,
   request: Request,
 ) {
   // oxlint-disable-next-line typescript/no-unsafe-type-assertion -- mocked provider does not read its KV-backed environment in these configuration tests
@@ -130,11 +130,11 @@ function tokenExchangeOptions(
     scope: ["offline_access", "mcp"],
     requestedScope,
     props: {
-      openSeoAuth: {
+      searchCrewAuth: {
         userId: "user-1",
         userEmail: "user@example.com",
         organizationId: "org-1",
-        baseUrl: "https://app.openseo.so",
+        baseUrl: "https://app.searchcrew.ai",
         clientId: "client-1",
         scopes: ["offline_access", "mcp"],
       },
@@ -171,7 +171,7 @@ async function invokeDefaultHandler(
   return rawResponse;
 }
 
-describe("OpenSEO OAuth provider configuration", () => {
+describe("SearchCrew OAuth provider configuration", () => {
   beforeEach(() => {
     mocks.options.length = 0;
     mocks.requests.length = 0;
@@ -179,16 +179,16 @@ describe("OpenSEO OAuth provider configuration", () => {
   });
 
   it("binds tokens and protected-resource metadata to the canonical MCP URL", async () => {
-    const { createOpenSeoOAuthProvider } = await import("./oauth-provider");
-    const provider = createOpenSeoOAuthProvider(() => new Response("app"));
+    const { createSearchCrewOAuthProvider } = await import("./oauth-provider");
+    const provider = createSearchCrewOAuthProvider(() => new Response("app"));
 
-    await dispatch(provider, new Request("https://app.openseo.so/health"));
+    await dispatch(provider, new Request("https://app.searchcrew.ai/health"));
 
     expect(mocks.options).toHaveLength(1);
     expect(mocks.options[0]?.resourceMetadata).toEqual({
-      resource: "https://app.openseo.so/mcp",
+      resource: "https://app.searchcrew.ai/mcp",
       scopes_supported: ["mcp"],
-      resource_name: "OpenSEO MCP",
+      resource_name: "SearchCrew MCP",
     });
     expect(mocks.options[0]?.scopesSupported).toEqual([
       "offline_access",
@@ -198,8 +198,8 @@ describe("OpenSEO OAuth provider configuration", () => {
   });
 
   it("purges OAuth KV data without needing a prior request", async () => {
-    const { createOpenSeoOAuthProvider } = await import("./oauth-provider");
-    const provider = createOpenSeoOAuthProvider(() => new Response("app"));
+    const { createSearchCrewOAuthProvider } = await import("./oauth-provider");
+    const provider = createSearchCrewOAuthProvider(() => new Response("app"));
 
     // oxlint-disable-next-line typescript/no-unsafe-type-assertion -- mocked provider does not read its KV-backed environment
     const result = await provider.purgeExpiredData({} as never);
@@ -208,16 +208,16 @@ describe("OpenSEO OAuth provider configuration", () => {
     expect(mocks.purges).toHaveLength(1);
     // The lazily built provider still pins the hosted resource.
     expect(mocks.options[0]?.resourceMetadata).toMatchObject({
-      resource: "https://app.openseo.so/mcp",
+      resource: "https://app.searchcrew.ai/mcp",
     });
   });
 
   it("rejects token exchanges that drop the required MCP scope", async () => {
     const { OAuthError } = await import("@cloudflare/workers-oauth-provider");
-    const { createOpenSeoOAuthProvider } = await import("./oauth-provider");
-    const provider = createOpenSeoOAuthProvider(() => new Response("app"));
+    const { createSearchCrewOAuthProvider } = await import("./oauth-provider");
+    const provider = createSearchCrewOAuthProvider(() => new Response("app"));
 
-    await dispatch(provider, new Request("https://app.openseo.so/health"));
+    await dispatch(provider, new Request("https://app.searchcrew.ai/health"));
 
     const callback = mocks.options[0]?.tokenExchangeCallback;
     if (!callback) throw new Error("Missing token exchange callback");
@@ -226,11 +226,11 @@ describe("OpenSEO OAuth provider configuration", () => {
     ).toThrowError(OAuthError);
     expect(callback(tokenExchangeOptions(["mcp"]))).toEqual({
       accessTokenProps: {
-        openSeoAuth: {
+        searchCrewAuth: {
           userId: "user-1",
           userEmail: "user@example.com",
           organizationId: "org-1",
-          baseUrl: "https://app.openseo.so",
+          baseUrl: "https://app.searchcrew.ai",
           clientId: "client-1",
           scopes: ["mcp"],
         },
@@ -239,12 +239,12 @@ describe("OpenSEO OAuth provider configuration", () => {
   });
 
   it("lets the provider issue Perplexity a real client secret", async () => {
-    const { createOpenSeoOAuthProvider } = await import("./oauth-provider");
-    const provider = createOpenSeoOAuthProvider(() => new Response("app"));
+    const { createSearchCrewOAuthProvider } = await import("./oauth-provider");
+    const provider = createSearchCrewOAuthProvider(() => new Response("app"));
 
     await dispatch(
       provider,
-      new Request("https://app.openseo.so/api/auth/oauth2/register", {
+      new Request("https://app.searchcrew.ai/api/auth/oauth2/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -260,16 +260,16 @@ describe("OpenSEO OAuth provider configuration", () => {
   });
 
   it("includes the authorization-server issuer when consent is denied", async () => {
-    const { createOpenSeoOAuthProvider } = await import("./oauth-provider");
-    const provider = createOpenSeoOAuthProvider(() => new Response("app"));
-    await dispatch(provider, new Request("https://app.openseo.so/health"));
+    const { createSearchCrewOAuthProvider } = await import("./oauth-provider");
+    const provider = createSearchCrewOAuthProvider(() => new Response("app"));
+    await dispatch(provider, new Request("https://app.searchcrew.ai/health"));
 
     const response = await invokeDefaultHandler(
-      new Request("https://app.openseo.so/api/oauth/consent", {
+      new Request("https://app.searchcrew.ai/api/oauth/consent", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Origin: "https://app.openseo.so",
+          Origin: "https://app.searchcrew.ai",
         },
         body: JSON.stringify({ accept: false, query: "state=state-1" }),
       }),
@@ -281,7 +281,7 @@ describe("OpenSEO OAuth provider configuration", () => {
               redirectUri: "https://client.example/callback",
               scope: ["mcp"],
               state: "state-1",
-              issuer: "https://app.openseo.so",
+              issuer: "https://app.searchcrew.ai",
             }),
         },
       },
@@ -295,19 +295,19 @@ describe("OpenSEO OAuth provider configuration", () => {
     ).toMatchObject({
       error: "access_denied",
       state: "state-1",
-      iss: "https://app.openseo.so",
+      iss: "https://app.searchcrew.ai",
     });
   });
 
   it("redirects safe authorization errors with state and issuer", async () => {
     const { AuthorizationError } =
       await import("@cloudflare/workers-oauth-provider");
-    const { createOpenSeoOAuthProvider } = await import("./oauth-provider");
-    const provider = createOpenSeoOAuthProvider(() => new Response("app"));
-    await dispatch(provider, new Request("https://app.openseo.so/health"));
+    const { createSearchCrewOAuthProvider } = await import("./oauth-provider");
+    const provider = createSearchCrewOAuthProvider(() => new Response("app"));
+    await dispatch(provider, new Request("https://app.searchcrew.ai/health"));
 
     const response = await invokeDefaultHandler(
-      new Request("https://app.openseo.so/api/auth/oauth2/authorize"),
+      new Request("https://app.searchcrew.ai/api/auth/oauth2/authorize"),
       {
         OAUTH_PROVIDER: {
           parseAuthRequest: () =>
@@ -316,7 +316,7 @@ describe("OpenSEO OAuth provider configuration", () => {
                 description: "Unsupported scope",
                 redirectUri: "https://client.example/callback",
                 state: "state-1",
-                issuer: "https://app.openseo.so",
+                issuer: "https://app.searchcrew.ai",
               }),
             ),
         },
@@ -330,18 +330,18 @@ describe("OpenSEO OAuth provider configuration", () => {
       error: "invalid_scope",
       error_description: "Unsupported scope",
       state: "state-1",
-      iss: "https://app.openseo.so",
+      iss: "https://app.searchcrew.ai",
     });
   });
 
   it("does not expose unexpected authorization failures as client errors", async () => {
-    const { createOpenSeoOAuthProvider } = await import("./oauth-provider");
-    const provider = createOpenSeoOAuthProvider(() => new Response("app"));
-    await dispatch(provider, new Request("https://app.openseo.so/health"));
+    const { createSearchCrewOAuthProvider } = await import("./oauth-provider");
+    const provider = createSearchCrewOAuthProvider(() => new Response("app"));
+    await dispatch(provider, new Request("https://app.searchcrew.ai/health"));
 
     await expect(
       invokeDefaultHandler(
-        new Request("https://app.openseo.so/api/auth/oauth2/authorize"),
+        new Request("https://app.searchcrew.ai/api/auth/oauth2/authorize"),
         {
           OAUTH_PROVIDER: {
             parseAuthRequest: () =>

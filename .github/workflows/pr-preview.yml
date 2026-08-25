@@ -45,7 +45,7 @@ env:
 jobs:
   preview:
     if: >-
-      github.repository == 'bensenescu/open-seo' &&
+      github.repository == 'bensenescu/searchcrew' &&
       github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -83,7 +83,7 @@ jobs:
             *.workers.dev) ;;
             *) echo "::error::ENV_PREVIEW secret is missing a valid WORKERS_SUBDOMAIN (needed to derive and verify the preview URL)"; exit 1 ;;
           esac
-          echo "PREVIEW_URL=https://open-seo-${STAGE}.${subdomain}" >> "$GITHUB_ENV"
+          echo "PREVIEW_URL=https://searchcrew-${STAGE}.${subdomain}" >> "$GITHUB_ENV"
 
       # Same command as a local preview deploy: vite build, alchemy deploy.
       # State lives in the account's Cloudflare state store; CI resolves its

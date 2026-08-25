@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { buildPageSeo } from "@/lib/seo";
 
-const SUPPORT_EMAIL = "ben@openseo.so";
+const SUPPORT_EMAIL = "ben@searchcrew.ai";
 const DISCORD_URL = "https://discord.gg/c9uGs3cFXr";
 const GITHUB_ISSUES_URL = "https://github.com/every-app/open-seo/issues";
 
@@ -11,9 +11,9 @@ export const Route = createFileRoute("/_marketing/support")({
     buildPageSeo({
       title: "Support",
       description:
-        "Get help with OpenSEO, share feedback, or report an issue by email, Discord, or GitHub.",
+        "Get help with SearchCrew, share feedback, or report an issue by email, Discord, or GitHub.",
       path: "/support",
-      titleSuffix: "OpenSEO",
+      titleSuffix: "SearchCrew",
     }),
   component: SupportPage,
 });
@@ -38,7 +38,7 @@ function SupportPage() {
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-8 text-[var(--color-brand-muted)]">
           We want to talk to you! We&apos;re super open to feedback and want to
-          learn how you work so we can make OpenSEO better.
+          learn how you work so we can make SearchCrew better.
         </p>
       </header>
 

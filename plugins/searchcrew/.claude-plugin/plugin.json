@@ -1,0 +1,29 @@
+{
+  "name": "searchcrew",
+  "displayName": "SearchCrew",
+  "version": "1.0.0",
+  "description": "Without good data, your agent gives generic advice. Keyword research, competitor research, backlinks, and site audits. All for $10/month.",
+  "author": {
+    "name": "SearchCrew",
+    "url": "https://searchcrew.ai"
+  },
+  "homepage": "https://searchcrew.ai",
+  "repository": "https://github.com/every-app/open-seo",
+  "license": "MIT",
+  "keywords": [
+    "seo",
+    "keyword-research",
+    "serp",
+    "site-audit",
+    "backlinks",
+    "search-console",
+    "rank-tracking",
+    "local-seo"
+  ],
+  "mcpServers": {
+    "searchcrew": {
+      "type": "http",
+      "url": "https://app.searchcrew.ai/mcp"
+    }
+  }
+}

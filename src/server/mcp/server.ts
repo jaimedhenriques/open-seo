@@ -81,7 +81,7 @@ type ToolArgs<Input extends ToolSchema> = Input extends z.ZodType
     ? z.infer<z.ZodObject<Input>>
     : never;
 
-type OpenSeoToolDefinition<Input extends ToolSchema> = {
+type SearchCrewToolDefinition<Input extends ToolSchema> = {
   name: string;
   config: {
     title?: string;
@@ -96,9 +96,9 @@ type OpenSeoToolDefinition<Input extends ToolSchema> = {
   ) => CallToolResult | Promise<CallToolResult>;
 };
 
-function registerOpenSeoTool<Input extends ToolSchema>(
+function registerSearchCrewTool<Input extends ToolSchema>(
   server: McpServer,
-  tool: OpenSeoToolDefinition<Input>,
+  tool: SearchCrewToolDefinition<Input>,
   authProps: McpProps,
 ) {
   const outputSchema = objectSchema(tool.config.outputSchema);
@@ -125,18 +125,18 @@ function registerOpenSeoTool<Input extends ToolSchema>(
   );
 }
 
-export function createOpenSeoMcpServer(authProps: McpProps) {
+export function createSearchCrewMcpServer(authProps: McpProps) {
   const server = new McpServer(
     {
-      name: "OpenSEO MCP",
-      title: "OpenSEO",
+      name: "SearchCrew MCP",
+      title: "SearchCrew",
       version: "0.0.12",
       description:
         "SEO research tools for AI agents: keyword research and metrics, SERP and local SERP results, domain and backlink analysis, rank tracking, and Google Search Console performance.",
-      websiteUrl: "https://openseo.so",
+      websiteUrl: "https://searchcrew.ai",
       icons: [
         {
-          src: "https://openseo.so/android-chrome-512x512.png",
+          src: "https://searchcrew.ai/android-chrome-512x512.png",
           mimeType: "image/png",
           sizes: ["512x512"],
         },
@@ -144,13 +144,13 @@ export function createOpenSeoMcpServer(authProps: McpProps) {
     },
     {
       instructions:
-        "OpenSEO research tools use credits. Proceed with normal focused research, but ask the user for confirmation before planned batches over 2,000 credits.",
+        "SearchCrew research tools use credits. Proceed with normal focused research, but ask the user for confirmation before planned batches over 2,000 credits.",
     },
   );
 
   const register = <Input extends ToolSchema>(
-    tool: OpenSeoToolDefinition<Input>,
-  ) => registerOpenSeoTool(server, tool, authProps);
+    tool: SearchCrewToolDefinition<Input>,
+  ) => registerSearchCrewTool(server, tool, authProps);
 
   register(whoamiTool);
   register(listProjectsTool);

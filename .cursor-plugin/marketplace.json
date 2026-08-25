@@ -1,16 +1,16 @@
 {
-  "name": "openseo",
+  "name": "searchcrew",
   "owner": {
     "name": "Every App, Inc",
-    "email": "support@openseo.so"
+    "email": "support@searchcrew.ai"
   },
   "metadata": {
-    "description": "OpenSEO's official Cursor plugin marketplace."
+    "description": "SearchCrew's official Cursor plugin marketplace."
   },
   "plugins": [
     {
-      "name": "openseo",
-      "source": "plugins/openseo",
+      "name": "searchcrew",
+      "source": "plugins/searchcrew",
       "description": "SEO made simple. Research keywords and competitors, audit sites, track rankings, and use Search Console data from your agent."
     }
   ]

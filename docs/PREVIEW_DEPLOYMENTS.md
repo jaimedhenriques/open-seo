@@ -1,16 +1,16 @@
 # Alchemy preview deployments
 
-OpenSEO preview stages use isolated Cloudflare resources and a shared,
+SearchCrew preview stages use isolated Cloudflare resources and a shared,
 Alchemy-managed Cloudflare Access boundary.
 
 ## Security model
 
-- Preview Workers are named `open-seo-<stage>` and served from
-  `open-seo-<stage>.<WORKERS_SUBDOMAIN>`.
+- Preview Workers are named `searchcrew-<stage>` and served from
+  `searchcrew-<stage>.<WORKERS_SUBDOMAIN>`.
 - One persistent Access application protects
-  `open-seo-*.<WORKERS_SUBDOMAIN>` before any preview Worker exists.
-- Production uses the unsuffixed `open-seo` Worker on `app.openseo.so` and
-  `www.app.openseo.so`. It does not match the preview wildcard and is not
+  `searchcrew-*.<WORKERS_SUBDOMAIN>` before any preview Worker exists.
+- Production uses the unsuffixed `searchcrew` Worker on `app.searchcrew.ai` and
+  `www.app.searchcrew.ai`. It does not match the preview wildcard and is not
   placed behind preview Access.
 - A separate persistent Alchemy stack manages the shared Access boundary. A
   failed preview deploy or teardown therefore cannot remove the gate protecting
@@ -53,13 +53,13 @@ The persistent Access stack creates a self-hosted application with this public
 hostname:
 
 ```text
-open-seo-*.your-subdomain.workers.dev
+searchcrew-*.your-subdomain.workers.dev
 ```
 
 Use the account's Workers subdomain shown under **Workers & Pages**, not the
 Zero Trust team domain. Set that full value in `.env.preview` as
 `WORKERS_SUBDOMAIN`. Preview URLs derive from it as
-`https://open-seo-<stage>.<WORKERS_SUBDOMAIN>` — hosted previews use that as
+`https://searchcrew-<stage>.<WORKERS_SUBDOMAIN>` — hosted previews use that as
 `BETTER_AUTH_URL`, and CI's verify step probes it; a wrong value fails the
 check. Previews in `local_noauth` or `cloudflare_access` mode deploy without
 it, since nothing reads `BETTER_AUTH_URL` there.
@@ -128,11 +128,11 @@ available.
 
 ```sh
 git fetch https://github.com/every-app/open-seo.git pull/<pr>/head
-git worktree add --detach ../open-seo-pub-<pr> FETCH_HEAD
-cp .env.preview ../open-seo-pub-<pr>/
-(cd ../open-seo-pub-<pr> && pnpm install --frozen-lockfile && pnpm exec vite build --mode preview)
-rm -rf dist && cp -R ../open-seo-pub-<pr>/dist dist
-git worktree remove --force ../open-seo-pub-<pr>
+git worktree add --detach ../searchcrew-pub-<pr> FETCH_HEAD
+cp .env.preview ../searchcrew-pub-<pr>/
+(cd ../searchcrew-pub-<pr> && pnpm install --frozen-lockfile && pnpm exec vite build --mode preview)
+rm -rf dist && cp -R ../searchcrew-pub-<pr>/dist dist
+git worktree remove --force ../searchcrew-pub-<pr>
 pnpm alchemy deploy --env-file .env.preview --stage pub-<pr> --yes
 ```
 
@@ -167,10 +167,10 @@ was enabled for Hyperdrive).
 The first Alchemy prod deploy adopts live resources. Before running it:
 
 1. Append `--dry-run` to the alchemy command and read the plan — every prod
-   resource (D1 `open-seo`, KV `every-super-seo`/`OAUTH_KV`, R2 `open-seo`,
-   Hyperdrive `openseo`, Worker `open-seo`) should be adopted, none created.
+   resource (D1 `searchcrew`, KV `every-super-seo`/`OAUTH_KV`, R2 `searchcrew`,
+   Hyperdrive `searchcrew`, Worker `searchcrew`) should be adopted, none created.
 2. Diff `.env.production` against the live worker's secrets
-   (`GET /accounts/:id/workers/scripts/open-seo/secrets`): alchemy's deploy
+   (`GET /accounts/:id/workers/scripts/searchcrew/secrets`): alchemy's deploy
    replaces the COMPLETE binding set, so any live secret missing from the env
    file deploys as `""` — most vars are optional-with-empty-default, so the
    deploy succeeds while silently disabling that integration.
@@ -186,7 +186,7 @@ The first Alchemy prod deploy adopts live resources. Before running it:
 5. Confirm the `HYPERDRIVE_ORIGIN_*` values in `.env.production` match the
    live Hyperdrive config — Cloudflare never returns origin credentials, so a
    mismatch would rewrite the origin.
-6. Note: prod already serves on `open-seo.<subdomain>.workers.dev` (alchemy
+6. Note: prod already serves on `searchcrew.<subdomain>.workers.dev` (alchemy
    keeps it enabled; the workers.dev toggle never appears in `--dry-run`).
    The prod resources (worker, D1, R2, KV, Hyperdrive) carry alchemy's
    `RemovalPolicy.retain`, stamped into state on the first prod deploy: a
@@ -205,5 +205,5 @@ gating the worker (`AUTH_MODE=cloudflare_access` +
 `ACCESS_ALLOWED_EMAILS`; `resolveSelfHostAccess` in alchemy.run.ts derives
 `TEAM_DOMAIN`/`POLICY_AUD`, or accepts them explicitly for a hand-managed
 application). The preview Access wildcard and PR workflow are
-OpenSEO-specific and not required. The walkthrough lives in
+SearchCrew-specific and not required. The walkthrough lives in
 docs/SELF_HOSTING_CLOUDFLARE.md.
