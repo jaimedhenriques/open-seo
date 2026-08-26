@@ -123,7 +123,7 @@ describe("maybeSendSelfHostHeartbeat", () => {
   beforeEach(() => {
     vi.unstubAllEnvs();
     vi.stubEnv("AUTH_MODE", "cloudflare_access");
-    vi.stubEnv("OPENSEO_TELEMETRY_DISABLED", "");
+    vi.stubEnv("SEARCHCREW_TELEMETRY_DISABLED", "");
     vi.stubEnv("DO_NOT_TRACK", "");
   });
 
@@ -137,8 +137,8 @@ describe("maybeSendSelfHostHeartbeat", () => {
     expect(harness.sendHeartbeat).not.toHaveBeenCalled();
   });
 
-  it("does not send when OPENSEO_TELEMETRY_DISABLED is set", async () => {
-    vi.stubEnv("OPENSEO_TELEMETRY_DISABLED", "1");
+  it("does not send when SEARCHCREW_TELEMETRY_DISABLED is set", async () => {
+    vi.stubEnv("SEARCHCREW_TELEMETRY_DISABLED", "1");
     const harness = createHarness();
 
     await runHeartbeat(harness);
@@ -158,7 +158,7 @@ describe("maybeSendSelfHostHeartbeat", () => {
   });
 
   it('still sends when the disable flags are explicitly "0"/"false"', async () => {
-    vi.stubEnv("OPENSEO_TELEMETRY_DISABLED", "0");
+    vi.stubEnv("SEARCHCREW_TELEMETRY_DISABLED", "0");
     vi.stubEnv("DO_NOT_TRACK", "false");
     const harness = createHarness();
 

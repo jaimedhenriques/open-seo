@@ -23,6 +23,9 @@ const SKILL_NAMES = [
   "link-prospecting",
   "local-seo",
   "seo-audit",
+  "geo-citability",
+  "geo-crawlers",
+  "geo-llmstxt",
 ];
 const SKILLS_INSTALL = `npx skills add every-app/open-seo`;
 const ALL_SKILLS_INSTALL = `npx skills add every-app/open-seo --skill '*'`;

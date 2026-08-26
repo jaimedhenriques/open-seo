@@ -1,0 +1,25 @@
+---
+title: "AI Crawler Access Agent Skill"
+description: "Check which AI crawlers can reach your site across robots.txt, meta tags, and HTTP headers, and fix the blocks costing you AI visibility."
+---
+
+<RunSkillCallout command="/geo-crawlers" />
+
+The AI Crawler Access Agent Skill maps which AI crawlers your site allows and which it blocks, across `robots.txt`, robots meta tags, and HTTP headers.
+
+Crawler access is specific to each product. For example, OAI-SearchBot controls inclusion in ChatGPT Search, Claude-SearchBot supports Claude search, and Googlebot controls eligibility for Google Search features including AI Overviews and AI Mode. GPTBot, ClaudeBot, and Google-Extended are separate training or grounding controls; blocking them does not by itself remove a page from those search products.
+
+## What this skill helps your agent do
+
+- Build a complete access map: which named AI crawlers are allowed, blocked, or unaddressed.
+- Catch blocks you did not intend, including blanket rules and inherited defaults.
+- Distinguish training crawlers from retrieval crawlers, so you can allow citation without allowing training.
+- Recommend the specific `robots.txt` lines to change.
+
+## When to use it
+
+Run it first, before any other AI-visibility work, and again after any change to `robots.txt` or your CDN's bot rules.
+
+## What you get back
+
+A per-crawler access table with the rule responsible for each verdict, plus the exact edits to make. Where a block looks deliberate, it says so rather than telling you to remove it — declining to be used for training is a legitimate choice.

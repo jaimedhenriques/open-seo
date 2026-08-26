@@ -281,11 +281,12 @@ const dataEnv = {
   ),
   POSTHOG_PUBLIC_KEY: optionalVar("POSTHOG_PUBLIC_KEY"),
   POSTHOG_HOST: optionalVar("POSTHOG_HOST"),
+  SELF_HOST_POSTHOG_KEY: optionalSecret("SELF_HOST_POSTHOG_KEY"),
   TURNSTILE_SECRET_KEY: optionalSecret("TURNSTILE_SECRET_KEY"),
   TURNSTILE_SITE_KEY: optionalVar("TURNSTILE_SITE_KEY"),
   // Alchemy reconciles worker vars on every deploy, so the telemetry opt-out
   // must live in the env file — a dashboard-set var would be wiped.
-  OPENSEO_TELEMETRY_DISABLED: optionalVar("OPENSEO_TELEMETRY_DISABLED"),
+  SEARCHCREW_TELEMETRY_DISABLED: optionalVar("SEARCHCREW_TELEMETRY_DISABLED"),
 };
 
 export default Alchemy.Stack(

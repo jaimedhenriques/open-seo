@@ -21,8 +21,11 @@ import {
 import { getSetupIssueSummary } from "@/server/lib/setup-status";
 import { isTelemetryOptOutValue } from "@/shared/selfhost-checks";
 
-const SELF_HOST_POSTHOG_KEY =
-  "phc_xaXj4vE4LikxfvR7q6EHemAYNBSZW4hQkqor7fpf8aGT";
+// Self-host install heartbeats. This used to carry the upstream OpenSEO
+// project's hardcoded PostHog key, which would have reported every SearchCrew
+// self-host install into someone else's analytics. It now reads our own key
+// from the environment and no-ops when unset, so an unconfigured deployment
+// reports nothing rather than reporting to the wrong place.
 const SELF_HOST_POSTHOG_HOST = "https://us.i.posthog.com";
 
 const DAILY_HEARTBEAT_INTERVAL_MS = 24 * 60 * 60 * 1000;
@@ -123,7 +126,7 @@ async function telemetryIsDisabled() {
   if (await isHostedServerAuthMode()) return true;
   if (
     isTelemetryOptOutValue(
-      await getOptionalEnvValue("OPENSEO_TELEMETRY_DISABLED"),
+      await getOptionalEnvValue("SEARCHCREW_TELEMETRY_DISABLED"),
     )
   ) {
     return true;
@@ -226,7 +229,10 @@ async function sendHeartbeat(
   installId: string,
   properties: HeartbeatProperties,
 ) {
-  const client = new PostHog(SELF_HOST_POSTHOG_KEY, {
+  const posthogKey = await getOptionalEnvValue("SELF_HOST_POSTHOG_KEY");
+  if (!posthogKey) return;
+
+  const client = new PostHog(posthogKey, {
     host: SELF_HOST_POSTHOG_HOST,
     flushAt: 1,
     flushInterval: 0,

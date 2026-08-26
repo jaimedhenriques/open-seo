@@ -12,6 +12,9 @@ describe("buildSamSkillSource", () => {
     expect(names).toEqual([
       "competitive-landscape",
       "competitor-analysis",
+      "geo-citability",
+      "geo-crawlers",
+      "geo-llmstxt",
       "keyword-clustering",
       "keyword-research",
       "link-prospecting",

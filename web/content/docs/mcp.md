@@ -103,8 +103,8 @@ For Cursor, add `headers` to the server entry in `mcp.json`:
 For Codex CLI, put the key in an environment variable and reference it:
 
 ```bash
-export OPENSEO_API_KEY=oseo_YOUR_KEY
-codex mcp add searchcrew --url https://app.searchcrew.ai/mcp --bearer-token-env-var OPENSEO_API_KEY
+export SEARCHCREW_API_KEY=oseo_YOUR_KEY
+codex mcp add searchcrew --url https://app.searchcrew.ai/mcp --bearer-token-env-var SEARCHCREW_API_KEY
 ```
 
 Any other client that supports custom HTTP headers can send `Authorization: Bearer oseo_YOUR_KEY` or `x-api-key: oseo_YOUR_KEY`.

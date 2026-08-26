@@ -22,6 +22,7 @@ declare namespace Cloudflare {
     POLICY_AUD?: string;
     POSTHOG_PUBLIC_KEY?: string;
     POSTHOG_HOST?: string;
+    SELF_HOST_POSTHOG_KEY?: string;
     BETTER_AUTH_SECRET?: string;
     BETTER_AUTH_URL?: string;
     DATABASE_PROVIDER?: "d1" | "postgres";

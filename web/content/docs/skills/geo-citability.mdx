@@ -1,0 +1,29 @@
+---
+title: "AI Citability Agent Skill"
+description: "Run a heuristic review of answer structure, sourcing, and self-containment, with specific rewrite suggestions."
+---
+
+<RunSkillCallout command="/geo-citability" />
+
+The AI Citability Agent Skill gives a page a consistent heuristic review score, then tells you which passages to rewrite and how. The score is an editorial aid, not a calibrated probability or promised visibility lift.
+
+This is a different problem from ranking. Traditional SEO copywriting optimizes for keyword coverage and engagement; citability optimizes for **extractability** — how cleanly an assistant can lift a passage out of your page and present it as the answer. A page can rank well and still never get quoted.
+
+## What this skill helps your agent do
+
+- Score a page across answer-block quality, structure, fact density, and self-containment.
+- Find the passages that are nearly quotable and show the edit that gets them there.
+- Rewrite buried answers into answer-first openings that stand alone without surrounding context.
+- Flag narrative sections that no assistant can extract from.
+
+## When to use it
+
+Run it on the pages you most want cited — pricing, comparisons, definitions, and any page answering a question people ask assistants. Pair it with [AI Crawler Access](/docs/skills/geo-crawlers): if crawlers cannot reach the page, citability work has nothing to act on.
+
+## What you get back
+
+A scored report per page, with the weakest sections quoted verbatim alongside a suggested rewrite, so you can apply the changes directly rather than interpreting a grade.
+
+## Getting the best result
+
+Point it at one page at a time. Scoring a whole site at once produces averages that hide the specific paragraphs worth fixing.
