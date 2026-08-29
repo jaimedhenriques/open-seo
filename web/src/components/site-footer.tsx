@@ -52,6 +52,7 @@ export function SiteFooter({ className }: { className?: string }) {
         <div>
           <p className="font-semibold text-neutral-900">Free Tools</p>
           <div className="mt-2 flex flex-col gap-1.5">
+            <Link to="/seo-roi-calculator">SEO ROI Calculator</Link>
             <Link to="/backlink-checker">Backlink Checker</Link>
           </div>
         </div>

@@ -22,6 +22,7 @@ function getMobileNavItems() {
       label: "Resources",
       links: [
         { label: "MCP Setup", href: "/docs/mcp" },
+        { label: "SEO ROI Calculator", href: "/seo-roi-calculator" },
         { label: "Skills", href: "/docs/skills" },
         { label: "Strategy Library", href: "/library" },
         { label: "Blog", href: "/blogs" },
@@ -206,6 +207,11 @@ function ResourcesDropdown() {
       label: "Skills",
       href: "/docs/skills",
       description: "Focused SearchCrew workflows.",
+    },
+    {
+      label: "SEO ROI Calculator",
+      href: "/seo-roi-calculator",
+      description: "Forecast leads, profit, ROI, and payback.",
     },
     {
       label: "Strategy Library",
