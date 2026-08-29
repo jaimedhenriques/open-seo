@@ -24,6 +24,7 @@ import { Route as ApiSubscribeRouteImport } from './routes/api/subscribe'
 import { Route as ApiEventRouteImport } from './routes/api/event'
 import { Route as ApiBacklinkCheckRouteImport } from './routes/api/backlink-check'
 import { Route as MarketingSupportRouteImport } from './routes/_marketing/support'
+import { Route as MarketingSeoRoiCalculatorRouteImport } from './routes/_marketing/seo-roi-calculator'
 import { Route as MarketingRoadmapRouteImport } from './routes/_marketing/roadmap'
 import { Route as MarketingPricingRouteImport } from './routes/_marketing/pricing'
 import { Route as MarketingGoogleSearchConsoleMcpRouteImport } from './routes/_marketing/google-search-console-mcp'
@@ -129,6 +130,12 @@ const MarketingSupportRoute = MarketingSupportRouteImport.update({
   path: '/support',
   getParentRoute: () => MarketingRoute,
 } as any)
+const MarketingSeoRoiCalculatorRoute =
+  MarketingSeoRoiCalculatorRouteImport.update({
+    id: '/seo-roi-calculator',
+    path: '/seo-roi-calculator',
+    getParentRoute: () => MarketingRoute,
+  } as any)
 const MarketingRoadmapRoute = MarketingRoadmapRouteImport.update({
   id: '/roadmap',
   path: '/roadmap',
@@ -317,6 +324,7 @@ export interface FileRoutesByFullPath {
   '/google-search-console-mcp': typeof MarketingGoogleSearchConsoleMcpRoute
   '/pricing': typeof MarketingPricingRoute
   '/roadmap': typeof MarketingRoadmapRoute
+  '/seo-roi-calculator': typeof MarketingSeoRoiCalculatorRoute
   '/support': typeof MarketingSupportRoute
   '/api/backlink-check': typeof ApiBacklinkCheckRoute
   '/api/event': typeof ApiEventRoute
@@ -362,6 +370,7 @@ export interface FileRoutesByTo {
   '/google-search-console-mcp': typeof MarketingGoogleSearchConsoleMcpRoute
   '/pricing': typeof MarketingPricingRoute
   '/roadmap': typeof MarketingRoadmapRoute
+  '/seo-roi-calculator': typeof MarketingSeoRoiCalculatorRoute
   '/support': typeof MarketingSupportRoute
   '/api/backlink-check': typeof ApiBacklinkCheckRoute
   '/api/event': typeof ApiEventRoute
@@ -410,6 +419,7 @@ export interface FileRoutesById {
   '/_marketing/google-search-console-mcp': typeof MarketingGoogleSearchConsoleMcpRoute
   '/_marketing/pricing': typeof MarketingPricingRoute
   '/_marketing/roadmap': typeof MarketingRoadmapRoute
+  '/_marketing/seo-roi-calculator': typeof MarketingSeoRoiCalculatorRoute
   '/_marketing/support': typeof MarketingSupportRoute
   '/api/backlink-check': typeof ApiBacklinkCheckRoute
   '/api/event': typeof ApiEventRoute
@@ -459,6 +469,7 @@ export interface FileRouteTypes {
     | '/google-search-console-mcp'
     | '/pricing'
     | '/roadmap'
+    | '/seo-roi-calculator'
     | '/support'
     | '/api/backlink-check'
     | '/api/event'
@@ -504,6 +515,7 @@ export interface FileRouteTypes {
     | '/google-search-console-mcp'
     | '/pricing'
     | '/roadmap'
+    | '/seo-roi-calculator'
     | '/support'
     | '/api/backlink-check'
     | '/api/event'
@@ -551,6 +563,7 @@ export interface FileRouteTypes {
     | '/_marketing/google-search-console-mcp'
     | '/_marketing/pricing'
     | '/_marketing/roadmap'
+    | '/_marketing/seo-roi-calculator'
     | '/_marketing/support'
     | '/api/backlink-check'
     | '/api/event'
@@ -712,6 +725,13 @@ declare module '@tanstack/react-router' {
       path: '/support'
       fullPath: '/support'
       preLoaderRoute: typeof MarketingSupportRouteImport
+      parentRoute: typeof MarketingRoute
+    }
+    '/_marketing/seo-roi-calculator': {
+      id: '/_marketing/seo-roi-calculator'
+      path: '/seo-roi-calculator'
+      fullPath: '/seo-roi-calculator'
+      preLoaderRoute: typeof MarketingSeoRoiCalculatorRouteImport
       parentRoute: typeof MarketingRoute
     }
     '/_marketing/roadmap': {
@@ -932,6 +952,7 @@ interface MarketingRouteChildren {
   MarketingGoogleSearchConsoleMcpRoute: typeof MarketingGoogleSearchConsoleMcpRoute
   MarketingPricingRoute: typeof MarketingPricingRoute
   MarketingRoadmapRoute: typeof MarketingRoadmapRoute
+  MarketingSeoRoiCalculatorRoute: typeof MarketingSeoRoiCalculatorRoute
   MarketingSupportRoute: typeof MarketingSupportRoute
   MarketingIndexRoute: typeof MarketingIndexRoute
   MarketingFeaturesAiBrandVisibilityRoute: typeof MarketingFeaturesAiBrandVisibilityRoute
@@ -967,6 +988,7 @@ const MarketingRouteChildren: MarketingRouteChildren = {
   MarketingGoogleSearchConsoleMcpRoute: MarketingGoogleSearchConsoleMcpRoute,
   MarketingPricingRoute: MarketingPricingRoute,
   MarketingRoadmapRoute: MarketingRoadmapRoute,
+  MarketingSeoRoiCalculatorRoute: MarketingSeoRoiCalculatorRoute,
   MarketingSupportRoute: MarketingSupportRoute,
   MarketingIndexRoute: MarketingIndexRoute,
   MarketingFeaturesAiBrandVisibilityRoute:

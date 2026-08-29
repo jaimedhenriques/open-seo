@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 2,
+  "project": "Open SEO / SearchCrew",
+  "company": "SearchCrew",
+  "artifactType": "web-product",
+  "icp": "Founders, marketers, and SEO consultants who need to justify organic-search investment in commercial terms",
+  "pain": "SEO forecasts often stop at traffic, leaving buyers unable to compare expected leads, profit, payback, and budget risk",
+  "revenueHypothesis": "A useful public SEO ROI calculator can attract high-intent search traffic and convert qualified visitors into SearchCrew signups",
+  "mvpAcceptance": [
+    "A public /seo-roi-calculator route lets visitors edit bounded traffic, conversion, value, and cost assumptions and immediately see finite year-one return and payback outputs",
+    "The calculator has keyboard-accessible exact inputs, a currency selector, reset and copy actions, a formula disclosure, explicit estimate language, and no horizontal overflow at 320px",
+    "Pure calculation tests cover defaults, zero traffic, zero conversion, immediate payback, negative return, and out-of-range input clamping",
+    "The route has canonical social metadata, FAQ and WebApplication structured data, sitemap inclusion, and links from Free Tools and the forecasting guide",
+    "The exact pushed commit passes GitHub CI and a Vercel READY preview passes the calculator buyer-path smoke test"
+  ],
+  "maker": "codex-open-seo-maker",
+  "codingTool": "codex",
+  "rollback": "Revert the scoped calculator commit, remove the isolated Vercel preview deployment, and leave the Cloudflare production site and domains unchanged.",
+  "stopConditions": [
+    "Stop on secret exposure, target ambiguity, paid-plan requirements, production DNS changes, more than two deployment attempts, or any regression in repository CI."
+  ],
+  "evidenceDestination": ".helix/evidence",
+  "executionEvidence": ".helix/evidence/execution.json",
+  "copySafety": {
+    "publicPatternSources": [
+      "https://github.com/jaimedhenriques/seo-calculator-factory/tree/365ae019d134f59547d50f6b21dd23cf28c36f24"
+    ],
+    "proprietaryAssetsExcluded": true
+  },
+  "limits": {
+    "maxMinutes": 45,
+    "maxAgents": 3,
+    "maxAttempts": 2
+  },
+  "github": {
+    "repo": "jaimedhenriques/open-seo",
+    "remote": "origin",
+    "branch": "codex/seo-roi-calculator",
+    "baseBranch": "main",
+    "commit": "HEAD"
+  },
+  "vercel": {
+    "mode": "required",
+    "teamId": "team_pe74HMcqhmeKmVMl8AGbuX2F",
+    "projectId": "prj_uYtsyfK8xtxomiEVoUOWfPI7thYQ",
+    "deploymentId": "dpl_2ScMPVc6ufRfGhsRzYmFpQtVBirG",
+    "deploymentUrl": "https://open-seo-searchcrew-preview-6li6flylb-jaime-henriques-projects.vercel.app",
+    "deploymentCommit": "HEAD",
+    "evidence": "controller://vercel/open-seo-seo-roi-calculator"
+  },
+  "verification": {
+    "checks": [
+      {
+        "name": "docker-build",
+        "evidence": ".helix/evidence/checks.json"
+      }
+    ],
+    "checker": "codex-native-quality-checker",
+    "checkerEvidence": "controller://checker/open-seo-seo-roi-calculator"
+  }
+}

@@ -20,6 +20,7 @@ dist-sourcemaps/
 !.env.production.example
 !.env.selfhost.example
 .vercel
+.helix/evidence/
 .output
 .nitro
 /build/
