@@ -176,12 +176,26 @@ export function formatSeoRoiDisplayCurrency(
     return formatSeoRoiCurrency(value, currency);
   }
 
-  return new Intl.NumberFormat("en", {
+  const parts = new Intl.NumberFormat("en", {
     style: "currency",
     currency,
     notation: "compact",
+    minimumFractionDigits: 0,
     maximumFractionDigits: 1,
-  }).format(value);
+  }).formatToParts(value);
+  const fraction = parts.find((part) => part.type === "fraction")?.value;
+
+  return parts
+    .filter(
+      (part) =>
+        !(
+          fraction &&
+          /^0+$/.test(fraction) &&
+          (part.type === "decimal" || part.type === "fraction")
+        ),
+    )
+    .map((part) => part.value)
+    .join("");
 }
 
 export function formatSeoRoiNumber(value: number): string {
