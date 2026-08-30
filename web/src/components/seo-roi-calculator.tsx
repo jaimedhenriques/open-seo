@@ -57,6 +57,7 @@ export function SeoRoiCalculator() {
   const [inputs, setInputs] = useState<SeoRoiInputs>(DEFAULT_SEO_ROI_INPUTS);
   const [currency, setCurrency] = useState<SeoRoiCurrency>("USD");
   const [copyState, setCopyState] = useState<CopyState>("idle");
+  const [resetRevision, setResetRevision] = useState(0);
   const result = useMemo(() => calculateSeoRoi(inputs), [inputs]);
   const annualInvestment =
     inputs.monthlySeoSpend * 12 + inputs.oneTimeSetupCost;
@@ -72,6 +73,7 @@ export function SeoRoiCalculator() {
     setInputs(DEFAULT_SEO_ROI_INPUTS);
     setCurrency("USD");
     setCopyState("idle");
+    setResetRevision((current) => current + 1);
   };
 
   const copySummary = async () => {
@@ -177,7 +179,7 @@ export function SeoRoiCalculator() {
                 {SEO_ROI_FIELDS.filter((field) => field.group === group.id).map(
                   (field) => (
                     <AssumptionField
-                      key={field.id}
+                      key={`${field.id}-${resetRevision}`}
                       field={field}
                       value={inputs[field.id]}
                       currency={currency}
@@ -198,6 +200,8 @@ export function SeoRoiCalculator() {
           <div className="bg-[var(--color-brand-accent)] px-5 py-6 text-neutral-950 sm:px-6">
             <p className="text-sm font-medium">Estimated year-one net impact</p>
             <output
+              aria-live="polite"
+              aria-atomic="true"
               aria-label={`Estimated year-one net impact: ${formatSeoRoiCurrency(result.yearOneNetImpact, currency)}`}
               title={formatSeoRoiCurrency(result.yearOneNetImpact, currency)}
               className="mt-2 block break-words text-4xl font-semibold tracking-[-0.035em] tabular-nums sm:text-5xl"
