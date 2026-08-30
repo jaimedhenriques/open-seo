@@ -22,7 +22,10 @@ export const mdxComponents = {
 };
 
 function StableDocsAnchor({ href, ...props }: ComponentProps<"a">) {
-  return <a href={href} {...props} />;
+  if (href?.startsWith("#")) return <a href={href} {...props} />;
+
+  const DefaultDocsAnchor = defaultMdxComponents.a;
+  return <DefaultDocsAnchor href={href} {...props} />;
 }
 
 export function ContentPost({
