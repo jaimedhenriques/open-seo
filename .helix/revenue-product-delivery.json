@@ -1,24 +1,24 @@
 {
   "schemaVersion": 2,
-  "project": "OpenSEO market-ready buyer path",
-  "company": "OpenSEO",
+  "project": "SearchCrew market-ready buyer path",
+  "company": "SearchCrew",
   "artifactType": "web-product",
   "icp": "Founders, marketers, agencies, and SEO consultants who need an affordable SEO workspace and proof that organic-search investment can pay back",
-  "pain": "The public buyer path is split between OpenSEO and SearchCrew domains, the canonical calculator route is missing, and calculator calls to action point at a hostname with no DNS",
-  "revenueHypothesis": "One coherent OpenSEO path from marketing page to ROI calculator to working signup will reduce trust loss and turn calculator intent into trial accounts",
+  "pain": "SearchCrew has a credible marketing site and ROI calculator, but every primary conversion action points to app.searchcrew.ai, which has no DNS and prevents visitors from creating accounts",
+  "revenueHypothesis": "One coherent SearchCrew path from marketing page to ROI calculator to a working hosted signup will reduce trust loss and turn calculator intent into trial accounts",
   "mvpAcceptance": [
-    "The canonical https://openseo.so/seo-roi-calculator route serves the calculator and the legacy SearchCrew URL has a safe redirect or remains a functional compatibility route",
-    "All marketing and calculator primary calls to action use https://app.openseo.so and the landing, calculator, navigation, and footer identify the product as OpenSEO",
+    "The canonical https://searchcrew.ai/seo-roi-calculator route continues to serve the calculator and all public pages consistently identify the product as SearchCrew",
+    "All marketing and calculator primary calls to action use a working https://app.searchcrew.ai hosted signup path with production-safe authentication",
     "The homepage first viewport has a clear product promise, working primary action, tighter vertical composition, and visible product proof without excessive empty space",
     "The calculator keeps its verified formulas while improving mobile hierarchy, control grouping, trust copy, and the transition from estimate to signup",
     "The buyer path has no broken links, no console errors, no horizontal overflow at 320px, WCAG-AA text contrast, 44px touch targets, and reduced-motion-safe states",
-    "Focused tests, full CI, production build, exact-commit Vercel preview, and live canonical-domain smoke checks pass"
+    "Focused tests, full CI, production build, exact-commit Vercel preview evidence, and live SearchCrew production-domain smoke checks pass"
   ],
-  "maker": "codex-open-seo-maker",
+  "maker": "codex-searchcrew-maker",
   "codingTool": "codex",
-  "rollback": "Revert the market-ready commits, redeploy the last known-good main commit to the marketing worker, and preserve the existing OpenSEO application and DNS records.",
+  "rollback": "Revert the market-ready commits, redeploy the last known-good main commit to the SearchCrew marketing worker, and restore the previous SearchCrew application and DNS configuration.",
   "stopConditions": [
-    "Stop on secret exposure, an unidentifiable Cloudflare or Railway production target, signup regression, paid-plan requirements, more than three deployment attempts, or any regression in repository CI."
+    "Stop on secret exposure, an unidentifiable Cloudflare or Railway production target, unsafe public local_noauth configuration, signup regression, paid-plan requirements, more than three deployment attempts, or any regression in repository CI."
   ],
   "evidenceDestination": ".helix/evidence",
   "executionEvidence": ".helix/evidence/execution.json",
@@ -51,7 +51,7 @@
     "deploymentId": "dpl_2ScMPVc6ufRfGhsRzYmFpQtVBirG",
     "deploymentUrl": "https://open-seo-searchcrew-preview-6li6flylb-jaime-henriques-projects.vercel.app",
     "deploymentCommit": "HEAD",
-    "evidence": "controller://vercel/openseo-market-ready"
+    "evidence": "controller://vercel/searchcrew-market-ready-preview"
   },
   "verification": {
     "checks": [
@@ -61,6 +61,6 @@
       }
     ],
     "checker": "independent-market-readiness-checker",
-    "checkerEvidence": "controller://checker/openseo-market-ready"
+    "checkerEvidence": "controller://checker/searchcrew-market-ready"
   }
 }
