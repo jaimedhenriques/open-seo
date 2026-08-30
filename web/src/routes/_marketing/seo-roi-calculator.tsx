@@ -79,14 +79,15 @@ function SeoRoiCalculatorPage() {
     <article className="mx-auto max-w-5xl">
       <header className="grid gap-8 md:grid-cols-[minmax(0,1fr)_17rem] md:items-end">
         <div>
-          <p className="text-sm font-medium text-[var(--color-brand-accent)]">
+          <p className="text-sm font-medium text-[var(--color-brand-accent-ink)]">
             Free calculator
           </p>
           <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.035em] text-neutral-950 sm:text-5xl md:text-6xl">
             SEO ROI Calculator
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-[var(--color-brand-muted)]">
-            Turn an organic traffic forecast into leads, customers, gross profit and a clear year-one return estimate.
+            Turn an organic traffic forecast into leads, customers, gross profit
+            and a clear year-one return estimate.
           </p>
         </div>
         <p className="border-t border-[var(--color-border-subtle)] pt-4 text-sm leading-6 text-neutral-700 md:border-t-0 md:border-l md:pl-6 md:pt-0">
@@ -102,11 +103,13 @@ function SeoRoiCalculatorPage() {
             A forecast you can challenge
           </h2>
           <p className="mt-4 max-w-xl text-base leading-7 text-[var(--color-brand-muted)]">
-            Every output traces back to an assumption you can replace. Start conservatively, save the estimate, then update the inputs when Search Console and conversion data show what the work is producing.
+            Every output traces back to an assumption you can replace. Start
+            conservatively, save the estimate, then update the inputs when
+            Search Console and conversion data show what the work is producing.
           </p>
           <a
             href="/library/keyword-research/opportunity-sizing-forecasting"
-            className="mt-5 inline-flex text-sm font-semibold text-neutral-950 underline decoration-[var(--color-brand-accent)] decoration-2 underline-offset-4"
+            className="mt-5 inline-flex min-h-11 touch-manipulation items-center text-sm font-semibold text-neutral-950 underline decoration-[var(--color-brand-accent)] decoration-2 underline-offset-4 transition-[color,transform] duration-150 hover:text-[var(--color-brand-accent-ink)] active:translate-x-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
           >
             Read the SEO forecasting guide
             <span aria-hidden="true" className="ml-1.5">
@@ -119,10 +122,14 @@ function SeoRoiCalculatorPage() {
             Use observed numbers where you have them
           </h3>
           <ul className="mt-4 divide-y divide-[var(--color-border-subtle)] border-y border-[var(--color-border-subtle)] text-sm leading-6 text-neutral-700">
-            <li className="py-3">Search Console or analytics for organic visits</li>
+            <li className="py-3">
+              Search Console or analytics for organic visits
+            </li>
             <li className="py-3">CRM data for lead and close rates</li>
             <li className="py-3">Finance data for gross profit per customer</li>
-            <li className="py-3">The full production and operating cost of SEO</li>
+            <li className="py-3">
+              The full production and operating cost of SEO
+            </li>
           </ul>
         </div>
       </section>
@@ -136,13 +143,13 @@ function SeoRoiCalculatorPage() {
         </h2>
         <div className="mt-6 divide-y divide-[var(--color-border-subtle)] border-y border-[var(--color-border-subtle)]">
           {FAQS.map((faq) => (
-            <details key={faq.question} className="group py-5">
-              <summary className="cursor-pointer list-none pr-8 text-base font-semibold text-neutral-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-4 [&::-webkit-details-marker]:hidden">
-                <span className="flex items-start justify-between gap-4">
+            <details key={faq.question} className="group py-4">
+              <summary className="flex min-h-11 cursor-pointer list-none items-center text-base font-semibold text-neutral-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-4 [&::-webkit-details-marker]:hidden">
+                <span className="flex w-full items-start justify-between gap-4">
                   {faq.question}
                   <span
                     aria-hidden="true"
-                    className="text-xl font-normal text-[var(--color-brand-accent)] transition-transform group-open:rotate-45"
+                    className="seo-roi-disclosure-icon text-xl font-normal text-[var(--color-brand-accent-ink)] group-open:rotate-45"
                   >
                     +
                   </span>
@@ -156,24 +163,33 @@ function SeoRoiCalculatorPage() {
         </div>
       </section>
 
-      <section className="mt-16 rounded-xl bg-neutral-950 px-6 py-8 text-white md:flex md:items-end md:justify-between md:gap-10 md:px-8 md:py-10">
+      <section className="mt-16 rounded-2xl bg-neutral-950 px-6 py-8 text-white md:flex md:items-end md:justify-between md:gap-10 md:px-8 md:py-10">
         <div>
           <h2 className="text-3xl font-semibold tracking-tight">
             Research the opportunities behind the forecast
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-300">
-            SearchCrew puts keyword volume, difficulty, competitors, rankings and site health in one open-source workspace.
+            SearchCrew puts keyword volume, difficulty, competitors, rankings
+            and site health in one open-source workspace.
           </p>
         </div>
-        <a
-          href="https://app.searchcrew.ai/sign-up"
-          className="mt-6 inline-flex min-h-11 shrink-0 items-center justify-center rounded-lg bg-[var(--color-brand-accent)] px-5 text-sm font-semibold text-neutral-950 transition-colors hover:bg-[#ff7133] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 md:mt-0"
-        >
-          Try SearchCrew free
-          <span aria-hidden="true" className="ml-2">
-            &rarr;
-          </span>
-        </a>
+        <div className="mt-6 flex shrink-0 flex-col items-stretch gap-2 sm:flex-row md:mt-0 md:flex-col md:items-end">
+          <a
+            href="https://app.searchcrew.ai/sign-up"
+            className="inline-flex min-h-11 touch-manipulation items-center justify-center rounded-xl bg-[var(--color-brand-accent)] px-5 text-sm font-semibold text-neutral-950 transition-[background-color,transform] duration-150 hover:bg-[#ff7133] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 motion-reduce:transform-none motion-reduce:transition-none"
+          >
+            Try SearchCrew free
+            <span aria-hidden="true" className="ml-2">
+              &rarr;
+            </span>
+          </a>
+          <a
+            href="https://github.com/jaimedhenriques/open-seo"
+            className="inline-flex min-h-11 touch-manipulation items-center justify-center rounded-xl px-4 text-sm font-semibold text-neutral-200 underline decoration-neutral-600 underline-offset-4 transition-[color,transform] duration-150 hover:text-white active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 motion-reduce:transform-none motion-reduce:transition-none"
+          >
+            View the open-source project
+          </a>
+        </div>
       </section>
 
       <script
