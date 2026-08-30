@@ -12,7 +12,7 @@ const faqs = [
   {
     question: "How do I do keyword research for free?",
     answer:
-      "Conversations for seeds (this page), Google autocomplete + People Also Ask for expansion, Search Console for validation. SearchCrew validates and expands what those surface; you can start for free, and paid plans start at $10/month.",
+      "Conversations for seeds (this page), Google autocomplete + People Also Ask for expansion, Search Console for validation. SearchCrew's hosted beta is designed to validate and expand what those sources surface. Billing remains paused until the beta is production-ready.",
   },
   {
     question: "How do I find LSI keywords?",

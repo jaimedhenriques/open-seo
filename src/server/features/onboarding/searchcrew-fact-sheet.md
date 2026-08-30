@@ -6,7 +6,7 @@ This is the factual product reference for Sam, the SearchCrew onboarding agent. 
 
 SearchCrew is an open-source SEO platform for keyword research, domain research, backlinks, rank tracking, site audits, Google Search Console, and AI-agent SEO workflows.
 
-SearchCrew is built for people who want useful SEO data without a bloated enterprise SEO suite. It can be used as a hosted app or self-hosted from the open-source codebase.
+SearchCrew is built for people who want useful SEO data without a bloated enterprise SEO suite. It can be self-hosted from the open-source codebase. The hosted app is not open to public accounts yet.
 
 SearchCrew is AI-native. It is designed to work with AI agents through MCP so users can ask an agent to run SEO research, inspect data, save findings, and continue work in the SearchCrew app.
 
@@ -24,21 +24,19 @@ When explaining traffic growth, Sam should frame SearchCrew as a tool for making
 
 ## Hosted plan and credits
 
-Hosted SearchCrew is free to try. Signing up requires no credit card, and new accounts include $0.50 of trial credits to test credit-using features before subscribing.
+Public hosted signup and billing are paused while production auth, support, legal, and payment checks are completed. The proposed catalog is Free ($2 monthly usage, one project), Solo ($29/month), Pro ($79/month), and Agency ($199/month).
 
-The paid managed plan costs $10/month.
-
-The paid plan includes:
+The proposed hosted plans include:
 
 - Keyword research, backlinks, rank tracking, and site audits.
 - MCP server and agent skills for Claude, Cursor, ChatGPT-compatible clients, Codex, and other MCP clients.
 - Google Search Console integration that does not use credits.
-- $10.00 of usage credits each billing cycle.
-- A 30-day money-back guarantee for the first charge.
+- The Solo plan includes $20.00 of usage credits each billing cycle.
+- Final cancellation and refund terms will be published before public billing opens.
 
 SearchCrew uses usage credits for features that query paid SEO data providers, especially DataForSEO. Credit-using workflows include keyword volume, competitor data, backlinks, rank tracking, and site audits. Projects, settings, and data that has already been fetched do not cost credits to view.
 
-Subscribers can purchase top-up credits if monthly credits run out. Top-up credits roll over and do not expire. Monthly included credits reset each billing cycle. Top-ups are only available on the paid plan; a free-tier user who runs out of trial credits subscribes to the paid plan to continue using credit-based features.
+When billing opens, paid subscribers are intended to be able to purchase top-up credits. Proposed top-up credits roll over; included monthly credits reset each billing cycle.
 
 Running out of credits never creates unexpected bills. Credit-using features stop working until the user has credits again.
 
@@ -47,11 +45,11 @@ Running out of credits never creates unexpected bills. Credit-using features sto
 SearchCrew is a strong fit for SEO consultants, freelancers, and agencies managing SEO for clients. What you get:
 
 - You only pay for what you use. Billing runs on usage credits, so you are not forced into an expensive enterprise tier or charged per seat just to unlock basic work — no arbitrary upsells or features locked behind a paywall. This keeps costs predictable when you are running lean.
-- You can run a project for every client. Set up as many projects as you need; you will not hit a per-project plan limit the way many SEO tools cap projects per tier.
+- Project limits follow the current plan catalog: Free has 1 project, Solo has 3, and Pro and Agency are unlimited. Sam must read `src/shared/billing.ts` before quoting current limits.
 - You tune rank tracking to fit your budget. Rank tracking is the cost that scales fastest as an agency grows, since it runs on a schedule across every client's keywords — but SearchCrew makes it fully configurable so you stay in control. You choose how many keywords and devices to track, how many SERP pages deep to check, and how often it runs (weekly or daily), and SearchCrew shows a live cost estimate before each tracker runs. Scheduled checks run through DataForSEO's task queue, which is much cheaper than live lookups, so it stays inexpensive: as a rough guide, tracking 100 keywords on one device type, five pages deep, on the default weekly schedule costs only about $1-2/month. Searching deeper, adding the second device type, or switching to daily checks raises the cost proportionally, and the in-app estimate always shows the current number before you commit.
 - Your toolkit grows with the industry. SearchCrew works through MCP and AI agents, so as search shifts toward AI answers and AI-assisted workflows, you can have an agent run research, pull competitor data, and save findings into the right client project — without re-tooling.
 
-When answering this, Sam should speak directly to the user ("you" / "your clients") about what they get, not describe how SearchCrew is "positioned." Lead with these benefits in plain language and tie them to running an SEO practice. Sam should not invent specific competitor prices or exact rank-tracking rates; if asked for exact numbers it does not have, it should say so and suggest contacting `support@searchcrew.ai`.
+When answering this, Sam should speak directly to the user ("you" / "your clients") about what they get, not describe how SearchCrew is "positioned." Lead with these benefits in plain language and tie them to running an SEO practice. Sam should not invent specific competitor prices or exact rank-tracking rates; if asked for exact numbers it does not have, it should say so and direct the user to `https://searchcrew.ai/support`.
 
 ## Self-hosting
 
@@ -59,7 +57,7 @@ SearchCrew is open source and can be self-hosted for free.
 
 Self-hosted users bring their own provider API keys and pay providers such as DataForSEO directly. Self-hosting is appropriate for users who want more control, privacy, customization, or provider-level billing.
 
-The open-source repository is at `https://github.com/jaimedhenriques/searchcrew`.
+The open-source repository is at `https://github.com/jaimedhenriques/open-seo`.
 
 ## Data sources
 
@@ -69,7 +67,7 @@ Google Search Console data comes from the user's connected Search Console proper
 
 ## Google Search Console
 
-Hosted SearchCrew can connect to Google Search Console without requiring the user to create a Google Cloud project or OAuth client.
+The hosted beta is designed to connect to Google Search Console without requiring the user to create a Google Cloud project or OAuth client. This flow is not public until production authorization checks pass.
 
 Search Console access is read-only. SearchCrew requests read-only access and cannot change the user's Search Console account.
 
@@ -93,17 +91,17 @@ When a user asks to compare SearchCrew and Claude, or why they would use SearchC
 
 ## MCP and AI agents
 
-SearchCrew exposes an MCP server so compatible AI clients can call SearchCrew tools.
+SearchCrew includes MCP server code so compatible AI clients can call SearchCrew tools. The hosted MCP endpoint, login, and authorization flow are paused until production verification passes.
 
-Hosted MCP endpoint:
+Planned hosted MCP endpoint:
 
 ```txt
 https://app.searchcrew.ai/mcp
 ```
 
-The first MCP connection sends the user through SearchCrew login and authorization. After authorization, the MCP client can call SearchCrew tools with the project context and account scopes the user approved.
+Do not tell users to connect to this endpoint yet. When launch status confirms it is live, the first connection is intended to send the user through SearchCrew login and authorization.
 
-SearchCrew MCP works with MCP clients including Claude Code, Claude Desktop, Cursor, Codex CLI, Codex Desktop, and other clients that support remote MCP servers.
+The planned hosted MCP flow targets Claude Code, Claude Desktop, Cursor, Codex CLI, Codex Desktop, and other clients that support remote MCP servers.
 
 SearchCrew MCP tools cover workflows such as:
 
@@ -146,6 +144,4 @@ After subscribing, a hosted user can:
 
 ## Support and uncertainty
 
-If Sam is unsure about a product detail, current pricing, account-specific billing status, provider limits, or a feature not listed here, it should say it does not know from the product fact sheet and suggest contacting `support@searchcrew.ai`.
-
-Users who want advice from other SearchCrew users, the community, or the team can join the SearchCrew Discord at `https://discord.gg/c9uGs3cFXr`.
+If Sam is unsure about a product detail, current pricing, account-specific billing status, provider limits, or a feature not listed here, it should say it does not know from the product fact sheet and direct the user to `https://searchcrew.ai/support` for the current support status.

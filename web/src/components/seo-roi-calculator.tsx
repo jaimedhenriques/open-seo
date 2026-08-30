@@ -261,17 +261,28 @@ export function SeoRoiCalculator() {
           </dl>
 
           <div className="border-t border-neutral-800 p-5 sm:p-6">
-            <button
-              type="button"
-              onClick={() => void copySummary()}
-              className="flex min-h-11 w-full touch-manipulation items-center justify-center rounded-xl bg-white px-4 text-sm font-semibold text-neutral-950 transition-[background-color,transform] duration-150 hover:bg-neutral-200 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 motion-reduce:transform-none motion-reduce:transition-none"
-            >
-              {copyState === "copied"
-                ? "Estimate copied"
-                : copyState === "error"
-                  ? "Copy failed — try again"
-                  : "Copy estimate"}
-            </button>
+            <div className="grid gap-2">
+              <a
+                href="/get-started"
+                className="flex min-h-11 w-full touch-manipulation items-center justify-center rounded-xl bg-[var(--color-brand-accent)] px-4 text-center text-sm font-semibold text-neutral-950 transition-[background-color,transform] duration-150 hover:bg-[#ff7133] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 motion-reduce:transform-none motion-reduce:transition-none"
+              >
+                View SearchCrew launch status
+                <span aria-hidden="true" className="ml-1.5">
+                  &rarr;
+                </span>
+              </a>
+              <button
+                type="button"
+                onClick={() => void copySummary()}
+                className="flex min-h-11 w-full touch-manipulation items-center justify-center rounded-xl bg-white px-4 text-sm font-semibold text-neutral-950 transition-[background-color,transform] duration-150 hover:bg-neutral-200 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 motion-reduce:transform-none motion-reduce:transition-none"
+              >
+                {copyState === "copied"
+                  ? "Estimate copied"
+                  : copyState === "error"
+                    ? "Copy failed — try again"
+                    : "Copy estimate"}
+              </button>
+            </div>
             <p role="status" aria-live="polite" className="sr-only">
               {copyState === "copied"
                 ? "Estimate copied to clipboard."

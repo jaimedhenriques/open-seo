@@ -8,7 +8,7 @@ import {
 import { ArrowUp, Check, Globe, Loader2, Sparkles } from "lucide-react";
 import { FREE_ONBOARDING_QUESTION_LIMIT } from "@/shared/onboardingChat";
 
-const DISCORD_URL = "https://discord.gg/c9uGs3cFXr";
+const SUPPORT_URL = "https://searchcrew.ai/support";
 
 export function SuggestedQuestions({
   questions,
@@ -71,23 +71,16 @@ export function WelcomeMessage({
             plan. But, I’m here if you have any questions.
           </p>
           <p>
-            You can also{" "}
+            You can check the{" "}
             <a
-              href={DISCORD_URL}
+              href={SUPPORT_URL}
               target="_blank"
               rel="noreferrer"
               className="link link-primary"
             >
-              join the Discord
+              SearchCrew support status
             </a>{" "}
-            or email{" "}
-            <a
-              href="mailto:support@searchcrew.ai"
-              className="link link-primary"
-            >
-              support@searchcrew.ai
-            </a>{" "}
-            if you have any questions I can’t help you with.
+            if you have a question I can’t help you with.
           </p>
           <p>
             Want me to analyze{" "}
@@ -161,12 +154,12 @@ export function UpgradeSidebar({
       <div className="flex flex-1 flex-col gap-5 px-6 py-6">
         <div>
           <div className="flex items-baseline gap-1.5">
-            <span className="text-3xl font-semibold tracking-tight">$10</span>
+            <span className="text-3xl font-semibold tracking-tight">$29</span>
             <span className="text-sm text-base-content/55">/month</span>
           </div>
           <p className="mt-1.5 text-xs leading-relaxed text-base-content/55">
-            Includes $10 of usage credits every month, plus a 30-day money-back
-            guarantee.
+            Includes $20 of usage credits every month. Final refund terms will
+            be published before public billing opens.
           </p>
         </div>
 
@@ -192,14 +185,14 @@ export function UpgradeSidebar({
             {isStartingCheckout ? "Redirecting..." : "Upgrade to continue"}
           </button>
           <p className="text-center text-xs leading-relaxed text-base-content/55">
-            Want advice from other SearchCrew users?{" "}
+            Need help outside this chat? Check the{" "}
             <a
-              href={DISCORD_URL}
+              href={SUPPORT_URL}
               target="_blank"
               rel="noreferrer"
               className="link link-primary"
             >
-              Join the Discord
+              support status
             </a>
             .
           </p>
@@ -247,7 +240,7 @@ export function ChatGate({
           {isStartingCheckout ? "Redirecting..." : "Upgrade to continue"}
         </button>
         <p className="mt-2 text-xs text-base-content/45">
-          30-day money-back guarantee
+          Public billing is still in launch review.
         </p>
       </div>
     </div>

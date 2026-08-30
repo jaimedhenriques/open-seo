@@ -12,7 +12,7 @@ Connect with any agent like Claude Code, OpenClaw or Hermes. We have pre-built s
 
 ## Hosted Version
 
-Try SearchCrew for free on our website. If you want to support the project, a hosted subscription is $10/month.
+Hosted signup and billing are paused while the production app, support, and legal details are verified. The public SEO ROI calculator remains available without an account.
 
 [searchcrew.ai](https://searchcrew.ai)
 
@@ -21,8 +21,8 @@ Try SearchCrew for free on our website. If you want to support the project, a ho
 - Best in class MCP and AI Skills.
 - Modern, simple UI.
   - Focused workflows instead of a bloated, complex SEO suite.
-- No subscriptions.
-  - Bring your own DataForSEO API key and pay only for what you use.
+- Self-host without a SearchCrew subscription.
+  - Bring your own DataForSEO API key and pay the provider directly.
 - Fork and vibe code your own custom tool.
 
 ## Main SEO Workflows
@@ -73,14 +73,9 @@ Read more here: [`docs/CONTRIBUTING.md`](./docs/CONTRIBUTING.md)
 We have this skill: `/simple-issue-description` which helps.
 
 ```sh
-npx skills add jaimedhenriques/searchcrew --skill simple-issue-description
+npx skills add jaimedhenriques/open-seo --skill simple-issue-description
 ```
 
 ## Community
 
-Join Discord to chat: [Discord](https://discord.gg/c9uGs3cFXr)
-
-Follow along for updates:
-
-- Follow on X: https://x.com/bensenescu
-- Sign up for the mailing list on our website: [searchcrew.ai](https://searchcrew.ai)
+See current support and launch status at [searchcrew.ai/support](https://searchcrew.ai/support).

@@ -12,9 +12,16 @@ import {
   TurnstileWidget,
   useTurnstileCaptcha,
 } from "@/client/features/auth/TurnstileWidget";
+import {
+  SignUpConfirmPasswordField,
+  SignUpEmailField,
+  SignUpNameField,
+  SignUpPasswordField,
+} from "@/client/features/auth/SignUpFields";
 import { getFieldError, getFormError } from "@/client/lib/forms";
 import { captureClientEvent } from "@/client/lib/posthog";
 import { authClient } from "@/lib/auth-client";
+import { isPublicSignupClientEnabled } from "@/lib/auth-mode";
 import { getSignInSearch, getVerifyEmailSearch } from "@/lib/auth-redirect";
 import {
   HOSTED_PASSWORD_MAX_LENGTH,
@@ -54,6 +61,7 @@ function SignUpPage() {
   const { redirectTo, isHostedMode } = useAuthPageState(search.redirect);
   const postSignupRedirect = redirectTo === "/" ? "/onboarding" : redirectTo;
   const [showEmailForm, setShowEmailForm] = useState(false);
+  const [showPasswords, setShowPasswords] = useState(false);
   const google = useGoogleSignUp({ redirectTo, postSignupRedirect });
 
   // Turnstile is active only in hosted mode with a configured site key.
@@ -148,15 +156,32 @@ function SignUpPage() {
     },
   });
 
+  if (isHostedMode && !isPublicSignupClientEnabled()) {
+    return (
+      <AuthPageCard
+        title="Hosted signup is paused"
+        helperText="Public accounts will open after production authentication, support, legal, and billing checks pass."
+      >
+        <a
+          href="https://searchcrew.ai/get-started"
+          className="btn min-h-11 w-full"
+        >
+          View launch status
+        </a>
+      </AuthPageCard>
+    );
+  }
+
   return (
     <AuthPageCard
       title="Create your account"
+      helperText="Start on Free with no credit card."
       footer={
         isHostedMode ? (
           showEmailForm ? (
             <button
               type="button"
-              className="text-sm text-base-content underline underline-offset-2 hover:text-base-content/80 transition-colors"
+              className="inline-flex min-h-11 items-center text-sm text-base-content underline underline-offset-2 hover:text-base-content/80 transition-colors"
               onClick={() => {
                 setShowEmailForm(false);
                 google.clearError();
@@ -230,102 +255,52 @@ function SignUpPage() {
           }}
         >
           <form.Field name="name">
-            {(field) => {
-              const error = getFieldError(field.state.meta.errors);
-
-              return (
-                <div>
-                  <input
-                    type="text"
-                    className="input input-bordered w-full"
-                    placeholder="Name (optional)..."
-                    value={field.state.value}
-                    onChange={(event) => field.handleChange(event.target.value)}
-                    autoComplete="name"
-                    disabled={!isHostedMode}
-                  />
-                  {error ? (
-                    <p className="mt-1 text-sm text-error">{error}</p>
-                  ) : null}
-                </div>
-              );
-            }}
+            {(field) => (
+              <SignUpNameField
+                value={field.state.value}
+                error={getFieldError(field.state.meta.errors)}
+                disabled={!isHostedMode}
+                onChange={field.handleChange}
+              />
+            )}
           </form.Field>
 
           <form.Field name="email">
-            {(field) => {
-              const error = getFieldError(field.state.meta.errors);
-
-              return (
-                <div>
-                  <input
-                    type="email"
-                    className="input input-bordered w-full"
-                    placeholder="Email address..."
-                    value={field.state.value}
-                    onChange={(event) => field.handleChange(event.target.value)}
-                    autoComplete="email"
-                    disabled={!isHostedMode}
-                    required
-                  />
-                  {error ? (
-                    <p className="mt-1 text-sm text-error">{error}</p>
-                  ) : null}
-                </div>
-              );
-            }}
+            {(field) => (
+              <SignUpEmailField
+                value={field.state.value}
+                error={getFieldError(field.state.meta.errors)}
+                disabled={!isHostedMode}
+                onChange={field.handleChange}
+              />
+            )}
           </form.Field>
 
           <form.Field name="password">
-            {(field) => {
-              const error = getFieldError(field.state.meta.errors);
-
-              return (
-                <div>
-                  <input
-                    type="password"
-                    className="input input-bordered w-full"
-                    placeholder="Password..."
-                    value={field.state.value}
-                    onChange={(event) => field.handleChange(event.target.value)}
-                    autoComplete="new-password"
-                    disabled={!isHostedMode}
-                    required
-                    minLength={HOSTED_PASSWORD_MIN_LENGTH}
-                    maxLength={HOSTED_PASSWORD_MAX_LENGTH}
-                  />
-                  {error ? (
-                    <p className="mt-1 text-sm text-error">{error}</p>
-                  ) : null}
-                </div>
-              );
-            }}
+            {(field) => (
+              <SignUpPasswordField
+                value={field.state.value}
+                error={getFieldError(field.state.meta.errors)}
+                disabled={!isHostedMode}
+                onChange={field.handleChange}
+                showPasswords={showPasswords}
+                onTogglePasswords={() =>
+                  setShowPasswords((current) => !current)
+                }
+              />
+            )}
           </form.Field>
 
           <form.Field name="confirmPassword">
-            {(field) => {
-              const error = getFieldError(field.state.meta.errors);
-
-              return (
-                <div>
-                  <input
-                    type="password"
-                    className="input input-bordered w-full"
-                    placeholder="Confirm password..."
-                    value={field.state.value}
-                    onChange={(event) => field.handleChange(event.target.value)}
-                    autoComplete="new-password"
-                    disabled={!isHostedMode}
-                    required
-                    minLength={HOSTED_PASSWORD_MIN_LENGTH}
-                    maxLength={HOSTED_PASSWORD_MAX_LENGTH}
-                  />
-                  {error ? (
-                    <p className="mt-1 text-sm text-error">{error}</p>
-                  ) : null}
-                </div>
-              );
-            }}
+            {(field) => (
+              <SignUpConfirmPasswordField
+                value={field.state.value}
+                error={getFieldError(field.state.meta.errors)}
+                disabled={!isHostedMode}
+                onChange={field.handleChange}
+                showPasswords={showPasswords}
+              />
+            )}
           </form.Field>
 
           {isTurnstileEnabled ? (
@@ -349,7 +324,7 @@ function SignUpPage() {
                     <p className="text-sm text-error">{errorMessage}</p>
                   ) : null}
                   <button
-                    className="btn btn-soft w-full"
+                    className="btn btn-soft min-h-11 w-full"
                     disabled={
                       !isHostedMode ||
                       isSubmitting ||

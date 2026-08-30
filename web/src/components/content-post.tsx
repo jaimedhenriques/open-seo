@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { DocsBody } from "fumadocs-ui/page";
 import defaultMdxComponents from "fumadocs-ui/mdx";
-import { Suspense } from "react";
+import { Suspense, type ComponentProps } from "react";
 import { RunSkillCallout } from "@/components/run-skill-callout";
 
 type ContentPostProps = {
@@ -14,8 +14,19 @@ type ContentPostProps = {
 
 export const mdxComponents = {
   ...defaultMdxComponents,
+  // Fumadocs' router-aware anchor resolves same-page hashes differently while
+  // prerendering and hydrating. A native anchor keeps the SSR and client href
+  // identical, avoiding hydration warnings on links such as #api-keys.
+  a: StableDocsAnchor,
   RunSkillCallout,
 };
+
+function StableDocsAnchor({ href, ...props }: ComponentProps<"a">) {
+  if (href?.startsWith("#")) return <a href={href} {...props} />;
+
+  const DefaultDocsAnchor = defaultMdxComponents.a;
+  return <DefaultDocsAnchor href={href} {...props} />;
+}
 
 export function ContentPost({
   backLabel,

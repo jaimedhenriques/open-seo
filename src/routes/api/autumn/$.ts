@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type { autumnHandler } from "autumn-js/fetch";
 import { env } from "cloudflare:workers";
-import { isHostedAuthMode } from "@/lib/auth-mode";
+import { isHostedAuthMode, isPublicBillingEnabled } from "@/lib/auth-mode";
 import { resolveHostedContext } from "@/middleware/ensure-user/hosted";
 
 let handlerPromise: Promise<ReturnType<typeof autumnHandler>> | undefined;
@@ -28,6 +28,13 @@ async function handleAutumnRequest(request: Request) {
     return new Response("Not found", {
       status: 404,
     });
+  }
+
+  if (!isPublicBillingEnabled(env.PUBLIC_BILLING_ENABLED)) {
+    return Response.json(
+      { message: "Public billing is not open yet." },
+      { status: 503 },
+    );
   }
 
   return (await loadHandler())(request);

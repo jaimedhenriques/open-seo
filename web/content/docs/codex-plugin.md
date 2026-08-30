@@ -1,23 +1,22 @@
 ---
-title: "Install the SearchCrew plugin for Codex"
-description: "Add SearchCrew MCP and Agent Skills to Codex with one marketplace and one install command."
+title: "Install SearchCrew skills for Codex"
+description: "Add nine SearchCrew Agent Skills to Codex from the SearchCrew marketplace."
 ---
 
-The SearchCrew plugin bundles SearchCrew MCP and all nine SEO Agent Skills into one install. This is the preferred way to set up SearchCrew in Codex CLI.
+> **Current package:** The plugin installs nine SEO Agent Skills. It does not register the paused hosted MCP endpoint. Check [launch status](/get-started) before trying the separate MCP setup.
+
+The SearchCrew plugin installs all nine SEO workflow skills in one step.
 
 ## Install
 
 Run these commands in your terminal:
 
 ```bash
-codex plugin marketplace add jaimedhenriques/searchcrew
+codex plugin marketplace add jaimedhenriques/open-seo
 codex plugin add searchcrew@searchcrew
-codex mcp login searchcrew
 ```
 
-`codex mcp login` opens a browser to approve the SearchCrew connection. If it reports that `searchcrew` isn't found, restart Codex first — bundled MCP servers only register after a restart, not immediately after install — then run `codex mcp login searchcrew` again.
-
-Codex connects SearchCrew MCP at `https://app.searchcrew.ai/mcp` and enables nine skills:
+After restart, Codex enables nine skills:
 
 - SEO Project Setup
 - SEO Coach
@@ -42,17 +41,8 @@ codex plugin remove searchcrew@searchcrew
 
 ## Troubleshooting
 
-If the SearchCrew MCP server doesn't appear after restart, run `/mcp` in the Codex TUI to check its status, then run `codex mcp login searchcrew` again.
-
-If it still doesn't authenticate, log out first and retry:
-
-```bash
-codex mcp logout searchcrew
-codex mcp login searchcrew
-```
-
 If a `codex plugin` command reports "unrecognized subcommand," run `codex plugin --help` to see the subcommands your installed version actually supports — they've changed across versions (for example, `add`/`remove`, not `install`/`uninstall`).
 
 ## Other clients
 
-This plugin is for Codex CLI. For Claude Code, use the [SearchCrew plugin for Claude Code](/docs/claude-code-plugin) instead. For Claude Desktop, Cursor, Codex Desktop, or an API key setup, see [Set up SearchCrew MCP](/docs/mcp) and [Set up SearchCrew Agent Skills](/docs/skills/setup).
+This plugin is for Codex CLI. For Claude Code, use the [SearchCrew plugin for Claude Code](/docs/claude-code-plugin). For other agents, see [Set up SearchCrew Agent Skills](/docs/skills/setup). Hosted MCP setup remains a separate, paused step.

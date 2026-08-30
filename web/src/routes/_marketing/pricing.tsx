@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useMemo, useState, type CSSProperties } from "react";
 import { buildPageSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/_marketing/pricing")({
@@ -7,7 +7,7 @@ export const Route = createFileRoute("/_marketing/pricing")({
     buildPageSeo({
       title: "Pricing estimator",
       description:
-        "Free to start, $29 when you outgrow it. Every plan includes the full MCP server and agent skills. Move the sliders to estimate your month.",
+        "Preview SearchCrew's planned hosted pricing and estimate monthly usage before public signup and billing open.",
       path: "/pricing",
       titleSuffix: "SearchCrew",
     }),
@@ -28,10 +28,42 @@ const CREDIT_USD = 0.001; // $ value of a single credit
  * src/shared/billing.ts, so this mirrors PLANS there — keep the two in step,
  * same as the cost model above. Prices are monthly; annual is 2 months free. */
 const TIERS = [
-  { id: "free", name: "Free", priceUsd: 0, includedUsageUsd: 2 },
-  { id: "solo", name: "Solo", priceUsd: 29, includedUsageUsd: 20 },
-  { id: "pro", name: "Pro", priceUsd: 79, includedUsageUsd: 60 },
-  { id: "agency", name: "Agency", priceUsd: 199, includedUsageUsd: 140 },
+  {
+    id: "free",
+    name: "Free",
+    priceUsd: 0,
+    includedUsageUsd: 2,
+    projects: "1 project",
+    seats: "1 seat",
+    cadence: "Manual rank checks",
+  },
+  {
+    id: "solo",
+    name: "Solo",
+    priceUsd: 29,
+    includedUsageUsd: 20,
+    projects: "3 projects",
+    seats: "1 seat",
+    cadence: "Weekly rank checks",
+  },
+  {
+    id: "pro",
+    name: "Pro",
+    priceUsd: 79,
+    includedUsageUsd: 60,
+    projects: "Unlimited projects",
+    seats: "3 seats",
+    cadence: "Daily rank checks",
+  },
+  {
+    id: "agency",
+    name: "Agency",
+    priceUsd: 199,
+    includedUsageUsd: 140,
+    projects: "Unlimited projects",
+    seats: "10 seats",
+    cadence: "Daily rank checks",
+  },
 ] as const;
 
 /** Cheapest tier whose included usage covers the estimate, or the largest. */
@@ -68,11 +100,6 @@ const RAW_COST_USD = {
   backlinkProfile:
     0.024 + 0.000036 + (0.024 + BACKLINK_HISTORY_DAYS * 0.000036),
   aiCitationPerPlatform: 0.85, // AI-citation / brand scan, per platform (biggest driver)
-} as const;
-
-// Ahrefs Lite list price, verified 2026-07-01 (ahrefs.com/pricing).
-const COMPETITORS = {
-  ahrefsLite: 129,
 } as const;
 
 /** creditsCharged for a single action, per the billing formula. */
@@ -214,12 +241,21 @@ function Pricing() {
         Pricing
       </p>
       <h1 className="mt-3 max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-neutral-950 md:text-5xl">
-        Free to start. $29 when you outgrow it.
+        Planned hosted pricing
       </h1>
       <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--color-brand-muted)]">
-        Semrush starts at $139.95 and hides its API behind a $499.95 plan. Every
-        SearchCrew plan includes the full MCP server and agent skills.
+        Every proposed SearchCrew plan includes the full MCP server and agent
+        skills. Move the sliders to model your own usage before billing opens.
       </p>
+      <div className="mt-6 max-w-2xl rounded-xl border border-[var(--color-brand-accent)]/40 bg-white p-4 text-sm leading-6 text-neutral-700">
+        <p className="font-semibold text-neutral-950">
+          Public signup and payment are paused.
+        </p>
+        <p className="mt-1">
+          Use these tiers for planning while production auth, support, legal,
+          and billing checks are completed.
+        </p>
+      </div>
 
       {/* 2. Tier lineup */}
       <section className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -227,12 +263,19 @@ function Pricing() {
           <div
             key={tier.id}
             className={`rounded-xl border p-5 ${
-              tier.id === "pro"
+              tier.id === "solo"
                 ? "border-[var(--color-brand-accent)] bg-white"
                 : "border-[var(--color-border-subtle)]"
             }`}
           >
-            <p className="font-semibold text-neutral-950">{tier.name}</p>
+            <div className="flex min-h-6 items-center justify-between gap-2">
+              <p className="font-semibold text-neutral-950">{tier.name}</p>
+              {tier.id === "solo" ? (
+                <span className="rounded-full bg-[var(--color-brand-accent)] px-2 py-1 text-[11px] font-semibold leading-none text-neutral-950">
+                  Recommended start
+                </span>
+              ) : null}
+            </div>
             <p className="mt-2 text-2xl font-semibold tabular-nums text-neutral-950">
               ${tier.priceUsd}
               <span className="text-sm font-normal text-[var(--color-brand-muted)]">
@@ -242,6 +285,11 @@ function Pricing() {
             <p className="mt-2 text-sm text-[var(--color-brand-muted)]">
               ${tier.includedUsageUsd} of usage included each month
             </p>
+            <ul className="mt-4 space-y-1.5 border-t border-[var(--color-border-subtle)] pt-4 text-xs leading-5 text-neutral-600">
+              <li>{tier.projects}</li>
+              <li>{tier.seats}</li>
+              <li>{tier.cadence}</li>
+            </ul>
           </div>
         ))}
       </section>
@@ -261,7 +309,7 @@ function Pricing() {
             "Works inside Claude, Cursor, and ChatGPT",
             "Google Search Console data, free and never billed as usage",
             "Buy extra usage anytime; it never expires",
-            "Annual billing saves two months on every paid plan",
+            "Proposed annual billing saves two months on every paid plan",
           ].map((item) => (
             <li key={item} className="flex gap-2.5 text-sm text-neutral-700">
               <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-brand-accent)]">
@@ -273,15 +321,17 @@ function Pricing() {
         </ul>
         <div className="mt-6 flex items-center gap-4">
           <a
-            href="https://app.searchcrew.ai/sign-up"
-            className="inline-flex items-center justify-center rounded-lg bg-neutral-950 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+            href="/get-started"
+            className="inline-flex min-h-11 items-center justify-center rounded-lg bg-neutral-950 px-5 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
           >
-            Get Started
+            Check launch status
             <span aria-hidden="true" className="ml-1.5">
               &rarr;
             </span>
           </a>
-          <p className="text-xs text-neutral-500">Try for free</p>
+          <p className="text-xs text-neutral-500">
+            Public signup and payment are currently paused.
+          </p>
         </div>
       </section>
 
@@ -440,13 +490,6 @@ function Pricing() {
               </dl>
             </div>
 
-            <p className="mt-5 border-t border-[var(--color-border-subtle)] pt-5 text-sm text-[var(--color-brand-muted)]">
-              For comparison: Ahrefs&apos; cheapest plan is{" "}
-              <span className="font-medium text-neutral-950">
-                {usd(COMPETITORS.ahrefsLite)}/mo
-              </span>
-              .
-            </p>
           </div>
         </div>
       </section>
@@ -462,8 +505,8 @@ function Pricing() {
               Is there a free plan?
             </dt>
             <dd className="mt-1.5 text-sm leading-6 text-[var(--color-brand-muted)]">
-              Yes. Free gives you $2 of usage every month, one project, and the
-              full MCP server — no card required, and no trial clock.
+              The proposed Free tier includes $2 of usage each month, one
+              project, and the full MCP server with no card or trial clock.
             </dd>
           </div>
           <div className="py-4 first:pt-0 last:pb-0">
@@ -471,9 +514,9 @@ function Pricing() {
               What if I use all my credits for the month?
             </dt>
             <dd className="mt-1.5 text-sm leading-6 text-[var(--color-brand-muted)]">
-              You&apos;ll never have unexpected costs or bills. If you use all
-              your credits, you&apos;ll see errors when you try to do tasks. You
-              can purchase more top up credits at any time.
+              The planned credit guard stops paid API tasks when the allowance
+              runs out, so usage cannot create an unexpected bill. Top-ups will
+              remain an explicit purchase after billing opens.
             </dd>
           </div>
           <div className="py-4 first:pt-0 last:pb-0">
@@ -481,10 +524,9 @@ function Pricing() {
               What features use credits?
             </dt>
             <dd className="mt-1.5 text-sm leading-6 text-[var(--color-brand-muted)]">
-              Credits are consumed by features that query DataForSEO&apos;s API
-              — backlinks, keyword volume, competitor data, and site audits.
-              Your projects, settings, and any data already fetched don&apos;t
-              cost credits.
+              Under the proposed model, features that query DataForSEO&apos;s API
+              consume credits — backlinks, keyword volume, competitor data,
+              and site audits. Projects, settings, and saved data do not.
             </dd>
           </div>
           <div className="py-4 first:pt-0 last:pb-0">
@@ -492,8 +534,8 @@ function Pricing() {
               Do unused credits roll over?
             </dt>
             <dd className="mt-1.5 text-sm leading-6 text-[var(--color-brand-muted)]">
-              Top-up credits roll over indefinitely. The usage credits included
-              with your plan reset each billing cycle.
+              Proposed top-up credits roll over indefinitely. Included usage
+              resets each billing cycle.
             </dd>
           </div>
           <div className="py-4 first:pt-0 last:pb-0">
@@ -501,8 +543,9 @@ function Pricing() {
               Can I cancel anytime?
             </dt>
             <dd className="mt-1.5 text-sm leading-6 text-[var(--color-brand-muted)]">
-              Yes. Cancel from your billing portal at any time. Your access
-              continues through the end of the current billing period.
+              Billing is paused, so there is no active subscription to cancel.
+              Final cancellation and refund terms will be published before
+              payments open.
             </dd>
           </div>
           <div className="py-4 first:pt-0 last:pb-0">
@@ -510,9 +553,9 @@ function Pricing() {
               Do I need a paid plan?
             </dt>
             <dd className="mt-1.5 text-sm leading-6 text-[var(--color-brand-muted)]">
-              No. Free works indefinitely within its monthly usage. Paid plans
-              raise that allowance and add projects, seats, and daily rank
-              tracking. Top-up credits roll over and never expire.
+              Under the proposed model, Free works within its monthly usage.
+              Paid plans raise that allowance and add projects, seats, and
+              daily rank tracking.
             </dd>
           </div>
         </dl>
@@ -549,6 +592,10 @@ function Slider({
   const sliderValue = options ? Math.max(0, optionIndex) : value;
   const sliderMin = options ? 0 : (min ?? 0);
   const sliderMax = options ? options.length - 1 : (max ?? 0);
+  const progress =
+    sliderMax === sliderMin
+      ? 0
+      : ((sliderValue - sliderMin) / (sliderMax - sliderMin)) * 100;
 
   return (
     <div>
@@ -573,7 +620,8 @@ function Slider({
         }}
         aria-label={label}
         aria-valuetext={valueLabel}
-        className="mt-2 h-1 w-full cursor-pointer appearance-none rounded-full bg-[var(--color-border-subtle)] accent-[var(--color-brand-accent)]"
+        style={{ "--range-progress": `${progress}%` } as CSSProperties}
+        className="seo-roi-range mt-1 block w-full"
       />
     </div>
   );

@@ -163,29 +163,6 @@ function SeoRoiCalculatorPage() {
         </div>
       </section>
 
-      <section className="mt-16 rounded-2xl bg-neutral-950 px-6 py-8 text-white md:flex md:items-end md:justify-between md:gap-10 md:px-8 md:py-10">
-        <div>
-          <h2 className="text-3xl font-semibold tracking-tight">
-            Research the opportunities behind the forecast
-          </h2>
-          <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-300">
-            SearchCrew puts keyword volume, difficulty, competitors, rankings
-            and site health in one open-source workspace.
-          </p>
-        </div>
-        <div className="mt-6 flex shrink-0 flex-col items-stretch gap-2 sm:flex-row md:mt-0 md:flex-col md:items-end">
-          <a
-            href="https://app.searchcrew.ai/sign-up"
-            className="inline-flex min-h-11 touch-manipulation items-center justify-center rounded-xl bg-[var(--color-brand-accent)] px-5 text-sm font-semibold text-neutral-950 transition-[background-color,transform] duration-150 hover:bg-[#ff7133] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 motion-reduce:transform-none motion-reduce:transition-none"
-          >
-            Try SearchCrew free
-            <span aria-hidden="true" className="ml-2">
-              &rarr;
-            </span>
-          </a>
-        </div>
-      </section>
-
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger

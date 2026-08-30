@@ -16,7 +16,7 @@ import {
   formatStartedAt,
   HttpStatusBadge,
   StatusBadge,
-  SUPPORT_EMAIL,
+  SUPPORT_URL,
 } from "@/client/features/audit/shared";
 
 export const Route = createFileRoute<"/_project/p/$projectId/audit/">(
@@ -207,12 +207,14 @@ function AuditDetail({
               </p>
               <p>
                 The results below cover everything crawled before it stopped.
-                Run a new audit to try again, or email{" "}
+                Run a new audit to try again, or check the{" "}
                 <a
                   className="link link-primary"
-                  href={`mailto:${SUPPORT_EMAIL}`}
+                  href={SUPPORT_URL}
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  {SUPPORT_EMAIL}
+                  support status
                 </a>{" "}
                 if this keeps happening.
               </p>

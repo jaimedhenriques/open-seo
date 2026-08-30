@@ -20,7 +20,6 @@ import { Route as JsScriptDotjsRouteImport } from './routes/js/script[.]js'
 import { Route as GuidesSplatRouteImport } from './routes/guides/$'
 import { Route as DocsSplatRouteImport } from './routes/docs/$'
 import { Route as BlogsSplatRouteImport } from './routes/blogs/$'
-import { Route as ApiSubscribeRouteImport } from './routes/api/subscribe'
 import { Route as ApiEventRouteImport } from './routes/api/event'
 import { Route as ApiBacklinkCheckRouteImport } from './routes/api/backlink-check'
 import { Route as MarketingSupportRouteImport } from './routes/_marketing/support'
@@ -28,6 +27,7 @@ import { Route as MarketingSeoRoiCalculatorRouteImport } from './routes/_marketi
 import { Route as MarketingRoadmapRouteImport } from './routes/_marketing/roadmap'
 import { Route as MarketingPricingRouteImport } from './routes/_marketing/pricing'
 import { Route as MarketingGoogleSearchConsoleMcpRouteImport } from './routes/_marketing/google-search-console-mcp'
+import { Route as MarketingGetStartedRouteImport } from './routes/_marketing/get-started'
 import { Route as MarketingBacklinkCheckerRouteImport } from './routes/_marketing/backlink-checker'
 import { Route as MarketingLibraryIndexRouteImport } from './routes/_marketing/library/index'
 import { Route as MarketingFeaturesIndexRouteImport } from './routes/_marketing/features/index'
@@ -110,11 +110,6 @@ const BlogsSplatRoute = BlogsSplatRouteImport.update({
   path: '/blogs/$',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiSubscribeRoute = ApiSubscribeRouteImport.update({
-  id: '/api/subscribe',
-  path: '/api/subscribe',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ApiEventRoute = ApiEventRouteImport.update({
   id: '/api/event',
   path: '/api/event',
@@ -152,6 +147,11 @@ const MarketingGoogleSearchConsoleMcpRoute =
     path: '/google-search-console-mcp',
     getParentRoute: () => MarketingRoute,
   } as any)
+const MarketingGetStartedRoute = MarketingGetStartedRouteImport.update({
+  id: '/get-started',
+  path: '/get-started',
+  getParentRoute: () => MarketingRoute,
+} as any)
 const MarketingBacklinkCheckerRoute =
   MarketingBacklinkCheckerRouteImport.update({
     id: '/backlink-checker',
@@ -321,6 +321,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/backlink-checker': typeof MarketingBacklinkCheckerRoute
+  '/get-started': typeof MarketingGetStartedRoute
   '/google-search-console-mcp': typeof MarketingGoogleSearchConsoleMcpRoute
   '/pricing': typeof MarketingPricingRoute
   '/roadmap': typeof MarketingRoadmapRoute
@@ -328,7 +329,6 @@ export interface FileRoutesByFullPath {
   '/support': typeof MarketingSupportRoute
   '/api/backlink-check': typeof ApiBacklinkCheckRoute
   '/api/event': typeof ApiEventRoute
-  '/api/subscribe': typeof ApiSubscribeRoute
   '/blogs/$': typeof BlogsSplatRoute
   '/docs/$': typeof DocsSplatRoute
   '/guides/$': typeof GuidesSplatRoute
@@ -367,6 +367,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/backlink-checker': typeof MarketingBacklinkCheckerRoute
+  '/get-started': typeof MarketingGetStartedRoute
   '/google-search-console-mcp': typeof MarketingGoogleSearchConsoleMcpRoute
   '/pricing': typeof MarketingPricingRoute
   '/roadmap': typeof MarketingRoadmapRoute
@@ -374,7 +375,6 @@ export interface FileRoutesByTo {
   '/support': typeof MarketingSupportRoute
   '/api/backlink-check': typeof ApiBacklinkCheckRoute
   '/api/event': typeof ApiEventRoute
-  '/api/subscribe': typeof ApiSubscribeRoute
   '/blogs/$': typeof BlogsSplatRoute
   '/docs/$': typeof DocsSplatRoute
   '/guides/$': typeof GuidesSplatRoute
@@ -416,6 +416,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/_marketing/backlink-checker': typeof MarketingBacklinkCheckerRoute
+  '/_marketing/get-started': typeof MarketingGetStartedRoute
   '/_marketing/google-search-console-mcp': typeof MarketingGoogleSearchConsoleMcpRoute
   '/_marketing/pricing': typeof MarketingPricingRoute
   '/_marketing/roadmap': typeof MarketingRoadmapRoute
@@ -423,7 +424,6 @@ export interface FileRoutesById {
   '/_marketing/support': typeof MarketingSupportRoute
   '/api/backlink-check': typeof ApiBacklinkCheckRoute
   '/api/event': typeof ApiEventRoute
-  '/api/subscribe': typeof ApiSubscribeRoute
   '/blogs/$': typeof BlogsSplatRoute
   '/docs/$': typeof DocsSplatRoute
   '/guides/$': typeof GuidesSplatRoute
@@ -466,6 +466,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/terms-and-conditions'
     | '/backlink-checker'
+    | '/get-started'
     | '/google-search-console-mcp'
     | '/pricing'
     | '/roadmap'
@@ -473,7 +474,6 @@ export interface FileRouteTypes {
     | '/support'
     | '/api/backlink-check'
     | '/api/event'
-    | '/api/subscribe'
     | '/blogs/$'
     | '/docs/$'
     | '/guides/$'
@@ -512,6 +512,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/terms-and-conditions'
     | '/backlink-checker'
+    | '/get-started'
     | '/google-search-console-mcp'
     | '/pricing'
     | '/roadmap'
@@ -519,7 +520,6 @@ export interface FileRouteTypes {
     | '/support'
     | '/api/backlink-check'
     | '/api/event'
-    | '/api/subscribe'
     | '/blogs/$'
     | '/docs/$'
     | '/guides/$'
@@ -560,6 +560,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/terms-and-conditions'
     | '/_marketing/backlink-checker'
+    | '/_marketing/get-started'
     | '/_marketing/google-search-console-mcp'
     | '/_marketing/pricing'
     | '/_marketing/roadmap'
@@ -567,7 +568,6 @@ export interface FileRouteTypes {
     | '/_marketing/support'
     | '/api/backlink-check'
     | '/api/event'
-    | '/api/subscribe'
     | '/blogs/$'
     | '/docs/$'
     | '/guides/$'
@@ -610,7 +610,6 @@ export interface RootRouteChildren {
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   ApiBacklinkCheckRoute: typeof ApiBacklinkCheckRoute
   ApiEventRoute: typeof ApiEventRoute
-  ApiSubscribeRoute: typeof ApiSubscribeRoute
   BlogsSplatRoute: typeof BlogsSplatRoute
   DocsSplatRoute: typeof DocsSplatRoute
   GuidesSplatRoute: typeof GuidesSplatRoute
@@ -699,13 +698,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogsSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/subscribe': {
-      id: '/api/subscribe'
-      path: '/api/subscribe'
-      fullPath: '/api/subscribe'
-      preLoaderRoute: typeof ApiSubscribeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/api/event': {
       id: '/api/event'
       path: '/api/event'
@@ -753,6 +745,13 @@ declare module '@tanstack/react-router' {
       path: '/google-search-console-mcp'
       fullPath: '/google-search-console-mcp'
       preLoaderRoute: typeof MarketingGoogleSearchConsoleMcpRouteImport
+      parentRoute: typeof MarketingRoute
+    }
+    '/_marketing/get-started': {
+      id: '/_marketing/get-started'
+      path: '/get-started'
+      fullPath: '/get-started'
+      preLoaderRoute: typeof MarketingGetStartedRouteImport
       parentRoute: typeof MarketingRoute
     }
     '/_marketing/backlink-checker': {
@@ -949,6 +948,7 @@ declare module '@tanstack/react-router' {
 
 interface MarketingRouteChildren {
   MarketingBacklinkCheckerRoute: typeof MarketingBacklinkCheckerRoute
+  MarketingGetStartedRoute: typeof MarketingGetStartedRoute
   MarketingGoogleSearchConsoleMcpRoute: typeof MarketingGoogleSearchConsoleMcpRoute
   MarketingPricingRoute: typeof MarketingPricingRoute
   MarketingRoadmapRoute: typeof MarketingRoadmapRoute
@@ -985,6 +985,7 @@ interface MarketingRouteChildren {
 
 const MarketingRouteChildren: MarketingRouteChildren = {
   MarketingBacklinkCheckerRoute: MarketingBacklinkCheckerRoute,
+  MarketingGetStartedRoute: MarketingGetStartedRoute,
   MarketingGoogleSearchConsoleMcpRoute: MarketingGoogleSearchConsoleMcpRoute,
   MarketingPricingRoute: MarketingPricingRoute,
   MarketingRoadmapRoute: MarketingRoadmapRoute,
@@ -1044,7 +1045,6 @@ const rootRouteChildren: RootRouteChildren = {
   TermsAndConditionsRoute: TermsAndConditionsRoute,
   ApiBacklinkCheckRoute: ApiBacklinkCheckRoute,
   ApiEventRoute: ApiEventRoute,
-  ApiSubscribeRoute: ApiSubscribeRoute,
   BlogsSplatRoute: BlogsSplatRoute,
   DocsSplatRoute: DocsSplatRoute,
   GuidesSplatRoute: GuidesSplatRoute,

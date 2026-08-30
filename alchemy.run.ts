@@ -307,6 +307,12 @@ export default Alchemy.Stack(
     const authMode = yield* Config.string("AUTH_MODE").pipe(
       Config.withDefault("cloudflare_access"),
     );
+    const publicSignupEnabled = yield* Config.string(
+      "PUBLIC_SIGNUP_ENABLED",
+    ).pipe(Config.withDefault("false"));
+    const publicBillingEnabled = yield* Config.string(
+      "PUBLIC_BILLING_ENABLED",
+    ).pipe(Config.withDefault("false"));
     const databaseProvider = yield* optionalVar("DATABASE_PROVIDER");
     const workersSubdomain = yield* readWorkersSubdomain({ required: false });
 
@@ -390,6 +396,8 @@ export default Alchemy.Stack(
         ...makeResources(stage),
         ...dataEnv,
         AUTH_MODE: authMode,
+        PUBLIC_SIGNUP_ENABLED: publicSignupEnabled,
+        PUBLIC_BILLING_ENABLED: publicBillingEnabled,
         DATABASE_PROVIDER: databaseProvider || "d1",
         BETTER_AUTH_URL: authUrl,
         TEAM_DOMAIN: access.teamDomain,

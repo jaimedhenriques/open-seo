@@ -1,6 +1,7 @@
 const DEFAULT_SITE_URL = "https://searchcrew.ai";
 const DEFAULT_SOCIAL_IMAGE_PATH = "/social-card.jpg";
-const DEFAULT_SOCIAL_IMAGE_ALT = "SearchCrew product preview";
+const DEFAULT_SOCIAL_IMAGE_ALT =
+  "SearchCrew: SEO intelligence for people and AI agents";
 
 export const SITE_URL = (
   process.env.SITE_URL ??

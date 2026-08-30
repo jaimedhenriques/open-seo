@@ -1,20 +1,20 @@
 ---
 title: "SearchCrew Agent Skills"
-description: "Add SearchCrew Agent Skills to Claude Code, Codex, or another AI agent so it can run repeatable SEO workflows with live SearchCrew data."
+description: "Add SearchCrew workflow skills to Claude Code, Codex, or another AI agent."
 ---
 
 SearchCrew Agent Skills let you hand repeatable SEO workflows to your AI agent.
 
 Run a slash command when you need keyword research, clustering, competitor analysis, link prospecting, or project setup. The skill gives your agent the workflow instructions.
 
-You stay in charge of strategy. Your agent uses SearchCrew data and the skill instructions to return a recommendation, plan, or shortlist.
+You stay in charge of strategy. The skill instructions guide your agent toward a recommendation, plan, or shortlist. Live SearchCrew data requires the separate hosted MCP connection when it opens.
 
 ## Set up SearchCrew Agent Skills
 
-On Claude Code, the [SearchCrew plugin](/docs/claude-code-plugin) installs MCP and every skill below in one step. On Codex CLI, the [SearchCrew plugin](/docs/codex-plugin) does the same. Use the manual steps here for other agents, or if you want to pick individual skills.
+On Claude Code, the [SearchCrew plugin](/docs/claude-code-plugin) installs the nine packaged workflow skills. On Codex CLI, the [SearchCrew plugin](/docs/codex-plugin) does the same. Use the manual steps for other agents, or if you want to pick individual skills.
 
-1. [Set up SearchCrew MCP](/docs/mcp).
-2. [Set up SearchCrew Agent Skills](/docs/skills/setup).
+1. [Set up SearchCrew Agent Skills](/docs/skills/setup).
+2. After the hosted beta opens, [connect SearchCrew MCP](/docs/mcp) for live data.
 
 MCP connects your agent to SearchCrew data. Skills tell your agent which SEO workflow to run.
 
@@ -56,4 +56,4 @@ SearchCrew uses the same `SKILL.md` pattern supported by modern AI agents. To le
 
 These pages explain what each skill is for. The source instructions live in GitHub:
 
-- [SearchCrew Agent Skills on GitHub](https://github.com/jaimedhenriques/searchcrew/tree/main/.agents/skills)
+- [SearchCrew Agent Skills on GitHub](https://github.com/jaimedhenriques/open-seo/tree/main/.agents/skills)

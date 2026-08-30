@@ -1,65 +1,23 @@
 ---
-title: "Google Search Console MCP Server: No Google Cloud Setup"
-description: Connect Google Search Console to Claude, Cursor, or any MCP client — no Google Cloud project needed. Query clicks, impressions, CTR, position, and indexing.
+title: "Google Search Console MCP for AI Agents"
+description: See how SearchCrew is designed to connect Google Search Console data to Claude, Codex, Cursor, and other MCP clients.
 ---
 
-Most Google Search Console (GSC) MCP servers are open source, but they take a lot of effort to set up. You need to create a Google Cloud project, enable an API, build an OAuth client, download a `credentials.json`, then keep a local server running. SearchCrew handles the Google connection for you. You sign up, connect your property, and start asking.
+SearchCrew's hosted Google Search Console connection is being prepared for beta. Public signup, the hosted MCP endpoint, and Google authorization are paused until the production app has passed end-to-end verification.
 
-## Setup: no Google Cloud project
+Do not add the hosted endpoint to an MCP client yet. Check [launch status](/get-started) for the current verification checklist.
 
-1. Sign up for SearchCrew ($10/month).
-2. Go through the onboarding. When prompted, click **Connect Search Console** and pick your property.
-3. Add the SearchCrew MCP endpoint to your client (steps below) and approve the SearchCrew login when prompted.
+## The intended hosted flow
 
-The hosted MCP server URL is:
+Once the hosted beta opens, the connection is designed to work in three steps:
 
-```txt
-https://app.searchcrew.ai/mcp
-```
+1. Create a SearchCrew workspace.
+2. Connect a Search Console property with read-only permission.
+3. Add the verified SearchCrew MCP endpoint to your AI client and authorize access.
 
-### Claude Code
+The final endpoint and client-specific commands will be published only after DNS, authentication, recovery, and authorization checks pass.
 
-```bash
-claude mcp add --transport http --scope user searchcrew https://app.searchcrew.ai/mcp
-```
-
-### Claude Desktop
-
-1. Open Settings → Connectors.
-2. Click **Add custom connector**.
-3. Paste `https://app.searchcrew.ai/mcp`.
-
-### Cursor
-
-1. Open Cursor Settings → Tools & Integrations → MCP Tools.
-2. Click **New MCP Server** (this opens `mcp.json`) and add:
-
-```json
-{
-  "mcpServers": {
-    "searchcrew": {
-      "url": "https://app.searchcrew.ai/mcp"
-    }
-  }
-}
-```
-
-### Codex CLI
-
-```bash
-codex mcp add searchcrew --url https://app.searchcrew.ai/mcp
-```
-
-Any other MCP client works the same way: add `https://app.searchcrew.ai/mcp` as a remote server and sign in. Full setup and troubleshooting live in the [MCP docs](/docs/mcp).
-
-### The DIY way (every other GSC MCP)
-
-1. Create a Google Cloud project
-2. Enable the Search Console API
-3. Configure the OAuth consent screen
-4. Create OAuth client credentials
-5. Download `credentials.json`
-6. Install and run a local MCP server
+If you need access sooner, review the [self-hosting guide](/docs/self-hosting). Self-hosting requires your own Google OAuth client and infrastructure.
 
 ## Things to actually ask it
 
@@ -69,33 +27,29 @@ Any other MCP client works the same way: add `https://app.searchcrew.ai/mcp` as 
 - "Is `/pricing` indexed? If not, what's blocking it?"
 - "Which queries lost the most clicks over the last 28 days?"
 
-## What your agent can read
+## What the integration is designed to read
 
-Two read-only tools over the property you connect. Both pull Google's own numbers, and neither uses credits.
+The implementation includes two read-only tools over the property you connect.
 
 **Search performance.** Clicks, impressions, CTR, and average position for your site, sliced by query, page, country, device, and date. Pull up to 16 months of history in a single question.
 
 **URL inspection.** Whether a page is indexed and, if not, why: coverage status, last crawl, the canonical Google chose versus the one you declared, plus mobile and rich-result checks. Up to 10 URLs at a time.
 
-The agent can read and inspect. It cannot change anything in your account.
+The requested Google scope is read-only. The integration is not designed to change your Search Console account.
 
-## What it costs
+## Planned pricing
 
-The Search Console tools use zero credits — Google doesn't charge you to read your own data, so reading it through SearchCrew never burns usage. They're included with the SearchCrew plan ($10/month, which includes monthly usage credits for the research tools), alongside the credit-based tools (keyword research, rank tracking, backlinks) that run through the same MCP endpoint. If you'd rather not pay at all, SearchCrew is open source and free to self-host — see the FAQ below.
-
-## SearchCrew vs. the alternatives
-
-<ComparisonTable />
+The public pricing page shows the proposed plan structure. Billing is paused until operator, support, refund, and payment terms are complete. Self-hosting remains available from the open-source repository.
 
 ## FAQ
 
 ### What does it cost?
 
-The Search Console MCP tools are included with the $10/month SearchCrew plan (which comes with a 30-day money-back guarantee) and use zero credits. SearchCrew's other tools (keyword research, rank tracking, backlinks) use the usage credits included with the plan, through the same endpoint. Self-hosting is free.
+Hosted billing is not open. Review [pricing](/pricing) for the proposed tiers and [launch status](/get-started) for readiness.
 
 ### Is it open source?
 
-Yes. SearchCrew is open source, so you can self-host the whole thing for free, including the Search Console MCP. The one-click connection here uses SearchCrew's hosted Google app. If you self-host, you bring your own Google OAuth client, the same Cloud-console step the hosted version saves you. Hosted means no setup; self-hosted means full control.
+Yes. SearchCrew is open source, so you can inspect and self-host the application. A self-hosted Google connection requires your own OAuth client.
 
 ### Is it read-only?
 
@@ -103,7 +57,7 @@ Yes. SearchCrew requests read-only access (`webmasters.readonly`). Your agent ca
 
 ### Which AI clients work?
 
-Any MCP client, including Claude Code, Claude Desktop, Cursor, Codex, and OpenClaw. Add the SearchCrew MCP endpoint and sign in.
+The intended hosted flow targets MCP clients including Claude Code, Claude Desktop, Cursor, Codex, and OpenClaw. Verified connection commands will be published when the beta opens.
 
 ### How fresh is the data?
 

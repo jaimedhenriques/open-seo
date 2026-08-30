@@ -4,7 +4,6 @@ import { DocsBody } from "fumadocs-ui/page";
 import GoogleSearchConsoleMcpContent, {
   frontmatter,
 } from "../../../content/marketing/google-search-console-mcp.mdx";
-import { ComparisonTable } from "@/components/comparison-table";
 import { buildPageSeo, SITE_URL, toCanonicalUrl } from "@/lib/seo";
 
 const PATH = "/google-search-console-mcp";
@@ -17,18 +16,6 @@ const softwareApplicationLd = {
   operatingSystem: "Web",
   url: toCanonicalUrl(PATH),
   description: frontmatter.description,
-  offers: {
-    "@type": "Offer",
-    price: "10.00",
-    priceCurrency: "USD",
-    priceSpecification: {
-      "@type": "UnitPriceSpecification",
-      price: "10.00",
-      priceCurrency: "USD",
-      billingDuration: 1,
-      unitCode: "MON",
-    },
-  },
   provider: {
     "@type": "Organization",
     name: "SearchCrew",
@@ -39,7 +26,7 @@ const softwareApplicationLd = {
 export const Route = createFileRoute("/_marketing/google-search-console-mcp")({
   head: () =>
     buildPageSeo({
-      title: "Google Search Console MCP Server: No Google Cloud Setup",
+      title: "Google Search Console MCP for AI Agents",
       description: frontmatter.description,
       path: PATH,
       titleSuffix: "SearchCrew",
@@ -53,7 +40,7 @@ function GoogleSearchConsoleMcpPage() {
     <article className="mx-auto max-w-4xl text-neutral-900">
       <header className="mb-10 border-b border-[var(--color-border-subtle)] pb-8">
         <p className="text-sm font-medium text-[var(--color-brand-accent)]">
-          Search Console MCP
+          Hosted beta preview
         </p>
         <h1 className="mt-3 text-4xl font-semibold leading-tight tracking-tight text-neutral-950 md:text-6xl">
           {frontmatter.title}
@@ -65,25 +52,23 @@ function GoogleSearchConsoleMcpPage() {
         ) : null}
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <a
-            href="https://app.searchcrew.ai/sign-up"
-            className="inline-flex h-10 items-center justify-center rounded-lg bg-neutral-950 px-5 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+            href="/get-started"
+            className="inline-flex min-h-11 items-center justify-center rounded-lg bg-neutral-950 px-5 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
           >
-            Get started
+            Check launch status
             <span className="ml-2" aria-hidden="true">
               &rarr;
             </span>
           </a>
         </div>
         <p className="mt-3 text-xs text-neutral-500">
-          $10/month, 30-day money-back guarantee. Search Console tools never use
-          credits.
+          Hosted connections are paused while the production app and Google
+          authorization flow are verified.
         </p>
       </header>
 
       <DocsBody className="min-w-0 text-neutral-800 [&_a]:!text-neutral-950 [&_h2]:!text-neutral-950 [&_h2_a]:!no-underline [&_h3]:!text-neutral-950 [&_h3_a]:!no-underline [&_h4]:!text-neutral-950 [&_h4_a]:!no-underline [&_h5_a]:!no-underline [&_h6_a]:!no-underline [&_li]:!text-neutral-700 [&_li_a]:font-medium [&_li_a]:underline [&_li_a]:decoration-[var(--color-brand-accent)] [&_li_a]:underline-offset-4 [&_li_a:hover]:!text-neutral-700 [&_p]:!text-neutral-700 [&_p_a]:font-medium [&_p_a]:underline [&_p_a]:decoration-[var(--color-brand-accent)] [&_p_a]:underline-offset-4 [&_p_a:hover]:!text-neutral-700 [&_strong]:!text-neutral-950">
-        <GoogleSearchConsoleMcpContent
-          components={{ ...defaultMdxComponents, ComparisonTable }}
-        />
+        <GoogleSearchConsoleMcpContent components={defaultMdxComponents} />
       </DocsBody>
 
       <GoogleSearchConsoleMcpCta />
@@ -106,24 +91,24 @@ function GoogleSearchConsoleMcpCta() {
         Point your AI at your real search data
       </p>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--color-brand-muted)]">
-        No Google Cloud project. Zero credits to read your own data. Works with
-        Claude, Codex, OpenClaw, OpenCode, and Gemini.
+        The hosted flow is designed for Claude, Codex, OpenClaw, OpenCode, and
+        Gemini. Connection instructions will open after production verification.
       </p>
       <div className="mt-5 flex flex-col gap-3 sm:flex-row">
         <a
-          href="https://app.searchcrew.ai/sign-up"
-          className="inline-flex h-10 items-center justify-center rounded-lg bg-neutral-950 px-4 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+          href="/get-started"
+          className="inline-flex min-h-11 items-center justify-center rounded-lg bg-neutral-950 px-4 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
         >
-          Get started
+          Follow hosted beta status
           <span className="ml-2" aria-hidden="true">
             &rarr;
           </span>
         </a>
         <a
-          href="https://github.com/jaimedhenriques/searchcrew"
+          href="https://github.com/jaimedhenriques/open-seo"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-[var(--color-border-subtle)] bg-white px-4 text-sm font-medium text-neutral-950 transition-colors hover:border-neutral-950"
+          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-[var(--color-border-subtle)] bg-white px-4 text-sm font-medium text-neutral-950 transition-colors hover:border-neutral-950"
         >
           <GitHubIcon />
           Star on GitHub

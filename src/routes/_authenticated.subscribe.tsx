@@ -1,11 +1,18 @@
-import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useCustomer } from "autumn-js/react";
 import { useEffect, useState } from "react";
-import { ArrowRight, Settings, User } from "lucide-react";
-import { ThemePreferenceMenuItems } from "@/client/components/ThemePreferenceMenuItems";
+import { ArrowRight } from "lucide-react";
+import {
+  BillingBrandMark,
+  BillingPaused,
+} from "@/client/features/billing/BillingPaused";
+import { SubscribePageAccountMenu } from "@/client/features/billing/SubscribePageAccountMenu";
 import { captureClientEvent } from "@/client/lib/posthog";
-import { signOutAndRedirect, useSession } from "@/lib/auth-client";
-import { isHostedClientAuthMode } from "@/lib/auth-mode";
+import { useSession } from "@/lib/auth-client";
+import {
+  isHostedClientAuthMode,
+  isPublicBillingClientEnabled,
+} from "@/lib/auth-mode";
 import { getStandardErrorMessage } from "@/client/lib/error-messages";
 import { getSubscribeRouteState } from "@/client/features/billing/route-state";
 import { getCustomerPlanStatus } from "@/client/features/billing/plan-detection";
@@ -21,9 +28,7 @@ import {
   type PlanTier,
 } from "@/shared/billing";
 
-const SUPPORT_EMAIL = "support@searchcrew.ai";
-
-/** Selectable tiers, cheapest first. Free is the default, so it isn't offered. */
+const SUPPORT_URL = "https://searchcrew.ai/support";
 const PAID_PLANS = PLANS.filter((plan) => plan.monthlyUsd > 0);
 
 const usdCredits = (credits: number) =>
@@ -42,8 +47,6 @@ function planFeatures(plan: PlanDefinition): string[] {
   ];
 }
 
-// How long the post-checkout "finalizing" screen polls Autumn before giving
-// up and letting the user through anyway.
 const FINALIZING_TIMEOUT_MS = 30_000;
 
 export const Route = createFileRoute("/_authenticated/subscribe")({
@@ -62,6 +65,11 @@ export const Route = createFileRoute("/_authenticated/subscribe")({
 });
 
 function SubscribePage() {
+  if (!isPublicBillingClientEnabled()) return <BillingPaused />;
+  return <EnabledSubscribePage />;
+}
+
+function EnabledSubscribePage() {
   const navigate = useNavigate();
   const { upgrade: isUpgradeFlow, redirect, checkout } = Route.useSearch();
   const { data: session } = useSession();
@@ -101,8 +109,6 @@ function SubscribePage() {
     finalizingTimedOut,
   });
 
-  // Autumn can lag Stripe by a few seconds after checkout; poll until the
-  // subscription shows up so the just-paid user isn't shown the paywall again.
   const isFinalizing = subscribeRouteState === "finalizing";
   const { refetch: refetchCustomer } = customerQuery;
   useEffect(() => {
@@ -113,9 +119,6 @@ function SubscribePage() {
     return () => clearInterval(interval);
   }, [refetchCustomer, isFinalizing]);
 
-  // Armed once on landing with checkout=success (not on the finalizing state,
-  // which a transient poll error can leave and re-enter) so the deadline is a
-  // hard bound from arrival.
   useEffect(() => {
     if (!checkoutCompleted || finalizingTimedOut) return;
     const timeout = setTimeout(
@@ -150,11 +153,7 @@ function SubscribePage() {
   if (subscribeRouteState === "finalizing") {
     return (
       <div className="w-full max-w-xs space-y-4 text-center">
-        <img
-          src="/transparent-logo.png"
-          alt="SearchCrew"
-          className="mx-auto size-10 rounded-lg"
-        />
+        <BillingBrandMark />
         <h1 className="text-xl font-semibold">
           Finalizing your subscription&hellip;
         </h1>
@@ -164,8 +163,13 @@ function SubscribePage() {
         </p>
         <p className="text-xs text-base-content/50">
           Taking longer?{" "}
-          <a className="link" href={`mailto:${SUPPORT_EMAIL}`}>
-            Email {SUPPORT_EMAIL}
+          <a
+            className="link"
+            href={SUPPORT_URL}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Check support status
           </a>
           .
         </p>
@@ -177,11 +181,7 @@ function SubscribePage() {
     return (
       <div className="w-full max-w-xs space-y-4">
         <div className="text-center space-y-3">
-          <img
-            src="/transparent-logo.png"
-            alt="SearchCrew"
-            className="mx-auto size-10 rounded-lg"
-          />
+          <BillingBrandMark />
           <h1 className="text-xl font-semibold">Billing unavailable</h1>
         </div>
 
@@ -243,11 +243,7 @@ function SubscribePage() {
       <SubscribePageAccountMenu email={session?.user?.email} />
 
       <div className="text-center space-y-3">
-        <img
-          src="/transparent-logo.png"
-          alt="SearchCrew"
-          className="mx-auto size-10 rounded-lg"
-        />
+        <BillingBrandMark />
         <h1 className="text-xl font-semibold">
           {isUpgradeFlow
             ? "Upgrade your plan"
@@ -371,10 +367,10 @@ function SubscribePage() {
         <p className="text-center text-xs text-base-content/50">
           <span
             className="tooltip before:max-w-60 before:whitespace-normal"
-            data-tip={`Not for you yet? Email ${SUPPORT_EMAIL} within 30 days of your charge and we'll refund your subscription.`}
+            data-tip="Final refund terms will be published before public billing opens."
           >
             <span className="cursor-help underline decoration-dotted">
-              30-day money-back guarantee
+              Refund terms pending launch review
             </span>
           </span>
           . Cancel anytime. Powered by Stripe.
@@ -383,7 +379,7 @@ function SubscribePage() {
 
       <div className="text-center space-y-2">
         <p className="text-sm text-base-content/60">
-          Questions? Email {SUPPORT_EMAIL}.
+          Questions? Check the SearchCrew support page.
         </p>
         {isUpgradeFlow ? (
           <button
@@ -395,53 +391,6 @@ function SubscribePage() {
             Back to app
           </button>
         ) : null}
-      </div>
-    </div>
-  );
-}
-
-function SubscribePageAccountMenu({ email }: { email: string | undefined }) {
-  if (!email) return null;
-
-  const handleSignOut = () => signOutAndRedirect();
-
-  return (
-    <div className="fixed top-4 right-4">
-      <div className="dropdown dropdown-end">
-        <button
-          type="button"
-          tabIndex={0}
-          className="btn btn-ghost btn-circle"
-          aria-label="Open account menu"
-        >
-          <User className="h-5 w-5" />
-        </button>
-        <ul
-          tabIndex={0}
-          className="dropdown-content z-20 menu mt-3 min-w-56 rounded-box border border-base-300 bg-base-100 p-2 shadow-lg"
-        >
-          <li className="menu-title max-w-full">
-            <span className="truncate text-base-content" data-ph-mask>
-              {email}
-            </span>
-          </li>
-          <li>
-            <Link to="/settings" className="flex items-center gap-2">
-              <Settings className="h-4 w-4" />
-              Settings
-            </Link>
-          </li>
-          <ThemePreferenceMenuItems />
-          <li>
-            <button
-              type="button"
-              className="text-error"
-              onClick={handleSignOut}
-            >
-              Sign out
-            </button>
-          </li>
-        </ul>
       </div>
     </div>
   );

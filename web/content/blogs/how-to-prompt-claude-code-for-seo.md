@@ -30,7 +30,7 @@ The first answer is a list of ideas. The second is a decision you can act on.
 Two commands in Claude Code install the SearchCrew MCP server and all nine SEO agent skills:
 
 ```
-/plugin marketplace add jaimedhenriques/searchcrew
+/plugin marketplace add jaimedhenriques/open-seo
 /plugin install searchcrew@searchcrew
 ```
 
@@ -42,7 +42,7 @@ Without a data source, an agent will invent search volumes that sound plausible 
 
 To acquire this data, someone has to crawl the whole internet and store everything people are searching for on Google. That's expensive, and it's why the big SEO suites run $100 a month and up.
 
-SearchCrew is $10 a month with $10 of usage credits included, and signing up is free with $0.50 of trial credits. Asking Claude questions costs nothing beyond your normal Claude usage. You only spend credits when the agent pulls real data, and a keyword lookup runs about five cents. Search Console data never costs credits, because it's your own data.
+SearchCrew's proposed hosted tiers begin at $29 a month, and Solo is planned to include $20 of usage credits. Hosted signup and billing are paused while production verification is completed. Asking Claude questions costs nothing beyond your normal Claude usage; the proposed credit model applies when the agent pulls paid data.
 
 ## Your first SEO prompt
 

@@ -235,7 +235,7 @@ export const Route = createFileRoute("/api/backlink-check")({
               return jsonResponse(
                 {
                   error:
-                    "The free checker has reached today's limit. Try again tomorrow, or sign up for SearchCrew for full backlink research.",
+                    "The free checker has reached today's limit. Try again tomorrow or check SearchCrew launch status for hosted backlink research.",
                 },
                 429,
               );

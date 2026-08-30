@@ -27,10 +27,9 @@ function PrivacyPage() {
 
         <h2>Who operates this site</h2>
         <p>
-          badseo.dev is operated by Every App, Inc. as a public test site for
-          SearchCrew. The site has no accounts, forms, purchases, or
-          user-submitted content. Privacy questions and requests can be sent to{" "}
-          <a href="mailto:support@searchcrew.ai">support@searchcrew.ai</a>.
+          This public test site is maintained alongside SearchCrew. It has no
+          accounts, forms, purchases, or user-submitted content. Operator and
+          support details will be published before that changes.
         </p>
 
         <h2>Plausible Analytics</h2>

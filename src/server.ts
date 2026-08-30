@@ -10,7 +10,11 @@ import { runScheduledRankChecks } from "@/server/features/rank-tracking/services
 import { reconcileStaleAudits } from "@/server/features/audit/services/auditReconciler";
 import { getOrCreateOrganizationCustomer } from "@/server/billing/subscription";
 import { isHostedServerAuthMode } from "@/server/lib/runtime-env";
-import { getAuthMode, isHostedAuthMode } from "@/lib/auth-mode";
+import {
+  getAuthMode,
+  isHostedAuthMode,
+  isPublicBillingEnabled,
+} from "@/lib/auth-mode";
 import {
   createSearchCrewOAuthProvider,
   type SearchCrewOAuthEnv,
@@ -157,6 +161,9 @@ function handleFetch(
 
   if (isHostedAuthMode(authMode)) {
     if (pathname === AUTUMN_WEBHOOK_PATH) {
+      if (!isPublicBillingEnabled(env.PUBLIC_BILLING_ENABLED)) {
+        return new Response("Not found", { status: 404 });
+      }
       return handleAutumnWebhookRequest(publicRequest);
     }
 

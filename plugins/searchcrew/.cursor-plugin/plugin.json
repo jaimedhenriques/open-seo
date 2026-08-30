@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "SEO made simple. Research keywords and competitors, audit sites, track rankings, and use Search Console data from your agent.",
   "author": {
-    "name": "Every App, Inc",
-    "email": "support@searchcrew.ai"
+    "name": "SearchCrew"
   },
   "homepage": "https://searchcrew.ai",
-  "repository": "https://github.com/jaimedhenriques/searchcrew",
+  "repository": "https://github.com/jaimedhenriques/open-seo",
   "license": "MIT",
   "keywords": [
     "seo",
@@ -19,7 +18,6 @@
     "rank-tracking",
     "local-seo"
   ],
-  "logo": "https://raw.githubusercontent.com/jaimedhenriques/searchcrew/main/public/transparent-logo.png",
-  "skills": "skills",
-  "mcpServers": "mcp.json"
+  "logo": "https://raw.githubusercontent.com/jaimedhenriques/open-seo/main/public/searchcrew-mark.png",
+  "skills": "skills"
 }

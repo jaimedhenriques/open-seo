@@ -9,19 +9,17 @@ There are a lot of open source SEO projects on GitHub, but only a handful are ma
 
 In the past, open source SEO tools struggled because they lacked quality data. Beyond auditing, most SEO tasks have a cost, so most of the projects in this guide aren't totally free. For example, rank tracking requires SERP results from around the world. Coming up with a content strategy means you need accurate search volumes and backlink indexes. Most of the tools in this list rely on paid third-party services, but they still cost far less than the equivalent legacy SaaS tools.
 
-Note: SearchCrew publishes this guide. SearchCrew is a commercial product, not an open-source one, so it is not listed among the tools below — we have tried to make this useful even if you never touch it.
+Note: SearchCrew publishes this guide and is included below. Treat its placement as first-party disclosure, not an independent endorsement.
 
 ## The main tools at a glance
 
-| Tool                                                       | Stars | What it does                                                                       | Cost to run                                        | Self-hosting                       |
-| ---------------------------------------------------------- | ----- | ---------------------------------------------------------------------------------- | -------------------------------------------------- | ---------------------------------- |
-| [SearchCrew](https://github.com/jaimedhenriques/searchcrew)           | 2.1k  | All-in-one: keyword research, rank tracking, backlinks, site audits, AI visibility | DataForSEO usage (your own API key, pay-as-you-go) | Docker or Cloudflare Workers       |
-| [SerpBear](https://github.com/towfiqi/serpbear)            | 2.0k  | Rank tracking                                                                      | SERP API usage (provider of your choice)           | Docker                             |
-| [SEONaut](https://github.com/StJudeWasHere/seonaut)        | 717   | Technical SEO and site audits                                                      | Free                                               | Docker                             |
-| [LibreCrawl](https://github.com/PhialsBasement/LibreCrawl) | 681   | Site crawling and SEO audits                                                       | Free                                               | Desktop or web                     |
-| [SEOMachine](https://github.com/TheCraigHewitt/seomachine) | 7.1k  | SEO content writing inside Claude Code                                             | Anthropic API usage                                | Clone the repo, run in Claude Code |
-
-_Star counts are updated monthly. Last updated June 5, 2026._
+| Tool                                                       | What it does                                                                       | Cost to run                                        | Self-hosting                       |
+| ---------------------------------------------------------- | ---------------------------------------------------------------------------------- | -------------------------------------------------- | ---------------------------------- |
+| [SearchCrew](https://github.com/jaimedhenriques/open-seo)  | Keyword research, rank tracking, backlinks, site audits, AI visibility             | DataForSEO usage with your own API key             | Cloudflare Workers; Docker path is being verified |
+| [SerpBear](https://github.com/towfiqi/serpbear)             | Rank tracking                                                                      | SERP API usage (provider of your choice)           | Docker                             |
+| [SEONaut](https://github.com/StJudeWasHere/seonaut)         | Technical SEO and site audits                                                      | Free                                               | Docker                             |
+| [LibreCrawl](https://github.com/PhialsBasement/LibreCrawl)  | Site crawling and SEO audits                                                       | Free                                               | Desktop or web                     |
+| [SEOMachine](https://github.com/TheCraigHewitt/seomachine)  | SEO content writing inside Claude Code                                             | Anthropic API usage                                | Clone the repo, run in Claude Code |
 
 ## SearchCrew
 
@@ -53,7 +51,7 @@ It gives you commands like /research, /write, and /optimize, along with a set of
 
 ## Honorable mentions
 
-These have fewer stars, or fill a narrower niche, than the main tools above. We have not put any of them through real work, so treat these as leads rather than recommendations. If you love one of them, email us and we will test it. Sorted by GitHub stars.
+These have fewer stars, or fill a narrower niche, than the main tools above. We have not put any of them through real work, so treat these as leads rather than recommendations. Current feedback and support status is published on the [support page](/support).
 
 - [openserp](https://github.com/karust/openserp) (745, active): a Go API and CLI that scrapes normalized SERP results from Google, Yandex, Baidu, Bing, DuckDuckGo, and Ecosia, self-hostable via Docker.
 - [RustySEO](https://github.com/mascanho/RustySEO) (276, active): a cross-platform desktop SEO/GEO toolkit with a Rust crawling core, plus Google Analytics, Search Console, and PageSpeed integrations. It looked promising, but the Mac build would not run on our machine.
@@ -69,6 +67,6 @@ One clarification, since it shows up on other lists: seojuice.com is not open so
 
 ## Try SearchCrew, and tell us what we missed
 
-If you want one open source tool that covers most of SEO, start with SearchCrew. Self-host it with Docker or Cloudflare Workers, or use the hosted version at [searchcrew.ai](https://searchcrew.ai) if you would rather not run it yourself.
+If you want one open source tool that covers most of SEO, inspect SearchCrew and its Cloudflare self-hosting path. The Docker path is still being verified. Hosted accounts remain paused; follow [launch status](/get-started) instead of attempting signup.
 
-We will keep this guide current. If there is an open source SEO project you love that we did not cover, email us at support@searchcrew.ai and we will test it and consider adding it.
+We will keep this guide current. Current feedback and support status is published at [searchcrew.ai/support](/support).

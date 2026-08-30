@@ -1,22 +1,24 @@
 ---
-title: "Install the SearchCrew plugin for Claude Code"
-description: "Add SearchCrew MCP and Agent Skills to Claude Code with one marketplace and one install command."
+title: "Install SearchCrew skills for Claude Code"
+description: "Add nine SearchCrew Agent Skills to Claude Code from the SearchCrew marketplace."
 ---
 
-The SearchCrew plugin bundles SearchCrew MCP and all nine SEO Agent Skills into one install. This is the preferred way to set up SearchCrew in Claude Code.
+> **Current package:** The plugin installs nine SEO Agent Skills. It does not register the paused hosted MCP endpoint. Check [launch status](/get-started) before trying the separate MCP setup.
+
+The SearchCrew plugin installs all nine SEO workflow skills in one step.
 
 ## Install
 
 Run these two commands in Claude Code:
 
 ```bash
-/plugin marketplace add jaimedhenriques/searchcrew
+/plugin marketplace add jaimedhenriques/open-seo
 /plugin install searchcrew@searchcrew
 ```
 
 If the install summary says `Run /reload-plugins to activate.`, run that command.
 
-Claude Code connects SearchCrew MCP at `https://app.searchcrew.ai/mcp` and enables nine skills:
+After reload, Claude Code enables nine skills:
 
 - SEO Project Setup
 - SEO Coach
@@ -27,10 +29,6 @@ Claude Code connects SearchCrew MCP at `https://app.searchcrew.ai/mcp` and enabl
 - Competitor Analysis
 - Local SEO
 - Link Prospecting
-
-## Finish the login
-
-Claude Code should prompt you to log in to SearchCrew right after install. If it doesn't, run `/mcp` and approve the SearchCrew connection from there.
 
 ## Run a skill
 
@@ -50,7 +48,7 @@ Plugin skills are namespaced by the plugin name:
 
 ## Claude Desktop
 
-Claude Desktop doesn't support this plugin format — plugins are a Claude Code feature. For Claude Desktop, [add SearchCrew as an MCP connector](/docs/mcp#claude-desktop) instead.
+Claude Desktop doesn't support this plugin format. When the hosted MCP endpoint is live, use the separate [MCP setup](/docs/mcp#claude-desktop).
 
 ## Update or remove
 
@@ -71,8 +69,6 @@ If `/plugin uninstall searchcrew@searchcrew` reports "not installed in this proj
 
 If plugin skills don't appear, clear the plugin cache with `rm -rf ~/.claude/plugins/cache` — this clears every installed plugin's cache, not just SearchCrew's, so reinstall anything else you have after — then restart Claude Code and reinstall the plugin.
 
-If the SearchCrew connection doesn't show as authenticated, run `/mcp`, select SearchCrew, and complete the login.
-
 ## Other clients
 
-This plugin is for Claude Code. For Codex CLI, use the [SearchCrew plugin for Codex](/docs/codex-plugin) instead. For Cursor, Codex Desktop, Claude Desktop, or an API key setup, see [Set up SearchCrew MCP](/docs/mcp) and [Set up SearchCrew Agent Skills](/docs/skills/setup).
+This plugin is for Claude Code. For Codex CLI, use the [SearchCrew plugin for Codex](/docs/codex-plugin). For other agents, see [Set up SearchCrew Agent Skills](/docs/skills/setup). Hosted MCP setup remains a separate, paused step.

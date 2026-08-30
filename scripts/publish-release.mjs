@@ -44,7 +44,7 @@ const args = [
   "create",
   tag,
   "--repo",
-  "jaimedhenriques/searchcrew",
+  "jaimedhenriques/open-seo",
   "--title",
   tag,
   "--notes-file",

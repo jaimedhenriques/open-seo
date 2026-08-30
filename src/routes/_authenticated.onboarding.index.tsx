@@ -138,7 +138,7 @@ function OnboardingFlow({
       title={isExistingUser ? "Tell us about your work" : undefined}
       helperText={
         isExistingUser
-          ? "A little context helps us decide where to focus. You can also reach me anytime at support@searchcrew.ai."
+          ? "A little context helps us decide where to focus. Current support status is available at searchcrew.ai/support."
           : undefined
       }
       step={step}

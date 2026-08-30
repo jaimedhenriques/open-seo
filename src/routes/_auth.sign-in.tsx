@@ -31,6 +31,7 @@ function SignInPage() {
   );
   const authCallbackURL = redirectTo;
   const [showEmailForm, setShowEmailForm] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [isStartingGoogle, setIsStartingGoogle] = useState(false);
   const [socialError, setSocialError] = useState<string | null>(null);
 
@@ -122,6 +123,7 @@ function SignInPage() {
   return (
     <AuthPageCard
       title="Sign in"
+      helperText="Continue to your SearchCrew workspace."
       footer={
         isHostedMode ? (
           <div
@@ -183,10 +185,17 @@ function SignInPage() {
 
               return (
                 <div>
+                  <label
+                    htmlFor="signin-email"
+                    className="mb-1.5 block text-sm font-medium text-base-content"
+                  >
+                    Email
+                  </label>
                   <input
+                    id="signin-email"
                     type="email"
-                    className="input input-bordered w-full"
-                    placeholder="Email address..."
+                    className="input input-bordered min-h-11 w-full"
+                    placeholder="you@company.com"
                     value={field.state.value}
                     onChange={(event) => field.handleChange(event.target.value)}
                     autoComplete="email"
@@ -207,10 +216,26 @@ function SignInPage() {
 
               return (
                 <div>
+                  <div className="mb-1.5 flex items-center justify-between gap-3">
+                    <label
+                      htmlFor="signin-password"
+                      className="text-sm font-medium text-base-content"
+                    >
+                      Password
+                    </label>
+                    <button
+                      type="button"
+                      className="min-h-11 px-2 text-sm font-medium text-base-content/60 underline underline-offset-2 hover:text-base-content"
+                      onClick={() => setShowPassword((current) => !current)}
+                    >
+                      {showPassword ? "Hide password" : "Show password"}
+                    </button>
+                  </div>
                   <input
-                    type="password"
-                    className="input input-bordered w-full"
-                    placeholder="Password..."
+                    id="signin-password"
+                    type={showPassword ? "text" : "password"}
+                    className="input input-bordered min-h-11 w-full"
+                    placeholder="Your password"
                     value={field.state.value}
                     onChange={(event) => field.handleChange(event.target.value)}
                     autoComplete="current-password"
@@ -239,7 +264,7 @@ function SignInPage() {
                     <p className="text-sm text-error">{errorMessage}</p>
                   ) : null}
                   <button
-                    className="btn btn-soft w-full"
+                    className="btn btn-soft min-h-11 w-full"
                     disabled={!isHostedMode || isSubmitting}
                   >
                     {isSubmitting ? "Signing in..." : "Sign in"}
