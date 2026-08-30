@@ -104,7 +104,7 @@ function MarketingLayout() {
           <nav className="grid min-h-14 grid-cols-[1fr_auto] items-center gap-3 rounded-full border border-[var(--color-border-subtle)] bg-white/90 px-4 py-2.5 shadow-sm shadow-neutral-900/5 backdrop-blur md:grid-cols-[1fr_auto_1fr] md:px-5">
             <Link
               to="/"
-              className="text-sm font-semibold hover:opacity-80 transition-opacity"
+              className="inline-flex min-h-11 touch-manipulation items-center rounded-lg text-sm font-semibold transition-[opacity,transform] duration-150 hover:opacity-80 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
             >
               SearchCrew
             </Link>
@@ -114,7 +114,7 @@ function MarketingLayout() {
               <ResourcesDropdown />
               <Link
                 to="/pricing"
-                className="text-sm font-semibold text-neutral-600 transition-colors hover:text-neutral-900"
+                className="inline-flex min-h-11 items-center rounded-lg text-sm font-semibold text-neutral-600 transition-colors hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2"
               >
                 Pricing
               </Link>
@@ -126,13 +126,13 @@ function MarketingLayout() {
                 aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={mobileMenuOpen}
                 onClick={() => setMobileMenuOpen((open) => !open)}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full text-neutral-900 transition-colors hover:bg-[#f5f1ec] md:hidden"
+                className="inline-flex h-11 w-11 touch-manipulation items-center justify-center rounded-full text-neutral-900 transition-[background-color,transform] duration-150 hover:bg-[#f5f1ec] active:scale-[0.96] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none md:hidden"
               >
                 {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
               </button>
               <a
                 href="https://app.searchcrew.ai/sign-in"
-                className="hidden h-9 items-center rounded-full border border-[var(--color-border-subtle)] px-4 text-sm font-medium text-neutral-900 transition-colors hover:border-neutral-900 md:inline-flex"
+                className="hidden h-11 touch-manipulation items-center rounded-full border border-[var(--color-border-subtle)] px-4 text-sm font-medium text-neutral-900 transition-[border-color,transform] duration-150 hover:border-neutral-900 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none md:inline-flex"
               >
                 Sign in
               </a>
@@ -145,14 +145,14 @@ function MarketingLayout() {
                 <a
                   href="https://app.searchcrew.ai/sign-in"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex h-11 items-center justify-center rounded-xl bg-neutral-950 px-3 text-sm font-semibold text-white transition-colors hover:bg-neutral-800"
+                  className="flex h-11 touch-manipulation items-center justify-center rounded-xl bg-neutral-950 px-3 text-sm font-semibold text-white transition-[background-color,transform] duration-150 hover:bg-neutral-800 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
                 >
                   Try SearchCrew
                 </a>
                 <a
                   href="https://app.searchcrew.ai/sign-in"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex h-11 items-center justify-center rounded-xl border border-[var(--color-border-subtle)] px-3 text-sm font-semibold text-neutral-800 transition-colors hover:border-neutral-900 hover:bg-[#f5f1ec]"
+                  className="flex h-11 touch-manipulation items-center justify-center rounded-xl border border-[var(--color-border-subtle)] px-3 text-sm font-semibold text-neutral-800 transition-[background-color,border-color,transform] duration-150 hover:border-neutral-900 hover:bg-[#f5f1ec] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
                 >
                   Sign in
                 </a>
@@ -170,7 +170,7 @@ function MarketingLayout() {
                           key={item.href}
                           href={item.href}
                           onClick={() => setMobileMenuOpen(false)}
-                          className="flex min-h-10 items-center rounded-xl px-2 text-sm font-semibold text-neutral-800 transition-colors hover:bg-neutral-50 hover:text-neutral-950"
+                          className="flex min-h-11 touch-manipulation items-center rounded-xl px-2 text-sm font-semibold text-neutral-800 transition-colors hover:bg-neutral-50 hover:text-neutral-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)]"
                         >
                           {item.label}
                         </a>
@@ -240,7 +240,7 @@ function ResourcesDropdown() {
       </a>
       <button
         type="button"
-        className="hidden h-10 items-center text-sm font-semibold text-neutral-600 transition-colors hover:text-neutral-900 md:inline-flex"
+        className="hidden h-11 items-center rounded-lg text-sm font-semibold text-neutral-600 transition-colors hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 md:inline-flex"
       >
         Resources
       </button>
@@ -277,7 +277,7 @@ function FeatureDropdown() {
       </Link>
       <button
         type="button"
-        className="hidden h-10 items-center text-sm font-semibold text-neutral-600 transition-colors hover:text-neutral-900 md:inline-flex"
+        className="hidden h-11 items-center rounded-lg text-sm font-semibold text-neutral-600 transition-colors hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 md:inline-flex"
       >
         Features
       </button>

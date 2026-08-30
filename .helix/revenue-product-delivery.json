@@ -4,18 +4,18 @@
   "company": "SearchCrew",
   "artifactType": "web-product",
   "icp": "Founders, marketers, and SEO consultants who need to justify organic-search investment in commercial terms",
-  "pain": "SEO forecasts often stop at traffic, leaving buyers unable to compare expected leads, profit, payback, and budget risk",
-  "revenueHypothesis": "A useful public SEO ROI calculator can attract high-intent search traffic and convert qualified visitors into SearchCrew signups",
+  "pain": "The calculator is credible but visually dense, and mobile visitors must complete a long assumption flow before they see the value of the estimate",
+  "revenueHypothesis": "A faster, calmer calculator experience that surfaces outcomes earlier and makes assumptions easier to adjust can improve engagement and qualified SearchCrew signup intent",
   "mvpAcceptance": [
-    "A public /seo-roi-calculator route lets visitors edit bounded traffic, conversion, value, and cost assumptions and immediately see finite year-one return and payback outputs",
-    "The calculator has keyboard-accessible exact inputs, a currency selector, reset and copy actions, a formula disclosure, explicit estimate language, and no horizontal overflow at 320px",
-    "Pure calculation tests cover defaults, zero traffic, zero conversion, immediate payback, negative return, and out-of-range input clamping",
-    "The route has canonical social metadata, FAQ and WebApplication structured data, sitemap inclusion, and links from Free Tools and the forecasting guide",
+    "The public /seo-roi-calculator route preserves the existing calculation behavior while presenting the primary result before the full input stack on mobile and beside it on desktop",
+    "All assumption controls have explicit names, accessible labels, visible focus states, 44px minimum touch targets, direct slider feedback, and reduced-motion-safe interaction states",
+    "The page uses the existing SearchCrew orange, black, cream, and typography system with clearer hierarchy, fewer nested-card cues, and no horizontal overflow at 320px",
+    "Focused calculator tests, the web type check, the web production build, and responsive browser checks pass without console errors",
     "The exact pushed commit passes GitHub CI and a Vercel READY preview passes the calculator buyer-path smoke test"
   ],
   "maker": "codex-open-seo-maker",
   "codingTool": "codex",
-  "rollback": "Revert the scoped calculator commit, remove the isolated Vercel preview deployment, and leave the Cloudflare production site and domains unchanged.",
+  "rollback": "Revert the scoped UI polish commit, restore the previous calculator presentation, remove the isolated Vercel preview deployment, and leave the Cloudflare production site and domains unchanged.",
   "stopConditions": [
     "Stop on secret exposure, target ambiguity, paid-plan requirements, production DNS changes, more than two deployment attempts, or any regression in repository CI."
   ],
@@ -23,7 +23,11 @@
   "executionEvidence": ".helix/evidence/execution.json",
   "copySafety": {
     "publicPatternSources": [
-      "https://github.com/jaimedhenriques/seo-calculator-factory/tree/365ae019d134f59547d50f6b21dd23cf28c36f24"
+      "https://github.com/jaimedhenriques/seo-calculator-factory/tree/365ae019d134f59547d50f6b21dd23cf28c36f24",
+      "https://github.com/emilkowalski/skills/tree/main/skills/apple-design",
+      "https://github.com/vercel-labs/web-interface-guidelines",
+      "https://github.com/pbakaus/impeccable",
+      "https://github.com/VoltAgent/awesome-design-md"
     ],
     "proprietaryAssetsExcluded": true
   },
@@ -35,7 +39,7 @@
   "github": {
     "repo": "jaimedhenriques/open-seo",
     "remote": "origin",
-    "branch": "codex/seo-roi-calculator",
+    "branch": "codex/apple-ui-polish",
     "baseBranch": "main",
     "commit": "HEAD"
   },
@@ -46,16 +50,16 @@
     "deploymentId": "dpl_2ScMPVc6ufRfGhsRzYmFpQtVBirG",
     "deploymentUrl": "https://open-seo-searchcrew-preview-6li6flylb-jaime-henriques-projects.vercel.app",
     "deploymentCommit": "HEAD",
-    "evidence": "controller://vercel/open-seo-seo-roi-calculator"
+    "evidence": "controller://vercel/open-seo-apple-ui-polish"
   },
   "verification": {
     "checks": [
       {
-        "name": "docker-build",
+        "name": "Web CI",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "codex-native-quality-checker",
-    "checkerEvidence": "controller://checker/open-seo-seo-roi-calculator"
+    "checker": "independent-ui-quality-checker",
+    "checkerEvidence": "controller://checker/open-seo-apple-ui-polish"
   }
 }

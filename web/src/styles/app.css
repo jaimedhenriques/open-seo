@@ -6,6 +6,7 @@
   --color-brand: #111111;
   --color-brand-muted: #66625e;
   --color-brand-accent: #ff5600;
+  --color-brand-accent-ink: #bd3e00;
   --color-surface: #f5f1ec;
   --color-surface-raised: #ffffff;
   --color-border-subtle: #d8d1c8;
@@ -57,4 +58,85 @@ body {
     "Segoe UI",
     sans-serif;
   overflow-x: clip;
+}
+
+.seo-roi-range {
+  appearance: none;
+  height: 44px;
+  touch-action: pan-y;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.seo-roi-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--color-brand-accent) 0%,
+    var(--color-brand-accent) var(--range-progress),
+    var(--color-border-subtle) var(--range-progress),
+    var(--color-border-subtle) 100%
+  );
+}
+
+.seo-roi-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  margin-top: -9px;
+  border: 3px solid white;
+  border-radius: 999px;
+  background: var(--color-brand-accent);
+  box-shadow: 0 1px 4px rgb(17 17 17 / 24%);
+  transition: transform 120ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.seo-roi-range::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-border-subtle);
+}
+
+.seo-roi-range::-moz-range-progress {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-brand-accent);
+}
+
+.seo-roi-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: 3px solid white;
+  border-radius: 999px;
+  background: var(--color-brand-accent);
+  box-shadow: 0 1px 4px rgb(17 17 17 / 24%);
+  transition: transform 120ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.seo-roi-range:active::-webkit-slider-thumb,
+.seo-roi-range:active::-moz-range-thumb {
+  transform: scale(1.08);
+}
+
+.seo-roi-range:focus-visible {
+  border-radius: 999px;
+  outline: 2px solid var(--color-brand-accent);
+  outline-offset: 2px;
+}
+
+.seo-roi-disclosure-icon {
+  transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seo-roi-range::-webkit-slider-thumb,
+  .seo-roi-range::-moz-range-thumb {
+    transition: none;
+  }
+
+  .seo-roi-disclosure-icon {
+    transition: none;
+  }
 }
