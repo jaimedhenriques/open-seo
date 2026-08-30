@@ -19,7 +19,7 @@ Until the hosted app is live, use [launch status](/get-started) as the source of
 
 ## Claude Code
 
-The [SearchCrew plugin](/docs/claude-code-plugin) is the preferred way to connect Claude Code — one install adds MCP and all nine Agent Skills together. Use the steps below only if you want MCP on its own.
+The current [SearchCrew plugin](/docs/claude-code-plugin) installs workflow skills only. When hosted MCP opens, connect it separately with the command below.
 
 Use user scope to make SearchCrew available across projects. Use local scope for the current repository.
 
@@ -58,7 +58,7 @@ Claude Desktop custom connectors require a Claude plan that supports custom conn
 
 ## Codex CLI
 
-The [SearchCrew plugin](/docs/codex-plugin) is the preferred way to connect Codex CLI — one install adds MCP and all nine Agent Skills together. Use the steps below only if you want MCP on its own.
+The current [SearchCrew plugin](/docs/codex-plugin) installs workflow skills only. When hosted MCP opens, connect it separately with the command below.
 
 Run this in your terminal:
 
