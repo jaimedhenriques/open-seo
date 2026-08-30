@@ -7,7 +7,7 @@
     "email": "support@searchcrew.ai"
   },
   "homepage": "https://searchcrew.ai",
-  "repository": "https://github.com/every-app/open-seo",
+  "repository": "https://github.com/jaimedhenriques/searchcrew",
   "license": "MIT",
   "keywords": [
     "seo",
@@ -19,7 +19,7 @@
     "rank-tracking",
     "local-seo"
   ],
-  "logo": "https://raw.githubusercontent.com/every-app/open-seo/main/public/transparent-logo.png",
+  "logo": "https://raw.githubusercontent.com/jaimedhenriques/searchcrew/main/public/transparent-logo.png",
   "skills": "skills",
   "mcpServers": "mcp.json"
 }

@@ -27,11 +27,11 @@ const SKILL_NAMES = [
   "geo-crawlers",
   "geo-llmstxt",
 ];
-const SKILLS_INSTALL = `npx skills add every-app/open-seo`;
-const ALL_SKILLS_INSTALL = `npx skills add every-app/open-seo --skill '*'`;
-const CLAUDE_CODE_SKILLS_INSTALL = `npx skills add every-app/open-seo --skill '*' --agent claude-code`;
-const CODEX_SKILLS_INSTALL = `npx skills add every-app/open-seo --skill '*' --agent codex`;
-const SKILLS_MANUAL_INSTALL = `git clone https://github.com/every-app/open-seo.git
+const SKILLS_INSTALL = `npx skills add jaimedhenriques/searchcrew`;
+const ALL_SKILLS_INSTALL = `npx skills add jaimedhenriques/searchcrew --skill '*'`;
+const CLAUDE_CODE_SKILLS_INSTALL = `npx skills add jaimedhenriques/searchcrew --skill '*' --agent claude-code`;
+const CODEX_SKILLS_INSTALL = `npx skills add jaimedhenriques/searchcrew --skill '*' --agent codex`;
+const SKILLS_MANUAL_INSTALL = `git clone https://github.com/jaimedhenriques/searchcrew.git
 
 # Codex
 mkdir -p ~/.codex/skills

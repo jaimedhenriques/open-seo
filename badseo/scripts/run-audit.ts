@@ -348,7 +348,7 @@ async function main() {
   }
 
   // Explicit regression guard for the trailing-slash redirect cycle
-  // (every-app/open-seo#61): the canonical page must resolve to a 200 with no
+  // (jaimedhenriques/searchcrew#61): the canonical page must resolve to a 200 with no
   // redirect loop and no error. Fix-agnostic on purpose — the 200 lands on the
   // slash form under the root-cause fix (slashes preserved) or on the non-slash
   // form under older slash-stripping code that inline-follows. A crawler that

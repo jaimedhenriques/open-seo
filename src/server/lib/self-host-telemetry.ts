@@ -21,8 +21,8 @@ import {
 import { getSetupIssueSummary } from "@/server/lib/setup-status";
 import { isTelemetryOptOutValue } from "@/shared/selfhost-checks";
 
-// Self-host install heartbeats. This used to carry the upstream OpenSEO
-// project's hardcoded PostHog key, which would have reported every SearchCrew
+// Self-host install heartbeats. The forked source hardcoded the upstream
+// project's PostHog key here, which would have reported every SearchCrew
 // self-host install into someone else's analytics. It now reads our own key
 // from the environment and no-ops when unset, so an unconfigured deployment
 // reports nothing rather than reporting to the wrong place.

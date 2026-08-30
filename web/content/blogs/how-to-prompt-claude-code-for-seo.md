@@ -30,7 +30,7 @@ The first answer is a list of ideas. The second is a decision you can act on.
 Two commands in Claude Code install the SearchCrew MCP server and all nine SEO agent skills:
 
 ```
-/plugin marketplace add every-app/open-seo
+/plugin marketplace add jaimedhenriques/searchcrew
 /plugin install searchcrew@searchcrew
 ```
 

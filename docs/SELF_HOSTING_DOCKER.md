@@ -6,7 +6,7 @@ In Docker mode, SearchCrew uses `AUTH_MODE=local_noauth` (no auth checks, local 
 
 The default `compose.yaml` uses the published GHCR image:
 
-- `ghcr.io/every-app/open-seo:latest`
+- `ghcr.io/jaimedhenriques/searchcrew:latest`
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ Optional env values:
 - `PORT` (defaults to `3001`)
 - `ALLOWED_HOST` (single reverse-proxy hostname to allow in Vite preview)
 - `AUTH_MODE=local_noauth` (already set in compose)
-- `SEARCHCREW_IMAGE` (defaults to `ghcr.io/every-app/open-seo:latest`)
+- `SEARCHCREW_IMAGE` (defaults to `ghcr.io/jaimedhenriques/searchcrew:latest`)
 - `OPENROUTER_API_KEY` (required for AI features such as SAM; see [OpenRouter](https://openrouter.ai/settings/keys))
 
 If you are putting Docker behind a reverse proxy or a temporary tunnel, remember that Docker self-hosting runs with app auth disabled. Only expose it behind your own auth-protected reverse proxy, tunnel, or private network, and add the public hostname before restarting:
@@ -54,7 +54,7 @@ To disable telemetry even when a key is configured, set `SEARCHCREW_TELEMETRY_DI
 Set `SEARCHCREW_IMAGE` in `.env` and restart:
 
 ```bash
-SEARCHCREW_IMAGE=ghcr.io/every-app/open-seo:v1.2.3
+SEARCHCREW_IMAGE=ghcr.io/jaimedhenriques/searchcrew:v1.2.3
 docker compose up -d
 ```
 
