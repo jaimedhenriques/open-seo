@@ -10,7 +10,7 @@ The SearchCrew plugin bundles SearchCrew MCP and all nine SEO Agent Skills into 
 Run these commands in your terminal:
 
 ```bash
-codex plugin marketplace add every-app/open-seo
+codex plugin marketplace add jaimedhenriques/searchcrew
 codex plugin add searchcrew@searchcrew
 codex mcp login searchcrew
 ```

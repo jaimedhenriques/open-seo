@@ -31,7 +31,7 @@ For ease of review, I would appreciate if you used the `/simple-issue-descriptio
 Install it with:
 
 ```sh
-npx skills add every-app/open-seo --skill simple-issue-description
+npx skills add jaimedhenriques/searchcrew --skill simple-issue-description
 ```
 
 See [Set up SearchCrew Agent Skills](https://searchcrew.ai/docs/skills/setup) for other install options.

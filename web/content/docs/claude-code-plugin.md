@@ -10,7 +10,7 @@ The SearchCrew plugin bundles SearchCrew MCP and all nine SEO Agent Skills into 
 Run these two commands in Claude Code:
 
 ```bash
-/plugin marketplace add every-app/open-seo
+/plugin marketplace add jaimedhenriques/searchcrew
 /plugin install searchcrew@searchcrew
 ```
 

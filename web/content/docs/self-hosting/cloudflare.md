@@ -13,7 +13,7 @@ Host SearchCrew on Cloudflare for internet-facing self-hosting across multiple d
 
 ## 1) Clone your SearchCrew repo
 
-Fork `every-app/open-seo` on GitHub if you want a repo you control, then clone it locally:
+Fork `jaimedhenriques/searchcrew` on GitHub if you want a repo you control, then clone it locally:
 
 ```bash
 git clone https://github.com/YOUR_GITHUB_USER/searchcrew.git
@@ -25,7 +25,7 @@ pnpm install
 If you do not need a fork, clone the upstream repo instead:
 
 ```bash
-git clone https://github.com/every-app/open-seo.git
+git clone https://github.com/jaimedhenriques/searchcrew.git
 cd searchcrew
 corepack enable
 pnpm install
@@ -99,5 +99,5 @@ pnpm deploy:selfhost --yes
 
 ## More guides on GitHub
 
-- [Operations](https://github.com/every-app/open-seo/blob/main/docs/SELF_HOSTING_CLOUDFLARE_OPERATIONS.md): telemetry and other day-to-day tasks.
-- [Legacy deployments](https://github.com/every-app/open-seo/blob/main/docs/SELF_HOSTING_CLOUDFLARE_LEGACY.md): maintenance for installs created with the retired Deploy-button or manual Wrangler flows.
+- [Operations](https://github.com/jaimedhenriques/searchcrew/blob/main/docs/SELF_HOSTING_CLOUDFLARE_OPERATIONS.md): telemetry and other day-to-day tasks.
+- [Legacy deployments](https://github.com/jaimedhenriques/searchcrew/blob/main/docs/SELF_HOSTING_CLOUDFLARE_LEGACY.md): maintenance for installs created with the retired Deploy-button or manual Wrangler flows.

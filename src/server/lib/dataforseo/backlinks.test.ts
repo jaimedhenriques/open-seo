@@ -43,13 +43,13 @@ function okResponse(result: unknown[]) {
 describe("normalizeBacklinksTarget", () => {
   it("defaults inputs with a path to a subfolder lookup", () => {
     expect(
-      normalizeBacklinksTarget("https://github.com/every-app/open-seo/"),
+      normalizeBacklinksTarget("https://github.com/acme/widgets/"),
     ).toEqual({
       apiTarget: "github.com",
-      displayTarget: "github.com/every-app/open-seo",
+      displayTarget: "github.com/acme/widgets",
       scope: "subfolder",
       includeSubdomains: false,
-      path: "/every-app/open-seo",
+      path: "/acme/widgets",
     });
   });
 

@@ -5,7 +5,7 @@ import { toast } from "sonner";
 
 const SUPPORT_EMAIL = "support@searchcrew.ai";
 const DISCORD_URL = "https://discord.gg/c9uGs3cFXr";
-const GITHUB_URL = "https://github.com/every-app/open-seo";
+const GITHUB_URL = "https://github.com/jaimedhenriques/searchcrew";
 
 export const Route = createFileRoute("/_app/support")({
   component: SupportPage,

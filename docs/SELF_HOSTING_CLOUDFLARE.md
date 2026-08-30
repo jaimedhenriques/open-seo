@@ -15,7 +15,7 @@ Related guides:
 
 ## 1) Clone your SearchCrew repo
 
-Fork `every-app/open-seo` on GitHub if you want a repo you control, then clone it locally:
+Fork `jaimedhenriques/searchcrew` on GitHub if you want a repo you control, then clone it locally:
 
 ```bash
 git clone https://github.com/YOUR_GITHUB_USER/searchcrew.git
@@ -27,7 +27,7 @@ pnpm install
 If you do not need a fork, clone the upstream repo instead:
 
 ```bash
-git clone https://github.com/every-app/open-seo.git
+git clone https://github.com/jaimedhenriques/searchcrew.git
 cd searchcrew
 corepack enable
 pnpm install

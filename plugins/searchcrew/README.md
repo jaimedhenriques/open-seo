@@ -19,7 +19,7 @@ The plugin includes nine skills that guide Cursor through complete SEO workflows
 
 Install the SearchCrew plugin from the Cursor Marketplace. The first time Cursor uses an SearchCrew tool, follow the OAuth prompt to sign in and approve the connection.
 
-You need an SearchCrew account. The plugin package is free and open source. Hosted SearchCrew plans and usage credits are described at [searchcrew.ai/pricing](https://searchcrew.ai/pricing), and SearchCrew can also be [self-hosted](https://github.com/every-app/open-seo#self-hosting).
+You need an SearchCrew account. The plugin package is free and open source. Hosted SearchCrew plans and usage credits are described at [searchcrew.ai/pricing](https://searchcrew.ai/pricing), and SearchCrew can also be [self-hosted](https://github.com/jaimedhenriques/searchcrew#self-hosting).
 
 ## Try it
 
