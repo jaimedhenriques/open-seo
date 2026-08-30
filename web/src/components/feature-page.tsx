@@ -19,10 +19,10 @@ export function FeaturePageTemplate({ page }: FeaturePageProps) {
         </p>
         <div className="mt-5">
           <a
-            href="https://app.searchcrew.ai/sign-up"
+            href="/get-started"
             className="inline-flex h-11 items-center justify-center rounded-lg bg-neutral-950 px-5 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
           >
-            Try SearchCrew
+            Check launch status
             <span aria-hidden="true" className="ml-2">
               &rarr;
             </span>
@@ -124,17 +124,17 @@ export function FeaturePageTemplate({ page }: FeaturePageProps) {
 
       <section className="mt-12 rounded-xl border border-[var(--color-border-subtle)] bg-white p-6 md:p-8">
         <h2 className="text-2xl font-semibold tracking-tight text-neutral-950">
-          Try SearchCrew
+          Check launch status
         </h2>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--color-brand-muted)]">
           The open source alternative to bloated, expensive, legacy SEO tools.
         </p>
         <div className="mt-4">
           <a
-            href="https://app.searchcrew.ai/sign-up"
+            href="/get-started"
             className="inline-flex h-10 items-center justify-center rounded-lg bg-neutral-950 px-4 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
           >
-            Try SearchCrew
+            Check launch status
             <span aria-hidden="true" className="ml-2">
               &rarr;
             </span>

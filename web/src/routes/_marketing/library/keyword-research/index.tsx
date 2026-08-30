@@ -13,7 +13,7 @@ const faqs = [
   {
     question: "How do you do keyword research for free?",
     answer:
-      "The discovery half runs on sources you already have: customer conversations, Google's autocomplete and People Also Ask, and your Search Console. Quality SEO data costs money, which is why the big SEO suites run $100/month and up. You can start SearchCrew for free; the paid plan starts at $10/month and includes $10 of usage. If you need more, you can buy top-up credits.",
+      "The discovery half runs on sources you already have: customer conversations, Google's autocomplete and People Also Ask, and your Search Console. Quality SEO data costs money, which is why the big SEO suites run $100/month and up. SearchCrew's proposed hosted tiers include usage credits; billing remains paused until the beta is production-ready.",
   },
   {
     question: "Can you do keyword research without Google Keyword Planner?",
@@ -175,9 +175,8 @@ function KeywordResearchLibraryPage() {
           </a>{" "}
           lets a compatible AI assistant query both sources while it works
           through the workflow. Quality SEO data is why the big suites run
-          $100/month and up; SearchCrew's paid plan starts at $10/month and includes
-          $10 of usage, with top-ups available if you need more. You can start
-          for free.
+          $100/month and up. SearchCrew's proposed hosted tiers include usage
+          credits; billing remains paused until the beta is production-ready.
         </p>
       </section>
 

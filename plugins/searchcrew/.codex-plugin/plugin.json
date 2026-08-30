@@ -1,13 +1,13 @@
 {
   "name": "searchcrew",
   "version": "1.0.0",
-  "description": "Without good data, your agent gives generic advice. Keyword research, competitor research, backlinks, and site audits. All for $10/month.",
+  "description": "Open-source SEO workflows for keyword research, competitors, backlinks, and site audits. Hosted MCP access is pending production verification.",
   "author": {
     "name": "SearchCrew",
     "url": "https://searchcrew.ai"
   },
   "homepage": "https://searchcrew.ai",
-  "repository": "https://github.com/jaimedhenriques/searchcrew",
+  "repository": "https://github.com/jaimedhenriques/open-seo",
   "license": "MIT",
   "keywords": [
     "seo",
@@ -20,15 +20,10 @@
     "local-seo"
   ],
   "skills": "./skills/",
-  "mcpServers": {
-    "searchcrew": {
-      "url": "https://app.searchcrew.ai/mcp"
-    }
-  },
   "interface": {
     "displayName": "SearchCrew",
-    "shortDescription": "Without good data, your agent gives generic advice. Keyword research, competitor research, backlinks, and site audits. All for $10/month.",
-    "longDescription": "Without good data, your agent gives generic advice. Keyword research, competitor research, backlinks, and site audits. All for $10/month.",
+    "shortDescription": "Open-source SEO workflows. Hosted MCP access is pending production verification.",
+    "longDescription": "Open-source workflows for keyword research, competitors, backlinks, site audits, and rank tracking. Hosted MCP access is pending production verification.",
     "developerName": "SearchCrew",
     "category": "Productivity",
     "capabilities": ["Interactive"],

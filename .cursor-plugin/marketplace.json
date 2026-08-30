@@ -1,8 +1,7 @@
 {
   "name": "searchcrew",
   "owner": {
-    "name": "Every App, Inc",
-    "email": "support@searchcrew.ai"
+    "name": "SearchCrew"
   },
   "metadata": {
     "description": "SearchCrew's official Cursor plugin marketplace."
@@ -11,7 +10,7 @@
     {
       "name": "searchcrew",
       "source": "plugins/searchcrew",
-      "description": "SEO made simple. Research keywords and competitors, audit sites, track rankings, and use Search Console data from your agent."
+      "description": "Open-source SEO workflows for keyword research, competitors, backlinks, site audits, and Search Console planning."
     }
   ]
 }

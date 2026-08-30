@@ -10,8 +10,7 @@ import {
   CopyButton,
 } from "@/client/features/ai-mcp/SetupControls";
 
-const DISCORD_URL = "https://discord.gg/c9uGs3cFXr";
-const SUPPORT_EMAIL = "support@searchcrew.ai";
+const SUPPORT_URL = "https://searchcrew.ai/support";
 const SAM_GITHUB_URL = "https://github.com/every-app/sam";
 const SKILL_NAMES = [
   "seo-project-setup",
@@ -27,19 +26,19 @@ const SKILL_NAMES = [
   "geo-crawlers",
   "geo-llmstxt",
 ];
-const SKILLS_INSTALL = `npx skills add jaimedhenriques/searchcrew`;
-const ALL_SKILLS_INSTALL = `npx skills add jaimedhenriques/searchcrew --skill '*'`;
-const CLAUDE_CODE_SKILLS_INSTALL = `npx skills add jaimedhenriques/searchcrew --skill '*' --agent claude-code`;
-const CODEX_SKILLS_INSTALL = `npx skills add jaimedhenriques/searchcrew --skill '*' --agent codex`;
-const SKILLS_MANUAL_INSTALL = `git clone https://github.com/jaimedhenriques/searchcrew.git
+const SKILLS_INSTALL = `npx skills add jaimedhenriques/open-seo`;
+const ALL_SKILLS_INSTALL = `npx skills add jaimedhenriques/open-seo --skill '*'`;
+const CLAUDE_CODE_SKILLS_INSTALL = `npx skills add jaimedhenriques/open-seo --skill '*' --agent claude-code`;
+const CODEX_SKILLS_INSTALL = `npx skills add jaimedhenriques/open-seo --skill '*' --agent codex`;
+const SKILLS_MANUAL_INSTALL = `git clone https://github.com/jaimedhenriques/open-seo.git
 
 # Codex
 mkdir -p ~/.codex/skills
-cp -R searchcrew/.agents/skills/* ~/.codex/skills/
+cp -R open-seo/.agents/skills/* ~/.codex/skills/
 
 # Claude Code
 mkdir -p ~/.claude/skills
-cp -R searchcrew/.agents/skills/* ~/.claude/skills/`;
+cp -R open-seo/.agents/skills/* ~/.claude/skills/`;
 
 export const Route = createFileRoute("/_app/ai")({
   component: AiPage,
@@ -349,18 +348,14 @@ function AiPage() {
         </section>
 
         <p className="mt-12 text-xs text-base-content/55 leading-relaxed">
-          Have feedback? Reach out on{" "}
+          Support and feedback channels are published on the{" "}
           <a
             className="link link-primary"
-            href={DISCORD_URL}
+            href={SUPPORT_URL}
             target="_blank"
             rel="noreferrer"
           >
-            Discord
-          </a>{" "}
-          or email{" "}
-          <a className="link link-primary" href={`mailto:${SUPPORT_EMAIL}`}>
-            {SUPPORT_EMAIL}
+            SearchCrew support page
           </a>
           .
         </p>

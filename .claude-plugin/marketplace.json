@@ -9,7 +9,7 @@
     {
       "name": "searchcrew",
       "source": "./plugins/searchcrew",
-      "description": "Without good data, your agent gives generic advice. Keyword research, competitor research, backlinks, and site audits. All for $10/month.",
+      "description": "Open-source SEO workflows for keyword research, competitors, backlinks, and site audits. Hosted MCP access is pending production verification.",
       "category": "SEO"
     }
   ]

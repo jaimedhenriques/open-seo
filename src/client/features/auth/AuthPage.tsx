@@ -43,7 +43,7 @@ export function AuthMethodChooser({
     <div className="space-y-3">
       <button
         type="button"
-        className="btn w-full border border-black/10 bg-white text-neutral-900 hover:border-black/20 hover:bg-neutral-50 disabled:bg-white disabled:text-neutral-500 disabled:opacity-70"
+        className="btn min-h-11 w-full border border-black/10 bg-white text-neutral-900 hover:border-black/20 hover:bg-neutral-50 disabled:bg-white disabled:text-neutral-500 disabled:opacity-70"
         onClick={onContinueWithGoogle}
         disabled={disabled || isBusy}
       >
@@ -53,7 +53,7 @@ export function AuthMethodChooser({
 
       <button
         type="button"
-        className="btn w-full"
+        className="btn min-h-11 w-full"
         onClick={onContinueWithEmail}
         disabled={disabled || isBusy}
       >
@@ -101,9 +101,9 @@ export function AuthPageCard({
     <div className="w-full max-w-xs space-y-6">
       <div className="text-center space-y-3">
         <img
-          src="/transparent-logo.png"
-          alt="SearchCrew"
-          className="mx-auto size-10 rounded-lg"
+          src="/searchcrew-mark.png"
+          alt=""
+          className="mx-auto h-12 w-auto"
         />
         <div>
           <h1 className="text-xl font-semibold">{title}</h1>

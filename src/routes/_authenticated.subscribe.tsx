@@ -21,9 +21,15 @@ import {
   type PlanTier,
 } from "@/shared/billing";
 
-const SUPPORT_EMAIL = "support@searchcrew.ai";
+const SUPPORT_URL = "https://searchcrew.ai/support";
+const BrandMark = () => (
+  <img
+    src="/searchcrew-mark.png"
+    alt="SearchCrew"
+    className="mx-auto size-10"
+  />
+);
 
-/** Selectable tiers, cheapest first. Free is the default, so it isn't offered. */
 const PAID_PLANS = PLANS.filter((plan) => plan.monthlyUsd > 0);
 
 const usdCredits = (credits: number) =>
@@ -42,8 +48,6 @@ function planFeatures(plan: PlanDefinition): string[] {
   ];
 }
 
-// How long the post-checkout "finalizing" screen polls Autumn before giving
-// up and letting the user through anyway.
 const FINALIZING_TIMEOUT_MS = 30_000;
 
 export const Route = createFileRoute("/_authenticated/subscribe")({
@@ -101,8 +105,6 @@ function SubscribePage() {
     finalizingTimedOut,
   });
 
-  // Autumn can lag Stripe by a few seconds after checkout; poll until the
-  // subscription shows up so the just-paid user isn't shown the paywall again.
   const isFinalizing = subscribeRouteState === "finalizing";
   const { refetch: refetchCustomer } = customerQuery;
   useEffect(() => {
@@ -113,9 +115,6 @@ function SubscribePage() {
     return () => clearInterval(interval);
   }, [refetchCustomer, isFinalizing]);
 
-  // Armed once on landing with checkout=success (not on the finalizing state,
-  // which a transient poll error can leave and re-enter) so the deadline is a
-  // hard bound from arrival.
   useEffect(() => {
     if (!checkoutCompleted || finalizingTimedOut) return;
     const timeout = setTimeout(
@@ -150,11 +149,7 @@ function SubscribePage() {
   if (subscribeRouteState === "finalizing") {
     return (
       <div className="w-full max-w-xs space-y-4 text-center">
-        <img
-          src="/transparent-logo.png"
-          alt="SearchCrew"
-          className="mx-auto size-10 rounded-lg"
-        />
+        <BrandMark />
         <h1 className="text-xl font-semibold">
           Finalizing your subscription&hellip;
         </h1>
@@ -164,8 +159,13 @@ function SubscribePage() {
         </p>
         <p className="text-xs text-base-content/50">
           Taking longer?{" "}
-          <a className="link" href={`mailto:${SUPPORT_EMAIL}`}>
-            Email {SUPPORT_EMAIL}
+          <a
+            className="link"
+            href={SUPPORT_URL}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Check support status
           </a>
           .
         </p>
@@ -177,11 +177,7 @@ function SubscribePage() {
     return (
       <div className="w-full max-w-xs space-y-4">
         <div className="text-center space-y-3">
-          <img
-            src="/transparent-logo.png"
-            alt="SearchCrew"
-            className="mx-auto size-10 rounded-lg"
-          />
+          <BrandMark />
           <h1 className="text-xl font-semibold">Billing unavailable</h1>
         </div>
 
@@ -243,11 +239,7 @@ function SubscribePage() {
       <SubscribePageAccountMenu email={session?.user?.email} />
 
       <div className="text-center space-y-3">
-        <img
-          src="/transparent-logo.png"
-          alt="SearchCrew"
-          className="mx-auto size-10 rounded-lg"
-        />
+        <BrandMark />
         <h1 className="text-xl font-semibold">
           {isUpgradeFlow
             ? "Upgrade your plan"
@@ -371,10 +363,10 @@ function SubscribePage() {
         <p className="text-center text-xs text-base-content/50">
           <span
             className="tooltip before:max-w-60 before:whitespace-normal"
-            data-tip={`Not for you yet? Email ${SUPPORT_EMAIL} within 30 days of your charge and we'll refund your subscription.`}
+            data-tip="Final refund terms will be published before public billing opens."
           >
             <span className="cursor-help underline decoration-dotted">
-              30-day money-back guarantee
+              Refund terms pending launch review
             </span>
           </span>
           . Cancel anytime. Powered by Stripe.
@@ -383,7 +375,7 @@ function SubscribePage() {
 
       <div className="text-center space-y-2">
         <p className="text-sm text-base-content/60">
-          Questions? Email {SUPPORT_EMAIL}.
+          Questions? Check the SearchCrew support page.
         </p>
         {isUpgradeFlow ? (
           <button

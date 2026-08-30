@@ -13,13 +13,13 @@ SearchCrew gives your agent real SEO data and guided workflows, so its advice is
 - Track organic and Google Maps rankings
 - Work with Google Search Console and Analytics data
 
-The plugin includes nine skills that guide Cursor through complete SEO workflows, plus the hosted SearchCrew MCP server for live data and project management.
+The plugin includes nine skills that guide Cursor through complete SEO workflows. Hosted SearchCrew MCP access will be added after the production endpoint and login flow are verified.
 
 ## Connect
 
-Install the SearchCrew plugin from the Cursor Marketplace. The first time Cursor uses an SearchCrew tool, follow the OAuth prompt to sign in and approve the connection.
+Install the SearchCrew plugin from the Cursor Marketplace to use the workflow skills. Hosted OAuth and live-data tools are not available until the production beta opens.
 
-You need an SearchCrew account. The plugin package is free and open source. Hosted SearchCrew plans and usage credits are described at [searchcrew.ai/pricing](https://searchcrew.ai/pricing), and SearchCrew can also be [self-hosted](https://github.com/jaimedhenriques/searchcrew#self-hosting).
+The plugin package is free and open source. Review [launch status](https://searchcrew.ai/get-started) for hosted access and the [repository](https://github.com/jaimedhenriques/open-seo) for self-hosting.
 
 ## Try it
 

@@ -7,13 +7,21 @@ import { LegalPage } from "@/components/legal-page";
 import { buildPageSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/privacy")({
-  head: () =>
-    buildPageSeo({
+  head: () => {
+    const seo = buildPageSeo({
       title: privacyFrontmatter.title,
       description: privacyFrontmatter.description,
       path: "/privacy",
       titleSuffix: "SearchCrew",
-    }),
+    });
+    return {
+      ...seo,
+      meta: [
+        ...seo.meta,
+        { name: "robots", content: "noindex, nofollow" },
+      ],
+    };
+  },
   component: Privacy,
 });
 

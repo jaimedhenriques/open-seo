@@ -17,7 +17,7 @@ const faqs = [
   {
     question: "Is there a free keyword clustering tool?",
     answer:
-      "Not an unlimited one. The grouping step itself is free (the MCP prompt above does it), but it runs on researched keywords, and quality keyword data is the part that costs money everywhere. SearchCrew includes the clustering pass with research, so there's no separate clustering tool to buy; you can start for free, and paid plans start at $10/month.",
+      "Not an unlimited one. The grouping step itself is free (the MCP prompt above does it), but it runs on researched keywords, and quality keyword data is the part that costs money everywhere. SearchCrew's proposed hosted tiers include clustering with research; billing remains paused until the beta is production-ready.",
   },
   {
     question: "What is a keyword mapping template?",

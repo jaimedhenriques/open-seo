@@ -89,15 +89,15 @@ function LibrarySpokeCta({ library }: { library: LibraryRef }) {
         Run this strategy in SearchCrew
       </p>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--color-brand-muted)]">
-        Run the MCP prompt in this guide with SearchCrew. SearchCrew is open source,
-        free to try, and does not require a credit card.
+        Run the MCP prompt in this guide with SearchCrew. SearchCrew is open
+        source; hosted MCP access will open after production verification.
       </p>
       <div className="mt-5 flex flex-col gap-3 sm:flex-row">
         <a
-          href="https://app.searchcrew.ai/sign-up"
-          className="inline-flex h-10 items-center justify-center rounded-lg bg-neutral-950 px-4 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+          href="/get-started"
+          className="inline-flex min-h-11 items-center justify-center rounded-lg bg-neutral-950 px-4 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
         >
-          Start with SearchCrew
+          Check SearchCrew launch status
           <span className="ml-2" aria-hidden="true">
             &rarr;
           </span>

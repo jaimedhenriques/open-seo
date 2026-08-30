@@ -24,7 +24,7 @@ const FAQS = [
   {
     question: "How many backlinks can I see for free?",
     answer:
-      "The free checker shows a domain's summary metrics and its top 15 backlinks, one per referring domain, ranked by domain strength. Sign up for SearchCrew to page through the full list, see referring domains and anchors, filter out spam, and export the data.",
+      "The free checker shows a domain's summary metrics and its top 15 backlinks, one per referring domain, ranked by domain strength. Full backlink research will open with the hosted beta; until then, check launch status or review the self-hosting guide.",
   },
   {
     question: "Can I check a competitor's backlinks?",
@@ -127,10 +127,10 @@ function BacklinkCheckerPage() {
         </p>
         <div className="mt-4 flex flex-wrap items-center gap-4">
           <a
-            href="https://app.searchcrew.ai/sign-up"
-            className="inline-flex h-10 items-center justify-center rounded-lg bg-neutral-950 px-4 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+            href="/get-started"
+            className="inline-flex min-h-11 items-center justify-center rounded-lg bg-neutral-950 px-4 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
           >
-            Try SearchCrew
+            Check SearchCrew launch status
             <span aria-hidden="true" className="ml-2">
               &rarr;
             </span>

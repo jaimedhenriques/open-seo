@@ -11,7 +11,7 @@ import { pgDb } from "@/db/pg/client";
 import * as pgSchema from "@/db/pg/schema";
 import { getDatabaseProvider } from "@/db/provider";
 import { z } from "zod";
-import { isHostedAuthMode } from "@/lib/auth-mode";
+import { isHostedAuthMode, isPublicSignupEnabled } from "@/lib/auth-mode";
 import { createApiKeyPlugin } from "@/lib/auth-api-key";
 import { createBaseAuthConfig } from "@/lib/auth-config";
 import {
@@ -44,6 +44,9 @@ function createAuth() {
     ? getHostedBaseUrl()
     : "http://localhost";
   const bypassEmail = Reflect.get(env, "BYPASS_EMAIL_VERIFICATION") === "true";
+  const publicSignupEnabled = isPublicSignupEnabled(
+    Reflect.get(env, "PUBLIC_SIGNUP_ENABLED"),
+  );
   const baseAuthConfig = createBaseAuthConfig();
 
   // Turnstile captcha on signup — hosted only. Enforcement is driven by the
@@ -92,7 +95,7 @@ function createAuth() {
             });
           },
         },
-    socialProviders: getSocialProviders(),
+    socialProviders: publicSignupEnabled ? getSocialProviders() : {},
     trustedOrigins: getTrustedOrigins(baseUrl),
     database,
     plugins: [
@@ -116,6 +119,11 @@ function createAuth() {
           // throwaway-inbox domains before the user row is created. Self-hosted
           // has no shared credit pool to protect, so it's left untouched.
           before: async (user) => {
+            if (isHostedAuthMode(env.AUTH_MODE) && !publicSignupEnabled) {
+              throw new APIError("SERVICE_UNAVAILABLE", {
+                message: "Public signup is not open yet.",
+              });
+            }
             if (
               isHostedAuthMode(env.AUTH_MODE) &&
               isDisposableEmailDomain(user.email)

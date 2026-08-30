@@ -56,4 +56,4 @@ SearchCrew uses the same `SKILL.md` pattern supported by modern AI agents. To le
 
 These pages explain what each skill is for. The source instructions live in GitHub:
 
-- [SearchCrew Agent Skills on GitHub](https://github.com/jaimedhenriques/searchcrew/tree/main/.agents/skills)
+- [SearchCrew Agent Skills on GitHub](https://github.com/jaimedhenriques/open-seo/tree/main/.agents/skills)

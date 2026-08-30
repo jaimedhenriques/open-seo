@@ -3,6 +3,8 @@ title: "Install the SearchCrew plugin for Codex"
 description: "Add SearchCrew MCP and Agent Skills to Codex with one marketplace and one install command."
 ---
 
+> **Hosted beta status:** The plugin source can be inspected, but SearchCrew's hosted MCP login is not live yet. Treat the commands below as beta documentation until [launch status](/get-started) confirms production verification.
+
 The SearchCrew plugin bundles SearchCrew MCP and all nine SEO Agent Skills into one install. This is the preferred way to set up SearchCrew in Codex CLI.
 
 ## Install
@@ -10,14 +12,14 @@ The SearchCrew plugin bundles SearchCrew MCP and all nine SEO Agent Skills into 
 Run these commands in your terminal:
 
 ```bash
-codex plugin marketplace add jaimedhenriques/searchcrew
+codex plugin marketplace add jaimedhenriques/open-seo
 codex plugin add searchcrew@searchcrew
 codex mcp login searchcrew
 ```
 
 `codex mcp login` opens a browser to approve the SearchCrew connection. If it reports that `searchcrew` isn't found, restart Codex first — bundled MCP servers only register after a restart, not immediately after install — then run `codex mcp login searchcrew` again.
 
-Codex connects SearchCrew MCP at `https://app.searchcrew.ai/mcp` and enables nine skills:
+Once the hosted beta opens, Codex will connect to SearchCrew MCP and enable nine skills:
 
 - SEO Project Setup
 - SEO Coach

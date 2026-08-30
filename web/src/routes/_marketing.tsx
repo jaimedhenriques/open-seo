@@ -5,7 +5,6 @@ import {
   useLocation,
 } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { NewsletterSignup } from "@/components/newsletter-signup";
 import { SiteFooter } from "@/components/site-footer";
 import { featureGroups } from "@/lib/feature-pages";
 
@@ -106,6 +105,11 @@ function MarketingLayout() {
               to="/"
               className="inline-flex min-h-11 touch-manipulation items-center rounded-lg text-sm font-semibold transition-[opacity,transform] duration-150 hover:opacity-80 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
             >
+              <img
+                src="/searchcrew-mark.png"
+                alt=""
+                className="mr-2 h-6 w-auto"
+              />
               SearchCrew
             </Link>
 
@@ -131,10 +135,10 @@ function MarketingLayout() {
                 {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
               </button>
               <a
-                href="https://app.searchcrew.ai/sign-in"
+                href="/get-started"
                 className="hidden h-11 touch-manipulation items-center rounded-full border border-[var(--color-border-subtle)] px-4 text-sm font-medium text-neutral-900 transition-[border-color,transform] duration-150 hover:border-neutral-900 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none md:inline-flex"
               >
-                Sign in
+                Launch status
               </a>
             </div>
           </nav>
@@ -143,18 +147,18 @@ function MarketingLayout() {
             <div className="absolute left-0 right-0 top-full z-30 mt-3 rounded-2xl border border-[var(--color-border-subtle)] bg-white p-3 shadow-xl shadow-neutral-900/10 md:hidden">
               <div className="grid grid-cols-2 gap-2">
                 <a
-                  href="https://app.searchcrew.ai/sign-in"
+                  href="/get-started"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex h-11 touch-manipulation items-center justify-center rounded-xl bg-neutral-950 px-3 text-sm font-semibold text-white transition-[background-color,transform] duration-150 hover:bg-neutral-800 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
                 >
-                  Try SearchCrew
+                  Launch status
                 </a>
                 <a
-                  href="https://app.searchcrew.ai/sign-in"
+                  href="/pricing"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex h-11 touch-manipulation items-center justify-center rounded-xl border border-[var(--color-border-subtle)] px-3 text-sm font-semibold text-neutral-800 transition-[background-color,border-color,transform] duration-150 hover:border-neutral-900 hover:bg-[#f5f1ec] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
                 >
-                  Sign in
+                  View pricing
                 </a>
               </div>
 
@@ -351,24 +355,8 @@ function FeatureDropdown() {
 
 function MarketingFooter() {
   return (
-    <>
-      {/* Newsletter */}
-      <div className="mt-16 border-t border-[var(--color-border-subtle)] pt-8">
-        <p className="text-sm font-semibold text-neutral-900">
-          Stay in the loop
-        </p>
-        <p className="text-sm text-neutral-600 mt-1 leading-relaxed">
-          Product updates, new features, and the occasional behind-the-scenes.
-        </p>
-        <div className="mt-3">
-          <NewsletterSignup />
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="mt-8">
-        <SiteFooter className="text-xs text-neutral-600 [&_a]:transition-colors [&_a]:hover:text-neutral-900" />
-      </div>
-    </>
+    <div className="mt-16 border-t border-[var(--color-border-subtle)] pt-8">
+      <SiteFooter className="text-xs text-neutral-600 [&_a]:transition-colors [&_a]:hover:text-neutral-900" />
+    </div>
   );
 }

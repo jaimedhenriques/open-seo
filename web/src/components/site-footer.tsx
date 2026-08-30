@@ -11,15 +11,23 @@ const featureLinks = featureGroups.flatMap((group) =>
 export function SiteFooter({ className }: { className?: string }) {
   return (
     <div className={className}>
-      <Link to="/" className="text-sm font-semibold text-neutral-900">
+      <Link
+        to="/"
+        className="inline-flex min-h-11 items-center text-sm font-semibold text-neutral-900"
+      >
+        <img
+          src="/searchcrew-mark.png"
+          alt=""
+          className="mr-2 h-6 w-auto"
+        />
         SearchCrew
       </Link>
 
-      <div className="mt-6 grid grid-cols-2 gap-8 md:grid-cols-[repeat(auto-fit,minmax(9rem,1fr))]">
+      <div className="mt-6 grid grid-cols-2 gap-8 [&_a]:inline-flex [&_a]:min-h-11 [&_a]:items-center md:grid-cols-[repeat(auto-fit,minmax(9rem,1fr))]">
         <div>
           <p className="font-semibold text-neutral-900">Features</p>
           <div className="mt-2 flex flex-col gap-1.5">
-            {featureLinks.map((link) => (
+            {featureLinks.slice(0, 3).map((link) => (
               <a key={link.href} href={link.href}>
                 {link.label}
               </a>

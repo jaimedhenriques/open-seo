@@ -3,6 +3,8 @@ title: "Install the SearchCrew plugin for Claude Code"
 description: "Add SearchCrew MCP and Agent Skills to Claude Code with one marketplace and one install command."
 ---
 
+> **Hosted beta status:** The plugin source can be inspected, but SearchCrew's hosted MCP login is not live yet. Treat the commands below as beta documentation until [launch status](/get-started) confirms production verification.
+
 The SearchCrew plugin bundles SearchCrew MCP and all nine SEO Agent Skills into one install. This is the preferred way to set up SearchCrew in Claude Code.
 
 ## Install
@@ -10,13 +12,13 @@ The SearchCrew plugin bundles SearchCrew MCP and all nine SEO Agent Skills into 
 Run these two commands in Claude Code:
 
 ```bash
-/plugin marketplace add jaimedhenriques/searchcrew
+/plugin marketplace add jaimedhenriques/open-seo
 /plugin install searchcrew@searchcrew
 ```
 
 If the install summary says `Run /reload-plugins to activate.`, run that command.
 
-Claude Code connects SearchCrew MCP at `https://app.searchcrew.ai/mcp` and enables nine skills:
+Once the hosted beta opens, Claude Code will connect to SearchCrew MCP and enable nine skills:
 
 - SEO Project Setup
 - SEO Coach

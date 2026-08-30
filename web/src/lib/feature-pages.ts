@@ -117,7 +117,7 @@ export const featurePages = {
       {
         question: "Can I use SearchCrew as a free keyword research tool?",
         answer:
-          "Not unlimited: quality keyword data costs money everywhere, which is why the big SEO suites run $100/month and up. You can start SearchCrew for free; the paid plan is $10/month with usage credits included. It's also open source, so you can self-host with your own DataForSEO account.",
+          "Not unlimited: quality keyword data costs money everywhere, which is why the big SEO suites run $100/month and up. SearchCrew's proposed hosted tiers include usage credits, while billing remains paused. You can also self-host with your own DataForSEO account.",
       },
       {
         question: "Does SearchCrew show live search results?",
@@ -224,7 +224,7 @@ export const featurePages = {
       {
         question: "Is SearchCrew a free SEO audit tool?",
         answer:
-          "For smaller sites, yes: the free plan includes site audits up to 50 pages per crawl. Larger crawls need a paid plan, starting at $10/month. SearchCrew is also open source and self-hostable.",
+          "For smaller sites, yes: the free plan includes site audits up to 50 pages per crawl. Larger crawls need a paid plan, starting at $29/month. SearchCrew is also self-hostable.",
       },
       {
         question: "Who should use SearchCrew Site Audit?",
@@ -382,7 +382,7 @@ export const featurePages = {
       {
         question: "How does this compare to Semrush Domain Overview?",
         answer:
-          "SearchCrew covers the core of the same report (estimated traffic, organic keywords, top keywords, and top pages) without a triple-digit monthly seat. SearchCrew is open source, so you can self-host it, and the managed app is $10/month and includes usage credits.",
+          "SearchCrew covers the core of the same report (estimated traffic, organic keywords, top keywords, and top pages) without a triple-digit monthly seat. You can self-host it; proposed hosted tiers begin at $29/month with usage credits included, once billing opens.",
       },
       {
         question: "Can SearchCrew help with competitor keyword analysis?",

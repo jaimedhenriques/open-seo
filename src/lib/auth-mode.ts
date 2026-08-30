@@ -42,6 +42,14 @@ export function isHostedClientAuthMode() {
   return isHostedAuthMode(import.meta.env.AUTH_MODE);
 }
 
+export function isPublicSignupEnabled(value?: string | null) {
+  return (value ?? import.meta.env.PUBLIC_SIGNUP_ENABLED) === "true";
+}
+
+export function isPublicBillingEnabled(value?: string | null) {
+  return (value ?? import.meta.env.PUBLIC_BILLING_ENABLED) === "true";
+}
+
 export function isEmailVerificationBypassed() {
   // Local-dev escape hatch (BYPASS_EMAIL_VERIFICATION=true). The server skips
   // verification and never marks users emailVerified, so the client must treat

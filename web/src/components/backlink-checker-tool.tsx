@@ -381,10 +381,10 @@ function CheckResults({ result }: { result: CheckResult }) {
         </p>
         <div className="mt-3">
           <a
-            href="https://app.searchcrew.ai/sign-up"
-            className="inline-flex h-10 items-center justify-center rounded-lg bg-neutral-950 px-4 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+            href="/get-started"
+            className="inline-flex min-h-11 items-center justify-center rounded-lg bg-neutral-950 px-4 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
           >
-            Explore the full profile — free
+            Check SearchCrew launch status
             <span aria-hidden="true" className="ml-2">
               &rarr;
             </span>

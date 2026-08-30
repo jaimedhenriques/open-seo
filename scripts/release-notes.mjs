@@ -172,7 +172,7 @@ function getPreferredRepo() {
 
 /** @param {string | undefined} repo */
 function getDefaultToRef(repo) {
-  return repo === "jaimedhenriques/searchcrew" ? "main" : "HEAD";
+  return repo === "jaimedhenriques/open-seo" ? "main" : "HEAD";
 }
 
 /** @param {readonly string[]} rangeArgs */

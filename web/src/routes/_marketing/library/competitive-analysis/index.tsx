@@ -23,7 +23,7 @@ const faqs = [
   {
     question: "Is there a free competitor analysis tool?",
     answer:
-      "The reasoning half is free: read the SERPs you care about, read your competitors' pages, and check your own Search Console. The part that costs money is the ranked-keyword and backlink data on the competitor's side, which is why the big SEO suites run $100/month and up. SearchCrew is open source and free to start; the paid plan is $10/month and includes $10 of usage, with top-ups if you need more.",
+      "The reasoning half is free: read the SERPs you care about, read your competitors' pages, and check your own Search Console. The part that costs money is the ranked-keyword and backlink data on the competitor's side, which is why the big SEO suites run $100/month and up. SearchCrew's proposed hosted tiers include usage credits; billing remains paused until the beta is production-ready.",
   },
   {
     question: "How accurate are competitor traffic estimates?",
@@ -292,14 +292,14 @@ function CompetitiveAnalysisLibraryPage() {
           </h2>
           <p className="mt-2 max-w-xl text-sm leading-6 text-[var(--color-brand-muted)]">
             Each strategy ends with a copy-paste MCP prompt. SearchCrew is open
-            source, free to try, and does not require a credit card.
+            source; hosted MCP access will open after production verification.
           </p>
         </div>
         <a
-          href="https://app.searchcrew.ai/sign-up"
+          href="/get-started"
           className="inline-flex h-11 shrink-0 items-center justify-center rounded-lg bg-neutral-950 px-5 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
         >
-          Start with SearchCrew
+          Check SearchCrew launch status
           <span aria-hidden="true" className="ml-2">
             &rarr;
           </span>
