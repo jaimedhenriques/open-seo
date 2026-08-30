@@ -62,11 +62,7 @@ export function shouldBlockPublicSignupRequest(
   pathname: string,
   enabled: boolean,
 ) {
-  return (
-    !enabled &&
-    (pathname.endsWith("/sign-up/email") ||
-      pathname.endsWith("/sign-in/social"))
-  );
+  return !enabled && pathname.endsWith("/sign-up/email");
 }
 
 export function isEmailVerificationBypassed() {

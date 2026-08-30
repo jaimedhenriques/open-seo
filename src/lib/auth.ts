@@ -95,7 +95,10 @@ function createAuth() {
             });
           },
         },
-    socialProviders: publicSignupEnabled ? getSocialProviders() : {},
+    // Existing Google users must still be able to sign in while public signup
+    // is paused. The user.create hook below remains the authoritative gate and
+    // rejects any social login that would create a new account.
+    socialProviders: getSocialProviders(),
     trustedOrigins: getTrustedOrigins(baseUrl),
     database,
     plugins: [

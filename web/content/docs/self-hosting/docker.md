@@ -22,7 +22,7 @@ Clone the repo, then:
 
 ```bash
 git clone https://github.com/jaimedhenriques/open-seo.git
-cd searchcrew
+cd open-seo
 cp .env.example .env
 ```
 

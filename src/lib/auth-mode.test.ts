@@ -36,7 +36,7 @@ describe("public launch gates", () => {
     ).toBe(true);
     expect(
       shouldBlockPublicSignupRequest("/api/auth/sign-in/social", false),
-    ).toBe(true);
+    ).toBe(false);
     expect(
       shouldBlockPublicSignupRequest("/api/auth/sign-in/email", false),
     ).toBe(false);
