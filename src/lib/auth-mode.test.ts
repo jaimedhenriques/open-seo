@@ -1,5 +1,9 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { isPublicBillingEnabled, isPublicSignupEnabled } from "@/lib/auth-mode";
+import {
+  isPublicBillingEnabled,
+  isPublicSignupEnabled,
+  shouldBlockPublicSignupRequest,
+} from "@/lib/auth-mode";
 
 describe("public launch gates", () => {
   afterEach(() => vi.unstubAllEnvs());
@@ -24,5 +28,20 @@ describe("public launch gates", () => {
   it("opens billing only for the exact true value", () => {
     expect(isPublicBillingEnabled("true")).toBe(true);
     expect(isPublicBillingEnabled("1")).toBe(false);
+  });
+
+  it("blocks public signup endpoints while the gate is closed", () => {
+    expect(
+      shouldBlockPublicSignupRequest("/api/auth/sign-up/email", false),
+    ).toBe(true);
+    expect(
+      shouldBlockPublicSignupRequest("/api/auth/sign-in/social", false),
+    ).toBe(true);
+    expect(
+      shouldBlockPublicSignupRequest("/api/auth/sign-in/email", false),
+    ).toBe(false);
+    expect(
+      shouldBlockPublicSignupRequest("/api/auth/sign-up/email", true),
+    ).toBe(false);
   });
 });

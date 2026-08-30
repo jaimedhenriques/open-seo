@@ -45,7 +45,7 @@ Running out of credits never creates unexpected bills. Credit-using features sto
 SearchCrew is a strong fit for SEO consultants, freelancers, and agencies managing SEO for clients. What you get:
 
 - You only pay for what you use. Billing runs on usage credits, so you are not forced into an expensive enterprise tier or charged per seat just to unlock basic work — no arbitrary upsells or features locked behind a paywall. This keeps costs predictable when you are running lean.
-- You can run a project for every client. Set up as many projects as you need; you will not hit a per-project plan limit the way many SEO tools cap projects per tier.
+- Project limits follow the current plan catalog: Free has 1 project, Solo has 3, and Pro and Agency are unlimited. Sam must read `src/shared/billing.ts` before quoting current limits.
 - You tune rank tracking to fit your budget. Rank tracking is the cost that scales fastest as an agency grows, since it runs on a schedule across every client's keywords — but SearchCrew makes it fully configurable so you stay in control. You choose how many keywords and devices to track, how many SERP pages deep to check, and how often it runs (weekly or daily), and SearchCrew shows a live cost estimate before each tracker runs. Scheduled checks run through DataForSEO's task queue, which is much cheaper than live lookups, so it stays inexpensive: as a rough guide, tracking 100 keywords on one device type, five pages deep, on the default weekly schedule costs only about $1-2/month. Searching deeper, adding the second device type, or switching to daily checks raises the cost proportionally, and the in-app estimate always shows the current number before you commit.
 - Your toolkit grows with the industry. SearchCrew works through MCP and AI agents, so as search shifts toward AI answers and AI-assisted workflows, you can have an agent run research, pull competitor data, and save findings into the right client project — without re-tooling.
 
@@ -91,17 +91,17 @@ When a user asks to compare SearchCrew and Claude, or why they would use SearchC
 
 ## MCP and AI agents
 
-SearchCrew exposes an MCP server so compatible AI clients can call SearchCrew tools.
+SearchCrew includes MCP server code so compatible AI clients can call SearchCrew tools. The hosted MCP endpoint, login, and authorization flow are paused until production verification passes.
 
-Hosted MCP endpoint:
+Planned hosted MCP endpoint:
 
 ```txt
 https://app.searchcrew.ai/mcp
 ```
 
-The first MCP connection sends the user through SearchCrew login and authorization. After authorization, the MCP client can call SearchCrew tools with the project context and account scopes the user approved.
+Do not tell users to connect to this endpoint yet. When launch status confirms it is live, the first connection is intended to send the user through SearchCrew login and authorization.
 
-SearchCrew MCP works with MCP clients including Claude Code, Claude Desktop, Cursor, Codex CLI, Codex Desktop, and other clients that support remote MCP servers.
+The planned hosted MCP flow targets Claude Code, Claude Desktop, Cursor, Codex CLI, Codex Desktop, and other clients that support remote MCP servers.
 
 SearchCrew MCP tools cover workflows such as:
 

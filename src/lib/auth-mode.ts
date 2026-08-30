@@ -43,11 +43,30 @@ export function isHostedClientAuthMode() {
 }
 
 export function isPublicSignupEnabled(value?: string | null) {
-  return (value ?? import.meta.env.PUBLIC_SIGNUP_ENABLED) === "true";
+  return value === "true";
 }
 
 export function isPublicBillingEnabled(value?: string | null) {
-  return (value ?? import.meta.env.PUBLIC_BILLING_ENABLED) === "true";
+  return value === "true";
+}
+
+export function isPublicSignupClientEnabled() {
+  return isPublicSignupEnabled(import.meta.env.PUBLIC_SIGNUP_ENABLED);
+}
+
+export function isPublicBillingClientEnabled() {
+  return isPublicBillingEnabled(import.meta.env.PUBLIC_BILLING_ENABLED);
+}
+
+export function shouldBlockPublicSignupRequest(
+  pathname: string,
+  enabled: boolean,
+) {
+  return (
+    !enabled &&
+    (pathname.endsWith("/sign-up/email") ||
+      pathname.endsWith("/sign-in/social"))
+  );
 }
 
 export function isEmailVerificationBypassed() {

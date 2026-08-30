@@ -1,14 +1,14 @@
 {
   "schemaVersion": 2,
-  "project": "SearchCrew market-ready buyer path",
+  "project": "SearchCrew market-safe prelaunch buyer path",
   "company": "SearchCrew",
   "artifactType": "web-product",
   "icp": "Founders, marketers, agencies, and SEO consultants who need an affordable SEO workspace and proof that organic-search investment can pay back",
-  "pain": "SearchCrew has a credible marketing site and ROI calculator, but every primary conversion action points to app.searchcrew.ai, which has no DNS and prevents visitors from creating accounts",
-  "revenueHypothesis": "One coherent SearchCrew path from marketing page to ROI calculator to a working hosted signup will reduce trust loss and turn calculator intent into trial accounts",
+  "pain": "SearchCrew marketing looks purchasable while app.searchcrew.ai, public signup, support, legal identity, and billing are not production-ready",
+  "revenueHypothesis": "A truthful prelaunch buyer path with stronger product hierarchy and fail-closed account and billing gates preserves trust now and creates a safe base for the hosted conversion launch",
   "mvpAcceptance": [
     "The canonical https://searchcrew.ai/seo-roi-calculator route continues to serve the calculator and all public pages consistently identify the product as SearchCrew",
-    "All marketing and calculator primary calls to action use a working https://app.searchcrew.ai hosted signup path with production-safe authentication",
+    "Until the hosted app is verified, all primary calls to action resolve to a truthful launch-status page and public signup and billing remain fail-closed",
     "The homepage first viewport has a clear product promise, working primary action, tighter vertical composition, and visible product proof without excessive empty space",
     "The calculator keeps its verified formulas while improving mobile hierarchy, control grouping, trust copy, and the transition from estimate to signup",
     "The buyer path has no broken links, no console errors, no horizontal overflow at 320px, WCAG-AA text contrast, 44px touch targets, and reduced-motion-safe states",

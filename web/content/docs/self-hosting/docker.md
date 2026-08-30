@@ -1,6 +1,6 @@
 ---
 title: "Docker Self-Hosting"
-description: "Run SearchCrew locally with Docker Compose using the published GHCR image."
+description: "Run SearchCrew locally with Docker Compose by building the checked-out source."
 ---
 
 Run SearchCrew locally with Docker.

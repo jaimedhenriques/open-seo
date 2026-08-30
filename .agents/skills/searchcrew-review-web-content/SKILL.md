@@ -13,7 +13,7 @@ Everything we publish must be traceable to what the product actually does and co
 
 1. **Traceable truth.** Every capability claim, price, and screenshot is verifiable against the code, the fact sheet (`src/server/features/onboarding/searchcrew-fact-sheet.md`), or the live product. If you can't point to where it's true, it doesn't ship.
 2. **Lead with the real answer.** "No," "not unlimited," and "it costs money" are complete answers. Hedging that lets a reader infer something more flattering than the truth is a way of misleading them.
-3. **Honest pricing, with its reasoning.** Quality SEO data is expensive everywhere — that's why the big suites run $100/month and up. SearchCrew is the affordable option: $10/month, free to start. Never simply "free."
+3. **Honest pricing, with its reasoning.** Read current plan values from `src/shared/billing.ts` and current launch availability from `/get-started`. Never repeat a remembered price or imply hosted signup is open before the production gates pass.
 4. **Sound like a person.** Fix AI tells by restating the underlying claim plainly, not by polishing the flourish. The [deslop skill](../deslop/SKILL.md) is the reference for what to hunt and how to fix it.
 5. **Reader-first altitude.** Guides teach actionable SEO that stands on its own — not product documentation, not generic filler. Credit free resources to their real owners (Google's autocomplete, the reader's own Search Console).
 6. **One bar, whole surface.** When a standard improves, sweep everything to it — all the FAQs, all the pages — not just the instance that got noticed.

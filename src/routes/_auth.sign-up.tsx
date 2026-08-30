@@ -21,7 +21,7 @@ import {
 import { getFieldError, getFormError } from "@/client/lib/forms";
 import { captureClientEvent } from "@/client/lib/posthog";
 import { authClient } from "@/lib/auth-client";
-import { isPublicSignupEnabled } from "@/lib/auth-mode";
+import { isPublicSignupClientEnabled } from "@/lib/auth-mode";
 import { getSignInSearch, getVerifyEmailSearch } from "@/lib/auth-redirect";
 import {
   HOSTED_PASSWORD_MAX_LENGTH,
@@ -156,7 +156,7 @@ function SignUpPage() {
     },
   });
 
-  if (isHostedMode && !isPublicSignupEnabled()) {
+  if (isHostedMode && !isPublicSignupClientEnabled()) {
     return (
       <AuthPageCard
         title="Hosted signup is paused"

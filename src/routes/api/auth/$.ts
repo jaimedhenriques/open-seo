@@ -1,7 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { env } from "cloudflare:workers";
 import { getAuth, hasHostedAuthConfig } from "@/lib/auth";
-import { isHostedAuthMode, isPublicSignupEnabled } from "@/lib/auth-mode";
+import {
+  isHostedAuthMode,
+  isPublicSignupEnabled,
+  shouldBlockPublicSignupRequest,
+} from "@/lib/auth-mode";
 
 async function handleAuthRequest(request: Request) {
   if (!isHostedAuthMode(env.AUTH_MODE)) {
@@ -18,9 +22,10 @@ async function handleAuthRequest(request: Request) {
 
   const pathname = new URL(request.url).pathname;
   if (
-    !isPublicSignupEnabled(env.PUBLIC_SIGNUP_ENABLED) &&
-    (pathname.endsWith("/sign-up/email") ||
-      pathname.endsWith("/sign-in/social"))
+    shouldBlockPublicSignupRequest(
+      pathname,
+      isPublicSignupEnabled(env.PUBLIC_SIGNUP_ENABLED),
+    )
   ) {
     return Response.json(
       { message: "Public signup is not open yet." },

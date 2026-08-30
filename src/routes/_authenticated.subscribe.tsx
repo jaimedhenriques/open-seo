@@ -1,11 +1,18 @@
-import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useCustomer } from "autumn-js/react";
 import { useEffect, useState } from "react";
-import { ArrowRight, Settings, User } from "lucide-react";
-import { ThemePreferenceMenuItems } from "@/client/components/ThemePreferenceMenuItems";
+import { ArrowRight } from "lucide-react";
+import {
+  BillingBrandMark,
+  BillingPaused,
+} from "@/client/features/billing/BillingPaused";
+import { SubscribePageAccountMenu } from "@/client/features/billing/SubscribePageAccountMenu";
 import { captureClientEvent } from "@/client/lib/posthog";
-import { signOutAndRedirect, useSession } from "@/lib/auth-client";
-import { isHostedClientAuthMode } from "@/lib/auth-mode";
+import { useSession } from "@/lib/auth-client";
+import {
+  isHostedClientAuthMode,
+  isPublicBillingClientEnabled,
+} from "@/lib/auth-mode";
 import { getStandardErrorMessage } from "@/client/lib/error-messages";
 import { getSubscribeRouteState } from "@/client/features/billing/route-state";
 import { getCustomerPlanStatus } from "@/client/features/billing/plan-detection";
@@ -22,14 +29,6 @@ import {
 } from "@/shared/billing";
 
 const SUPPORT_URL = "https://searchcrew.ai/support";
-const BrandMark = () => (
-  <img
-    src="/searchcrew-mark.png"
-    alt="SearchCrew"
-    className="mx-auto size-10"
-  />
-);
-
 const PAID_PLANS = PLANS.filter((plan) => plan.monthlyUsd > 0);
 
 const usdCredits = (credits: number) =>
@@ -66,6 +65,11 @@ export const Route = createFileRoute("/_authenticated/subscribe")({
 });
 
 function SubscribePage() {
+  if (!isPublicBillingClientEnabled()) return <BillingPaused />;
+  return <EnabledSubscribePage />;
+}
+
+function EnabledSubscribePage() {
   const navigate = useNavigate();
   const { upgrade: isUpgradeFlow, redirect, checkout } = Route.useSearch();
   const { data: session } = useSession();
@@ -149,7 +153,7 @@ function SubscribePage() {
   if (subscribeRouteState === "finalizing") {
     return (
       <div className="w-full max-w-xs space-y-4 text-center">
-        <BrandMark />
+        <BillingBrandMark />
         <h1 className="text-xl font-semibold">
           Finalizing your subscription&hellip;
         </h1>
@@ -177,7 +181,7 @@ function SubscribePage() {
     return (
       <div className="w-full max-w-xs space-y-4">
         <div className="text-center space-y-3">
-          <BrandMark />
+          <BillingBrandMark />
           <h1 className="text-xl font-semibold">Billing unavailable</h1>
         </div>
 
@@ -239,7 +243,7 @@ function SubscribePage() {
       <SubscribePageAccountMenu email={session?.user?.email} />
 
       <div className="text-center space-y-3">
-        <BrandMark />
+        <BillingBrandMark />
         <h1 className="text-xl font-semibold">
           {isUpgradeFlow
             ? "Upgrade your plan"
@@ -387,53 +391,6 @@ function SubscribePage() {
             Back to app
           </button>
         ) : null}
-      </div>
-    </div>
-  );
-}
-
-function SubscribePageAccountMenu({ email }: { email: string | undefined }) {
-  if (!email) return null;
-
-  const handleSignOut = () => signOutAndRedirect();
-
-  return (
-    <div className="fixed top-4 right-4">
-      <div className="dropdown dropdown-end">
-        <button
-          type="button"
-          tabIndex={0}
-          className="btn btn-ghost btn-circle"
-          aria-label="Open account menu"
-        >
-          <User className="h-5 w-5" />
-        </button>
-        <ul
-          tabIndex={0}
-          className="dropdown-content z-20 menu mt-3 min-w-56 rounded-box border border-base-300 bg-base-100 p-2 shadow-lg"
-        >
-          <li className="menu-title max-w-full">
-            <span className="truncate text-base-content" data-ph-mask>
-              {email}
-            </span>
-          </li>
-          <li>
-            <Link to="/settings" className="flex items-center gap-2">
-              <Settings className="h-4 w-4" />
-              Settings
-            </Link>
-          </li>
-          <ThemePreferenceMenuItems />
-          <li>
-            <button
-              type="button"
-              className="text-error"
-              onClick={handleSignOut}
-            >
-              Sign out
-            </button>
-          </li>
-        </ul>
       </div>
     </div>
   );
