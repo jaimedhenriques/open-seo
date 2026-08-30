@@ -183,12 +183,6 @@ function SeoRoiCalculatorPage() {
               &rarr;
             </span>
           </a>
-          <a
-            href="https://github.com/jaimedhenriques/open-seo"
-            className="inline-flex min-h-11 touch-manipulation items-center justify-center rounded-xl px-4 text-sm font-semibold text-neutral-200 underline decoration-neutral-600 underline-offset-4 transition-[color,transform] duration-150 hover:text-white active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 motion-reduce:transform-none motion-reduce:transition-none"
-          >
-            View the open-source project
-          </a>
         </div>
       </section>
 
