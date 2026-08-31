@@ -1,8 +1,8 @@
 # SearchCrew
 
-> Open source alternative to Semrush and Ahrefs
+> SEO and GEO intelligence for people and AI agents
 
-SearchCrew is an SEO tool for _the people_. If tools like Semrush or Ahrefs are too expensive or bloated, SearchCrew is a pay-as-you-go alternative that you actually control.
+SearchCrew is an SEO and GEO platform for people who find Semrush and Ahrefs expensive and bloated. Pay-as-you-go pricing, and full MCP and API access on every plan — including Free, where the incumbents gate it behind their top tier.
 
 > All-in-one SEO tool for you and your AI agent.
 
@@ -21,9 +21,9 @@ Hosted signup and billing are paused while the production app, support, and lega
 - Best in class MCP and AI Skills.
 - Modern, simple UI.
   - Focused workflows instead of a bloated, complex SEO suite.
-- Self-host without a SearchCrew subscription.
-  - Bring your own DataForSEO API key and pay the provider directly.
-- Fork and vibe code your own custom tool.
+- Full MCP and API access on every plan, including Free.
+  - No higher tier required to let an agent reach your SEO data.
+- Credits roll over, so unused spend is never confiscated.
 
 ## Main SEO Workflows
 
