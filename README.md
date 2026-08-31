@@ -2,7 +2,7 @@
 
 > SEO and GEO intelligence for people and AI agents
 
-SearchCrew is an SEO and GEO platform for people who find Semrush and Ahrefs expensive and bloated. Pay-as-you-go pricing, and full MCP and API access on every plan — including Free, where the incumbents gate it behind their top tier.
+SearchCrew is an SEO and GEO platform for people who find Semrush and Ahrefs expensive and bloated. Pay-as-you-go pricing, and full MCP and API access on every plan — including Free, which Semrush and Ahrefs both charge for.
 
 > All-in-one SEO tool for you and your AI agent.
 
@@ -23,7 +23,7 @@ Hosted signup and billing are paused while the production app, support, and lega
   - Focused workflows instead of a bloated, complex SEO suite.
 - Full MCP and API access on every plan, including Free.
   - No higher tier required to let an agent reach your SEO data.
-- Credits roll over, so unused spend is never confiscated.
+- Top-up credits roll over indefinitely; included monthly usage resets each cycle.
 
 ## Main SEO Workflows
 
