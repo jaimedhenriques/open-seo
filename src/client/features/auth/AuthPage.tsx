@@ -101,7 +101,7 @@ export function AuthPageCard({
     <div className="w-full max-w-xs space-y-6">
       <div className="text-center space-y-3">
         <img
-          src="/searchcrew-mark.png"
+          src="/searchcrew-mark.svg"
           alt=""
           className="mx-auto h-12 w-auto"
         />

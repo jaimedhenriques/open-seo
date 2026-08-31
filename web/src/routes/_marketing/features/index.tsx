@@ -4,7 +4,7 @@ import { featureGroups } from "@/lib/feature-pages";
 import { buildPageSeo } from "@/lib/seo";
 
 const featuresDescription =
-  "Explore SearchCrew's open-source SEO tools for AI-agent workflows, Google Search Console MCP, keyword research, rank tracking, backlinks, site audits, competitor analysis, and AI visibility.";
+  "Explore SearchCrew's SEO and GEO tools for AI-agent workflows, Google Search Console MCP, keyword research, rank tracking, backlinks, site audits, competitor analysis, and AI visibility.";
 
 export const Route = createFileRoute("/_marketing/features/")({
   head: () =>
@@ -21,7 +21,7 @@ function FeaturesIndex() {
   return (
     <article className="mx-auto max-w-5xl">
       <p className="text-sm font-medium text-[var(--color-brand-accent)]">
-        Open-source SEO tools
+        SEO and GEO tools
       </p>
       <h1 className="mt-3 max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-neutral-950 md:text-6xl">
         All the tools you need, in one workspace

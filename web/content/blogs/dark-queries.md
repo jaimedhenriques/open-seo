@@ -105,4 +105,4 @@ Pick your single most important page, the one you'd most hate to be guessing abo
 
 As Sonia's clients keep proving, the leads increasingly arrive from places nobody used to look. The SEOs who win the next few years won't be the ones with the most data. They'll be the ones who got good at reconstructing the data everyone else accepts as lost.
 
-If you want to explore this yourself, [SearchCrew](https://searchcrew.ai/) is an affordable, open-source SEO tool that connects Search Console, ranking, and MCP data in one place, so you can start closing the dark-query gap today.
+If you want to explore this yourself, [SearchCrew](https://searchcrew.ai/) is an affordable SEO and GEO platform that connects Search Console, ranking, and MCP data in one place, so you can start closing the dark-query gap today.

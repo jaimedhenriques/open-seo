@@ -38,7 +38,7 @@
     "maxAttempts": 2
   },
   "github": {
-    "repo": "jaimedhenriques/open-seo",
+    "repo": "jaimedhenriques/searchcrew",
     "remote": "origin",
     "branch": "codex/market-ready",
     "baseBranch": "main",

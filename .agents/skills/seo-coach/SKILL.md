@@ -58,6 +58,11 @@ Good starting points:
 - `geo-crawlers`: maps which AI crawlers can reach the site across robots.txt, meta tags, and headers. Run first when the goal is AI visibility — blocked crawlers make every other GEO step moot.
 - `geo-citability`: scores how likely ChatGPT, Claude, Perplexity, and Gemini are to quote a page, and suggests the rewrites that raise it.
 - `geo-llmstxt`: validates or generates the optional proposed `llms.txt` content map without presenting it as a ranking requirement.
+- `geo-audit`: the GEO entry point — finds what keeps a site out of AI answers and ranks it by impact. Run before the narrower GEO skills.
+- `geo-technical`: finds rendering and delivery barriers (client-only content, interaction-gated text) that stop assistants reading a page.
+- `geo-schema`: generates and validates JSON-LD so machines read a page's meaning rather than infer it.
+- `geo-content`: drafts and restructures content for extractability — answer-first, self-contained, fact-dense.
+- `geo-brand-mentions`: records how each assistant describes the brand and which sources it cites.
 
 ## Tool coaching
 

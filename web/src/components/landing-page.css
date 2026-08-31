@@ -76,7 +76,7 @@
 .itc-section {
   padding: 96px 0;
 }
-.itc-section-open-source {
+.itc-section-alternative {
   background: #f8f6f2;
   border-top: 1px solid var(--hairline);
   border-bottom: 1px solid var(--hairline);
@@ -615,6 +615,14 @@
   font-size: 13px;
   line-height: 1.7;
   color: #d6d3ce;
+}
+/* The demo is a fixed-width table; at phone widths 13px pushes it into a
+ * silent horizontal scroll, so step it down to a size that fits instead. */
+@media (max-width: 640px) {
+  .itc-terminal pre {
+    padding: 16px 16px 20px;
+    font-size: 12px;
+  }
 }
 .itc-terminal .t-orange {
   color: var(--orange);

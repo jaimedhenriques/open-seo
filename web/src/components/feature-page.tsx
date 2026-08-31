@@ -127,7 +127,7 @@ export function FeaturePageTemplate({ page }: FeaturePageProps) {
           Check launch status
         </h2>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--color-brand-muted)]">
-          The open source alternative to bloated, expensive, legacy SEO tools.
+          The focused alternative to bloated, expensive, legacy SEO suites.
         </p>
         <div className="mt-4">
           <a

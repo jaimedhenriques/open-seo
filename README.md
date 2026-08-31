@@ -73,7 +73,7 @@ Read more here: [`docs/CONTRIBUTING.md`](./docs/CONTRIBUTING.md)
 We have this skill: `/simple-issue-description` which helps.
 
 ```sh
-npx skills add jaimedhenriques/open-seo --skill simple-issue-description
+npx skills add jaimedhenriques/searchcrew --skill simple-issue-description
 ```
 
 ## Community

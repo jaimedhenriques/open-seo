@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { LandingPage } from "@/components/landing-page";
 import { buildPageSeo } from "@/lib/seo";
 
-const homeTitle = "SearchCrew - Open Source SEO Platform";
+const homeTitle = "SearchCrew - SEO and GEO Intelligence Platform";
 const homeDescription =
-  "SearchCrew is the open source alternative to Ahrefs and Semrush. Keyword research, backlinks, rank tracking, and site audits, billed by usage instead of a $100-plus monthly subscription. Self-host it free, or connect it to your AI agents over MCP.";
+  "SearchCrew is the SEO and GEO platform built for AI search. Keyword research, backlinks, rank tracking, site audits, and AI-answer visibility, billed by usage instead of a $100-plus subscription — with full MCP and API access on every plan.";
 
 export const Route = createFileRoute("/_marketing/")({
   head: () => {

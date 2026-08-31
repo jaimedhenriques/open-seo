@@ -28,7 +28,7 @@ from GSC alongside engagement and business value from GA4.
 
 ## Maintainer decision
 
-Accept the design proposed in [PR #106](https://github.com/jaimedhenriques/open-seo/pull/106)
+Accept the design proposed in [PR #106](https://github.com/jaimedhenriques/searchcrew/pull/106)
 with these clarifications:
 
 - The GA4 grant and the project-to-property mapping have separate owners and

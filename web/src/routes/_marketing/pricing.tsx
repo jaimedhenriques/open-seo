@@ -32,6 +32,7 @@ const TIERS = [
     id: "free",
     name: "Free",
     priceUsd: 0,
+    annualUsd: 0,
     includedUsageUsd: 2,
     projects: "1 project",
     seats: "1 seat",
@@ -41,6 +42,7 @@ const TIERS = [
     id: "solo",
     name: "Solo",
     priceUsd: 29,
+    annualUsd: 290,
     includedUsageUsd: 20,
     projects: "3 projects",
     seats: "1 seat",
@@ -50,6 +52,7 @@ const TIERS = [
     id: "pro",
     name: "Pro",
     priceUsd: 79,
+    annualUsd: 790,
     includedUsageUsd: 60,
     projects: "Unlimited projects",
     seats: "3 seats",
@@ -59,11 +62,43 @@ const TIERS = [
     id: "agency",
     name: "Agency",
     priceUsd: 199,
+    annualUsd: 1990,
     includedUsageUsd: 140,
     projects: "Unlimited projects",
     seats: "10 seats",
     cadence: "Daily rank checks",
   },
+] as const;
+
+/* Competitor list prices, read off semrush.com/prices and ahrefs.com/pricing.
+ * Every row must stay checkable against those two pages — re-verify and move
+ * COMPARISON_CHECKED forward whenever they restructure, which Semrush did
+ * between the Pro/Guru/Business lineup and the current one. */
+const COMPARISON_CHECKED = "August 2026";
+const COMPARISON = [
+  {
+    label: "Cheapest plan with full API and MCP access",
+    searchcrew: "$0 — Free, and every plan above it",
+    semrush: "$549/mo — Advanced",
+    ahrefs: "$129/mo — Lite",
+  },
+  {
+    label: "Entry paid plan",
+    searchcrew: "$29/mo — Solo",
+    semrush: "$139/mo — SEO",
+    ahrefs: "$29/mo — Starter",
+  },
+  {
+    label: "Top plan before enterprise sales",
+    searchcrew: "$199/mo — Agency",
+    semrush: "$549/mo — Advanced",
+    ahrefs: "$449/mo — Advanced",
+  },
+] as const;
+
+const PERIODS = [
+  { id: "monthly", label: "Monthly" },
+  { id: "annual", label: "Annual" },
 ] as const;
 
 /** Cheapest tier whose included usage covers the estimate, or the largest. */
@@ -157,6 +192,7 @@ const usd = (n: number) =>
 
 function Pricing() {
   const [persona, setPersona] = useState<"business" | "freelancer">("business");
+  const [period, setPeriod] = useState<"monthly" | "annual">("monthly");
   const [inputs, setInputs] = useState<Inputs>(PRESETS.business);
 
   function applyPersona(next: "business" | "freelancer") {
@@ -258,40 +294,80 @@ function Pricing() {
       </div>
 
       {/* 2. Tier lineup */}
-      <section className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        {TIERS.map((tier) => (
+      <section className="mt-10">
+        <div className="flex flex-wrap items-center gap-3">
           <div
-            key={tier.id}
-            className={`rounded-xl border p-5 ${
-              tier.id === "solo"
-                ? "border-[var(--color-brand-accent)] bg-white"
-                : "border-[var(--color-border-subtle)]"
-            }`}
+            role="group"
+            aria-label="Billing period"
+            className="inline-flex rounded-full border border-[var(--color-border-subtle)] bg-white p-1"
           >
-            <div className="flex min-h-6 items-center justify-between gap-2">
-              <p className="font-semibold text-neutral-950">{tier.name}</p>
-              {tier.id === "solo" ? (
-                <span className="rounded-full bg-[var(--color-brand-accent)] px-2 py-1 text-[11px] font-semibold leading-none text-neutral-950">
-                  Recommended start
-                </span>
-              ) : null}
-            </div>
-            <p className="mt-2 text-2xl font-semibold tabular-nums text-neutral-950">
-              ${tier.priceUsd}
-              <span className="text-sm font-normal text-[var(--color-brand-muted)]">
-                /mo
-              </span>
-            </p>
-            <p className="mt-2 text-sm text-[var(--color-brand-muted)]">
-              ${tier.includedUsageUsd} of usage included each month
-            </p>
-            <ul className="mt-4 space-y-1.5 border-t border-[var(--color-border-subtle)] pt-4 text-xs leading-5 text-neutral-600">
-              <li>{tier.projects}</li>
-              <li>{tier.seats}</li>
-              <li>{tier.cadence}</li>
-            </ul>
+            {PERIODS.map((option) => (
+              <button
+                key={option.id}
+                type="button"
+                onClick={() => setPeriod(option.id)}
+                aria-pressed={period === option.id}
+                className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+                  period === option.id
+                    ? "bg-neutral-950 text-white"
+                    : "text-[var(--color-brand-muted)] hover:text-neutral-950"
+                }`}
+              >
+                {option.label}
+              </button>
+            ))}
           </div>
-        ))}
+          <p className="text-sm text-[var(--color-brand-muted)]">
+            Annual billing is two months free on every paid plan.
+          </p>
+        </div>
+
+        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {TIERS.map((tier) => (
+            <div
+              key={tier.id}
+              className={`rounded-xl border p-5 ${
+                tier.id === "solo"
+                  ? "border-[var(--color-brand-accent)] bg-white"
+                  : "border-[var(--color-border-subtle)]"
+              }`}
+            >
+              {/* Fixed height, and the badge never wraps: the four cards share
+               * one grid row, so a taller header here misaligns the others. */}
+              <div className="flex h-6 items-center justify-between gap-2">
+                <p className="font-semibold text-neutral-950">{tier.name}</p>
+                {tier.id === "solo" ? (
+                  <span className="shrink-0 whitespace-nowrap rounded-full bg-[var(--color-brand-accent)] px-2 py-1 text-[11px] font-semibold leading-none text-neutral-950">
+                    Recommended
+                  </span>
+                ) : null}
+              </div>
+              <p className="mt-2 text-2xl font-semibold tabular-nums text-neutral-950">
+                $
+                {(period === "annual"
+                  ? tier.annualUsd
+                  : tier.priceUsd
+                ).toLocaleString("en-US")}
+                <span className="text-sm font-normal text-[var(--color-brand-muted)]">
+                  {period === "annual" ? "/yr" : "/mo"}
+                </span>
+              </p>
+              <p className="mt-1 h-5 text-xs text-[var(--color-brand-muted)]">
+                {period === "annual" && tier.annualUsd > 0
+                  ? `$${(tier.annualUsd / 12).toFixed(2)}/mo billed yearly`
+                  : ""}
+              </p>
+              <p className="mt-2 text-sm text-[var(--color-brand-muted)]">
+                ${tier.includedUsageUsd} of usage included each month
+              </p>
+              <ul className="mt-4 space-y-1.5 border-t border-[var(--color-border-subtle)] pt-4 text-xs leading-5 text-neutral-600">
+                <li>{tier.projects}</li>
+                <li>{tier.seats}</li>
+                <li>{tier.cadence}</li>
+              </ul>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* 3. What every plan includes */}
@@ -309,7 +385,6 @@ function Pricing() {
             "Works inside Claude, Cursor, and ChatGPT",
             "Google Search Console data, free and never billed as usage",
             "Buy extra usage anytime; it never expires",
-            "Proposed annual billing saves two months on every paid plan",
           ].map((item) => (
             <li key={item} className="flex gap-2.5 text-sm text-neutral-700">
               <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-brand-accent)]">
@@ -335,7 +410,76 @@ function Pricing() {
         </div>
       </section>
 
-      {/* 3. The estimator */}
+      {/* 4. Where SearchCrew sits against the incumbents */}
+      <section className="mt-10">
+        <h2 className="text-xl font-semibold tracking-tight text-neutral-950">
+          How that compares
+        </h2>
+        <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--color-brand-muted)]">
+          The gap that matters is not the headline price — it is what it costs
+          to let an agent reach your SEO data at all.
+        </p>
+
+        <div className="mt-5 overflow-x-auto">
+          <table className="w-full min-w-lg border-collapse text-left text-sm">
+            <caption className="sr-only">
+              SearchCrew list prices compared with Semrush and Ahrefs
+            </caption>
+            <thead>
+              <tr className="border-b border-[var(--color-border-subtle)]">
+                <th
+                  scope="col"
+                  className="w-2/5 py-3 pr-4 font-medium text-neutral-500"
+                >
+                  <span className="sr-only">Comparison</span>
+                </th>
+                <th scope="col" className="py-3 pr-4 font-semibold text-neutral-950">
+                  SearchCrew
+                </th>
+                <th scope="col" className="py-3 pr-4 font-medium text-neutral-500">
+                  Semrush
+                </th>
+                <th scope="col" className="py-3 font-medium text-neutral-500">
+                  Ahrefs
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {COMPARISON.map((row) => (
+                <tr
+                  key={row.label}
+                  className="border-b border-[var(--color-border-subtle)]"
+                >
+                  <th
+                    scope="row"
+                    className="py-3 pr-4 align-top font-normal text-neutral-700"
+                  >
+                    {row.label}
+                  </th>
+                  <td className="py-3 pr-4 align-top font-semibold text-neutral-950">
+                    {row.searchcrew}
+                  </td>
+                  <td className="py-3 pr-4 align-top text-[var(--color-brand-muted)]">
+                    {row.semrush}
+                  </td>
+                  <td className="py-3 align-top text-[var(--color-brand-muted)]">
+                    {row.ahrefs}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p className="mt-4 max-w-2xl text-xs leading-5 text-neutral-500">
+          Competitor figures are published list prices for month-to-month
+          billing, checked {COMPARISON_CHECKED}. Semrush sells Standard API
+          units separately on top of the plan fee. Plans and prices change —
+          check theirs before you decide.
+        </p>
+      </section>
+
+      {/* 5. The estimator */}
       <section className="mt-10">
         <div className="grid divide-y divide-[var(--color-border-subtle)] rounded-xl border border-[var(--color-border-subtle)] bg-white lg:grid-cols-[1.1fr_1fr] lg:divide-x lg:divide-y-0">
           {/* Inputs */}

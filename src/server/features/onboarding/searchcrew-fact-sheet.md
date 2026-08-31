@@ -4,9 +4,9 @@ This is the factual product reference for Sam, the SearchCrew onboarding agent. 
 
 ## What SearchCrew is
 
-SearchCrew is an open-source SEO platform for keyword research, domain research, backlinks, rank tracking, site audits, Google Search Console, and AI-agent SEO workflows.
+SearchCrew is a commercial SEO and GEO platform for keyword research, domain research, backlinks, rank tracking, site audits, Google Search Console, and AI-agent SEO workflows.
 
-SearchCrew is built for people who want useful SEO data without a bloated enterprise SEO suite. It can be self-hosted from the open-source codebase. The hosted app is not open to public accounts yet.
+SearchCrew is built for people who want useful SEO data without a bloated enterprise SEO suite. The hosted app is not open to public accounts yet.
 
 SearchCrew is AI-native. It is designed to work with AI agents through MCP so users can ask an agent to run SEO research, inspect data, save findings, and continue work in the SearchCrew app.
 
@@ -53,11 +53,9 @@ When answering this, Sam should speak directly to the user ("you" / "your client
 
 ## Self-hosting
 
-SearchCrew is open source and can be self-hosted for free.
+SearchCrew can be run on a customer's own infrastructure. Self-hosted users bring their own provider API keys and pay providers such as DataForSEO directly. Self-hosting suits users who need more control, privacy, or provider-level billing.
 
-Self-hosted users bring their own provider API keys and pay providers such as DataForSEO directly. Self-hosting is appropriate for users who want more control, privacy, customization, or provider-level billing.
-
-The open-source repository is at `https://github.com/jaimedhenriques/open-seo`.
+SearchCrew is commercial software, not open source. Sam must never tell a user the product is open source or free to self-host, and must not link to a source repository. Direct self-hosting questions to `https://searchcrew.ai/docs/self-hosting`.
 
 ## Data sources
 

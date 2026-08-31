@@ -165,8 +165,8 @@ function KeywordResearchLibraryPage() {
           >
             SearchCrew's keyword research
           </a>{" "}
-          and your connected Search Console. SearchCrew is open source and
-          self-hostable, and its{" "}
+          and your connected Search Console. SearchCrew is built for AI search,
+          and its{" "}
           <a
             href="/docs/mcp"
             className="font-medium text-neutral-950 underline decoration-[var(--color-brand-accent)] underline-offset-4"

@@ -116,7 +116,7 @@ locally with `pnpm destroy:preview --stage pr-<n> --yes`.
 
 ## Public-mirror PRs
 
-External (jaimedhenriques/open-seo) PRs never deploy from CI — fork code must not
+External (jaimedhenriques/searchcrew) PRs never deploy from CI — fork code must not
 run with deploy secrets. Preview one locally instead: the fork's code only
 BUILDS, in a detached sibling worktree, and the deploy runs from this trusted
 checkout's alchemy stack against the fork's `dist/`. The fork's own deploy
@@ -127,7 +127,7 @@ building executes the fork's config code on your machine with `.env.preview`
 available.
 
 ```sh
-git fetch https://github.com/jaimedhenriques/open-seo.git pull/<pr>/head
+git fetch https://github.com/jaimedhenriques/searchcrew.git pull/<pr>/head
 git worktree add --detach ../searchcrew-pub-<pr> FETCH_HEAD
 cp .env.preview ../searchcrew-pub-<pr>/
 (cd ../searchcrew-pub-<pr> && pnpm install --frozen-lockfile && pnpm exec vite build --mode preview)

@@ -85,7 +85,7 @@ function SiteForm({ projectId }: { projectId: string }) {
       >
         <div className="space-y-3 text-center">
           <img
-            src="/searchcrew-mark.png"
+            src="/searchcrew-mark.svg"
             alt="SearchCrew"
             className="mx-auto size-10 rounded-lg"
           />
