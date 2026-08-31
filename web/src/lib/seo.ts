@@ -60,6 +60,7 @@ export function buildPageSeo({
     meta: [
       { title: fullTitle },
       ...(description ? [{ name: "description", content: description }] : []),
+      { name: "keywords", content: "SearchCrew, searchcrew.ai, SEO tools, GEO" },
       { property: "og:site_name", content: "SearchCrew" },
       { property: "og:type", content: ogType },
       { property: "og:title", content: fullTitle },
