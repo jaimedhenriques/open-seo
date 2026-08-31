@@ -105,7 +105,7 @@ function GoogleSearchConsoleMcpCta() {
           </span>
         </a>
         <a
-          href="https://github.com/jaimedhenriques/open-seo"
+          href="https://github.com/jaimedhenriques/searchcrew"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-[var(--color-border-subtle)] bg-white px-4 text-sm font-medium text-neutral-950 transition-colors hover:border-neutral-950"

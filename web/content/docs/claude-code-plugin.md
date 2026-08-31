@@ -12,7 +12,7 @@ The SearchCrew plugin installs all nine SEO workflow skills in one step.
 Run these two commands in Claude Code:
 
 ```bash
-/plugin marketplace add jaimedhenriques/open-seo
+/plugin marketplace add jaimedhenriques/searchcrew
 /plugin install searchcrew@searchcrew
 ```
 

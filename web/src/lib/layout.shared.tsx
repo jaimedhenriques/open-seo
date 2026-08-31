@@ -32,7 +32,7 @@ export function baseOptions(): BaseLayoutProps {
       },
       {
         text: "GitHub",
-        url: "https://github.com/jaimedhenriques/open-seo",
+        url: "https://github.com/jaimedhenriques/searchcrew",
         external: true,
       },
     ],

@@ -9,7 +9,7 @@ In Docker mode, SearchCrew uses `AUTH_MODE=local_noauth` (no auth checks, local 
 
 The default `compose.yaml` builds a local `searchcrew:local` image from the
 checked-out source. A canonical GHCR image is planned at
-`ghcr.io/jaimedhenriques/open-seo` after its release workflow passes.
+`ghcr.io/jaimedhenriques/searchcrew` after its release workflow passes.
 
 ## Prerequisites
 
@@ -21,8 +21,8 @@ checked-out source. A canonical GHCR image is planned at
 Clone the repo, then:
 
 ```bash
-git clone https://github.com/jaimedhenriques/open-seo.git
-cd open-seo
+git clone https://github.com/jaimedhenriques/searchcrew.git
+cd searchcrew
 cp .env.example .env
 ```
 
@@ -61,7 +61,7 @@ After the canonical GHCR workflow has published a release, set
 `SEARCHCREW_IMAGE` in `.env` and restart:
 
 ```bash
-SEARCHCREW_IMAGE=ghcr.io/jaimedhenriques/open-seo:v1.2.3
+SEARCHCREW_IMAGE=ghcr.io/jaimedhenriques/searchcrew:v1.2.3
 docker compose up -d
 ```
 

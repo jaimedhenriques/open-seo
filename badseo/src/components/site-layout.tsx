@@ -9,7 +9,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         </a>
         <span className="nav-links">
           <a href="https://searchcrew.ai">SearchCrew</a>
-          <a href="https://github.com/jaimedhenriques/open-seo">GitHub</a>
+          <a href="https://github.com/jaimedhenriques/searchcrew">GitHub</a>
         </span>
       </nav>
       {children}
@@ -20,7 +20,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           </a>
           <span className="foot-links">
             <a href="/#issues">All issues</a>
-            <a href="https://github.com/jaimedhenriques/open-seo">GitHub</a>
+            <a href="https://github.com/jaimedhenriques/searchcrew">GitHub</a>
             <a href="https://searchcrew.ai">SearchCrew</a>
             <a href="/privacy">Privacy</a>
             <button

@@ -19,7 +19,7 @@ The plugin includes nine skills that guide Cursor through complete SEO workflows
 
 Install the SearchCrew plugin from the Cursor Marketplace to use the workflow skills. Hosted OAuth and live-data tools are not available until the production beta opens.
 
-The plugin package is free and open source. Review [launch status](https://searchcrew.ai/get-started) for hosted access and the [repository](https://github.com/jaimedhenriques/open-seo) for self-hosting.
+The plugin package is free and open source. Review [launch status](https://searchcrew.ai/get-started) for hosted access and the [repository](https://github.com/jaimedhenriques/searchcrew) for self-hosting.
 
 ## Try it
 

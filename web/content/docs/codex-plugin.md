@@ -12,7 +12,7 @@ The SearchCrew plugin installs all nine SEO workflow skills in one step.
 Run these commands in your terminal:
 
 ```bash
-codex plugin marketplace add jaimedhenriques/open-seo
+codex plugin marketplace add jaimedhenriques/searchcrew
 codex plugin add searchcrew@searchcrew
 ```
 

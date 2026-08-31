@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 const SUPPORT_STATUS_URL = "https://searchcrew.ai/support";
-const REPOSITORY_URL = "https://github.com/jaimedhenriques/open-seo";
+const REPOSITORY_URL = "https://github.com/jaimedhenriques/searchcrew";
 
 export const Route = createFileRoute("/_app/support")({
   component: SupportPage,

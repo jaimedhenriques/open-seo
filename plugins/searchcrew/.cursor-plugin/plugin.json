@@ -6,7 +6,7 @@
     "name": "SearchCrew"
   },
   "homepage": "https://searchcrew.ai",
-  "repository": "https://github.com/jaimedhenriques/open-seo",
+  "repository": "https://github.com/jaimedhenriques/searchcrew",
   "license": "MIT",
   "keywords": [
     "seo",
@@ -18,6 +18,6 @@
     "rank-tracking",
     "local-seo"
   ],
-  "logo": "https://raw.githubusercontent.com/jaimedhenriques/open-seo/main/public/searchcrew-mark.png",
+  "logo": "https://raw.githubusercontent.com/jaimedhenriques/searchcrew/main/public/searchcrew-mark.png",
   "skills": "skills"
 }

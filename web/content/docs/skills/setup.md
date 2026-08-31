@@ -18,7 +18,7 @@ Pick the option that matches how you want to install the files.
 Use this if you want the installer to show the available skills and agents.
 
 ```bash
-npx skills add jaimedhenriques/open-seo
+npx skills add jaimedhenriques/searchcrew
 ```
 
 ### Option 2: Install all SearchCrew skills
@@ -26,7 +26,7 @@ npx skills add jaimedhenriques/open-seo
 Use this if you want every SearchCrew skill.
 
 ```bash
-npx skills add jaimedhenriques/open-seo --skill '*'
+npx skills add jaimedhenriques/searchcrew --skill '*'
 ```
 
 ### Option 3: Install all skills for Claude Code only
@@ -34,7 +34,7 @@ npx skills add jaimedhenriques/open-seo --skill '*'
 Use this if the skills should be available in Claude Code only.
 
 ```bash
-npx skills add jaimedhenriques/open-seo --skill '*' --agent claude-code
+npx skills add jaimedhenriques/searchcrew --skill '*' --agent claude-code
 ```
 
 ### Option 4: Install all skills for OpenAI Codex only
@@ -42,7 +42,7 @@ npx skills add jaimedhenriques/open-seo --skill '*' --agent claude-code
 Use this if the skills should be available in Codex only.
 
 ```bash
-npx skills add jaimedhenriques/open-seo --skill '*' --agent codex
+npx skills add jaimedhenriques/searchcrew --skill '*' --agent codex
 ```
 
 ### Option 5: Copy the skill files manually
@@ -50,20 +50,20 @@ npx skills add jaimedhenriques/open-seo --skill '*' --agent codex
 Use this if you prefer to copy files into your agent's skills folder.
 
 ```bash
-git clone https://github.com/jaimedhenriques/open-seo.git
+git clone https://github.com/jaimedhenriques/searchcrew.git
 
 # Codex
 mkdir -p ~/.codex/skills
-cp -R open-seo/.agents/skills/* ~/.codex/skills/
+cp -R searchcrew/.agents/skills/* ~/.codex/skills/
 
 # Claude Code
 mkdir -p ~/.claude/skills
-cp -R open-seo/.agents/skills/* ~/.claude/skills/
+cp -R searchcrew/.agents/skills/* ~/.claude/skills/
 ```
 
 You can also review the source skills on GitHub:
 
-- [SearchCrew Agent Skills on GitHub](https://github.com/jaimedhenriques/open-seo/tree/main/.agents/skills)
+- [SearchCrew Agent Skills on GitHub](https://github.com/jaimedhenriques/searchcrew/tree/main/.agents/skills)
 
 Each skill page also links to its source `SKILL.md`.
 
