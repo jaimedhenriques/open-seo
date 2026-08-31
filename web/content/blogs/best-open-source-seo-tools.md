@@ -1,6 +1,6 @@
 ---
 title: "The Best Open Source SEO Tools in 2026"
-description: "Open source SEO tools in 2026: SearchCrew, SerpBear, SEONaut, LibreCrawl, and SEOMachine — what each one does, what it costs to run, and how to self-host."
+description: "Open source SEO tools in 2026: SerpBear, SEONaut, LibreCrawl, and SEOMachine — what each one does, what it costs to run, and how to self-host, plus where a commercial tool still wins."
 author: "SearchCrew Team"
 date: "2026-06-05"
 ---
@@ -23,7 +23,7 @@ Note: SearchCrew publishes this guide and is included below. Treat its placement
 
 ## SearchCrew
 
-SearchCrew is an open source alternative to Semrush and Ahrefs, built to be the only SEO tool that companies or small agencies need. It covers keyword research, rank tracking, backlinks, site audits, AI brand visibility, and an AI search prompt explorer. See them all on the [features page](/features).
+SearchCrew is a commercial alternative to Semrush and Ahrefs — not open source, but included here because it is what we build and it solves the data problem the projects below run into. It covers keyword research, rank tracking, backlinks, site audits, AI brand visibility, and an AI search prompt explorer. See them all on the [features page](/features).
 
 It relies on [DataForSEO](https://dataforseo.com), a paid service, which is the gold standard for SEO data with pay-as-you-go pricing. Many features cost money to run, but far less than a legacy SaaS seat, and the [costs are documented](/pricing).
 
@@ -67,6 +67,6 @@ One clarification, since it shows up on other lists: seojuice.com is not open so
 
 ## Try SearchCrew, and tell us what we missed
 
-If you want one open source tool that covers most of SEO, inspect SearchCrew and its Cloudflare self-hosting path. The Docker path is still being verified. Hosted accounts remain paused; follow [launch status](/get-started) instead of attempting signup.
+If you want one tool that covers most of SEO without stitching four projects together, that is the gap SearchCrew fills — commercially, with the data included. Hosted accounts remain paused; follow [launch status](/get-started) instead of attempting signup.
 
 We will keep this guide current. Current feedback and support status is published at [searchcrew.ai/support](/support).

@@ -3,7 +3,7 @@ title: "Self-Hosting SearchCrew"
 description: "Run SearchCrew yourself with Docker or Cloudflare, bring your own DataForSEO API key, and pay only for what you use."
 ---
 
-SearchCrew is free and open source. Self-hosting means the app costs $0. You bring your own DataForSEO API key and pay DataForSEO directly for API usage.
+Self-hosting runs SearchCrew on your own infrastructure. You bring your own DataForSEO API key and pay DataForSEO directly for API usage.
 
 There are two self-hosting paths:
 

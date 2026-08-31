@@ -260,28 +260,28 @@ function McpSection() {
             </div>
             <pre>
               <code>
-                <span className="t-orange">›</span> find and cluster keywords
-                for <span className="t-bright">searchcrew.ai</span>
+                <span className="t-orange">›</span> cluster GEO keywords for{" "}
+                <span className="t-bright">searchcrew.ai</span>
                 {"\n\n"}
                 <span className="t-dim">
-                  ⏺ searchcrew.keyword_research(seed: &quot;open source seo&quot;)
+                  ⏺ searchcrew.keyword_research(seed: &quot;geo&quot;)
                 </span>
                 {"\n"}
-                {"  "}keyword{"                      "}volume{"     "}kd{"\n"}
-                {"  "}open source seo{"              "}
-                <span className="t-bright">1,300</span>
+                {"  "}keyword{"                    "}volume{"   "}kd{"\n"}
+                {"  "}answer engine optimization{" "}
+                <span className="t-bright">2,400</span>
+                {"    "}
+                <span className="t-dim">18</span>
+                {"\n"}
+                {"  "}geo for llm search{"         "}
+                <span className="t-bright">880</span>
                 {"      "}
-                <span className="t-dim">12</span>
+                <span className="t-dim">7</span>
                 {"\n"}
-                {"  "}open source seo tools{"        "}
-                <span className="t-bright">720</span>
-                {"        "}
-                <span className="t-dim">9</span>
-                {"\n"}
-                {"  "}self-hosted seo platform{"     "}
-                <span className="t-bright">210</span>
-                {"        "}
-                <span className="t-dim">4</span>
+                {"  "}ai search visibility{"       "}
+                <span className="t-bright">1,600</span>
+                {"    "}
+                <span className="t-dim">11</span>
                 {"\n\n"}
                 <span className="t-orange">✓</span>
                 <span className="t-dim">

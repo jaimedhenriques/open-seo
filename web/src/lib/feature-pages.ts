@@ -96,7 +96,7 @@ export const featurePages = {
       "Group keywords for articles, landing pages, and rank tracking.",
     ],
     differentiators: [
-      "Open-source SEO workflows you can self-host or run in the managed app.",
+      "SEO workflows your team and your agents share the same context on.",
       "DataForSEO-backed metrics without locking the research process into a black box.",
       "MCP access so AI agents can research and save keywords for you.",
     ],
@@ -207,7 +207,7 @@ export const featurePages = {
     ],
     differentiators: [
       "A practical crawler built into the same workspace as keyword and domain research.",
-      "Open-source implementation for teams that want to inspect or extend the audit flow.",
+      "A transparent audit flow — every issue traces back to the page and rule that raised it.",
       "Simple reports that expose page-level signals and optional Lighthouse findings instead of relying only on a generic score.",
     ],
     related: [
@@ -363,7 +363,7 @@ export const featurePages = {
     differentiators: [
       "Domain research connects directly to keyword, backlink, and rank tracking workflows.",
       "Built around ranking keywords, estimated traffic, and top pages for practical competitor research.",
-      "Open-source and self-hostable for teams that want control over their SEO stack.",
+      "Full MCP and API access on every plan, so your stack is never gated behind a tier.",
     ],
     related: [
       {

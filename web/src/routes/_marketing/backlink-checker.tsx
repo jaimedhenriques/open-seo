@@ -123,7 +123,7 @@ function BacklinkCheckerPage() {
         </h2>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--color-brand-muted)]">
           SearchCrew puts full backlink analysis next to keyword research, rank
-          tracking, and site audits — open source, starting free.
+          tracking, and site audits — starting free.
         </p>
         <div className="mt-4 flex flex-wrap items-center gap-4">
           <a

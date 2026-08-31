@@ -108,4 +108,4 @@ Open your five highest-traffic pages and name the customer each one was written 
 
 Then run the prompt against the rest of the site. The number to watch is the share: how much of your organic footprint you built for people who were never going to buy from you. Alex's clients keep finding that their best page by every metric in the report was written for the customer who does not buy, which reorders the content calendar before a single new keyword gets mined.
 
-[SearchCrew](https://searchcrew.ai/) is an affordable, open-source SEO tool that connects your ranking, keyword, and Search Console data in one place, so an audit like this runs as a prompt instead of a spreadsheet afternoon.
+[SearchCrew](https://searchcrew.ai/) is an affordable SEO and GEO platform that connects your ranking, keyword, and Search Console data in one place, so an audit like this runs as a prompt instead of a spreadsheet afternoon.
