@@ -34,6 +34,12 @@
     // Alchemy state/bundle artifacts (gitignored)
     "!.alchemy/**",
     "!badseo/**",
+    // Vendored agent skills (.agents/skills, mirrored as symlinks in
+    // .claude/skills). These ship their own scripts, are re-vendored from
+    // upstream rather than edited, and are never imported by the app.
+    "!.agents/skills/**",
+    "!.claude/skills/**",
+    "!plugins/**",
   ],
   "ignore": ["drizzle-prod.config.ts"],
   // Disable Drizzle plugin - it tries to load drizzle.config.ts which imports cloudflare:workers

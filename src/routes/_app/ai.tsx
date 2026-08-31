@@ -23,6 +23,11 @@ const SKILL_NAMES = [
   "local-seo",
   "seo-audit",
   "geo-citability",
+  "geo-audit",
+  "geo-brand-mentions",
+  "geo-content",
+  "geo-schema",
+  "geo-technical",
   "geo-crawlers",
   "geo-llmstxt",
 ];

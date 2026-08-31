@@ -1,0 +1,25 @@
+---
+title: "GEO Technical Agent Skill"
+description: "Find the technical barriers — rendering, speed, markup — that stop AI systems using your pages."
+---
+
+<RunSkillCallout command="/geo-technical" />
+
+The GEO Technical Agent Skill checks the mechanics of whether an AI system can actually consume a page.
+
+Assistants are less forgiving than search crawlers. Content that depends on client-side rendering, hides behind interaction, or arrives too slowly is often simply not seen.
+
+## What this skill helps your agent do
+
+- Detect content that only exists after JavaScript runs, and is therefore invisible to most fetchers.
+- Check that the important text is in the initial HTML response.
+- Find interaction-gated content — tabs, accordions, modals — holding text that should be reachable.
+- Report the response characteristics that cause fetchers to give up.
+
+## When to use it
+
+When [AI Crawler Access](/docs/skills/geo-crawlers) shows crawlers are allowed but pages still are not being cited.
+
+## What you get back
+
+A per-page list of technical barriers, each with what an assistant sees versus what a browser sees.
