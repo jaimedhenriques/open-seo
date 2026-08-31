@@ -43,10 +43,40 @@ env:
   CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
 jobs:
-  preview:
+  # Preview deploys are optional infrastructure. Without Cloudflare secrets the
+  # deploy cannot authenticate, and that is an unconfigured environment rather
+  # than a fault in the pull request — so it reports here and the deploy skips,
+  # instead of failing every PR's checks. Secrets cannot be read from a
+  # job-level `if`, hence this gate.
+  gate:
     if: >-
       github.repository == 'jaimedhenriques/searchcrew' &&
       github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      configured: ${{ steps.check.outputs.configured }}
+    steps:
+      - id: check
+        env:
+          TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          ENV_PREVIEW: ${{ secrets.ENV_PREVIEW }}
+        run: |
+          missing=""
+          [ -n "$TOKEN" ] || missing="$missing CLOUDFLARE_API_TOKEN"
+          [ -n "$ACCOUNT" ] || missing="$missing CLOUDFLARE_ACCOUNT_ID"
+          [ -n "$ENV_PREVIEW" ] || missing="$missing ENV_PREVIEW"
+          if [ -z "$missing" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::notice title=Preview deploy skipped::Not configured. Missing repository secrets:$missing. See docs/PREVIEW_DEPLOYMENTS.md."
+          fi
+
+  preview:
+    needs: gate
+    if: needs.gate.outputs.configured == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
