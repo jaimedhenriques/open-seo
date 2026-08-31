@@ -334,7 +334,7 @@ export default Alchemy.Stack(
       if (databaseProvider !== "postgres" && databaseProvider !== "d1") {
         return yield* Effect.die(
           new Error(
-            "Set DATABASE_PROVIDER explicitly in .env.production (prod runs postgres).",
+            'Set DATABASE_PROVIDER explicitly in .env.production — "d1" or "postgres". Postgres additionally needs the HYPERDRIVE_ORIGIN_* variables.',
           ),
         );
       }
@@ -403,8 +403,13 @@ export default Alchemy.Stack(
         TEAM_DOMAIN: access.teamDomain,
         POLICY_AUD: access.policyAud,
 
-        // Prod-only: pooled Postgres via the existing Hyperdrive config.
-        ...(prod ? { HYPERDRIVE: makeHyperdrive() } : {}),
+        // Postgres-only: the pooled connection to the production database.
+        // Gating this on `prod` instead of the provider made a D1 production
+        // deploy demand HYPERDRIVE_ORIGIN_* credentials it has no use for,
+        // which no D1 deployment can satisfy.
+        ...(prod && databaseProvider === "postgres"
+          ? { HYPERDRIVE: makeHyperdrive() }
+          : {}),
 
         // Durable Objects (chat agents + the per-audit crawl scratchpad).
         // Alchemy backs new DO classes with SQLite storage, which all of
