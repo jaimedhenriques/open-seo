@@ -16,7 +16,7 @@ export function SiteFooter({ className }: { className?: string }) {
         className="inline-flex min-h-11 items-center text-sm font-semibold text-neutral-900"
       >
         <img
-          src="/searchcrew-mark.png"
+          src="/searchcrew-mark.svg"
           alt=""
           className="mr-2 h-6 w-auto"
         />

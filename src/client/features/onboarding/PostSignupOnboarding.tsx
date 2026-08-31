@@ -60,7 +60,7 @@ export function PostSignupOnboarding({
 
       <div className="text-center space-y-3">
         <img
-          src="/searchcrew-mark.png"
+          src="/searchcrew-mark.svg"
           alt="SearchCrew"
           className="mx-auto size-10 rounded-lg"
         />

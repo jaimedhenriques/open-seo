@@ -106,7 +106,7 @@ function MarketingLayout() {
               className="inline-flex min-h-11 touch-manipulation items-center rounded-lg text-sm font-semibold transition-[opacity,transform] duration-150 hover:opacity-80 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
             >
               <img
-                src="/searchcrew-mark.png"
+                src="/searchcrew-mark.svg"
                 alt=""
                 className="mr-2 h-6 w-auto"
               />

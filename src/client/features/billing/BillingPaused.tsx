@@ -1,7 +1,7 @@
 export function BillingBrandMark() {
   return (
     <img
-      src="/searchcrew-mark.png"
+      src="/searchcrew-mark.svg"
       alt="SearchCrew"
       className="mx-auto h-12 w-auto"
     />

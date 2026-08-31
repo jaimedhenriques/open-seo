@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SearchCrew">
+  <!-- Content spans x 3–59.5, y 7–49.5; this transform optically centres it in the square. -->
+  <g transform="translate(0.75 3.75)">
+    <!-- Lens + handle: the search half of the mark. -->
+    <g fill="none" stroke="var(--mark-ink, #16181D)" stroke-width="6" stroke-linecap="round">
+      <circle cx="36" cy="26" r="16"/>
+      <path d="M47.5 37.5 L56.5 46.5"/>
+    </g>
+    <!-- Three signals feeding the lens: agents reporting in, longest in the middle.
+         Bars cross the ring; the nodes land inside it. -->
+    <g fill="none" stroke="var(--mark-accent, #FF5A1F)" stroke-width="6" stroke-linecap="round">
+      <path d="M11 15 H26"/>
+      <path d="M6 26 H30"/>
+      <path d="M11 37 H24"/>
+    </g>
+    <g fill="var(--mark-accent, #FF5A1F)">
+      <circle cx="29" cy="15" r="4.4"/>
+      <circle cx="34" cy="26" r="5.4"/>
+      <circle cx="27" cy="37" r="4.4"/>
+    </g>
+  </g>
+</svg>
