@@ -68,6 +68,7 @@ import {
   getAuditStatusTool,
   runSiteAuditTool,
 } from "@/server/mcp/tools/site-audit-tools";
+import { analyzeAiCrawlerAccessTool } from "@/server/mcp/tools/analyze-ai-crawler-access";
 import { whoamiTool } from "@/server/mcp/tools/whoami";
 
 type ToolSchema = z.ZodType | z.ZodRawShape;
@@ -132,7 +133,7 @@ export function createSearchCrewMcpServer(authProps: McpProps) {
       title: "SearchCrew",
       version: "0.0.12",
       description:
-        "SEO research tools for AI agents: keyword research and metrics, SERP and local SERP results, domain and backlink analysis, rank tracking, and Google Search Console performance.",
+        "SEO research tools for AI agents: keyword research and metrics, SERP and local SERP results, domain and backlink analysis, rank tracking, AI crawler access, and Google Search Console performance.",
       websiteUrl: "https://searchcrew.ai",
       icons: [
         {
@@ -198,6 +199,7 @@ export function createSearchCrewMcpServer(authProps: McpProps) {
   register(getAuditStatusTool);
   register(getAuditIssuesTool);
   register(getAuditPagesTool);
+  register(analyzeAiCrawlerAccessTool);
 
   return server;
 }

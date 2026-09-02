@@ -56,6 +56,7 @@ import {
   getSearchConsolePerformanceTool,
   inspectUrlsTool,
 } from "@/server/mcp/tools/search-console-tools";
+import { analyzeAiCrawlerAccessTool } from "@/server/mcp/tools/analyze-ai-crawler-access";
 import { whoamiTool } from "@/server/mcp/tools/whoami";
 import { discoverSiteUrls, readPages, readSite } from "@/server/lib/scrape";
 import searchCrewFactSheet from "@/server/features/onboarding/searchcrew-fact-sheet.md?raw";
@@ -403,5 +404,6 @@ export function buildSamMcpTools(
     get_audit_status: waitingAuditStatusTool(adaptTool),
     get_audit_issues: adaptTool(getAuditIssuesTool),
     get_audit_pages: adaptTool(getAuditPagesTool),
+    analyze_ai_crawler_access: adaptTool(analyzeAiCrawlerAccessTool),
   };
 }

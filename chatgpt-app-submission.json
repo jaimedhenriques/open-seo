@@ -512,6 +512,18 @@
         "destructive_justification": "Does not delete, overwrite, revoke access, send messages, or perform irreversible actions."
       }
     },
+    "analyze_ai_crawler_access": {
+      "annotations": {
+        "readOnlyHint": true,
+        "openWorldHint": false,
+        "destructiveHint": false
+      },
+      "justifications": {
+        "read_only_justification": "Only fetches public robots.txt and llms.txt and reports named AI crawler allow/block status. Uses no credits.",
+        "open_world_justification": "Reads public crawler-control files but cannot change the site or any other publicly visible internet state.",
+        "destructive_justification": "Does not delete, overwrite, revoke access, send messages, or perform irreversible actions."
+      }
+    },
     "run_site_audit": {
       "annotations": {
         "readOnlyHint": false,

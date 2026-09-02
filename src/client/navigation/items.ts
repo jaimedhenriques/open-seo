@@ -6,6 +6,7 @@ import {
   LayoutDashboard,
   Link2,
   MessageSquare,
+  ScanSearch,
   Search,
   Sparkles,
   TrendingUp,
@@ -67,6 +68,11 @@ const projectNavItems = [
     label: "Prompt Explorer",
     icon: MessageSquare,
   },
+  {
+    to: "/p/$projectId/geo-crawlers" as const,
+    label: "AI crawlers",
+    icon: ScanSearch,
+  },
 ] as const;
 
 const aiNavItem = linkOptions({
@@ -111,6 +117,7 @@ export function getProjectNavGroups(projectId: string) {
         byPath("/p/$projectId/backlinks"),
         byPath("/p/$projectId/brand-lookup"),
         byPath("/p/$projectId/prompt-explorer"),
+        byPath("/p/$projectId/geo-crawlers"),
       ],
     },
     {

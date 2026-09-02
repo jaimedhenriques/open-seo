@@ -5,7 +5,7 @@ description: "Connect SearchCrew MCP to Claude, Codex, and other AI clients."
 
 > **Hosted beta status:** The public MCP endpoint, SearchCrew login, and API-key flow are not live yet. The commands below document the intended setup; do not run them until [launch status](/get-started) confirms production verification.
 
-SearchCrew MCP lets compatible AI clients call SearchCrew tools for keyword research, SERP inspection, local business research, competitive search intelligence, domain research, backlink overview, saved keywords, rank tracking, shared project context, and Google Search Console performance and URL inspection.
+SearchCrew MCP lets compatible AI clients call SearchCrew tools for keyword research, SERP inspection, local business research, competitive search intelligence, domain research, backlink overview, saved keywords, rank tracking, shared project context, AI crawler access, and Google Search Console performance and URL inspection.
 
 The planned hosted MCP server URL is:
 

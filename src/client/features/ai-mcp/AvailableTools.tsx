@@ -250,6 +250,17 @@ const toolCategories: ToolCategory[] = [
       },
     ],
   },
+  {
+    label: "AI visibility",
+    tools: [
+      {
+        name: "analyze_ai_crawler_access",
+        title: "Analyze AI crawler access",
+        description:
+          "Map which named AI crawlers robots.txt allows or blocks. Uses no credits.",
+      },
+    ],
+  },
 ];
 
 export function AvailableTools() {
