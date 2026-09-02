@@ -1,8 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  evaluateAiCrawlerAccess,
-  parseRobotsGroups,
-} from "./aiCrawlerAccess";
+import { evaluateAiCrawlerAccess, parseRobotsGroups } from "./aiCrawlerAccess";
 
 describe("parseRobotsGroups", () => {
   it("keeps adjacent user-agent lines in one group", () => {
@@ -38,9 +35,7 @@ Content-Signal: ai-train=no, search=yes
 describe("evaluateAiCrawlerAccess", () => {
   it("allows every crawler when robots.txt is missing", () => {
     const report = evaluateAiCrawlerAccess(null);
-    expect(report.crawlers.every((row) => row.status === "allowed")).toBe(
-      true,
-    );
+    expect(report.crawlers.every((row) => row.status === "allowed")).toBe(true);
     expect(report.crawlers.every((row) => row.rule === "default")).toBe(true);
   });
 
