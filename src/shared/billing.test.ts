@@ -23,3 +23,22 @@ describe("Autumn product ids", () => {
     ]);
   });
 });
+
+describe("hosted SKU lock", () => {
+  it("does not sell a $10 hosted SKU", async () => {
+    const { PLANS } = await import("./billing");
+    expect(PLANS.some((plan) => plan.monthlyUsd === 10)).toBe(false);
+    expect(PLANS.filter((plan) => plan.monthlyUsd > 0).map((plan) => plan.monthlyUsd)).toEqual([29, 79, 199]);
+  });
+});
+
+describe("LICENSE upstream notice", () => {
+  it("keeps the OpenSEO MIT notice", async () => {
+    const { readFileSync } = await import("node:fs");
+    const { resolve } = await import("node:path");
+    const license = readFileSync(resolve(process.cwd(), "LICENSE"), "utf8");
+    expect(license).toContain("Copyright (c) 2026 Ben Senescu");
+    expect(license).toContain("MIT License");
+    expect(license).toContain("SearchCrew is a derivative work of OpenSEO");
+  });
+});
