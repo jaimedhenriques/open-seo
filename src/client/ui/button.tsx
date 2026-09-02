@@ -26,8 +26,8 @@ const buttonSizeClass = {
   "icon-lg": "size-11",
 } as const;
 
-export type ButtonVariant = keyof typeof buttonVariantClass;
-export type ButtonSize = keyof typeof buttonSizeClass;
+type ButtonVariant = keyof typeof buttonVariantClass;
+type ButtonSize = keyof typeof buttonSizeClass;
 
 function buttonVariants(opts: {
   variant?: ButtonVariant;
