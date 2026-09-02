@@ -7,4 +7,5 @@ export const FEATURE_PAGE_SLUGS = {
   savedKeywords: "saved-keywords",
   aiBrandVisibility: "ai-brand-visibility",
   aiSearchPrompts: "ai-search-prompts",
+  aiCrawlerAccess: "ai-crawler-access",
 };

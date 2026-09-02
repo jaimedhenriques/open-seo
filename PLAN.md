@@ -26,20 +26,26 @@ This plan does not use Jaime's employer, career identity, or Fitch connection.
 - App chrome is daisyUI. The UI kit is shadcn-style New York v4. GEO UI maps kit tokens onto the SearchCrew theme.
 - Hosted MCP is still prelaunch. Self-hosted and in-app SAM can use the tool today.
 
-## Increment 1 (this delivery)
+## Increment 1 (shipped)
 
 GEO crawler access page at `/p/$projectId/geo-crawlers`.
 
 - Default URL is the project domain. User can check any public URL.
 - Uses no credits. Training-bot blocks are labeled as preference, not defects.
 - Built from vendored kit components: Button, Badge, Card, Table, Input.
-- Tests cover the view-model (headline, badge variants, empty/error) and existing parser/fetch tests stay in place.
+
+## Increment 2 (this delivery)
+
+Public GTM page at `/features/ai-crawler-access` on searchcrew.ai.
+
+- Explains the credit-free robots.txt crawler map. No $10 SKU.
+- Does not claim meta tags or HTTP headers. Those are a later increment.
+- Copy tests lock no-credits, search vs training, allow-all for missing robots.txt.
 
 ## Later increments (not this delivery)
 
-2. Page-level `noai` / `X-Robots-Tag` sample on the same report.
-3. Squadbots skill step that opens this page and writes a research-log line.
-4. Marketing page on searchcrew.ai that explains GEO crawler access without a SKU.
+3. Page-level `noai` / `X-Robots-Tag` sample on the same report.
+4. Squadbots skill step that opens the in-app page and writes a research-log line.
 5. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
