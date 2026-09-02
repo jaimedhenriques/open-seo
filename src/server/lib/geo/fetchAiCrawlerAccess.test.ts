@@ -19,7 +19,12 @@ describe("fetchAiCrawlerAccess", () => {
 
   it("maps a public robots.txt and a missing llms.txt", async () => {
     vi.mocked(fetch).mockImplementation(async (input) => {
-      const url = String(input);
+      const url =
+        typeof input === "string"
+          ? input
+          : input instanceof URL
+            ? input.href
+            : input.url;
       if (url.includes("cloudflare-dns.com")) return jsonDns();
       if (url.endsWith("/robots.txt")) {
         return new Response("User-agent: GPTBot\nDisallow: /\n", {

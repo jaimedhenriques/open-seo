@@ -69,15 +69,16 @@ describe("analyze_ai_crawler_access", () => {
     );
 
     expect(mocks.fetchAiCrawlerAccess).toHaveBeenCalledWith("example.com");
-    expect(result.structuredContent).toMatchObject({
-      origin: "https://example.com",
-      crawlers: expect.arrayContaining([
-        expect.objectContaining({
-          userAgent: "GPTBot",
-          tier: "training",
-          status: "blocked",
-        }),
-      ]),
+    expect(result.structuredContent?.origin).toBe("https://example.com");
+    const gptBot = result.structuredContent?.crawlers.find(
+      (row) => row.userAgent === "GPTBot",
+    );
+    expect(gptBot).toEqual({
+      userAgent: "GPTBot",
+      operator: "OpenAI",
+      tier: "training",
+      status: "blocked",
+      rule: "specific",
     });
     expect(textContent(result)).toContain("No search/retrieval crawlers");
     expect(textContent(result)).toContain("optional content map");
