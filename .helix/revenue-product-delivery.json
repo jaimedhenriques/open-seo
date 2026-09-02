@@ -1,66 +1,58 @@
 {
   "schemaVersion": 2,
-  "project": "SearchCrew market-safe prelaunch buyer path",
-  "company": "SearchCrew",
+  "project": "SearchCrew",
+  "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders, marketers, agencies, and SEO consultants who need an affordable SEO workspace and proof that organic-search investment can pay back",
-  "pain": "SearchCrew marketing looks purchasable while app.searchcrew.ai, public signup, support, legal identity, and billing are not production-ready",
-  "revenueHypothesis": "A truthful prelaunch buyer path with stronger product hierarchy and fail-closed account and billing gates preserves trust now and creates a safe base for the hosted conversion launch",
+  "icp": "Founders and SEO operators who need AI-search crawler access without a hosted SKU",
+  "pain": "GEO skills exist, but agents cannot get a structured robots.txt crawler map without credits or a paid plan",
+  "revenueHypothesis": "A credit-free AI crawler access tool makes SearchCrew the default GEO workflow and later converts through existing hosted usage, not a new SKU",
   "mvpAcceptance": [
-    "The canonical https://searchcrew.ai/seo-roi-calculator route continues to serve the calculator and all public pages consistently identify the product as SearchCrew",
-    "Until the hosted app is verified, all primary calls to action resolve to a truthful launch-status page and public signup and billing remain fail-closed",
-    "The homepage first viewport has a clear product promise, working primary action, tighter vertical composition, and visible product proof without excessive empty space",
-    "The calculator keeps its verified formulas while improving mobile hierarchy, control grouping, trust copy, and the transition from estimate to signup",
-    "The buyer path has no broken links, no console errors, no horizontal overflow at 320px, WCAG-AA text contrast, 44px touch targets, and reduced-motion-safe states",
-    "Focused tests, full CI, production build, exact-commit Vercel preview evidence, and live SearchCrew production-domain smoke checks pass"
+    "analyze_ai_crawler_access is registered on the MCP server and in SAM",
+    "Parser tests cover specific allow/block, wildcard fallback, missing robots.txt, and empty Disallow",
+    "Tool uses no DataForSEO credits and does not add billing or a hosted SKU",
+    "Exact commit is pushed to jaimedhenriques/searchcrew"
   ],
-  "maker": "codex-searchcrew-maker",
-  "codingTool": "codex",
-  "rollback": "Revert the market-ready commits, redeploy the last known-good main commit to the SearchCrew marketing worker, and restore the previous SearchCrew application and DNS configuration.",
+  "maker": "grok-searchcrew-geo-maker",
+  "codingTool": "grok",
+  "rollback": "Revert the GEO crawler-access commit on helix/geo-crawler-access and close the PR.",
   "stopConditions": [
-    "Stop on secret exposure, an unidentifiable Cloudflare or Railway production target, unsafe public local_noauth configuration, signup regression, paid-plan requirements, more than three deployment attempts, or any regression in repository CI."
+    "No hosted SKU, Autumn product, or $10 plan.",
+    "Do not copy proprietary GEO code or edit vendored geo-* skill bodies.",
+    "Stop on secret exposure, SSRF bypass, or three failed verification attempts."
   ],
   "evidenceDestination": ".helix/evidence",
   "executionEvidence": ".helix/evidence/execution.json",
   "copySafety": {
     "publicPatternSources": [
-      "https://github.com/jaimedhenriques/seo-calculator-factory/tree/365ae019d134f59547d50f6b21dd23cf28c36f24",
-      "https://github.com/emilkowalski/skills/tree/main/skills/apple-design",
-      "https://github.com/vercel-labs/web-interface-guidelines",
-      "https://github.com/pbakaus/impeccable",
-      "https://github.com/VoltAgent/awesome-design-md"
+      "Public AI crawler user-agent tokens (OAI-SearchBot, GPTBot, Googlebot, PerplexityBot, Claude-SearchBot, and similar published bot names)",
+      "RFC 9309 robots.txt matching"
     ],
     "proprietaryAssetsExcluded": true
   },
   "limits": {
     "maxMinutes": 45,
     "maxAgents": 3,
-    "maxAttempts": 2
+    "maxAttempts": 3
   },
   "github": {
     "repo": "jaimedhenriques/searchcrew",
     "remote": "origin",
-    "branch": "codex/market-ready",
+    "branch": "helix/geo-crawler-access",
     "baseBranch": "main",
     "commit": "HEAD"
   },
   "vercel": {
-    "mode": "required",
-    "teamId": "team_pe74HMcqhmeKmVMl8AGbuX2F",
-    "projectId": "prj_uYtsyfK8xtxomiEVoUOWfPI7thYQ",
-    "deploymentId": "dpl_2ScMPVc6ufRfGhsRzYmFpQtVBirG",
-    "deploymentUrl": "https://open-seo-searchcrew-preview-6li6flylb-jaime-henriques-projects.vercel.app",
-    "deploymentCommit": "HEAD",
-    "evidence": "controller://vercel/searchcrew-market-ready-preview"
+    "mode": "not_applicable",
+    "reason": "SearchCrew is a Cloudflare Workers app. This increment is a credit-free MCP/GEO tool with local test proof, not a Vercel web SKU."
   },
   "verification": {
     "checks": [
       {
-        "name": "Web CI",
+        "name": "vitest geo crawler access + MCP tool",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-market-readiness-checker",
-    "checkerEvidence": "controller://checker/searchcrew-market-ready"
+    "checker": "independent-searchcrew-geo-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-crawler-access"
   }
 }
