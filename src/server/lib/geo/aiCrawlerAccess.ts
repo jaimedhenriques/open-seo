@@ -5,17 +5,17 @@
  * citation prediction, and it does not treat training-bot blocks as defects.
  */
 
-export type CrawlerTier = "search" | "ecosystem" | "training";
-export type AccessRule = "specific" | "wildcard" | "default";
-export type AccessStatus = "allowed" | "blocked";
+type CrawlerTier = "search" | "ecosystem" | "training";
+type AccessRule = "specific" | "wildcard" | "default";
+type AccessStatus = "allowed" | "blocked";
 
-export type CrawlerCatalogEntry = {
+type CrawlerCatalogEntry = {
   userAgent: string;
   operator: string;
   tier: CrawlerTier;
 };
 
-export type CrawlerAccessRow = CrawlerCatalogEntry & {
+type CrawlerAccessRow = CrawlerCatalogEntry & {
   status: AccessStatus;
   rule: AccessRule;
 };
@@ -46,7 +46,7 @@ type RobotsGroup = {
   disallows: string[];
 };
 
-export const AI_CRAWLER_CATALOG: readonly CrawlerCatalogEntry[] = [
+const AI_CRAWLER_CATALOG: readonly CrawlerCatalogEntry[] = [
   { userAgent: "OAI-SearchBot", operator: "OpenAI", tier: "search" },
   { userAgent: "ChatGPT-User", operator: "OpenAI", tier: "search" },
   { userAgent: "Claude-SearchBot", operator: "Anthropic", tier: "search" },
