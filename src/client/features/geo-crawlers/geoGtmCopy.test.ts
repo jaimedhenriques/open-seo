@@ -32,4 +32,11 @@ describe("GEO GTM copy", () => {
   it("does not claim meta tags, headers, Fitch, or a win-rate", () => {
     expect(geoGtmCopyViolations(text)).toEqual([]);
   });
+
+  it("treats JSON-LD as optional presence, not a ranking lever", () => {
+    expect(text.toLowerCase()).toContain("json-ld");
+    expect(text.toLowerCase()).toContain("optional");
+    expect(text.toLowerCase()).toContain("not a ranking or citation");
+    expect(geoGtmCopyViolations(text)).toEqual([]);
+  });
 });

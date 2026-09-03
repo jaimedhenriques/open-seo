@@ -90,7 +90,7 @@ In-app sibling links between `/p/$projectId/geo-crawlers` and `/p/$projectId/llm
 - Kit `Button` outline. Copy says uses no credits. No `$10` SKU.
 - Does not replace daisyUI app-wide.
 
-## Increment 10 (this delivery)
+## Increment 10 (PR 23)
 
 JSON-LD presence sample on the checked URL of the crawler report.
 
@@ -98,9 +98,16 @@ JSON-LD presence sample on the checked URL of the crawler report.
 - Missing JSON-LD is optional. Not a ranking or citation lever.
 - Kit Card and Badge. Do not edit vendored `geo-schema` SKILL.md.
 
+## Increment 11 (this delivery)
+
+Public GTM copy on `/features/ai-crawler-access` for the JSON-LD sample.
+
+- Same credit-free check. Missing JSON-LD is optional. Not a ranking or citation lever.
+- No `$10` SKU. Do not replace daisyUI app-wide.
+
 ## Later increments (not this delivery)
 
-11. Broader chrome migration to the UI kit, one surface at a time.
+12. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 

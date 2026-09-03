@@ -3,18 +3,18 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders and SEO operators checking AI crawler access and on-page structured data",
-  "pain": "The crawler report samples robots tokens but does not show whether the same URL publishes JSON-LD types",
-  "revenueHypothesis": "A credit-free JSON-LD presence sample on the existing GEO crawler page is the next SearchCrew GEO graph slice while pay is paused, without a $10 hosted SKU",
+  "icp": "Founders and SEO operators deciding whether to treat JSON-LD as required GEO work",
+  "pain": "The in-app crawler report samples JSON-LD, but the public /features/ai-crawler-access page does not say that",
+  "revenueHypothesis": "Public GTM copy for the credit-free JSON-LD sample is the next SearchCrew GEO slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 10 as JSON-LD presence sample",
-    "Checked URL HTML is parsed for application/ld+json types",
-    "Missing JSON-LD is labeled optional; copy tests lock no ranking/citation lever, no Fitch, no $10",
-    "Uses vendored kit Card and Badge. LICENSE unchanged. Commit pushed"
+    "PLAN.md records increment 11 as JSON-LD GTM copy",
+    "/features/ai-crawler-access copy lists JSON-LD presence as optional",
+    "Copy tests lock no ranking/citation lever, no Fitch, no $10 SKU",
+    "LICENSE unchanged. Commit pushed"
   ],
-  "maker": "grok-searchcrew-geo-jsonld-sample-maker",
+  "maker": "grok-searchcrew-geo-jsonld-gtm-maker",
   "codingTool": "grok",
-  "rollback": "Revert the jsonld-sample commit on helix/geo-jsonld-sample.",
+  "rollback": "Revert the jsonld-gtm commit on helix/geo-jsonld-gtm.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
@@ -39,22 +39,22 @@
   },
   "github": {
     "repo": "jaimedhenriques/searchcrew",
-    "branch": "helix/geo-jsonld-sample",
-    "baseBranch": "helix/geo-sibling-links",
+    "branch": "helix/geo-jsonld-gtm",
+    "baseBranch": "helix/geo-jsonld-sample",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds a JSON-LD presence sample with local tests. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew is a Cloudflare Workers app. This increment updates public GTM copy with local tests. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "isolated JSON-LD parser and view tests",
+        "name": "isolated GEO GTM copy tests",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-jsonld-sample-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-jsonld-sample"
+    "checker": "independent-searchcrew-geo-jsonld-gtm-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-jsonld-gtm"
   }
 }

@@ -754,17 +754,23 @@ export const featurePages = {
         description:
           "The same credit-free check is available in a SearchCrew project and as analyze_ai_crawler_access for Squadbots and other MCP clients.",
       },
+      {
+        title: "Sample JSON-LD on the checked URL",
+        description:
+          "The same check lists application/ld+json types from that page. Missing JSON-LD is optional. Presence is not a ranking or citation lever.",
+      },
     ],
     metrics: [
       { label: "Search crawlers", value: "Access map" },
       { label: "Training crawlers", value: "Preference" },
+      { label: "JSON-LD", value: "Presence" },
       { label: "Credits", value: "None" },
-      { label: "SKU", value: "None" },
     ],
     showMetrics: true,
     useCases: [
       "See whether ChatGPT Search, Claude, Perplexity, or Googlebot is blocked before you rewrite pages for AI answers.",
       "Confirm a training-bot block is intentional instead of treating it as a defect.",
+      "See which JSON-LD types the checked URL publishes, without treating a missing block as a defect.",
     ],
     differentiators: [
       "No credits for this check. Pay is paused and there is no hosted $10 SKU.",
@@ -795,6 +801,11 @@ export const featurePages = {
         question: "What does this cost?",
         answer:
           "Hosted billing is paused. This check is not sold as a $10 SKU. Self-host if you need it today.",
+      },
+      {
+        question: "Does missing JSON-LD fail this check?",
+        answer:
+          "No. JSON-LD is optional. The report lists types when they exist. That is presence, not a ranking or citation score.",
       },
     ],
   },
