@@ -32,7 +32,7 @@ export const Route = createRootRoute({
   head: () => ({
     meta: [
       {
-        title: "SearchCrew",
+        title: "SearchCrew — SEO and GEO for people and AI agents",
       },
       {
         charSet: "utf-8",

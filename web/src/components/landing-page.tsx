@@ -93,9 +93,7 @@ function Hero() {
           className="itc-subhead itc-muted itc-hero-subtitle"
           style={{ maxWidth: 640, margin: "24px auto 0" }}
         >
-          Research demand, competitors, backlinks, rankings, and technical
-          issues in one connected workspace. SearchCrew gives you and your AI
-          agent the same reliable SEO context.
+          Keyword research, rank tracking, site audits, and AI-search visibility in one workspace. Your agent runs the same context over MCP.
         </p>
         <div className="itc-hero-ctas">
           <div className="itc-hero-cta-group">
@@ -264,7 +262,7 @@ function McpSection() {
                 <span className="t-bright">searchcrew.ai</span>
                 {"\n\n"}
                 <span className="t-dim">
-                  ⏺ searchcrew.keyword_research(seed: &quot;geo&quot;)
+                  ⏺ searchcrew.keyword_research(seed: &quot;keyword research&quot;)
                 </span>
                 {"\n"}
                 {"  "}keyword{"                    "}volume{"   "}kd{"\n"}
@@ -595,7 +593,7 @@ function Footer() {
           className="itc-caption itc-subtle"
           style={{ margin: 0, padding: "40px 0 32px" }}
         >
-          SearchCrew. Practical SEO workflows for people and AI agents.
+          A Hythe company. hythe.vc
         </p>
       </Container>
     </footer>
