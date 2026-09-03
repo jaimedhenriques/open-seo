@@ -4,17 +4,17 @@
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
   "icp": "Founders and SEO operators running crawler and llms.txt checks from the app or MCP",
-  "pain": "The MCP sibling button on GEO check pages hides its no-credits hint in the title attribute",
-  "revenueHypothesis": "A visible kit Alert for the MCP hint is the next SearchCrew GEO chrome slice while pay is paused, without a $10 hosted SKU",
+  "pain": "GEO MCP tools on /ai sit in a raw list, so the credit-free checks look like extra chat tools instead of a named access map",
+  "revenueHypothesis": "A kit Table for the two GEO MCP tools is the next SearchCrew GEO chrome slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 22 as a visible MCP hint Alert on GeoSiblingNav",
-    "GeoSiblingNav renders GEO_MCP_NAV.hint in a kit Alert, not only a title",
-    "Tests lock no credits, MCP tool names, no Fitch/win-rate/Autumn/$10",
-    "src/client/ui/LICENSE.md unchanged. Commit pushed"
+    "PLAN.md records increment 23 as a kit Table on GeoMcpToolsCard",
+    "GeoMcpToolsCard renders GEO_MCP_TOOLS in a vendored Table, not a ul",
+    "Caption and copy lock no credits, no Fitch/win-rate/Autumn/$10 SKU as a product",
+    "src/client/ui/LICENSE.md unchanged. Root LICENSE unchanged. Commit pushed"
   ],
-  "maker": "grok-searchcrew-geo-mcp-hint-visible-maker",
+  "maker": "grok-searchcrew-geo-mcp-kit-table-maker",
   "codingTool": "grok",
-  "rollback": "Revert the geo-mcp-hint-visible commit on helix/geo-mcp-hint-visible.",
+  "rollback": "Revert the geo-mcp-kit-table commit on helix/geo-mcp-kit-table.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
@@ -41,22 +41,22 @@
   },
   "github": {
     "repo": "jaimedhenriques/searchcrew",
-    "branch": "helix/geo-mcp-hint-visible",
-    "baseBranch": "helix/geo-crawler-access-map-badge",
+    "branch": "helix/geo-mcp-kit-table",
+    "baseBranch": "helix/geo-mcp-hint-visible",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment shows the GEO MCP hint with a kit Alert and local tests. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew is a Cloudflare Workers app. This increment lists GEO MCP tools in a kit Table. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "isolated GEO MCP hint visibility tests",
+        "name": "isolated GEO MCP kit table tests",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-mcp-hint-visible-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-mcp-hint-visible"
+    "checker": "independent-searchcrew-geo-mcp-kit-table-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-mcp-kit-table"
   }
 }

@@ -176,16 +176,24 @@ Kit outline `Badge` "Access map" on the AI crawler access page header.
 - This report is an access map, not a ranking or citation lever. One surface only.
 - Do not convert the llms.txt page or `AvailableTools`. Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
 
-## Increment 22 (this delivery)
+## Increment 22 (PR 35)
 
 Visible kit `Alert` for the MCP hint on GEO check pages.
 
 - `GeoSiblingNav` shows `analyze_ai_crawler_access` / `analyze_llms_txt` uses no credits in the Alert body, not only a button title.
 - One surface only. Do not add another header Badge. Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
 
+## Increment 23 (this delivery)
+
+Kit `Table` for GEO MCP tools on `/ai`.
+
+- `GeoMcpToolsCard` lists `analyze_ai_crawler_access` and `analyze_llms_txt` in the vendored table, not a raw list.
+- Caption says credit-free. Presence is not a ranking or citation lever. One surface only.
+- Do not convert `AvailableTools` or add another header Badge. Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
+
 ## Later increments (not this delivery)
 
-23. Broader chrome migration to the UI kit, one surface at a time.
+24. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 
