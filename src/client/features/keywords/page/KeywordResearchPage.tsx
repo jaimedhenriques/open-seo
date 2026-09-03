@@ -20,6 +20,7 @@ import {
   tabInputKey,
   useSearchTabNavigation,
 } from "@/client/features/search-tabs/useSearchTabNavigation";
+import { KEYWORD_WORKSPACE_COPY } from "@/client/features/keywords/demoPersona";
 import { KeywordResearchEmptyState } from "./KeywordResearchEmptyState";
 import { KeywordResearchLoadingState } from "./KeywordResearchLoadingState";
 import { KeywordResearchResults } from "./KeywordResearchResults";
@@ -177,14 +178,16 @@ export function KeywordResearchPage(input: Props) {
   });
 
   return (
-    <div className="px-4 py-4 md:px-6 md:py-6 pb-24 md:pb-8 overflow-auto">
-      <div className="mx-auto flex max-w-7xl flex-col gap-5">
-        <div>
-          <h1 className="text-2xl font-semibold">Keyword Research</h1>
-          <p className="text-sm text-base-content/70">
-            Discover keyword ideas, search demand, and ranking opportunities.
+    <div className="overflow-auto px-4 py-4 pb-24 md:px-6 md:py-6 md:pb-8">
+      <div className="mx-auto flex max-w-7xl flex-col gap-6">
+        <header className="flex flex-col gap-2">
+          <h1 className="text-balance text-2xl font-semibold tracking-tight text-foreground">
+            {KEYWORD_WORKSPACE_COPY.title}
+          </h1>
+          <p className="max-w-2xl text-pretty text-sm text-muted-foreground">
+            {KEYWORD_WORKSPACE_COPY.subtitle}
           </p>
-        </div>
+        </header>
 
         <KeywordResearchSearchBar controller={controller} />
         {controller.hasSearched ? (

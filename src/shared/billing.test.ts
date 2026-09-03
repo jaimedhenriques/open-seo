@@ -23,3 +23,15 @@ describe("Autumn product ids", () => {
     ]);
   });
 });
+
+describe("hosted SKU lock", () => {
+  it("does not sell a $10 hosted SKU", async () => {
+    const { PLANS } = await import("./billing");
+    expect(PLANS.some((plan) => plan.monthlyUsd === 10)).toBe(false);
+    expect(
+      PLANS.filter((plan) => plan.monthlyUsd > 0).map(
+        (plan) => plan.monthlyUsd,
+      ),
+    ).toEqual([29, 79, 199]);
+  });
+});
