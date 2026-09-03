@@ -199,7 +199,7 @@ Crawler map kind filter on the in-app access map.
 - Training blocks stay a preference, not a ranking defect. Uses no credits.
 - One surface only. Do not change the `/ai` GEO MCP card. Do not add another header Badge. Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
 
-## Increment 25 (this delivery)
+## Increment 25 (PR 38)
 
 Dedicated GEO section on the public landing page.
 
@@ -207,9 +207,17 @@ Dedicated GEO section on the public landing page.
 - Copy says uses no credits. Presence is not a ranking or citation lever. Not a `$10` SKU.
 - One surface only. Do not change the in-app crawler filter or `/ai` GEO MCP card. Keep root LICENSE and kit LICENSE.md files. No `$10` SKU.
 
+## Increment 26 (this delivery)
+
+Pricing-page GEO FAQ for first-client SEO/GEO.
+
+- Kit `Card` on `/pricing`: quota pain, credit-free crawler and llms.txt checks, not a `$10` SKU.
+- FAQPage JSON-LD for those three questions only. Training-bot blocks stay a preference, not a ranking defect.
+- One surface only. Do not change the homepage GEO section, in-app crawler filter, or `/ai` GEO MCP card. Keep LICENSE files. No `$10` SKU.
+
 ## Later increments (not this delivery)
 
-26. Broader chrome migration to the UI kit, one surface at a time.
+27. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 
