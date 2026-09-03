@@ -3,25 +3,24 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "First-client SEO/GEO operators who need crawler and llms.txt answers after a hosted-tool quota hit",
-  "pain": "GEO answers live only as a pricing section and a get-started Card; there is no dedicated public FAQ page",
-  "revenueHypothesis": "A dedicated /faq page is the next SearchCrew GTM slice while pay is paused, without a $10 hosted SKU",
+  "icp": "First-client SEO/GEO operators who open /support after a hosted-tool quota hit",
+  "pain": "Support only talks about paused hosted help, not the credit-free crawler and llms.txt checks that still run",
+  "revenueHypothesis": "A GEO FAQ Card on /support is the next SearchCrew GTM slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 28 as a dedicated public /faq kit Card plus FAQPage JSON-LD",
-    "/faq renders GeoFaqPage with kit Card links to crawler and llms.txt",
+    "PLAN.md records increment 29 as a support GEO FAQ kit Card",
+    "/support renders GeoSupportFaq with kit Card links to /faq, crawler, and llms.txt",
     "Copy says quota, no credits, billing paused, not a $10 SKU",
-    "Sitemap includes /faq. Footer Company column links to /faq",
-    "Root LICENSE unchanged. Do not edit PR 36/37/38/39/40 surfaces"
+    "Root LICENSE unchanged. Do not edit PR 36/37/38/39/40/42 surfaces"
   ],
-  "maker": "grok-searchcrew-geo-faq-page-maker",
+  "maker": "grok-searchcrew-geo-support-faq-maker",
   "codingTool": "grok",
-  "rollback": "Revert the geo-faq-page commit on helix/geo-faq-page.",
+  "rollback": "Revert the geo-support-faq commit on helix/geo-support-faq.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
     "No external send.",
     "Do not claim an Ahrefs/Semrush win-rate.",
-    "Do not change PR 36/37/38/39/40 surfaces.",
+    "Do not change PR 36/37/38/39/40/42 surfaces.",
     "Do not edit vendored geo-* skill bodies.",
     "Do not merge the PR."
   ],
@@ -40,22 +39,22 @@
   },
   "github": {
     "repo": "jaimedhenriques/searchcrew",
-    "branch": "helix/geo-faq-page",
-    "baseBranch": "helix/geo-get-started-pain",
+    "branch": "helix/geo-support-faq",
+    "baseBranch": "helix/geo-faq-page",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew marketing site is Cloudflare Workers. This increment adds a dedicated /faq page. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew marketing site is Cloudflare Workers. This increment adds a support GEO FAQ Card. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "isolated GEO FAQ page tests",
+        "name": "isolated GEO support FAQ tests",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-faq-page-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-faq-page"
+    "checker": "independent-searchcrew-geo-support-faq-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-support-faq"
   }
 }

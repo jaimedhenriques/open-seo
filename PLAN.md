@@ -222,16 +222,24 @@ ICP pain kit `Card` on `/get-started`.
 - Quota should not stop a crawler check. Credit-free crawler and llms.txt. Not a `$10` SKU.
 - One surface only. Do not change homepage GEO, pricing FAQ, in-app crawler filter, or `/ai` GEO MCP card. Keep LICENSE files.
 
-## Increment 28 (this delivery)
+## Increment 28 (PR 42)
 
 Dedicated public `/faq` page for first-client SEO/GEO.
 
 - Kit `Card` plus FAQPage JSON-LD: quota pain, no credits, billing paused, not a `$10` SKU, training-bot preference.
 - Sitemap `/faq` and one footer Company link. Do not change homepage GEO, pricing FAQ, get-started Card, in-app crawler filter, or `/ai` GEO MCP card. Keep LICENSE files.
 
+## Increment 29 (this delivery)
+
+Support-page GEO FAQ for first-client SEO/GEO.
+
+- Kit `Card` on `/support`: quota pain, credit-free crawler and llms.txt checks, not a `$10` SKU, link to `/faq`.
+- FAQPage JSON-LD for those three questions only. Training-bot blocks stay a preference, not a ranking defect.
+- One surface only. Do not change `/faq`, homepage GEO, pricing FAQ, get-started Card, in-app crawler filter, or `/ai` GEO MCP card. Keep LICENSE files.
+
 ## Later increments (not this delivery)
 
-29. Broader chrome migration to the UI kit, one surface at a time.
+30. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 
