@@ -1,5 +1,6 @@
 import { useNavigate } from "@tanstack/react-router";
 import {
+  GEO_MCP_NAV,
   geoSiblingLink,
   type GeoSurface,
 } from "@/client/features/geo/geoSiblingLink";
@@ -24,6 +25,16 @@ export function GeoSiblingNav({
         }}
       >
         {sibling.label}
+      </Button>
+      <Button
+        type="button"
+        variant="outline"
+        title={GEO_MCP_NAV.hint}
+        onClick={() => {
+          void navigate({ to: GEO_MCP_NAV.to });
+        }}
+      >
+        {GEO_MCP_NAV.label}
       </Button>
       <p className="text-pretty text-sm text-muted-foreground">
         {sibling.hint}

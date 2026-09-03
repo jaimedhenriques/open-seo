@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { geoSiblingLink } from "./geoSiblingLink";
+import { GEO_MCP_NAV, geoSiblingLink } from "./geoSiblingLink";
 
 describe("geoSiblingLink", () => {
   it("sends crawler users to the llms.txt page", () => {
@@ -16,8 +16,16 @@ describe("geoSiblingLink", () => {
     expect(link.hint.toLowerCase()).toContain("no credits");
   });
 
+  it("sends GEO check users to the MCP tools page", () => {
+    expect(GEO_MCP_NAV.to).toBe("/ai");
+    expect(GEO_MCP_NAV.label).toBe("MCP tools");
+    expect(GEO_MCP_NAV.hint.toLowerCase()).toContain("no credits");
+    expect(GEO_MCP_NAV.hint).toContain("analyze_ai_crawler_access");
+    expect(GEO_MCP_NAV.hint).toContain("analyze_llms_txt");
+  });
+
   it("does not claim Fitch, a win-rate, or a $10 SKU", () => {
-    const text = `${geoSiblingLink("crawlers").hint} ${geoSiblingLink("llms-txt").hint}`;
+    const text = `${geoSiblingLink("crawlers").hint} ${geoSiblingLink("llms-txt").hint} ${GEO_MCP_NAV.hint}`;
     expect(text.toLowerCase()).not.toMatch(/fitch|jaime|win-rate|autumn|\$10/);
   });
 });

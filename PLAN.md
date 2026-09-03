@@ -148,16 +148,23 @@ Kit outline `Badge` "No credits" on the project sidebar GEO group label.
 - Only the GEO group. Other nav groups stay daisyUI. Do not convert `AvailableTools`.
 - Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
 
-## Increment 18 (this delivery)
+## Increment 18 (PR 31)
 
 Kit outline `Badge` "No credits" on the dashboard GEO card.
 
 - Reuse `GEO_NAV_BADGE`. One surface only. Do not convert `AvailableTools` or the rest of the sidebar.
 - Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
 
+## Increment 19 (this delivery)
+
+Kit outline `Button` on GEO check pages to `/ai` MCP tools.
+
+- Same credit-free crawler and llms.txt checks. One surface: `GeoSiblingNav`.
+- Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
+
 ## Later increments (not this delivery)
 
-19. Broader chrome migration to the UI kit, one surface at a time.
+20. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 
