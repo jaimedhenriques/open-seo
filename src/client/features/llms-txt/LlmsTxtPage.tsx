@@ -10,6 +10,8 @@ import {
   summarizeLlmsTxt,
 } from "@/client/features/llms-txt/llmsTxtView";
 import type { LlmsTxtReport } from "@/server/lib/geo/llmsTxt";
+import { geoStatusAlertVariant } from "@/client/features/geo/geoStatusAlert";
+import { Alert, AlertDescription, AlertTitle } from "@/client/ui/alert";
 import { Badge } from "@/client/ui/badge";
 import { Button } from "@/client/ui/button";
 import {
@@ -142,16 +144,12 @@ export function LlmsTxtPage({ projectId }: Props) {
       </div>
 
       {analysis.isError ? (
-        <Card className="border-destructive/40">
-          <CardHeader>
-            <CardTitle id={`${urlFieldId}-error`}>
-              Could not read llms.txt
-            </CardTitle>
-            <CardDescription>
-              {getStandardErrorMessage(analysis.error)}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
+        <Alert variant={geoStatusAlertVariant("error")}>
+          <AlertTitle id={`${urlFieldId}-error`}>
+            Could not read llms.txt
+          </AlertTitle>
+          <AlertDescription>
+            <p>{getStandardErrorMessage(analysis.error)}</p>
             <Button
               type="button"
               variant="outline"
@@ -161,8 +159,8 @@ export function LlmsTxtPage({ projectId }: Props) {
             >
               Try again
             </Button>
-          </CardContent>
-        </Card>
+          </AlertDescription>
+        </Alert>
       ) : null}
 
       {analysis.isFetching && !report ? (
@@ -177,14 +175,12 @@ export function LlmsTxtPage({ projectId }: Props) {
       ) : null}
 
       {!requestedUrl && !analysis.isFetching && !analysis.isError ? (
-        <Card>
-          <CardHeader>
-            <CardTitle>No domain on this project</CardTitle>
-            <CardDescription>
-              Enter a public URL to check /llms.txt.
-            </CardDescription>
-          </CardHeader>
-        </Card>
+        <Alert variant={geoStatusAlertVariant("info")}>
+          <AlertTitle>No domain on this project</AlertTitle>
+          <AlertDescription>
+            Enter a public URL to check /llms.txt.
+          </AlertDescription>
+        </Alert>
       ) : null}
 
       {report && summary ? (

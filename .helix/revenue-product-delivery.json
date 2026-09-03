@@ -3,23 +3,24 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders and SEO operators who use Squadbots/SAM to check llms.txt",
-  "pain": "Vendored geo-llmstxt tells SAM to write a local analysis file and crawl the site; SAM has no filesystem and the in-app checker already samples /llms.txt",
-  "revenueHypothesis": "A credit-free SAM overlay that opens the llms.txt page and logs the verdict is the next SearchCrew GEO slice while pay is paused, without a $10 hosted SKU",
+  "icp": "Founders and SEO operators using the in-app GEO crawler and llms.txt pages",
+  "pain": "GEO error and empty states still use generic cards instead of the kit alert pattern",
+  "revenueHypothesis": "One GEO chrome slice on jaimedhenriques/ui Alert is the next SearchCrew increment while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 7 as a SAM overlay for geo-llmstxt",
-    "composeSamSkillBody prepends the overlay without editing vendored SKILL.md",
-    "Overlay tells SAM to call analyze_llms_txt and appendResearchLog",
-    "Repo LICENSE is unchanged and the commit is pushed to jaimedhenriques/searchcrew"
+    "PLAN.md records increment 8 as GEO status alerts from the UI kit",
+    "Alert is vendored from jaimedhenriques/ui pin 63c1308d without cva/radix",
+    "Crawler and llms.txt error states use destructive Alert; empty states use default",
+    "Repo LICENSE and ui LICENSE.md are unchanged and the commit is pushed"
   ],
-  "maker": "grok-searchcrew-geo-llmstxt-sam-maker",
+  "maker": "grok-searchcrew-geo-alert-kit-maker",
   "codingTool": "grok",
-  "rollback": "Revert the SAM overlay commit on helix/geo-llmstxt-sam.",
+  "rollback": "Revert the alert commit on helix/geo-alert-kit.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
     "No external send.",
     "Do not claim an Ahrefs/Semrush win-rate.",
+    "Do not replace daisyUI app-wide.",
     "Do not edit vendored geo-* skill bodies.",
     "Do not merge the PR."
   ],
@@ -27,8 +28,7 @@
   "executionEvidence": ".helix/evidence/execution.json",
   "copySafety": {
     "publicPatternSources": [
-      "https://github.com/jaimedhenriques/ui (MIT, LICENSE.md retained)",
-      "Existing SAM_SURFACE_NOTE overlay pattern"
+      "https://github.com/jaimedhenriques/ui (MIT, LICENSE.md retained)"
     ],
     "proprietaryAssetsExcluded": true
   },
@@ -40,22 +40,22 @@
   "github": {
     "repo": "jaimedhenriques/searchcrew",
     "remote": "origin",
-    "branch": "helix/geo-llmstxt-sam",
-    "baseBranch": "helix/geo-llmstxt-gtm",
+    "branch": "helix/geo-alert-kit",
+    "baseBranch": "helix/geo-llmstxt-sam",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment is a SAM skill overlay plus tests. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew is a Cloudflare Workers app. This increment vendors a UI kit Alert for GEO pages. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "vitest sam llms.txt overlay",
+        "name": "vitest GEO alert variants",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-llmstxt-sam-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-llmstxt-sam"
+    "checker": "independent-searchcrew-geo-alert-kit-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-alert-kit"
   }
 }

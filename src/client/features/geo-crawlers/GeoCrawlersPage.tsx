@@ -14,6 +14,8 @@ import {
   tierLabel,
 } from "@/client/features/geo-crawlers/geoCrawlerView";
 import type { AiCrawlerAccessReport } from "@/server/lib/geo/aiCrawlerAccess";
+import { geoStatusAlertVariant } from "@/client/features/geo/geoStatusAlert";
+import { Alert, AlertDescription, AlertTitle } from "@/client/ui/alert";
 import { Badge } from "@/client/ui/badge";
 import { Button } from "@/client/ui/button";
 import {
@@ -146,16 +148,12 @@ export function GeoCrawlersPage({ projectId }: Props) {
       </div>
 
       {analysis.isError ? (
-        <Card className="border-destructive/40">
-          <CardHeader>
-            <CardTitle id={`${urlFieldId}-error`}>
-              Could not read crawler rules
-            </CardTitle>
-            <CardDescription>
-              {getStandardErrorMessage(analysis.error)}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
+        <Alert variant={geoStatusAlertVariant("error")}>
+          <AlertTitle id={`${urlFieldId}-error`}>
+            Could not read crawler rules
+          </AlertTitle>
+          <AlertDescription>
+            <p>{getStandardErrorMessage(analysis.error)}</p>
             <Button
               type="button"
               variant="outline"
@@ -165,8 +163,8 @@ export function GeoCrawlersPage({ projectId }: Props) {
             >
               Try again
             </Button>
-          </CardContent>
-        </Card>
+          </AlertDescription>
+        </Alert>
       ) : null}
 
       {analysis.isFetching && !report ? (
@@ -181,15 +179,13 @@ export function GeoCrawlersPage({ projectId }: Props) {
       ) : null}
 
       {!requestedUrl && !analysis.isFetching && !analysis.isError ? (
-        <Card>
-          <CardHeader>
-            <CardTitle>No domain on this project</CardTitle>
-            <CardDescription>
-              Enter a public URL to see ChatGPT Search, Claude, Perplexity,
-              Googlebot, and training-bot access.
-            </CardDescription>
-          </CardHeader>
-        </Card>
+        <Alert variant={geoStatusAlertVariant("info")}>
+          <AlertTitle>No domain on this project</AlertTitle>
+          <AlertDescription>
+            Enter a public URL to see ChatGPT Search, Claude, Perplexity,
+            Googlebot, and training-bot access.
+          </AlertDescription>
+        </Alert>
       ) : null}
 
       {report && summary ? <GeoCrawlerResults report={report} /> : null}

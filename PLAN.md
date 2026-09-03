@@ -69,16 +69,23 @@ Public GTM page at `/features/llms-txt` on searchcrew.ai.
 - Explains the credit-free /llms.txt format check. No $10 SKU.
 - Copy tests lock no-credits, optional file, no ranking lever.
 
-## Increment 7 (this delivery)
+## Increment 7 (PR 20)
 
 SAM overlay for `geo-llmstxt`: call `analyze_llms_txt`, open the in-app page, write a research-log line.
 
 - Wrap the vendored skill in `samSkills.ts`. Do not edit `geo-*` SKILL.md bodies.
 - Missing file stays optional. No credits. No filesystem write.
 
+## Increment 8 (this delivery)
+
+GEO status alerts from the UI kit on the crawler and llms.txt pages.
+
+- Vendored `Alert` from `jaimedhenriques/ui` pin `63c1308d`. No cva, no radix.
+- Fetch errors use destructive. Empty domain uses default. No `$10` SKU.
+
 ## Later increments (not this delivery)
 
-8. Broader chrome migration to the UI kit, one surface at a time.
+9. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 
