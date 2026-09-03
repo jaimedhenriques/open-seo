@@ -237,16 +237,23 @@ Support-page GEO FAQ for first-client SEO/GEO.
 - FAQPage JSON-LD for those three questions only. Training-bot blocks stay a preference, not a ranking defect.
 - One surface only. Do not change `/faq`, homepage GEO, pricing FAQ, get-started Card, in-app crawler filter, or `/ai` GEO MCP card. Keep LICENSE files.
 
-## Increment 30 (this delivery)
+## Increment 30 (PR 44)
 
 Crawler map kind kit `Badge` plus empty-filter `Alert`.
 
 - Kind column uses vendored Badge. Empty kind filter uses kit Alert. Uses no credits. Training blocks stay a preference, not a ranking defect.
 - One surface only. Do not change the All/Search/Training filter buttons, FAQ pages, homepage GEO, get-started Card, or `/ai` GEO MCP card. Keep LICENSE files. No `$10` SKU.
 
+## Increment 31 (this delivery)
+
+Marketing header FAQ link.
+
+- Desktop nav and mobile menu link to `/faq`. Discover the credit-free crawler FAQ without a `$10` SKU.
+- One surface only. Do not rewrite `/faq`, support FAQ, pricing FAQ, crawler map, homepage GEO, or `/ai` GEO MCP card. Keep LICENSE files.
+
 ## Later increments (not this delivery)
 
-31. Broader chrome migration to the UI kit, one surface at a time.
+32. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 
