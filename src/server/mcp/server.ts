@@ -69,6 +69,7 @@ import {
   runSiteAuditTool,
 } from "@/server/mcp/tools/site-audit-tools";
 import { analyzeAiCrawlerAccessTool } from "@/server/mcp/tools/analyze-ai-crawler-access";
+import { analyzeLlmsTxtTool } from "@/server/mcp/tools/analyze-llms-txt";
 import { whoamiTool } from "@/server/mcp/tools/whoami";
 
 type ToolSchema = z.ZodType | z.ZodRawShape;
@@ -200,6 +201,7 @@ export function createSearchCrewMcpServer(authProps: McpProps) {
   register(getAuditIssuesTool);
   register(getAuditPagesTool);
   register(analyzeAiCrawlerAccessTool);
+  register(analyzeLlmsTxtTool);
 
   return server;
 }

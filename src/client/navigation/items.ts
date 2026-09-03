@@ -2,6 +2,7 @@ import {
   Bookmark,
   Bot,
   ClipboardCheck,
+  FileText,
   Globe,
   LayoutDashboard,
   Link2,
@@ -73,6 +74,11 @@ const projectNavItems = [
     label: "AI crawlers",
     icon: ScanSearch,
   },
+  {
+    to: "/p/$projectId/llms-txt" as const,
+    label: "llms.txt",
+    icon: FileText,
+  },
 ] as const;
 
 const aiNavItem = linkOptions({
@@ -118,6 +124,7 @@ export function getProjectNavGroups(projectId: string) {
         byPath("/p/$projectId/brand-lookup"),
         byPath("/p/$projectId/prompt-explorer"),
         byPath("/p/$projectId/geo-crawlers"),
+        byPath("/p/$projectId/llms-txt"),
       ],
     },
     {

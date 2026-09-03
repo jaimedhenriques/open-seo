@@ -12,6 +12,7 @@ import {
   type PageRobotSample,
   type RobotsTxtFetchStatus,
 } from "@/server/lib/geo/aiCrawlerAccess";
+import { parseLlmsTxt, type LlmsTxtReport } from "@/server/lib/geo/llmsTxt";
 
 const FETCH_TIMEOUT_MS = 10_000;
 const MAX_ROBOTS_TXT_BYTES = 500 * 1024;
@@ -159,5 +160,40 @@ export async function fetchAiCrawlerAccess(
       tokens: parsePageRobotTokens(robotsMeta, xRobotsTag),
     },
     ...parsed,
+  };
+}
+
+export async function fetchLlmsTxt(input: string): Promise<LlmsTxtReport> {
+  const startUrl = await normalizeAndValidateStartUrl(input);
+  const origin = new URL(startUrl).origin;
+  const url = `${origin}/llms.txt`;
+
+  let httpStatus: number | null = null;
+  let body: string | null = null;
+  try {
+    const result = await fetchSameOrigin(url, origin, MAX_PAGE_BYTES);
+    httpStatus = result.status || null;
+    body = result.body;
+  } catch (error) {
+    if (error instanceof AppError) throw error;
+    httpStatus = null;
+    body = null;
+  }
+
+  const fetchStatus = llmsStatus(httpStatus);
+  const parsed =
+    fetchStatus === "found" && body != null
+      ? parseLlmsTxt(body)
+      : parseLlmsTxt("");
+
+  return {
+    origin,
+    url,
+    fetchStatus,
+    httpStatus,
+    title: fetchStatus === "found" ? parsed.title : null,
+    description: fetchStatus === "found" ? parsed.description : null,
+    sections: fetchStatus === "found" ? parsed.sections : [],
+    checks: fetchStatus === "found" ? parsed.checks : [],
   };
 }
