@@ -229,7 +229,7 @@ Dedicated public `/faq` page for first-client SEO/GEO.
 - Kit `Card` plus FAQPage JSON-LD: quota pain, no credits, billing paused, not a `$10` SKU, training-bot preference.
 - Sitemap `/faq` and one footer Company link. Do not change homepage GEO, pricing FAQ, get-started Card, in-app crawler filter, or `/ai` GEO MCP card. Keep LICENSE files.
 
-## Increment 29 (this delivery)
+## Increment 29 (PR 43)
 
 Support-page GEO FAQ for first-client SEO/GEO.
 
@@ -237,9 +237,16 @@ Support-page GEO FAQ for first-client SEO/GEO.
 - FAQPage JSON-LD for those three questions only. Training-bot blocks stay a preference, not a ranking defect.
 - One surface only. Do not change `/faq`, homepage GEO, pricing FAQ, get-started Card, in-app crawler filter, or `/ai` GEO MCP card. Keep LICENSE files.
 
+## Increment 30 (this delivery)
+
+Crawler map kind kit `Badge` plus empty-filter `Alert`.
+
+- Kind column uses vendored Badge. Empty kind filter uses kit Alert. Uses no credits. Training blocks stay a preference, not a ranking defect.
+- One surface only. Do not change the All/Search/Training filter buttons, FAQ pages, homepage GEO, get-started Card, or `/ai` GEO MCP card. Keep LICENSE files. No `$10` SKU.
+
 ## Later increments (not this delivery)
 
-30. Broader chrome migration to the UI kit, one surface at a time.
+31. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 
