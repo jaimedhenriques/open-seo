@@ -22,14 +22,17 @@ function normalizeJsonLdText(raw: string): string {
     .trim();
 }
 
+function isJsonRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
 function collectTypes(value: unknown, into: Set<string>): void {
   if (Array.isArray(value)) {
     for (const item of value) collectTypes(item, into);
     return;
   }
-  if (!value || typeof value !== "object") return;
-  const record = value as Record<string, unknown>;
-  const typeValue = record["@type"];
+  if (!isJsonRecord(value)) return;
+  const typeValue = value["@type"];
   if (typeof typeValue === "string" && typeValue.trim()) {
     into.add(typeValue.trim());
   } else if (Array.isArray(typeValue)) {
@@ -37,8 +40,8 @@ function collectTypes(value: unknown, into: Set<string>): void {
       if (typeof item === "string" && item.trim()) into.add(item.trim());
     }
   }
-  if (Array.isArray(record["@graph"])) collectTypes(record["@graph"], into);
-  for (const nested of Object.values(record)) {
+  if (Array.isArray(value["@graph"])) collectTypes(value["@graph"], into);
+  for (const nested of Object.values(value)) {
     if (nested && typeof nested === "object") collectTypes(nested, into);
   }
 }
