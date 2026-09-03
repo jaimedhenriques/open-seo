@@ -1,5 +1,11 @@
 export const GEO_GTM_PATH = "/features/ai-crawler-access";
 
+export const GEO_GTM_SIBLING = {
+  label: "llms.txt map",
+  href: "/features/llms-txt",
+  hint: "Optional content map. Uses no credits.",
+} as const;
+
 export const GEO_GTM_COPY = {
   eyebrow: "AI crawler access",
   navDescription: "See which named AI search crawlers robots.txt allows.",
@@ -92,5 +98,8 @@ export function geoGtmCopyText(): string {
     ...GEO_GTM_COPY.useCases,
     ...GEO_GTM_COPY.differentiators,
     ...faqs,
+    GEO_GTM_SIBLING.label,
+    GEO_GTM_SIBLING.href,
+    GEO_GTM_SIBLING.hint,
   ].join("\n");
 }

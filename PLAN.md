@@ -98,16 +98,23 @@ JSON-LD presence sample on the checked URL of the crawler report.
 - Missing JSON-LD is optional. Not a ranking or citation lever.
 - Kit Card and Badge. Do not edit vendored `geo-schema` SKILL.md.
 
-## Increment 11 (this delivery)
+## Increment 11 (PR 24)
 
 Public GTM copy on `/features/ai-crawler-access` for the JSON-LD sample.
 
 - Same credit-free check. Missing JSON-LD is optional. Not a ranking or citation lever.
 - No `$10` SKU. Do not replace daisyUI app-wide.
 
+## Increment 12 (this delivery)
+
+Public sibling links between `/features/ai-crawler-access` and `/features/llms-txt`.
+
+- Featured and related links. Copy says uses no credits. No `$10` SKU.
+- Does not replace daisyUI app-wide.
+
 ## Later increments (not this delivery)
 
-12. Broader chrome migration to the UI kit, one surface at a time.
+13. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 
