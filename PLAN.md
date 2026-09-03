@@ -183,7 +183,7 @@ Visible kit `Alert` for the MCP hint on GEO check pages.
 - `GeoSiblingNav` shows `analyze_ai_crawler_access` / `analyze_llms_txt` uses no credits in the Alert body, not only a button title.
 - One surface only. Do not add another header Badge. Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
 
-## Increment 23 (this delivery)
+## Increment 23 (PR 36)
 
 Kit `Table` for GEO MCP tools on `/ai`.
 
@@ -191,9 +191,17 @@ Kit `Table` for GEO MCP tools on `/ai`.
 - Caption says credit-free. Presence is not a ranking or citation lever. One surface only.
 - Do not convert `AvailableTools` or add another header Badge. Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
 
+## Increment 24 (this delivery)
+
+Crawler map kind filter on the in-app access map.
+
+- Kit outline/default `Button` group: All, Search, Training.
+- Training blocks stay a preference, not a ranking defect. Uses no credits.
+- One surface only. Do not change the `/ai` GEO MCP card. Do not add another header Badge. Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
+
 ## Later increments (not this delivery)
 
-24. Broader chrome migration to the UI kit, one surface at a time.
+25. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 

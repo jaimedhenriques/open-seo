@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
   canSubmitUrl,
+  filterCrawlerRows,
+  GEO_CRAWLER_FILTER_HINT,
+  GEO_CRAWLER_FILTERS,
   GEO_CRAWLER_PAGE_BADGE,
   ruleLabel,
   sortCrawlerRows,
@@ -70,6 +73,49 @@ describe("GEO crawler page badge", () => {
     expect(GEO_CRAWLER_PAGE_BADGE.toLowerCase()).not.toMatch(
       /fitch|jaime|win-rate|autumn|\$10|ranking|citation|optional/,
     );
+  });
+});
+
+describe("GEO crawler kind filter", () => {
+  it("lists All, Search, and Training", () => {
+    expect(GEO_CRAWLER_FILTERS.map((item) => item.id)).toEqual([
+      "all",
+      "search",
+      "training",
+    ]);
+  });
+
+  it("keeps training blocks a preference, not a ranking defect", () => {
+    const text = GEO_CRAWLER_FILTER_HINT.toLowerCase();
+    expect(text).toContain("preference");
+    expect(text).toContain("not a ranking defect");
+    expect(text).toContain("no credits");
+    expect(text).not.toMatch(/fitch|jaime|win-rate|autumn|\$10|citation/);
+  });
+
+  it("filters search and training rows without dropping All", () => {
+    const rows = [
+      ...report().crawlers,
+      {
+        userAgent: "Applebot-Extended",
+        operator: "Apple",
+        tier: "ecosystem" as const,
+        status: "allowed" as const,
+        rule: "wildcard" as const,
+      },
+    ];
+    expect(filterCrawlerRows(rows, "all").map((row) => row.userAgent)).toEqual([
+      "OAI-SearchBot",
+      "Googlebot",
+      "GPTBot",
+      "Applebot-Extended",
+    ]);
+    expect(
+      filterCrawlerRows(rows, "search").map((row) => row.userAgent),
+    ).toEqual(["OAI-SearchBot", "Googlebot"]);
+    expect(
+      filterCrawlerRows(rows, "training").map((row) => row.userAgent),
+    ).toEqual(["GPTBot"]);
   });
 });
 

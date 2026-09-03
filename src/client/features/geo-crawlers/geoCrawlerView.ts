@@ -3,6 +3,17 @@ import type { BadgeVariant } from "@/client/ui/badge";
 
 export const GEO_CRAWLER_PAGE_BADGE = "Access map";
 
+export const GEO_CRAWLER_FILTERS = [
+  { id: "all", label: "All" },
+  { id: "search", label: "Search" },
+  { id: "training", label: "Training" },
+] as const;
+
+export type GeoCrawlerFilterId = (typeof GEO_CRAWLER_FILTERS)[number]["id"];
+
+export const GEO_CRAWLER_FILTER_HINT =
+  "Training blocks are a preference, not a ranking defect. Uses no credits.";
+
 type GeoCrawlerRow = AiCrawlerAccessReport["crawlers"][number];
 
 const TIER_ORDER: Record<GeoCrawlerRow["tier"], number> = {
@@ -56,6 +67,14 @@ export function sortCrawlerRows(rows: GeoCrawlerRow[]): GeoCrawlerRow[] {
     if (tierDiff !== 0) return tierDiff;
     return left.userAgent.localeCompare(right.userAgent);
   });
+}
+
+export function filterCrawlerRows(
+  rows: GeoCrawlerRow[],
+  filter: GeoCrawlerFilterId,
+): GeoCrawlerRow[] {
+  if (filter === "all") return rows;
+  return rows.filter((row) => row.tier === filter);
 }
 
 export function summarizeGeoCrawlerReport(

@@ -3,18 +3,18 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders and SEO operators running crawler and llms.txt checks from the app or MCP",
-  "pain": "GEO MCP tools on /ai sit in a raw list, so the credit-free checks look like extra chat tools instead of a named access map",
-  "revenueHypothesis": "A kit Table for the two GEO MCP tools is the next SearchCrew GEO chrome slice while pay is paused, without a $10 hosted SKU",
+  "icp": "Founders and SEO operators checking which AI crawlers robots.txt allows",
+  "pain": "The crawler access map mixes search and training bots, so a GPTBot block looks like a ranking defect",
+  "revenueHypothesis": "A kit Button filter for All/Search/Training is the next SearchCrew GEO chrome slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 23 as a kit Table on GeoMcpToolsCard",
-    "GeoMcpToolsCard renders GEO_MCP_TOOLS in a vendored Table, not a ul",
-    "Caption and copy lock no credits, no Fitch/win-rate/Autumn/$10 SKU as a product",
-    "src/client/ui/LICENSE.md unchanged. Root LICENSE unchanged. Commit pushed"
+    "PLAN.md records increment 24 as crawler map kind filter Buttons",
+    "GeoCrawlerResults filters rows with GEO_CRAWLER_FILTERS and kit Buttons",
+    "Copy says training is a preference, uses no credits, no Fitch/win-rate/Autumn/$10 SKU as a product",
+    "src/client/ui/LICENSE.md unchanged. Root LICENSE unchanged. Commit pushed. Do not edit GeoMcpToolsCard"
   ],
-  "maker": "grok-searchcrew-geo-mcp-kit-table-maker",
+  "maker": "grok-searchcrew-geo-crawler-tier-filter-maker",
   "codingTool": "grok",
-  "rollback": "Revert the geo-mcp-kit-table commit on helix/geo-mcp-kit-table.",
+  "rollback": "Revert the geo-crawler-tier-filter commit on helix/geo-crawler-tier-filter.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
@@ -23,6 +23,7 @@
     "Do not replace daisyUI app-wide.",
     "Do not convert all AvailableTools.",
     "Do not add another header Badge.",
+    "Do not change the /ai GEO MCP Badge/Table card.",
     "Do not edit vendored geo-* skill bodies.",
     "Do not merge the PR."
   ],
@@ -41,22 +42,22 @@
   },
   "github": {
     "repo": "jaimedhenriques/searchcrew",
-    "branch": "helix/geo-mcp-kit-table",
-    "baseBranch": "helix/geo-mcp-hint-visible",
+    "branch": "helix/geo-crawler-tier-filter",
+    "baseBranch": "helix/geo-mcp-kit-table",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment lists GEO MCP tools in a kit Table. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds crawler kind filter Buttons. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "isolated GEO MCP kit table tests",
+        "name": "isolated GEO crawler kind filter tests",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-mcp-kit-table-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-mcp-kit-table"
+    "checker": "independent-searchcrew-geo-crawler-tier-filter-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-crawler-tier-filter"
   }
 }

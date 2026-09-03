@@ -6,6 +6,9 @@ import { getProjects } from "@/serverFunctions/projects";
 import { getStandardErrorMessage } from "@/client/lib/error-messages";
 import {
   canSubmitUrl,
+  filterCrawlerRows,
+  GEO_CRAWLER_FILTER_HINT,
+  GEO_CRAWLER_FILTERS,
   GEO_CRAWLER_PAGE_BADGE,
   ruleLabel,
   sortCrawlerRows,
@@ -13,6 +16,7 @@ import {
   statusLabel,
   summarizeGeoCrawlerReport,
   tierLabel,
+  type GeoCrawlerFilterId,
 } from "@/client/features/geo-crawlers/geoCrawlerView";
 import type { AiCrawlerAccessReport } from "@/server/lib/geo/aiCrawlerAccess";
 import { GeoSiblingNav } from "@/client/features/geo/GeoSiblingNav";
@@ -200,8 +204,9 @@ export function GeoCrawlersPage({ projectId }: Props) {
 }
 
 function GeoCrawlerResults({ report }: { report: AiCrawlerAccessReport }) {
+  const [filter, setFilter] = useState<GeoCrawlerFilterId>("all");
   const summary = summarizeGeoCrawlerReport(report);
-  const rows = sortCrawlerRows(report.crawlers);
+  const rows = filterCrawlerRows(sortCrawlerRows(report.crawlers), filter);
   return (
     <div className="flex flex-col gap-4">
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -260,7 +265,30 @@ function GeoCrawlerResults({ report }: { report: AiCrawlerAccessReport }) {
             Checked {report.origin}.
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="flex flex-col gap-3">
+          <div className="flex flex-col gap-2">
+            <p className="text-pretty text-sm text-muted-foreground">
+              {GEO_CRAWLER_FILTER_HINT}
+            </p>
+            <div
+              className="flex flex-wrap gap-2"
+              role="group"
+              aria-label="Crawler kind"
+            >
+              {GEO_CRAWLER_FILTERS.map((item) => (
+                <Button
+                  key={item.id}
+                  type="button"
+                  size="sm"
+                  variant={filter === item.id ? "default" : "outline"}
+                  aria-pressed={filter === item.id}
+                  onClick={() => setFilter(item.id)}
+                >
+                  {item.label}
+                </Button>
+              ))}
+            </div>
+          </div>
           <Table>
             <TableCaption>
               Access map only. Not a ranking or citation prediction.
