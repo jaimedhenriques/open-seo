@@ -102,7 +102,11 @@ export const analyzeAiCrawlerAccessTool = {
           : `page sample: no noai or X-Robots-Tag on ${report.pageSample.url}`,
         table,
       ].join("\n"),
-      meta: buildProjectMeta(context, args.projectId),
+      meta: buildProjectMeta(
+        context,
+        args.projectId,
+        `/p/${args.projectId}/geo-crawlers`,
+      ),
       structuredContent: report,
     });
   }),

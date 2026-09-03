@@ -3,31 +3,33 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders and SEO operators who need to see which AI crawlers can read their site",
-  "pain": "robots.txt map exists, but buyers cannot see page-level noai or X-Robots-Tag on the same report",
-  "revenueHypothesis": "A credit-free page-sample on the GEO report is the next SearchCrew GTM slice while pay is paused, without a $10 hosted SKU",
+  "icp": "Founders and SEO operators who use Squadbots/SAM to check AI crawler access",
+  "pain": "Vendored geo-crawlers tells SAM to write a local file and crawl 5-10 pages; SAM has no filesystem and the in-app map already samples one URL",
+  "revenueHypothesis": "A credit-free SAM overlay that opens the GEO page and logs the verdict is the next SearchCrew GTM slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 3 as a page-level noai / X-Robots-Tag sample",
-    "Parser and view-model tests pass",
-    "Page uses vendored jaimedhenriques/ui cards and no paid-plan gate",
+    "PLAN.md records increment 4 as a SAM overlay for geo-crawlers",
+    "buildSamSkillSource prepends the overlay without editing vendored SKILL.md",
+    "analyze_ai_crawler_access attaches /p/$projectId/geo-crawlers",
+    "SAM overlay tests and MCP deep-link tests pass",
     "Repo LICENSE is unchanged and the commit is pushed to jaimedhenriques/searchcrew"
   ],
-  "maker": "grok-searchcrew-geo-page-sample-maker",
+  "maker": "grok-searchcrew-geo-sam-overlay-maker",
   "codingTool": "grok",
-  "rollback": "Revert the page-sample commit on helix/geo-crawler-access.",
+  "rollback": "Revert the SAM overlay commit on helix/geo-crawler-sam-overlay.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
     "No external send.",
     "Do not claim an Ahrefs/Semrush win-rate.",
-    "Sample the checked URL only. Do not crawl the whole site."
+    "Do not edit vendored geo-* skill bodies.",
+    "Do not merge the PR."
   ],
   "evidenceDestination": ".helix/evidence",
   "executionEvidence": ".helix/evidence/execution.json",
   "copySafety": {
     "publicPatternSources": [
       "https://github.com/jaimedhenriques/ui (MIT, LICENSE.md retained)",
-      "Public robots meta and X-Robots-Tag tokens"
+      "Existing SAM_SURFACE_NOTE overlay pattern in samSkills.ts"
     ],
     "proprietaryAssetsExcluded": true
   },
@@ -39,22 +41,22 @@
   "github": {
     "repo": "jaimedhenriques/searchcrew",
     "remote": "origin",
-    "branch": "helix/geo-crawler-access",
+    "branch": "helix/geo-crawler-sam-overlay",
     "baseBranch": "main",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment is an in-app GEO sample with local tests."
+    "reason": "SearchCrew is a Cloudflare Workers app. This increment is a SAM skill overlay plus an MCP deep link, verified with local tests. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "vitest page robot sample",
+        "name": "vitest sam overlay + crawler deep link",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-page-sample-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-page-sample"
+    "checker": "independent-searchcrew-geo-sam-overlay-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-sam-overlay"
   }
 }

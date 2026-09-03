@@ -92,6 +92,10 @@ describe("analyze_ai_crawler_access", () => {
     expect(textContent(result)).toContain("optional content map");
     expect(textContent(result)).toContain("page sample: noai");
     expect(result._meta?.creditsCharged).toBeUndefined();
+    expect(result._meta?.url).toBe(
+      "https://searchcrew.test/p/project_1/geo-crawlers",
+    );
+    expect(result._meta?.projectId).toBe("project_1");
   });
 
   it("prefers an explicit url over the project domain", async () => {

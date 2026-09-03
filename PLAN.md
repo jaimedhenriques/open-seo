@@ -41,7 +41,7 @@ Public GTM page at `/features/ai-crawler-access` on searchcrew.ai.
 - Explains the credit-free robots.txt crawler map. No $10 SKU.
 - Copy tests lock no-credits, search vs training, allow-all for missing robots.txt.
 
-## Increment 3 (this delivery)
+## Increment 3 (shipped)
 
 Page-level `noai` / `X-Robots-Tag` sample on the same GEO report.
 
@@ -49,9 +49,15 @@ Page-level `noai` / `X-Robots-Tag` sample on the same GEO report.
 - Uses no credits. Training-bot and noai tokens are preferences, not ranking defects.
 - Shown on the in-app GEO page with vendored kit cards.
 
+## Increment 4 (this delivery)
+
+SAM overlay for `geo-crawlers`: call `analyze_ai_crawler_access`, open the in-app GEO page, write a research-log line.
+
+- Wrap the vendored skill in `samSkills.ts`. Do not edit `geo-*` SKILL.md bodies.
+- Tool attaches `/p/$projectId/geo-crawlers`. No credits. No filesystem write.
+
 ## Later increments (not this delivery)
 
-4. Squadbots skill step that opens the in-app page and writes a research-log line.
 5. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
