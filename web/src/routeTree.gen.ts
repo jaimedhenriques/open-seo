@@ -41,6 +41,7 @@ import { Route as MarketingFeaturesBacklinksRouteImport } from './routes/_market
 import { Route as MarketingFeaturesBacklinkCheckerRouteImport } from './routes/_marketing/features/backlink-checker'
 import { Route as MarketingFeaturesAiSearchPromptsRouteImport } from './routes/_marketing/features/ai-search-prompts'
 import { Route as MarketingFeaturesAiCrawlerAccessRouteImport } from './routes/_marketing/features/ai-crawler-access'
+import { Route as MarketingFeaturesLlmsTxtRouteImport } from './routes/_marketing/features/llms-txt'
 import { Route as MarketingFeaturesAiBrandVisibilityRouteImport } from './routes/_marketing/features/ai-brand-visibility'
 import { Route as MarketingLibraryKeywordResearchIndexRouteImport } from './routes/_marketing/library/keyword-research/index'
 import { Route as MarketingLibraryCompetitiveAnalysisIndexRouteImport } from './routes/_marketing/library/competitive-analysis/index'
@@ -228,6 +229,12 @@ const MarketingFeaturesAiCrawlerAccessRoute =
     path: '/features/ai-crawler-access',
     getParentRoute: () => MarketingRoute,
   } as any)
+const MarketingFeaturesLlmsTxtRoute =
+  MarketingFeaturesLlmsTxtRouteImport.update({
+    id: '/features/llms-txt',
+    path: '/features/llms-txt',
+    getParentRoute: () => MarketingRoute,
+  } as any)
 const MarketingFeaturesAiBrandVisibilityRoute =
   MarketingFeaturesAiBrandVisibilityRouteImport.update({
     id: '/features/ai-brand-visibility',
@@ -345,6 +352,7 @@ export interface FileRoutesByFullPath {
   '/guides/': typeof GuidesIndexRoute
   '/features/ai-brand-visibility': typeof MarketingFeaturesAiBrandVisibilityRoute
   '/features/ai-crawler-access': typeof MarketingFeaturesAiCrawlerAccessRoute
+  '/features/llms-txt': typeof MarketingFeaturesLlmsTxtRoute
   '/features/ai-search-prompts': typeof MarketingFeaturesAiSearchPromptsRoute
   '/features/backlink-checker': typeof MarketingFeaturesBacklinkCheckerRoute
   '/features/backlinks': typeof MarketingFeaturesBacklinksRoute
@@ -393,6 +401,7 @@ export interface FileRoutesByTo {
   '/guides': typeof GuidesIndexRoute
   '/features/ai-brand-visibility': typeof MarketingFeaturesAiBrandVisibilityRoute
   '/features/ai-crawler-access': typeof MarketingFeaturesAiCrawlerAccessRoute
+  '/features/llms-txt': typeof MarketingFeaturesLlmsTxtRoute
   '/features/ai-search-prompts': typeof MarketingFeaturesAiSearchPromptsRoute
   '/features/backlink-checker': typeof MarketingFeaturesBacklinkCheckerRoute
   '/features/backlinks': typeof MarketingFeaturesBacklinksRoute
@@ -443,6 +452,7 @@ export interface FileRoutesById {
   '/guides/': typeof GuidesIndexRoute
   '/_marketing/features/ai-brand-visibility': typeof MarketingFeaturesAiBrandVisibilityRoute
   '/_marketing/features/ai-crawler-access': typeof MarketingFeaturesAiCrawlerAccessRoute
+  '/_marketing/features/llms-txt': typeof MarketingFeaturesLlmsTxtRoute
   '/_marketing/features/ai-search-prompts': typeof MarketingFeaturesAiSearchPromptsRoute
   '/_marketing/features/backlink-checker': typeof MarketingFeaturesBacklinkCheckerRoute
   '/_marketing/features/backlinks': typeof MarketingFeaturesBacklinksRoute
@@ -493,6 +503,7 @@ export interface FileRouteTypes {
     | '/guides/'
     | '/features/ai-brand-visibility'
     | '/features/ai-crawler-access'
+    | '/features/llms-txt'
     | '/features/ai-search-prompts'
     | '/features/backlink-checker'
     | '/features/backlinks'
@@ -541,6 +552,7 @@ export interface FileRouteTypes {
     | '/guides'
     | '/features/ai-brand-visibility'
     | '/features/ai-crawler-access'
+    | '/features/llms-txt'
     | '/features/ai-search-prompts'
     | '/features/backlink-checker'
     | '/features/backlinks'
@@ -590,6 +602,7 @@ export interface FileRouteTypes {
     | '/guides/'
     | '/_marketing/features/ai-brand-visibility'
     | '/_marketing/features/ai-crawler-access'
+    | '/_marketing/features/llms-txt'
     | '/_marketing/features/ai-search-prompts'
     | '/_marketing/features/backlink-checker'
     | '/_marketing/features/backlinks'
@@ -858,6 +871,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketingFeaturesAiCrawlerAccessRouteImport
       parentRoute: typeof MarketingRoute
     }
+    '/_marketing/features/llms-txt': {
+      id: '/_marketing/features/llms-txt'
+      path: '/features/llms-txt'
+      fullPath: '/features/llms-txt'
+      preLoaderRoute: typeof MarketingFeaturesLlmsTxtRouteImport
+      parentRoute: typeof MarketingRoute
+    }
     '/_marketing/features/ai-brand-visibility': {
       id: '/_marketing/features/ai-brand-visibility'
       path: '/features/ai-brand-visibility'
@@ -977,6 +997,7 @@ interface MarketingRouteChildren {
   MarketingIndexRoute: typeof MarketingIndexRoute
   MarketingFeaturesAiBrandVisibilityRoute: typeof MarketingFeaturesAiBrandVisibilityRoute
   MarketingFeaturesAiCrawlerAccessRoute: typeof MarketingFeaturesAiCrawlerAccessRoute
+  MarketingFeaturesLlmsTxtRoute: typeof MarketingFeaturesLlmsTxtRoute
   MarketingFeaturesAiSearchPromptsRoute: typeof MarketingFeaturesAiSearchPromptsRoute
   MarketingFeaturesBacklinkCheckerRoute: typeof MarketingFeaturesBacklinkCheckerRoute
   MarketingFeaturesBacklinksRoute: typeof MarketingFeaturesBacklinksRoute
@@ -1016,6 +1037,7 @@ const MarketingRouteChildren: MarketingRouteChildren = {
   MarketingFeaturesAiBrandVisibilityRoute:
     MarketingFeaturesAiBrandVisibilityRoute,
   MarketingFeaturesAiCrawlerAccessRoute: MarketingFeaturesAiCrawlerAccessRoute,
+  MarketingFeaturesLlmsTxtRoute: MarketingFeaturesLlmsTxtRoute,
   MarketingFeaturesAiSearchPromptsRoute: MarketingFeaturesAiSearchPromptsRoute,
   MarketingFeaturesBacklinkCheckerRoute: MarketingFeaturesBacklinkCheckerRoute,
   MarketingFeaturesBacklinksRoute: MarketingFeaturesBacklinksRoute,

@@ -8,4 +8,5 @@ export const FEATURE_PAGE_SLUGS = {
   aiBrandVisibility: "ai-brand-visibility",
   aiSearchPrompts: "ai-search-prompts",
   aiCrawlerAccess: "ai-crawler-access",
+  llmsTxt: "llms-txt",
 };

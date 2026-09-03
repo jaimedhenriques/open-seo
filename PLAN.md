@@ -53,7 +53,7 @@ Page-level `noai` / `X-Robots-Tag` sample on the same GEO report.
 
 SAM overlay for `geo-crawlers`.
 
-## Increment 5 (this delivery)
+## Increment 5 (PR 17)
 
 In-app `llms.txt` checker at `/p/$projectId/llms-txt`.
 
@@ -62,9 +62,16 @@ In-app `llms.txt` checker at `/p/$projectId/llms-txt`.
 - Built from vendored kit components: Button, Badge, Card, Table, Input.
 - MCP `analyze_llms_txt` attaches the same page.
 
+## Increment 6 (this delivery)
+
+Public GTM page at `/features/llms-txt` on searchcrew.ai.
+
+- Explains the credit-free /llms.txt format check. No $10 SKU.
+- Copy tests lock no-credits, optional file, no ranking lever.
+
 ## Later increments (not this delivery)
 
-6. Broader chrome migration to the UI kit, one surface at a time.
+7. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 
