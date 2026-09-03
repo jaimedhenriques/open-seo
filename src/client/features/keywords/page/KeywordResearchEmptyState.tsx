@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Clock, Globe, History, Search, X } from "lucide-react";
+import { Clock, Globe, History, X } from "lucide-react";
 import { LOCATIONS } from "@/client/features/keywords/utils";
+import { KeywordResearchDemoWorkspace } from "./KeywordResearchDemoWorkspace";
 import type { KeywordResearchControllerState } from "./types";
 
 type Props = {
@@ -31,10 +32,10 @@ function NoResultsState({
         <Globe className="size-10 mx-auto text-base-content/40" />
         <div className="space-y-2">
           <p className="text-lg font-semibold text-base-content">
-            Not enough keyword data for this query yet
+            No keyword rows for this query yet
           </p>
           <p className="text-sm text-base-content/70">
-            We could not find keyword opportunities for
+            No sample or live rows for
             <span className="font-medium text-base-content">
               {` "${lastSearchKeyword}" `}
             </span>
@@ -59,13 +60,10 @@ function SearchHistoryState({
 }) {
   const { history, historyLoaded, removeHistoryItem } = controller;
 
-  if (!historyLoaded) {
-    return null;
-  }
-
   return (
     <div className="space-y-4 pt-1">
-      {history.length > 0 ? (
+      <KeywordResearchDemoWorkspace />
+      {historyLoaded && history.length > 0 ? (
         <section className="rounded-2xl border border-base-300 bg-base-100 p-5 md:p-6">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
@@ -122,18 +120,7 @@ function SearchHistoryState({
             ))}
           </div>
         </section>
-      ) : (
-        <section className="rounded-2xl border border-dashed border-base-300 bg-base-100/70 p-6 text-center text-base-content/50 space-y-3">
-          <Search className="size-10 mx-auto opacity-40" />
-          <p className="text-lg font-medium text-base-content/80">
-            Enter a keyword to get started
-          </p>
-          <p className="text-sm max-w-md mx-auto">
-            Search for any keyword to see volume, difficulty, CPC, and related
-            keyword ideas.
-          </p>
-        </section>
-      )}
+      ) : null}
     </div>
   );
 }
