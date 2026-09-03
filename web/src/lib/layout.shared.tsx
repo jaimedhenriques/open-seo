@@ -31,6 +31,10 @@ export function baseOptions(): BaseLayoutProps {
         ],
       },
       {
+        text: "FAQ",
+        url: "/faq",
+      },
+      {
         text: "GitHub",
         url: "https://github.com/jaimedhenriques/searchcrew",
         external: true,
