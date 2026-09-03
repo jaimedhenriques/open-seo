@@ -105,16 +105,23 @@ Public GTM copy on `/features/ai-crawler-access` for the JSON-LD sample.
 - Same credit-free check. Missing JSON-LD is optional. Not a ranking or citation lever.
 - No `$10` SKU. Do not replace daisyUI app-wide.
 
-## Increment 12 (this delivery)
+## Increment 12 (PR 25)
 
 Public sibling links between `/features/ai-crawler-access` and `/features/llms-txt`.
 
 - Featured and related links. Copy says uses no credits. No `$10` SKU.
 - Does not replace daisyUI app-wide.
 
+## Increment 13 (this delivery)
+
+Project sidebar GEO group for `/p/$projectId/geo-crawlers` and `/p/$projectId/llms-txt`.
+
+- First-class GEO nav, not buried in Research. No `$10` SKU.
+- Does not replace daisyUI app-wide.
+
 ## Later increments (not this delivery)
 
-13. Broader chrome migration to the UI kit, one surface at a time.
+14. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 

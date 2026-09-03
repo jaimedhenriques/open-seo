@@ -3,18 +3,18 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders and SEO operators moving between crawler access and llms.txt checks on searchcrew.ai",
-  "pain": "The public crawler feature page does not point at the public llms.txt page",
-  "revenueHypothesis": "Public GTM sibling links between the two credit-free GEO feature pages are the next SearchCrew GEO slice while pay is paused, without a $10 hosted SKU",
+  "icp": "Founders and SEO operators looking for crawler and llms.txt checks inside a project",
+  "pain": "The two credit-free GEO pages sit inside Research instead of a GEO group",
+  "revenueHypothesis": "A first-class GEO sidebar group is the next SearchCrew GEO slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 12 as public GEO sibling links",
-    "/features/ai-crawler-access links to /features/llms-txt and llms.txt links back",
-    "Copy tests lock no-credits and no Fitch/win-rate",
+    "PLAN.md records increment 13 as a GEO nav group",
+    "getProjectNavGroups exposes GEO with geo-crawlers and llms-txt",
+    "Tests lock labels and no Fitch/win-rate/$10",
     "LICENSE unchanged. Commit pushed"
   ],
-  "maker": "grok-searchcrew-geo-gtm-sibling-maker",
+  "maker": "grok-searchcrew-geo-nav-group-maker",
   "codingTool": "grok",
-  "rollback": "Revert the gtm-sibling commit on helix/geo-gtm-sibling.",
+  "rollback": "Revert the geo-nav-group commit on helix/geo-nav-group.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
@@ -39,22 +39,22 @@
   },
   "github": {
     "repo": "jaimedhenriques/searchcrew",
-    "branch": "helix/geo-gtm-sibling",
-    "baseBranch": "helix/geo-jsonld-gtm",
+    "branch": "helix/geo-nav-group",
+    "baseBranch": "helix/geo-gtm-sibling",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds public GTM sibling links with local tests. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew is a Cloudflare Workers app. This increment regroups in-app GEO nav with local tests. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "isolated GEO GTM sibling copy tests",
+        "name": "isolated GEO nav group tests",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-gtm-sibling-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-gtm-sibling"
+    "checker": "independent-searchcrew-geo-nav-group-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-nav-group"
   }
 }
