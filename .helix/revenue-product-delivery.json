@@ -3,25 +3,24 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "First-client SEO/GEO operators who hit hosted-tool monthly quota and still need crawler and llms.txt checks",
-  "pain": "Hosted SEO tools stop when monthly quota hits, and planned pricing pages do not say GEO checks stay credit-free",
-  "revenueHypothesis": "A pricing FAQ Card that states credit-free GEO checks, paused billing, and no $10 SKU is the next SearchCrew GTM slice",
+  "icp": "First-client SEO/GEO operators who follow Check launch status after a hosted-tool quota hit",
+  "pain": "Get-started only talks about paused signup, not the credit-free crawler and llms.txt checks that still run",
+  "revenueHypothesis": "An ICP-pain Card on /get-started is the next SearchCrew GTM slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 26 as a pricing GEO FAQ kit Card",
-    "/pricing renders GeoPricingFaq with kit Card, three FAQs, and FAQPage JSON-LD",
-    "Copy says no credits, not a ranking defect, not a $10 SKU, billing paused",
-    "Root LICENSE unchanged. Do not edit landing GEO section, GeoMcpToolsCard, or crawler filter"
+    "PLAN.md records increment 27 as a get-started ICP pain kit Card",
+    "/get-started renders GeoGetStartedPain with kit Card links to crawler and llms.txt",
+    "Copy says quota, no credits, billing paused, not a $10 SKU",
+    "Root LICENSE unchanged. Do not edit PR 36/37/38/39 surfaces"
   ],
-  "maker": "grok-searchcrew-geo-pricing-faq-maker",
+  "maker": "grok-searchcrew-geo-get-started-pain-maker",
   "codingTool": "grok",
-  "rollback": "Revert the geo-pricing-faq commit on helix/geo-pricing-faq.",
+  "rollback": "Revert the geo-get-started-pain commit on helix/geo-get-started-pain.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
     "No external send.",
     "Do not claim an Ahrefs/Semrush win-rate.",
-    "Do not convert the whole pricing FAQ list.",
-    "Do not change PR 36/37/38 surfaces.",
+    "Do not change PR 36/37/38/39 surfaces.",
     "Do not edit vendored geo-* skill bodies.",
     "Do not merge the PR."
   ],
@@ -40,22 +39,22 @@
   },
   "github": {
     "repo": "jaimedhenriques/searchcrew",
-    "branch": "helix/geo-pricing-faq",
-    "baseBranch": "helix/geo-landing-section",
+    "branch": "helix/geo-get-started-pain",
+    "baseBranch": "helix/geo-pricing-faq",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew marketing site is Cloudflare Workers. This increment adds a pricing GEO FAQ Card. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew marketing site is Cloudflare Workers. This increment adds a get-started ICP pain Card. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "isolated GEO pricing FAQ tests",
+        "name": "isolated GEO get-started pain tests",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-pricing-faq-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-pricing-faq"
+    "checker": "independent-searchcrew-geo-get-started-pain-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-get-started-pain"
   }
 }
