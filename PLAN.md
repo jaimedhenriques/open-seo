@@ -119,7 +119,7 @@ Project sidebar GEO group for `/p/$projectId/geo-crawlers` and `/p/$projectId/ll
 - First-class GEO nav, not buried in Research. No `$10` SKU.
 - Does not replace daisyUI app-wide.
 
-## Increment 14 (this delivery)
+## Increment 14 (PR 27)
 
 Dashboard GEO card linking `/p/$projectId/geo-crawlers` and `/p/$projectId/llms-txt`.
 
@@ -127,9 +127,16 @@ Dashboard GEO card linking `/p/$projectId/geo-crawlers` and `/p/$projectId/llms-
 - `hasData: true` so the card sorts with data cards. Copy says uses no credits. Not a ranking or citation lever. No `$10` SKU.
 - Does not replace daisyUI app-wide.
 
+## Increment 15 (this delivery)
+
+Homepage product grid cards for `/features/ai-crawler-access` and `/features/llms-txt`.
+
+- Credit-free blurbs. Optional llms.txt. No ranking or citation claim. No `$10` SKU.
+- Does not replace daisyUI app-wide.
+
 ## Later increments (not this delivery)
 
-14. Broader chrome migration to the UI kit, one surface at a time.
+16. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 
