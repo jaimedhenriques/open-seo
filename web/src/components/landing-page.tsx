@@ -2,7 +2,7 @@
  * Canonical marketing landing page.
  *
  * The page uses a soft cream canvas, restrained hairline surfaces, charcoal
- * type, and a single orange emphasis moment around the MCP section.
+ * type, SearchCrew orange accents, and a dark product-proof stage.
  */
 
 import { type ReactNode, type SVGProps } from "react";
@@ -10,7 +10,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { featurePages } from "@/lib/feature-pages";
 import "./landing-page.css";
 
-const SIGNUP_URL = "/get-started";
+const APP_URL = "https://app.searchcrew.ai/sign-in";
 
 // ─── Icons (inline SVG only, per project convention) ─────────────────
 
@@ -53,9 +53,9 @@ function Container({
 }
 
 function ArrowCta({
-  href = SIGNUP_URL,
+  href = "/features",
   className = "itc-btn itc-btn-primary",
-  children = "Check launch status",
+  children = "Explore the platform",
   size = "md",
 }: {
   href?: string;
@@ -76,32 +76,47 @@ function ArrowCta({
 
 // ─── Hero ────────────────────────────────────────────────────────────
 
+function HeroProductPreview() {
+  return (
+    <div className="itc-product-stage">
+      <div className="itc-product-stage-copy">
+        <p className="itc-eyebrow">Inside SearchCrew</p>
+        <h2 className="itc-display-md">One view of what to build next.</h2>
+        <p className="itc-body-lg">
+          Demand, competitors, rankings, technical health, and AI-search
+          visibility stay connected to the action they support.
+        </p>
+      </div>
+
+      <figure className="itc-product-capture">
+        <img
+          src="/library/competitive-analysis/competitor-domain-overview-searchcrew.png"
+          alt="SearchCrew domain overview showing organic traffic, ranking keywords, and recommended opportunities"
+        />
+        <figcaption>Domain research in the SearchCrew workspace</figcaption>
+      </figure>
+    </div>
+  );
+}
+
 function Hero() {
   return (
     <section className="itc-hero">
       <Container>
-        <p className="itc-hero-kicker">
-          SEO intelligence for people and AI agents
-        </p>
-        <h1
-          className="itc-display-xl itc-hero-title"
-          style={{ maxWidth: 980, margin: "16px auto 0" }}
-        >
-          Turn search data into decisions you can act on.
-        </h1>
-        <p
-          className="itc-subhead itc-muted itc-hero-subtitle"
-          style={{ maxWidth: 640, margin: "24px auto 0" }}
-        >
-          Research demand, competitors, backlinks, rankings, and technical
-          issues in one connected workspace. SearchCrew gives you and your AI
-          agent the same reliable SEO context.
-        </p>
+        <div className="itc-hero-copy">
+          <p className="itc-hero-kicker">SEO + GEO intelligence</p>
+          <h1 className="itc-display-xl itc-hero-title">
+            Know what to rank for next.
+            <span>Across Google and AI search.</span>
+          </h1>
+          <p className="itc-subhead itc-muted itc-hero-subtitle">
+            SearchCrew connects keyword demand, competitors, backlinks,
+            rankings, technical health, and AI visibility in one workspace. Your
+            team and AI agents work from the same evidence.
+          </p>
+        </div>
         <div className="itc-hero-ctas">
-          <div className="itc-hero-cta-group">
-            <ArrowCta size="lg" />
-            <p className="itc-hero-cta-note">Hosted beta status</p>
-          </div>
+          <ArrowCta size="lg" />
           <ArrowCta
             href="/seo-roi-calculator"
             className="itc-btn itc-btn-secondary"
@@ -110,19 +125,26 @@ function Hero() {
             Calculate SEO ROI
           </ArrowCta>
         </div>
+        <p className="itc-hero-cta-note">
+          Already have access? <a href={APP_URL}>Sign in to SearchCrew</a>
+        </p>
 
-        <div className="itc-hero-proof" aria-label="SearchCrew core workflows">
+        <HeroProductPreview />
+
+        <div className="itc-hero-proof" aria-label="SearchCrew product facts">
           <div>
-            <strong>Research</strong>
-            <span>Keyword demand, intent, competitors, and live SERPs</span>
+            <strong>9 connected workflows</strong>
+            <span>Research, monitoring, technical SEO, and GEO</span>
           </div>
           <div>
-            <strong>Track</strong>
-            <span>Rankings, backlinks, and AI-search visibility</span>
+            <strong>Built for people + agents</strong>
+            <span>The same workspace is available through the app and MCP</span>
           </div>
           <div>
-            <strong>Improve</strong>
-            <span>Technical audits connected to the work that follows</span>
+            <strong>Evidence stays connected</strong>
+            <span>
+              Move from a signal to the page, query, or action behind it
+            </span>
           </div>
         </div>
       </Container>
@@ -152,31 +174,35 @@ function ProductSection() {
     <section className="itc-section itc-section-demo">
       <Container>
         <div className="itc-narrow">
-          <h2 className="itc-display-lg">
-            The workflows that move SEO forward
-          </h2>
+          <p className="itc-eyebrow">One search intelligence layer</p>
+          <h2 className="itc-display-lg">SEO and GEO stay connected.</h2>
           <p className="itc-subhead itc-muted" style={{ margin: "20px 0 0" }}>
-            Start with demand, see what is changing, then fix the issues holding
-            growth back. Each workflow shares the same project context.
+            Start with demand, see what competitors and AI answers are doing,
+            then act without rebuilding the context in another tool.
           </p>
         </div>
 
         <div className="itc-feature-list-grid">
-          {FEATURE_CARDS.map(({ page, blurb }) => (
+          {FEATURE_CARDS.map(({ page, blurb }, index) => (
             <a
               key={page.slug}
               href={`/features/${page.slug}`}
               className="itc-card itc-feature-list-card"
             >
-              <p style={{ margin: 0, fontSize: 16, fontWeight: 500 }}>
-                {page.eyebrow}
-              </p>
+              <span className="itc-feature-card-index" aria-hidden="true">
+                0{index + 1}
+              </span>
+              <p className="itc-feature-card-label">{page.eyebrow}</p>
               <p
                 className="itc-body-sm itc-muted"
                 style={{ margin: "8px 0 0" }}
               >
                 {blurb}
               </p>
+              <span className="itc-feature-card-link">
+                Explore workflow
+                <IconArrowRight size={15} className="itc-arrow" />
+              </span>
             </a>
           ))}
         </div>
@@ -191,7 +217,62 @@ function ProductSection() {
   );
 }
 
-// ─── MCP: the page's one Fin Orange moment ───────────────────────────
+const DECISION_WORKFLOWS = [
+  {
+    label: "Find demand",
+    title: "Research the queries behind real buying problems.",
+    description:
+      "Compare volume, difficulty, intent, and live results before committing time to a page or campaign.",
+  },
+  {
+    label: "Read the market",
+    title: "See where competitors earn visibility.",
+    description:
+      "Connect ranking keywords, top pages, backlinks, and traffic estimates to the opportunity you are sizing.",
+  },
+  {
+    label: "Monitor change",
+    title: "Track Google rankings and AI-answer presence.",
+    description:
+      "Watch the search surfaces that affect discovery instead of treating SEO and GEO as separate reports.",
+  },
+  {
+    label: "Act with agents",
+    title: "Give your AI agent the same evidence you see.",
+    description:
+      "Use MCP tools for research and keep the resulting work visible to the people responsible for the decision.",
+  },
+];
+
+function DecisionSection() {
+  return (
+    <section className="itc-decision-section">
+      <Container>
+        <div className="itc-decision-heading">
+          <p className="itc-eyebrow">From question to action</p>
+          <h2 className="itc-display-lg">
+            One workspace for the decisions behind search growth.
+          </h2>
+        </div>
+
+        <div className="itc-decision-grid">
+          {DECISION_WORKFLOWS.map((workflow, index) => (
+            <article className="itc-decision-card" key={workflow.label}>
+              <div className="itc-decision-card-topline">
+                <span>0{index + 1}</span>
+                <p>{workflow.label}</p>
+              </div>
+              <h3>{workflow.title}</h3>
+              <p>{workflow.description}</p>
+            </article>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+// ─── MCP: agent workflow proof ───────────────────────────────────────
 
 type McpClient = {
   name: string;
@@ -212,14 +293,14 @@ function McpSection() {
       <Container>
         <div className="itc-mcp-grid">
           <div>
-            <p className="itc-eyebrow" style={{ color: "#ff5600" }}>
-              Model Context Protocol
-            </p>
-            <h2 className="itc-display-lg">Get superpowers with the MCP</h2>
+            <p className="itc-eyebrow">Model Context Protocol</p>
+            <h2 className="itc-display-lg">
+              Give every agent the SEO context it needs.
+            </h2>
             <p className="itc-body-lg itc-muted" style={{ margin: "20px 0 0" }}>
-              Give your agent real SEO data instead of guesses. It can research
-              keywords, competitors, backlinks, and Google Search Console
-              performance, then you can review the work in SearchCrew.
+              Your agent can research keywords, competitors, backlinks, and
+              Search Console performance. You can inspect the evidence and
+              continue the work in SearchCrew.
             </p>
             <div className="itc-agent-icons">
               {MCP_CLIENTS.map(({ name, Icon }) => (
@@ -243,7 +324,7 @@ function McpSection() {
             </div>
             <div style={{ marginTop: 32 }}>
               <a href="/features/mcp" className="itc-btn itc-btn-fin">
-                Learn about MCP tools
+                Explore MCP tools
                 <IconArrowRight size={16} className="itc-arrow" />
               </a>
             </div>
@@ -256,7 +337,7 @@ function McpSection() {
                 <span className="itc-terminal-dot" />
                 <span className="itc-terminal-dot" />
               </span>
-              <span className="itc-terminal-label">claude · searchcrew mcp</span>
+              <span className="itc-terminal-label">codex · searchcrew mcp</span>
             </div>
             <pre>
               <code>
@@ -295,6 +376,31 @@ function McpSection() {
               </code>
             </pre>
           </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function FinalCta() {
+  return (
+    <section className="itc-final-cta">
+      <Container className="itc-final-cta-inner">
+        <div>
+          <p className="itc-eyebrow">See the complete platform</p>
+          <h2 className="itc-display-lg">
+            Build your next SEO plan from connected evidence.
+          </h2>
+        </div>
+        <div className="itc-final-cta-actions">
+          <ArrowCta size="lg" />
+          <ArrowCta
+            href="/get-started"
+            className="itc-btn itc-btn-secondary"
+            size="lg"
+          >
+            Check launch status
+          </ArrowCta>
         </div>
       </Container>
     </section>
@@ -609,7 +715,9 @@ export function LandingPage() {
     <div className="itc">
       <Hero />
       <ProductSection />
+      <DecisionSection />
       <McpSection />
+      <FinalCta />
       <Footer />
     </div>
   );

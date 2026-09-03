@@ -15,6 +15,7 @@ function getMobileNavItems() {
       links: [
         { label: "Features", href: "/features" },
         { label: "Pricing", href: "/pricing" },
+        { label: "Launch status", href: "/get-started" },
       ],
     },
     {
@@ -98,9 +99,22 @@ function MarketingLayout() {
 
   return (
     <main className="fd-light min-h-screen bg-[var(--color-surface)] text-[var(--color-brand)]">
-      <div className="relative z-50 mx-auto w-full max-w-6xl px-4 pt-6 sm:px-6 md:pt-8">
-        <div className="relative mx-auto max-w-5xl">
-          <nav className="grid min-h-14 grid-cols-[1fr_auto] items-center gap-3 rounded-full border border-[var(--color-border-subtle)] bg-white/90 px-4 py-2.5 shadow-sm shadow-neutral-900/5 backdrop-blur md:grid-cols-[1fr_auto_1fr] md:px-5">
+      {isHome ? (
+        <div className="bg-neutral-950 px-4 py-2.5 text-center text-xs font-medium text-white sm:text-sm">
+          <Link
+            to="/features/ai-crawler-access"
+            className="inline-flex min-h-6 items-center gap-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
+          >
+            <span className="text-orange-400">New</span>
+            Map AI crawler access for any site without using credits
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      ) : null}
+
+      <div className="relative z-50 mx-auto w-full max-w-7xl px-4 pt-5 sm:px-6 md:pt-6">
+        <div className="relative mx-auto max-w-6xl">
+          <nav className="grid min-h-16 grid-cols-[1fr_auto] items-center gap-3 rounded-2xl border border-[var(--color-border-subtle)] bg-white/90 px-4 py-2 shadow-sm shadow-neutral-900/5 backdrop-blur-xl md:grid-cols-[1fr_auto_1fr] md:px-5">
             <Link
               to="/"
               className="inline-flex min-h-11 touch-manipulation items-center rounded-lg text-sm font-semibold transition-[opacity,transform] duration-150 hover:opacity-80 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
@@ -125,6 +139,12 @@ function MarketingLayout() {
             </div>
 
             <div className="flex items-center justify-end gap-2 sm:gap-3">
+              <a
+                href="https://app.searchcrew.ai/sign-in"
+                className="hidden min-h-11 touch-manipulation items-center rounded-lg px-2 text-sm font-semibold text-neutral-600 transition-[color,transform] duration-150 hover:text-neutral-950 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none lg:inline-flex"
+              >
+                Sign in
+              </a>
               <button
                 type="button"
                 aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
@@ -136,7 +156,7 @@ function MarketingLayout() {
               </button>
               <a
                 href="/get-started"
-                className="hidden h-11 touch-manipulation items-center rounded-full border border-[var(--color-border-subtle)] px-4 text-sm font-medium text-neutral-900 transition-[border-color,transform] duration-150 hover:border-neutral-900 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none md:inline-flex"
+                className="hidden h-11 touch-manipulation items-center rounded-lg bg-neutral-950 px-4 text-sm font-semibold text-white transition-[background-color,transform] duration-150 hover:bg-neutral-800 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none md:inline-flex"
               >
                 Launch status
               </a>
@@ -147,18 +167,18 @@ function MarketingLayout() {
             <div className="absolute left-0 right-0 top-full z-30 mt-3 rounded-2xl border border-[var(--color-border-subtle)] bg-white p-3 shadow-xl shadow-neutral-900/10 md:hidden">
               <div className="grid grid-cols-2 gap-2">
                 <a
-                  href="/get-started"
+                  href="/features"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex h-11 touch-manipulation items-center justify-center rounded-xl bg-neutral-950 px-3 text-sm font-semibold text-white transition-[background-color,transform] duration-150 hover:bg-neutral-800 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
                 >
-                  Launch status
+                  Explore platform
                 </a>
                 <a
-                  href="/pricing"
+                  href="https://app.searchcrew.ai/sign-in"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex h-11 touch-manipulation items-center justify-center rounded-xl border border-[var(--color-border-subtle)] px-3 text-sm font-semibold text-neutral-800 transition-[background-color,border-color,transform] duration-150 hover:border-neutral-900 hover:bg-[#f5f1ec] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
                 >
-                  View pricing
+                  Sign in
                 </a>
               </div>
 

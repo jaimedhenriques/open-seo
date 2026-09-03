@@ -2,9 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { LandingPage } from "@/components/landing-page";
 import { buildPageSeo } from "@/lib/seo";
 
-const homeTitle = "SearchCrew - SEO and GEO Intelligence Platform";
+const homeTitle =
+  "SearchCrew - SEO and GEO Intelligence for Teams and AI Agents";
 const homeDescription =
-  "SearchCrew is the SEO and GEO platform built for AI search. Keyword research, backlinks, rank tracking, site audits, and AI-answer visibility, billed by usage instead of a $100-plus subscription — with full MCP and API access on every plan.";
+  "Know what to rank for next across Google and AI search. SearchCrew connects keyword demand, competitors, backlinks, rankings, technical health, and AI visibility in one workspace.";
 
 export const Route = createFileRoute("/_marketing/")({
   head: () => {
