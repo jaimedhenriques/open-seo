@@ -4,30 +4,30 @@
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
   "icp": "Founders and SEO operators who need to see which AI crawlers can read their site",
-  "pain": "The in-app GEO crawler check exists, but searchcrew.ai has no public page that explains it without implying a SKU",
-  "revenueHypothesis": "A public credit-free GEO crawler page is the SearchCrew GTM wedge while pay is paused, without a $10 hosted SKU",
+  "pain": "robots.txt map exists, but buyers cannot see page-level noai or X-Robots-Tag on the same report",
+  "revenueHypothesis": "A credit-free page-sample on the GEO report is the next SearchCrew GTM slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records this increment as the public /features/ai-crawler-access page",
-    "Copy tests pass: no credits, no $10 SKU, search vs training, missing robots.txt allows",
-    "Repo LICENSE and UI MIT LICENSE.md are unchanged",
-    "Commit is pushed to jaimedhenriques/searchcrew"
+    "PLAN.md records increment 3 as a page-level noai / X-Robots-Tag sample",
+    "Parser and view-model tests pass",
+    "Page uses vendored jaimedhenriques/ui cards and no paid-plan gate",
+    "Repo LICENSE is unchanged and the commit is pushed to jaimedhenriques/searchcrew"
   ],
-  "maker": "grok-searchcrew-geo-gtm-maker",
+  "maker": "grok-searchcrew-geo-page-sample-maker",
   "codingTool": "grok",
-  "rollback": "Revert the GEO GTM commit on helix/geo-crawler-access.",
+  "rollback": "Revert the page-sample commit on helix/geo-crawler-access.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
     "No external send.",
     "Do not claim an Ahrefs/Semrush win-rate.",
-    "Do not claim meta tags or HTTP headers in this increment."
+    "Sample the checked URL only. Do not crawl the whole site."
   ],
   "evidenceDestination": ".helix/evidence",
   "executionEvidence": ".helix/evidence/execution.json",
   "copySafety": {
     "publicPatternSources": [
       "https://github.com/jaimedhenriques/ui (MIT, LICENSE.md retained)",
-      "Public AI crawler user-agent tokens"
+      "Public robots meta and X-Robots-Tag tokens"
     ],
     "proprietaryAssetsExcluded": true
   },
@@ -45,16 +45,16 @@
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew marketing site is Cloudflare Workers, not Vercel."
+    "reason": "SearchCrew is a Cloudflare Workers app. This increment is an in-app GEO sample with local tests."
   },
   "verification": {
     "checks": [
       {
-        "name": "vitest geo GTM copy",
+        "name": "vitest page robot sample",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-gtm-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-crawler-gtm"
+    "checker": "independent-searchcrew-geo-page-sample-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-page-sample"
   }
 }

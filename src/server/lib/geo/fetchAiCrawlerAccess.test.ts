@@ -34,6 +34,15 @@ describe("fetchAiCrawlerAccess", () => {
       if (url.endsWith("/llms.txt")) {
         return new Response("not found", { status: 404 });
       }
+      if (url === "https://example.com/" || url === "https://example.com") {
+        return new Response(
+          '<html><head><meta name="robots" content="noai"></head></html>',
+          {
+            status: 200,
+            headers: { "x-robots-tag": "noimageai" },
+          },
+        );
+      }
       return new Response("nope", { status: 500 });
     });
 
@@ -41,6 +50,7 @@ describe("fetchAiCrawlerAccess", () => {
     expect(report.origin).toBe("https://example.com");
     expect(report.robotsTxt.status).toBe("found");
     expect(report.llmsTxt.status).toBe("missing");
+    expect(report.pageSample.tokens).toEqual(["noai", "noimageai"]);
     expect(
       report.crawlers.find((row) => row.userAgent === "GPTBot"),
     ).toMatchObject({ status: "blocked", rule: "specific" });

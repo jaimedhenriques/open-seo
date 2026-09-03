@@ -22,6 +22,16 @@ type CrawlerAccessRow = CrawlerCatalogEntry & {
 
 export type RobotsTxtFetchStatus = "found" | "missing" | "error";
 export type LlmsTxtFetchStatus = "found" | "missing" | "error";
+export type PageSampleFetchStatus = "found" | "missing" | "error";
+
+export type PageRobotSample = {
+  url: string;
+  status: PageSampleFetchStatus;
+  httpStatus: number | null;
+  robotsMeta: string | null;
+  xRobotsTag: string | null;
+  tokens: string[];
+};
 
 export type AiCrawlerAccessReport = {
   origin: string;
@@ -35,10 +45,53 @@ export type AiCrawlerAccessReport = {
     status: LlmsTxtFetchStatus;
     httpStatus: number | null;
   };
+  pageSample: PageRobotSample;
   crawlers: CrawlerAccessRow[];
   sitemapUrls: string[];
   contentSignals: Record<string, string> | null;
 };
+
+const PAGE_ROBOT_TOKENS = [
+  "noai",
+  "noimageai",
+  "nosnippet",
+  "noindex",
+  "nofollow",
+  "none",
+  "noarchive",
+] as const;
+
+export function extractRobotsMeta(html: string): string | null {
+  const tags = html.match(/<meta\b[^>]*>/gi) ?? [];
+  const contents: string[] = [];
+  for (const tag of tags) {
+    const name = /(?:name|http-equiv)\s*=\s*["']?(robots|googlebot)["']?/i.exec(
+      tag,
+    );
+    if (!name) continue;
+    const quoted = /content\s*=\s*["']([^"']*)["']/i.exec(tag);
+    const bare = /content\s*=\s*([^\s>]+)/i.exec(tag);
+    const value = quoted?.[1] ?? bare?.[1];
+    if (value) contents.push(value);
+  }
+  return contents.length > 0 ? contents.join(", ") : null;
+}
+
+export function parsePageRobotTokens(
+  ...parts: Array<string | null | undefined>
+): string[] {
+  const found = new Set<string>();
+  for (const part of parts) {
+    if (!part) continue;
+    for (const raw of part.split(/[,;]/)) {
+      const token = raw.trim().split(":")[0]?.trim().toLowerCase();
+      if (token && (PAGE_ROBOT_TOKENS as readonly string[]).includes(token)) {
+        found.add(token);
+      }
+    }
+  }
+  return [...found].toSorted();
+}
 
 type RobotsGroup = {
   agents: string[];

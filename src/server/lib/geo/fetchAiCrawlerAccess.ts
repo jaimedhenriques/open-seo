@@ -5,20 +5,29 @@ import {
 } from "@/server/lib/audit/url-policy";
 import {
   evaluateAiCrawlerAccess,
+  extractRobotsMeta,
+  parsePageRobotTokens,
   type AiCrawlerAccessReport,
   type LlmsTxtFetchStatus,
+  type PageRobotSample,
   type RobotsTxtFetchStatus,
 } from "@/server/lib/geo/aiCrawlerAccess";
 
 const FETCH_TIMEOUT_MS = 10_000;
 const MAX_ROBOTS_TXT_BYTES = 500 * 1024;
+const MAX_PAGE_BYTES = 100 * 1024;
 const MAX_REDIRECTS = 3;
 const USER_AGENT = "SearchCrew-GEO/1.0";
 
 async function fetchSameOrigin(
   url: string,
   origin: string,
-): Promise<{ status: number; body: string | null }> {
+  maxBytes = MAX_ROBOTS_TXT_BYTES,
+): Promise<{
+  status: number;
+  body: string | null;
+  xRobotsTag: string | null;
+}> {
   let current = url;
   for (let hop = 0; hop <= MAX_REDIRECTS; hop++) {
     if (!isCrawlableUrl(current)) {
@@ -30,21 +39,35 @@ async function fetchSameOrigin(
       headers: { "User-Agent": USER_AGENT },
       signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
     });
+    const xRobotsTag = response.headers.get("x-robots-tag");
     if (response.status >= 300 && response.status < 400) {
       const location = response.headers.get("location");
-      if (!location) return { status: response.status, body: null };
+      if (!location) {
+        return { status: response.status, body: null, xRobotsTag };
+      }
       const next = new URL(location, current);
       if (next.origin !== origin) {
-        return { status: response.status, body: null };
+        return { status: response.status, body: null, xRobotsTag };
       }
       current = next.toString();
       continue;
     }
-    if (!response.ok) return { status: response.status, body: null };
-    const body = (await response.text()).slice(0, MAX_ROBOTS_TXT_BYTES);
-    return { status: response.status, body };
+    if (!response.ok) {
+      return { status: response.status, body: null, xRobotsTag };
+    }
+    const body = (await response.text()).slice(0, maxBytes);
+    return { status: response.status, body, xRobotsTag };
   }
-  return { status: 0, body: null };
+  return { status: 0, body: null, xRobotsTag: null };
+}
+
+function pageSampleStatus(
+  httpStatus: number | null,
+  body: string | null,
+): PageRobotSample["status"] {
+  if (httpStatus === 200 && body != null) return "found";
+  if (httpStatus === 404) return "missing";
+  return "error";
 }
 
 function robotsStatus(
@@ -73,6 +96,9 @@ export async function fetchAiCrawlerAccess(
   let robotsHttp: number | null = null;
   let robotsBody: string | null = null;
   let llmsHttp: number | null = null;
+  let pageHttp: number | null = null;
+  let pageBody: string | null = null;
+  let xRobotsTag: string | null = null;
 
   try {
     const robots = await fetchSameOrigin(robotsUrl, origin);
@@ -92,9 +118,25 @@ export async function fetchAiCrawlerAccess(
     llmsHttp = null;
   }
 
+  try {
+    const page = await fetchSameOrigin(startUrl, origin, MAX_PAGE_BYTES);
+    pageHttp = page.status || null;
+    pageBody = page.body;
+    xRobotsTag = page.xRobotsTag;
+  } catch (error) {
+    if (error instanceof AppError) throw error;
+    pageHttp = null;
+    pageBody = null;
+    xRobotsTag = null;
+  }
+
   const parsed = evaluateAiCrawlerAccess(
     robotsStatus(robotsHttp, robotsBody) === "found" ? robotsBody : null,
   );
+  const robotsMeta =
+    pageSampleStatus(pageHttp, pageBody) === "found" && pageBody
+      ? extractRobotsMeta(pageBody)
+      : null;
 
   return {
     origin,
@@ -107,6 +149,14 @@ export async function fetchAiCrawlerAccess(
       url: llmsUrl,
       status: llmsStatus(llmsHttp),
       httpStatus: llmsHttp,
+    },
+    pageSample: {
+      url: startUrl,
+      status: pageSampleStatus(pageHttp, pageBody),
+      httpStatus: pageHttp,
+      robotsMeta,
+      xRobotsTag,
+      tokens: parsePageRobotTokens(robotsMeta, xRobotsTag),
     },
     ...parsed,
   };

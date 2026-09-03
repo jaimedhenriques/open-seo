@@ -58,6 +58,14 @@ beforeEach(() => {
     ],
     sitemapUrls: ["https://example.com/sitemap.xml"],
     contentSignals: { search: "yes" },
+    pageSample: {
+      url: "https://example.com/",
+      status: "found",
+      httpStatus: 200,
+      robotsMeta: "noai",
+      xRobotsTag: null,
+      tokens: ["noai"],
+    },
   });
 });
 
@@ -82,6 +90,7 @@ describe("analyze_ai_crawler_access", () => {
     });
     expect(textContent(result)).toContain("No search/retrieval crawlers");
     expect(textContent(result)).toContain("optional content map");
+    expect(textContent(result)).toContain("page sample: noai");
     expect(result._meta?.creditsCharged).toBeUndefined();
   });
 

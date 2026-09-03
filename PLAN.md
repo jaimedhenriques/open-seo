@@ -34,17 +34,23 @@ GEO crawler access page at `/p/$projectId/geo-crawlers`.
 - Uses no credits. Training-bot blocks are labeled as preference, not defects.
 - Built from vendored kit components: Button, Badge, Card, Table, Input.
 
-## Increment 2 (this delivery)
+## Increment 2 (shipped)
 
 Public GTM page at `/features/ai-crawler-access` on searchcrew.ai.
 
 - Explains the credit-free robots.txt crawler map. No $10 SKU.
-- Does not claim meta tags or HTTP headers. Those are a later increment.
 - Copy tests lock no-credits, search vs training, allow-all for missing robots.txt.
+
+## Increment 3 (this delivery)
+
+Page-level `noai` / `X-Robots-Tag` sample on the same GEO report.
+
+- Samples the checked URL only. Not a sitewide crawl.
+- Uses no credits. Training-bot and noai tokens are preferences, not ranking defects.
+- Shown on the in-app GEO page with vendored kit cards.
 
 ## Later increments (not this delivery)
 
-3. Page-level `noai` / `X-Robots-Tag` sample on the same report.
 4. Squadbots skill step that opens the in-app page and writes a research-log line.
 5. Broader chrome migration to the UI kit, one surface at a time.
 
