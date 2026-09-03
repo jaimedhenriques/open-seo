@@ -16,14 +16,14 @@ export type LlmsTxtCheck = {
   detail: string;
 };
 
-export type LlmsTxtEntry = {
+type LlmsTxtEntry = {
   title: string;
   url: string;
   description: string;
   absolute: boolean;
 };
 
-export type LlmsTxtSection = {
+type LlmsTxtSection = {
   heading: string;
   entries: LlmsTxtEntry[];
 };
