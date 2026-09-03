@@ -7,6 +7,7 @@ import { getStandardErrorMessage } from "@/client/lib/error-messages";
 import {
   canSubmitUrl,
   checkBadgeVariant,
+  LLMS_PAGE_BADGE,
   summarizeLlmsTxt,
 } from "@/client/features/llms-txt/llmsTxtView";
 import type { LlmsTxtReport } from "@/server/lib/geo/llmsTxt";
@@ -83,9 +84,12 @@ export function LlmsTxtPage({ projectId }: Props) {
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 p-4 pb-safe sm:p-6">
       <header className="flex flex-col gap-2">
-        <h1 className="text-balance text-2xl font-semibold tracking-tight text-foreground">
-          llms.txt map
-        </h1>
+        <div className="flex flex-wrap items-center gap-2">
+          <h1 className="text-balance text-2xl font-semibold tracking-tight text-foreground">
+            llms.txt map
+          </h1>
+          <Badge variant="outline">{LLMS_PAGE_BADGE}</Badge>
+        </div>
         <p className="max-w-2xl text-pretty text-sm text-muted-foreground">
           Read the proposed /llms.txt content map. Uses no credits. This file is
           optional. Absence is not a ranking defect, and a published file is not

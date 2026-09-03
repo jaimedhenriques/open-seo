@@ -155,16 +155,23 @@ Kit outline `Badge` "No credits" on the dashboard GEO card.
 - Reuse `GEO_NAV_BADGE`. One surface only. Do not convert `AvailableTools` or the rest of the sidebar.
 - Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
 
-## Increment 19 (this delivery)
+## Increment 19 (PR 32)
 
 Kit outline `Button` on GEO check pages to `/ai` MCP tools.
 
 - Same credit-free crawler and llms.txt checks. One surface: `GeoSiblingNav`.
 - Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
 
+## Increment 20 (this delivery)
+
+Kit outline `Badge` "Optional" on the llms.txt page header.
+
+- Missing `/llms.txt` stays optional, not a ranking or citation lever. One surface only.
+- Do not convert the crawler page or `AvailableTools`. Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
+
 ## Later increments (not this delivery)
 
-20. Broader chrome migration to the UI kit, one surface at a time.
+21. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 
