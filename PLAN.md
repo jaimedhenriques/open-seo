@@ -169,16 +169,23 @@ Kit outline `Badge` "Optional" on the llms.txt page header.
 - Missing `/llms.txt` stays optional, not a ranking or citation lever. One surface only.
 - Do not convert the crawler page or `AvailableTools`. Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
 
-## Increment 21 (this delivery)
+## Increment 21 (PR 34)
 
 Kit outline `Badge` "Access map" on the AI crawler access page header.
 
 - This report is an access map, not a ranking or citation lever. One surface only.
 - Do not convert the llms.txt page or `AvailableTools`. Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
 
+## Increment 22 (this delivery)
+
+Visible kit `Alert` for the MCP hint on GEO check pages.
+
+- `GeoSiblingNav` shows `analyze_ai_crawler_access` / `analyze_llms_txt` uses no credits in the Alert body, not only a button title.
+- One surface only. Do not add another header Badge. Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
+
 ## Later increments (not this delivery)
 
-22. Broader chrome migration to the UI kit, one surface at a time.
+23. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 
