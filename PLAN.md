@@ -134,16 +134,23 @@ Homepage product grid cards for `/features/ai-crawler-access` and `/features/llm
 - Credit-free blurbs. Optional llms.txt. No ranking or citation claim. No `$10` SKU.
 - Does not replace daisyUI app-wide.
 
-## Increment 16 (this delivery)
+## Increment 16 (PR 29)
 
 GEO MCP tools on `/ai` in a kit `Card` with outline `Badge`.
 
 - `analyze_ai_crawler_access` and `analyze_llms_txt`. Copy says uses no credits. Optional llms.txt. Not a ranking or citation lever. No `$10` SKU.
 - Keep `src/client/ui/LICENSE.md`. Do not replace daisyUI app-wide.
 
+## Increment 17 (this delivery)
+
+Kit outline `Badge` "No credits" on the project sidebar GEO group label.
+
+- Only the GEO group. Other nav groups stay daisyUI. Do not convert `AvailableTools`.
+- Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
+
 ## Later increments (not this delivery)
 
-17. Broader chrome migration to the UI kit, one surface at a time.
+18. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 

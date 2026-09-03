@@ -15,6 +15,8 @@ import {
   connectNavGroup,
   getProjectNavGroups,
 } from "@/client/navigation/items";
+import { GEO_NAV_BADGE, GEO_NAV_GROUP_LABEL } from "@/client/navigation/geoNav";
+import { Badge } from "@/client/ui/badge";
 import { ProjectSwitcher } from "@/client/features/projects/ProjectSwitcher";
 import { SamSidebarPanel } from "@/client/features/sam/SamSidebarPanel";
 import { ThemePreferenceMenuItems } from "@/client/components/ThemePreferenceMenuItems";
@@ -174,8 +176,13 @@ export function Sidebar({ projectId, onNavigate, onClose }: SidebarProps) {
         <nav className="min-h-0 flex-1 overflow-y-auto px-2 py-2">
           {navGroups.map((group) => (
             <div key={group.label} className="mb-1">
-              <div className="px-3 pb-1 pt-3 text-xs font-semibold uppercase tracking-wider text-base-content/40">
-                {group.label}
+              <div className="flex items-center gap-2 px-3 pb-1 pt-3">
+                <span className="text-xs font-semibold uppercase tracking-wider text-base-content/40">
+                  {group.label}
+                </span>
+                {group.label === GEO_NAV_GROUP_LABEL ? (
+                  <Badge variant="outline">{GEO_NAV_BADGE}</Badge>
+                ) : null}
               </div>
               {group.items.map((item) => {
                 const { icon, label, ...linkProps } = item;

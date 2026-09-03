@@ -3,25 +3,26 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders and SEO operators running crawler and llms.txt checks from agents",
-  "pain": "GEO MCP tools sit in a daisyUI 'AI visibility' list instead of a first-class GEO kit card on /ai",
-  "revenueHypothesis": "A kit GEO card on the MCP page is the next SearchCrew GEO slice while pay is paused, without a $10 hosted SKU",
+  "icp": "Founders and SEO operators looking for crawler and llms.txt checks inside a project",
+  "pain": "The GEO sidebar group does not show that crawler and llms.txt checks use no credits",
+  "revenueHypothesis": "A kit No credits Badge on the GEO nav group is the next SearchCrew GEO chrome slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 16 as a GEO MCP kit card on /ai",
-    "/ai renders analyze_ai_crawler_access and analyze_llms_txt in a kit Card with a No credits Badge",
-    "AvailableTools no longer lists those two under AI visibility",
-    "Tests lock no-credits, optional llms.txt, no Fitch/win-rate/Autumn",
+    "PLAN.md records increment 17 as a GEO sidebar kit Badge",
+    "Sidebar GEO group label renders kit outline Badge 'No credits'",
+    "Other nav groups stay daisyUI. AvailableTools is not converted",
+    "Tests lock No credits and no Fitch/win-rate/Autumn/$10 in nav labels",
     "src/client/ui/LICENSE.md unchanged. Commit pushed"
   ],
-  "maker": "grok-searchcrew-geo-mcp-kit-card-maker",
+  "maker": "grok-searchcrew-geo-nav-badge-maker",
   "codingTool": "grok",
-  "rollback": "Revert the geo-mcp-kit-card commit on helix/geo-mcp-kit-card.",
+  "rollback": "Revert the geo-nav-badge commit on helix/geo-nav-badge.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
     "No external send.",
     "Do not claim an Ahrefs/Semrush win-rate.",
     "Do not replace daisyUI app-wide.",
+    "Do not convert all AvailableTools.",
     "Do not edit vendored geo-* skill bodies.",
     "Do not merge the PR."
   ],
@@ -40,22 +41,22 @@
   },
   "github": {
     "repo": "jaimedhenriques/searchcrew",
-    "branch": "helix/geo-mcp-kit-card",
-    "baseBranch": "helix/geo-landing-cards",
+    "branch": "helix/geo-nav-badge",
+    "baseBranch": "helix/geo-mcp-kit-card",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds an in-app GEO MCP kit card with local tests. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds a GEO sidebar kit Badge with local tests. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "isolated GEO MCP kit card tests",
+        "name": "isolated GEO nav badge tests",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-mcp-kit-card-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-mcp-kit-card"
+    "checker": "independent-searchcrew-geo-nav-badge-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-nav-badge"
   }
 }
