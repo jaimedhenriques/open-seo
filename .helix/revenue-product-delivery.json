@@ -3,27 +3,27 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders and SEO operators checking which AI crawlers robots.txt allows",
-  "pain": "The crawler access map mixes search and training bots, so a GPTBot block looks like a ranking defect",
-  "revenueHypothesis": "A kit Button filter for All/Search/Training is the next SearchCrew GEO chrome slice while pay is paused, without a $10 hosted SKU",
+  "icp": "Founders and SEO operators who hit a hosted AI-notes or SEO-tool quota and still need crawler and llms.txt checks",
+  "pain": "The homepage buries credit-free GEO checks inside a mixed feature grid",
+  "revenueHypothesis": "A dedicated landing GEO section with kit Cards is the next SearchCrew GTM slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 24 as crawler map kind filter Buttons",
-    "GeoCrawlerResults filters rows with GEO_CRAWLER_FILTERS and kit Buttons",
-    "Copy says training is a preference, uses no credits, no Fitch/win-rate/Autumn/$10 SKU as a product",
-    "src/client/ui/LICENSE.md unchanged. Root LICENSE unchanged. Commit pushed. Do not edit GeoMcpToolsCard"
+    "PLAN.md records increment 25 as a dedicated landing GEO section",
+    "LandingPage renders GeoLandingSection with kit Card links to /features/ai-crawler-access and /features/llms-txt",
+    "Copy says no credits, not a ranking or citation lever, not a $10 SKU",
+    "Root LICENSE unchanged. web/src/ui/LICENSE.md kept. Do not edit GeoMcpToolsCard or crawler filter"
   ],
-  "maker": "grok-searchcrew-geo-crawler-tier-filter-maker",
+  "maker": "grok-searchcrew-geo-landing-section-maker",
   "codingTool": "grok",
-  "rollback": "Revert the geo-crawler-tier-filter commit on helix/geo-crawler-tier-filter.",
+  "rollback": "Revert the geo-landing-section commit on helix/geo-landing-section.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
     "No external send.",
     "Do not claim an Ahrefs/Semrush win-rate.",
-    "Do not replace daisyUI app-wide.",
+    "Do not replace the whole landing design system.",
     "Do not convert all AvailableTools.",
-    "Do not add another header Badge.",
-    "Do not change the /ai GEO MCP Badge/Table card.",
+    "Do not add another in-app header Badge.",
+    "Do not change the /ai GEO MCP card or crawler kind filter.",
     "Do not edit vendored geo-* skill bodies.",
     "Do not merge the PR."
   ],
@@ -42,22 +42,22 @@
   },
   "github": {
     "repo": "jaimedhenriques/searchcrew",
-    "branch": "helix/geo-crawler-tier-filter",
-    "baseBranch": "helix/geo-mcp-kit-table",
+    "branch": "helix/geo-landing-section",
+    "baseBranch": "helix/geo-crawler-tier-filter",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds crawler kind filter Buttons. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew marketing site is Cloudflare Workers. This increment adds a landing GEO section. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "isolated GEO crawler kind filter tests",
+        "name": "isolated GEO landing section tests",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-crawler-tier-filter-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-crawler-tier-filter"
+    "checker": "independent-searchcrew-geo-landing-section-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-landing-section"
   }
 }

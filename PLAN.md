@@ -191,7 +191,7 @@ Kit `Table` for GEO MCP tools on `/ai`.
 - Caption says credit-free. Presence is not a ranking or citation lever. One surface only.
 - Do not convert `AvailableTools` or add another header Badge. Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
 
-## Increment 24 (this delivery)
+## Increment 24 (PR 37)
 
 Crawler map kind filter on the in-app access map.
 
@@ -199,9 +199,17 @@ Crawler map kind filter on the in-app access map.
 - Training blocks stay a preference, not a ranking defect. Uses no credits.
 - One surface only. Do not change the `/ai` GEO MCP card. Do not add another header Badge. Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
 
+## Increment 25 (this delivery)
+
+Dedicated GEO section on the public landing page.
+
+- Kit `Card` plus outline `Button` styles from `jaimedhenriques/ui` for crawler access and llms.txt.
+- Copy says uses no credits. Presence is not a ranking or citation lever. Not a `$10` SKU.
+- One surface only. Do not change the in-app crawler filter or `/ai` GEO MCP card. Keep root LICENSE and kit LICENSE.md files. No `$10` SKU.
+
 ## Later increments (not this delivery)
 
-25. Broader chrome migration to the UI kit, one surface at a time.
+26. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 
