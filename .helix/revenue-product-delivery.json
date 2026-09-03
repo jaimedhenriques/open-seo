@@ -3,18 +3,18 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders and SEO operators moving between crawler access and llms.txt checks",
-  "pain": "The two credit-free GEO pages sit in the same nav group but do not point at each other",
-  "revenueHypothesis": "In-app sibling links on the kit Button are the next SearchCrew GEO slice while pay is paused, without a $10 hosted SKU",
+  "icp": "Founders and SEO operators checking AI crawler access and on-page structured data",
+  "pain": "The crawler report samples robots tokens but does not show whether the same URL publishes JSON-LD types",
+  "revenueHypothesis": "A credit-free JSON-LD presence sample on the existing GEO crawler page is the next SearchCrew GEO graph slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 9 as GEO sibling links",
-    "Crawler page links to llms.txt and llms.txt links back",
-    "Copy tests lock no-credits and no Fitch/win-rate",
-    "Uses vendored kit Button. LICENSE unchanged. Commit pushed"
+    "PLAN.md records increment 10 as JSON-LD presence sample",
+    "Checked URL HTML is parsed for application/ld+json types",
+    "Missing JSON-LD is labeled optional; copy tests lock no ranking/citation lever, no Fitch, no $10",
+    "Uses vendored kit Card and Badge. LICENSE unchanged. Commit pushed"
   ],
-  "maker": "grok-searchcrew-geo-sibling-links-maker",
+  "maker": "grok-searchcrew-geo-jsonld-sample-maker",
   "codingTool": "grok",
-  "rollback": "Revert the sibling-link commit on helix/geo-sibling-links.",
+  "rollback": "Revert the jsonld-sample commit on helix/geo-jsonld-sample.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
@@ -39,23 +39,22 @@
   },
   "github": {
     "repo": "jaimedhenriques/searchcrew",
-    "remote": "origin",
-    "branch": "helix/geo-sibling-links",
-    "baseBranch": "helix/geo-alert-kit",
+    "branch": "helix/geo-jsonld-sample",
+    "baseBranch": "helix/geo-sibling-links",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds in-app GEO links with local tests. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds a JSON-LD presence sample with local tests. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "vitest GEO sibling links",
+        "name": "isolated JSON-LD parser and view tests",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-sibling-links-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-sibling-links"
+    "checker": "independent-searchcrew-geo-jsonld-sample-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-jsonld-sample"
   }
 }

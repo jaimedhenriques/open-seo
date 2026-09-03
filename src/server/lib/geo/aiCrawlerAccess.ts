@@ -31,6 +31,11 @@ export type PageRobotSample = {
   robotsMeta: string | null;
   xRobotsTag: string | null;
   tokens: string[];
+  jsonLd: {
+    status: "found" | "missing" | "invalid";
+    blockCount: number;
+    types: string[];
+  };
 };
 
 export type AiCrawlerAccessReport = {

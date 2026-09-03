@@ -65,6 +65,7 @@ beforeEach(() => {
       robotsMeta: "noai",
       xRobotsTag: null,
       tokens: ["noai"],
+      jsonLd: { status: "missing", blockCount: 0, types: [] },
     },
   });
 });
@@ -91,6 +92,9 @@ describe("analyze_ai_crawler_access", () => {
     expect(textContent(result)).toContain("No search/retrieval crawlers");
     expect(textContent(result)).toContain("optional content map");
     expect(textContent(result)).toContain("page sample: noai");
+    expect(textContent(result)).toContain(
+      "json-ld: none on this page (optional)",
+    );
     expect(result._meta?.creditsCharged).toBeUndefined();
   });
 

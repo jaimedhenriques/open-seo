@@ -83,16 +83,24 @@ GEO status alerts from the UI kit on the crawler and llms.txt pages.
 - Vendored `Alert` from `jaimedhenriques/ui` pin `63c1308d`. No cva, no radix.
 - Fetch errors use destructive. Empty domain uses default. No `$10` SKU.
 
-## Increment 9 (this delivery)
+## Increment 9 (PR 22)
 
 In-app sibling links between `/p/$projectId/geo-crawlers` and `/p/$projectId/llms-txt`.
 
 - Kit `Button` outline. Copy says uses no credits. No `$10` SKU.
 - Does not replace daisyUI app-wide.
 
+## Increment 10 (this delivery)
+
+JSON-LD presence sample on the checked URL of the crawler report.
+
+- Reads `application/ld+json` from the already-fetched page HTML. Uses no credits.
+- Missing JSON-LD is optional. Not a ranking or citation lever.
+- Kit Card and Badge. Do not edit vendored `geo-schema` SKILL.md.
+
 ## Later increments (not this delivery)
 
-10. Broader chrome migration to the UI kit, one surface at a time.
+11. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 

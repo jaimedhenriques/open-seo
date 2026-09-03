@@ -18,6 +18,8 @@ type GeoCrawlerSummary = {
   robotsLabel: string;
   pageSampleLabel: string;
   pageSampleHint: string;
+  jsonLdLabel: string;
+  jsonLdHint: string;
 };
 
 export function canSubmitUrl(value: string): boolean {
@@ -85,6 +87,8 @@ export function summarizeGeoCrawlerReport(
           : "Could not read robots.txt",
     pageSampleLabel: pageSampleLabel(report),
     pageSampleHint: "Sample of the checked URL only. Not a sitewide crawl.",
+    jsonLdLabel: jsonLdLabel(report),
+    jsonLdHint: "Presence only. Optional. Not a ranking or citation lever.",
   };
 }
 
@@ -97,4 +101,18 @@ function pageSampleLabel(report: AiCrawlerAccessReport): string {
     return "No noai or X-Robots-Tag on this page";
   }
   return `Page sample: ${sample.tokens.join(", ")}`;
+}
+
+function jsonLdLabel(report: AiCrawlerAccessReport): string {
+  const jsonLd = report.pageSample.jsonLd;
+  if (report.pageSample.status !== "found") {
+    return "Could not sample JSON-LD";
+  }
+  if (jsonLd.status === "invalid") {
+    return "JSON-LD is invalid JSON";
+  }
+  if (jsonLd.status === "missing" || jsonLd.types.length === 0) {
+    return "No JSON-LD on this page (optional)";
+  }
+  return jsonLd.types.join(", ");
 }

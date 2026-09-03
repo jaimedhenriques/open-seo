@@ -229,6 +229,27 @@ function GeoCrawlerResults({ report }: { report: AiCrawlerAccessReport }) {
 
       <Card>
         <CardHeader>
+          <CardTitle>JSON-LD on this page</CardTitle>
+          <CardDescription>{summary.jsonLdHint}</CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-3">
+          <p className="text-pretty text-sm text-foreground">
+            {summary.jsonLdLabel}
+          </p>
+          {report.pageSample.jsonLd.types.length > 0 ? (
+            <div className="flex flex-wrap gap-2">
+              {report.pageSample.jsonLd.types.map((type) => (
+                <Badge key={type} variant="secondary">
+                  {type}
+                </Badge>
+              ))}
+            </div>
+          ) : null}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
           <CardTitle>Crawler map</CardTitle>
           <CardDescription>
             Specific rules beat wildcard. Missing robots.txt allows everyone.
