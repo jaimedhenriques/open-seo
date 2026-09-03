@@ -244,16 +244,23 @@ Crawler map kind kit `Badge` plus empty-filter `Alert`.
 - Kind column uses vendored Badge. Empty kind filter uses kit Alert. Uses no credits. Training blocks stay a preference, not a ranking defect.
 - One surface only. Do not change the All/Search/Training filter buttons, FAQ pages, homepage GEO, get-started Card, or `/ai` GEO MCP card. Keep LICENSE files. No `$10` SKU.
 
-## Increment 31 (this delivery)
+## Increment 31 (PR 45)
 
 Marketing header FAQ link.
 
 - Desktop nav and mobile menu link to `/faq`. Discover the credit-free crawler FAQ without a `$10` SKU.
 - One surface only. Do not rewrite `/faq`, support FAQ, pricing FAQ, crawler map, homepage GEO, or `/ai` GEO MCP card. Keep LICENSE files.
 
+## Increment 32 (this delivery)
+
+Blog-layout FAQ link.
+
+- Blog chrome `navLinks` includes `/faq` so docs/blog readers can reach crawler and llms.txt answers. Not a `$10` SKU.
+- One surface only. Do not change the marketing header, FAQ page copy, crawler map, homepage GEO, or `/ai` GEO MCP card. Keep LICENSE files.
+
 ## Later increments (not this delivery)
 
-32. Broader chrome migration to the UI kit, one surface at a time.
+33. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 
