@@ -3,18 +3,18 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders and SEO operators who want an honest llms.txt check without a paid GEO SKU",
-  "pain": "The in-app llms.txt checker exists, but searchcrew.ai has no public feature page that says it is credit-free and optional",
-  "revenueHypothesis": "A public llms.txt GTM page is the next SearchCrew GEO slice after PR 17 while pay is paused, without a $10 hosted SKU",
+  "icp": "Founders and SEO operators who use Squadbots/SAM to check llms.txt",
+  "pain": "Vendored geo-llmstxt tells SAM to write a local analysis file and crawl the site; SAM has no filesystem and the in-app checker already samples /llms.txt",
+  "revenueHypothesis": "A credit-free SAM overlay that opens the llms.txt page and logs the verdict is the next SearchCrew GEO slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 6 as the public /features/llms-txt page",
-    "Copy tests lock no-credits, optional file, no ranking lever, no Fitch",
-    "Feature page is registered in FEATURE_PAGE_SLUGS and the AI visibility group",
+    "PLAN.md records increment 7 as a SAM overlay for geo-llmstxt",
+    "composeSamSkillBody prepends the overlay without editing vendored SKILL.md",
+    "Overlay tells SAM to call analyze_llms_txt and appendResearchLog",
     "Repo LICENSE is unchanged and the commit is pushed to jaimedhenriques/searchcrew"
   ],
-  "maker": "grok-searchcrew-geo-llmstxt-gtm-maker",
+  "maker": "grok-searchcrew-geo-llmstxt-sam-maker",
   "codingTool": "grok",
-  "rollback": "Revert the GTM commit on helix/geo-llmstxt-gtm.",
+  "rollback": "Revert the SAM overlay commit on helix/geo-llmstxt-sam.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
@@ -28,7 +28,7 @@
   "copySafety": {
     "publicPatternSources": [
       "https://github.com/jaimedhenriques/ui (MIT, LICENSE.md retained)",
-      "Existing SearchCrew /features/ai-crawler-access GTM pattern"
+      "Existing SAM_SURFACE_NOTE overlay pattern"
     ],
     "proprietaryAssetsExcluded": true
   },
@@ -40,22 +40,22 @@
   "github": {
     "repo": "jaimedhenriques/searchcrew",
     "remote": "origin",
-    "branch": "helix/geo-llmstxt-gtm",
-    "baseBranch": "helix/geo-llmstxt",
+    "branch": "helix/geo-llmstxt-sam",
+    "baseBranch": "helix/geo-llmstxt-gtm",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew marketing site is Cloudflare. This increment is a public feature page with copy tests. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew is a Cloudflare Workers app. This increment is a SAM skill overlay plus tests. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "vitest llms.txt GTM copy",
+        "name": "vitest sam llms.txt overlay",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-llmstxt-gtm-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-llmstxt-gtm"
+    "checker": "independent-searchcrew-geo-llmstxt-sam-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-llmstxt-sam"
   }
 }

@@ -1,6 +1,7 @@
 import { parse as parseYaml } from "yaml";
 import { z } from "zod";
 import type { SkillSource } from "agents/skills";
+import { composeSamSkillBody } from "@/server/features/sam/samSkillOverlays";
 
 // Bundle the repo's public-facing skills (.agents/skills) into SAM at build
 // time. Skills marked `metadata.internal: true` are repo-dev tooling and stay
@@ -15,22 +16,6 @@ const skillFiles = import.meta.glob<string>("/.agents/skills/*/SKILL.md", {
   import: "default",
   eager: true,
 });
-
-// The skill bodies are written for external MCP clients (Claude Code); this
-// note reframes the surface so SAM skips the steps that don't apply in-app.
-const SAM_SURFACE_NOTE = `> Surface note: you are SAM, running inside the SearchCrew app. You are already
-> authenticated and scoped to the user's current project — skip any "verify the
-> MCP connection", "choose a project", or skill-install steps. You have no
-> local filesystem: skip local-folder and file steps, and store durable
-> outputs in project context instead (sections, competitors, key pages,
-> research log).
->
-> Your project context is already in your system prompt — read it there; there
-> is no get_project_context tool here. Write changes with
-> update_project_context. If a skill step needs a tool you don't have (e.g.
-> project creation), say so and point the user at the app page rather than
-> improvising. Keep SAM's chat voice: a skill's output format is a
-> checklist of what to cover, not a document template to fill.`;
 
 type SamSkill = { name: string; description: string; body: string };
 
@@ -55,7 +40,7 @@ function parseSkill(path: string, raw: string): SamSkill | null {
   return {
     name: frontmatter.name,
     description: frontmatter.description,
-    body: `${SAM_SURFACE_NOTE}\n\n${match[2].trim()}`,
+    body: composeSamSkillBody(frontmatter.name, match[2].trim()),
   };
 }
 

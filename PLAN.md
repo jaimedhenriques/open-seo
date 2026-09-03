@@ -62,16 +62,23 @@ In-app `llms.txt` checker at `/p/$projectId/llms-txt`.
 - Built from vendored kit components: Button, Badge, Card, Table, Input.
 - MCP `analyze_llms_txt` attaches the same page.
 
-## Increment 6 (this delivery)
+## Increment 6 (PR 19)
 
 Public GTM page at `/features/llms-txt` on searchcrew.ai.
 
 - Explains the credit-free /llms.txt format check. No $10 SKU.
 - Copy tests lock no-credits, optional file, no ranking lever.
 
+## Increment 7 (this delivery)
+
+SAM overlay for `geo-llmstxt`: call `analyze_llms_txt`, open the in-app page, write a research-log line.
+
+- Wrap the vendored skill in `samSkills.ts`. Do not edit `geo-*` SKILL.md bodies.
+- Missing file stays optional. No credits. No filesystem write.
+
 ## Later increments (not this delivery)
 
-7. Broader chrome migration to the UI kit, one surface at a time.
+8. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 
