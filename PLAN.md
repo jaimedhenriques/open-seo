@@ -141,16 +141,23 @@ GEO MCP tools on `/ai` in a kit `Card` with outline `Badge`.
 - `analyze_ai_crawler_access` and `analyze_llms_txt`. Copy says uses no credits. Optional llms.txt. Not a ranking or citation lever. No `$10` SKU.
 - Keep `src/client/ui/LICENSE.md`. Do not replace daisyUI app-wide.
 
-## Increment 17 (this delivery)
+## Increment 17 (PR 30)
 
 Kit outline `Badge` "No credits" on the project sidebar GEO group label.
 
 - Only the GEO group. Other nav groups stay daisyUI. Do not convert `AvailableTools`.
 - Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
 
+## Increment 18 (this delivery)
+
+Kit outline `Badge` "No credits" on the dashboard GEO card.
+
+- Reuse `GEO_NAV_BADGE`. One surface only. Do not convert `AvailableTools` or the rest of the sidebar.
+- Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
+
 ## Later increments (not this delivery)
 
-18. Broader chrome migration to the UI kit, one surface at a time.
+19. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 

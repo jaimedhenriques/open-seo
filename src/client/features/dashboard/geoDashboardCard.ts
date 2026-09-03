@@ -1,4 +1,4 @@
-import { GEO_NAV_ITEMS } from "@/client/navigation/geoNav";
+import { GEO_NAV_BADGE, GEO_NAV_ITEMS } from "@/client/navigation/geoNav";
 
 export const GEO_DASHBOARD_HAS_DATA = true;
 
@@ -16,6 +16,7 @@ export function geoDashboardLinks() {
 export function geoDashboardCardText(): string {
   return [
     GEO_DASHBOARD_CARD.title,
+    GEO_NAV_BADGE,
     GEO_DASHBOARD_CARD.description,
     GEO_DASHBOARD_CARD.hint,
     ...GEO_NAV_ITEMS.map((item) => `${item.to} ${item.label}`),

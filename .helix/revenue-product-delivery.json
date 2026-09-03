@@ -4,18 +4,18 @@
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
   "icp": "Founders and SEO operators looking for crawler and llms.txt checks inside a project",
-  "pain": "The GEO sidebar group does not show that crawler and llms.txt checks use no credits",
-  "revenueHypothesis": "A kit No credits Badge on the GEO nav group is the next SearchCrew GEO chrome slice while pay is paused, without a $10 hosted SKU",
+  "pain": "The dashboard GEO card does not show the No credits Badge used on the GEO sidebar and MCP card",
+  "revenueHypothesis": "A kit No credits Badge on the dashboard GEO card is the next SearchCrew GEO chrome slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 17 as a GEO sidebar kit Badge",
-    "Sidebar GEO group label renders kit outline Badge 'No credits'",
-    "Other nav groups stay daisyUI. AvailableTools is not converted",
-    "Tests lock No credits and no Fitch/win-rate/Autumn/$10 in nav labels",
+    "PLAN.md records increment 18 as a dashboard GEO kit Badge",
+    "GeoDashboardCard renders kit outline Badge from GEO_NAV_BADGE",
+    "AvailableTools and other sidebar groups are not converted",
+    "Tests lock No credits and no Fitch/win-rate/Autumn",
     "src/client/ui/LICENSE.md unchanged. Commit pushed"
   ],
-  "maker": "grok-searchcrew-geo-nav-badge-maker",
+  "maker": "grok-searchcrew-geo-dashboard-badge-maker",
   "codingTool": "grok",
-  "rollback": "Revert the geo-nav-badge commit on helix/geo-nav-badge.",
+  "rollback": "Revert the geo-dashboard-badge commit on helix/geo-dashboard-badge.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
@@ -41,22 +41,22 @@
   },
   "github": {
     "repo": "jaimedhenriques/searchcrew",
-    "branch": "helix/geo-nav-badge",
-    "baseBranch": "helix/geo-mcp-kit-card",
+    "branch": "helix/geo-dashboard-badge",
+    "baseBranch": "helix/geo-nav-badge",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds a GEO sidebar kit Badge with local tests. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds a dashboard GEO kit Badge with local tests. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "isolated GEO nav badge tests",
+        "name": "isolated GEO dashboard badge tests",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-nav-badge-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-nav-badge"
+    "checker": "independent-searchcrew-geo-dashboard-badge-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-dashboard-badge"
   }
 }

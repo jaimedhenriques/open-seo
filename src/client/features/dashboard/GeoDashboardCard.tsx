@@ -3,6 +3,8 @@ import {
   GEO_DASHBOARD_CARD,
   geoDashboardLinks,
 } from "@/client/features/dashboard/geoDashboardCard";
+import { GEO_NAV_BADGE } from "@/client/navigation/geoNav";
+import { Badge } from "@/client/ui/badge";
 import { Button } from "@/client/ui/button";
 import {
   Card,
@@ -17,7 +19,10 @@ export function GeoDashboardCard({ projectId }: { projectId: string }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{GEO_DASHBOARD_CARD.title}</CardTitle>
+        <div className="flex flex-wrap items-center gap-2">
+          <CardTitle>{GEO_DASHBOARD_CARD.title}</CardTitle>
+          <Badge variant="outline">{GEO_NAV_BADGE}</Badge>
+        </div>
         <CardDescription>{GEO_DASHBOARD_CARD.description}</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-3">
