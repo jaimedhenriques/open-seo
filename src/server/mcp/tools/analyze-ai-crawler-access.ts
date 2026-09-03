@@ -97,6 +97,9 @@ export const analyzeAiCrawlerAccessTool = {
         headline,
         `robots.txt: ${report.robotsTxt.status}${report.robotsTxt.httpStatus != null ? ` (${report.robotsTxt.httpStatus})` : ""}`,
         `llms.txt: ${report.llmsTxt.status} — optional content map, not a ranking lever.`,
+        report.pageSample.tokens.length > 0
+          ? `page sample: ${report.pageSample.tokens.join(", ")} at ${report.pageSample.url}`
+          : `page sample: no noai or X-Robots-Tag on ${report.pageSample.url}`,
         table,
       ].join("\n"),
       meta: buildProjectMeta(context, args.projectId),

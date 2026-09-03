@@ -50,6 +50,14 @@ function report(
     ],
     sitemapUrls: [],
     contentSignals: null,
+    pageSample: {
+      url: "https://example.com/",
+      status: "found",
+      httpStatus: 200,
+      robotsMeta: null,
+      xRobotsTag: null,
+      tokens: [],
+    },
     ...overrides,
   };
 }
@@ -64,6 +72,23 @@ describe("summarizeGeoCrawlerReport", () => {
     expect(summary.blockedTraining).toBe(1);
     expect(summary.searchTotal).toBe(2);
     expect(summary.llmsLabel).toBe("No llms.txt (optional)");
+  });
+
+  it("labels a page sample with noai without calling it a ranking defect", () => {
+    const summary = summarizeGeoCrawlerReport(
+      report({
+        pageSample: {
+          url: "https://example.com/",
+          status: "found",
+          httpStatus: 200,
+          robotsMeta: "noai",
+          xRobotsTag: null,
+          tokens: ["noai"],
+        },
+      }),
+    );
+    expect(summary.pageSampleLabel).toBe("Page sample: noai");
+    expect(summary.pageSampleHint).toContain("checked URL");
   });
 
   it("uses a clear empty-block headline", () => {

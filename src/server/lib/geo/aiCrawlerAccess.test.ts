@@ -1,5 +1,30 @@
 import { describe, expect, it } from "vitest";
-import { evaluateAiCrawlerAccess, parseRobotsGroups } from "./aiCrawlerAccess";
+import {
+  evaluateAiCrawlerAccess,
+  extractRobotsMeta,
+  parsePageRobotTokens,
+  parseRobotsGroups,
+} from "./aiCrawlerAccess";
+
+describe("page robot sample", () => {
+  it("reads robots meta and X-Robots-Tag tokens", () => {
+    const html = `<html><head>
+<meta name="robots" content="noai, noimageai">
+<meta name="description" content="hello">
+</head></html>`;
+    expect(extractRobotsMeta(html)).toBe("noai, noimageai");
+    expect(parsePageRobotTokens("noai, noimageai", "nosnippet")).toEqual([
+      "noai",
+      "noimageai",
+      "nosnippet",
+    ]);
+  });
+
+  it("returns no tokens when the sample has no page directives", () => {
+    expect(extractRobotsMeta("<html><p>hi</p></html>")).toBeNull();
+    expect(parsePageRobotTokens(null, null)).toEqual([]);
+  });
+});
 
 describe("parseRobotsGroups", () => {
   it("keeps adjacent user-agent lines in one group", () => {

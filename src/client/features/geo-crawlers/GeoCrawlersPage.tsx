@@ -202,7 +202,7 @@ function GeoCrawlerResults({ report }: { report: AiCrawlerAccessReport }) {
   const rows = sortCrawlerRows(report.crawlers);
   return (
     <div className="flex flex-col gap-4">
-      <div className="grid gap-3 sm:grid-cols-3">
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <SummaryCard
           title="Search crawlers"
           value={`${summary.searchTotal - summary.blockedSearch}/${summary.searchTotal} allowed`}
@@ -221,6 +221,11 @@ function GeoCrawlerResults({ report }: { report: AiCrawlerAccessReport }) {
           title="Content map"
           value={summary.llmsLabel}
           hint={summary.robotsLabel}
+        />
+        <SummaryCard
+          title="Page sample"
+          value={summary.pageSampleLabel}
+          hint={summary.pageSampleHint}
         />
       </div>
 

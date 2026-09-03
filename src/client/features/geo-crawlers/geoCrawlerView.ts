@@ -16,6 +16,8 @@ type GeoCrawlerSummary = {
   searchTotal: number;
   llmsLabel: string;
   robotsLabel: string;
+  pageSampleLabel: string;
+  pageSampleHint: string;
 };
 
 export function canSubmitUrl(value: string): boolean {
@@ -81,5 +83,18 @@ export function summarizeGeoCrawlerReport(
         : report.robotsTxt.status === "missing"
           ? "No robots.txt — crawlers inherit allow"
           : "Could not read robots.txt",
+    pageSampleLabel: pageSampleLabel(report),
+    pageSampleHint: "Sample of the checked URL only. Not a sitewide crawl.",
   };
+}
+
+function pageSampleLabel(report: AiCrawlerAccessReport): string {
+  const sample = report.pageSample;
+  if (sample.status !== "found") {
+    return "Could not sample the page";
+  }
+  if (sample.tokens.length === 0) {
+    return "No noai or X-Robots-Tag on this page";
+  }
+  return `Page sample: ${sample.tokens.join(", ")}`;
 }
