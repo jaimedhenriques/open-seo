@@ -3,18 +3,19 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders and SEO operators looking for crawler and llms.txt checks",
-  "pain": "Credit-free GEO feature pages exist but the homepage product grid still only lists keyword research, rank tracking, and site audit",
-  "revenueHypothesis": "Putting crawler and llms.txt cards on the homepage is the next SearchCrew GEO slice while pay is paused, without a $10 hosted SKU",
+  "icp": "Founders and SEO operators running crawler and llms.txt checks from agents",
+  "pain": "GEO MCP tools sit in a daisyUI 'AI visibility' list instead of a first-class GEO kit card on /ai",
+  "revenueHypothesis": "A kit GEO card on the MCP page is the next SearchCrew GEO slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 15 as homepage GEO feature cards",
-    "Homepage product grid links /features/ai-crawler-access and /features/llms-txt",
-    "Tests lock no-credits, no Fitch/win-rate/Autumn, no ranking claim",
-    "LICENSE unchanged. Commit pushed"
+    "PLAN.md records increment 16 as a GEO MCP kit card on /ai",
+    "/ai renders analyze_ai_crawler_access and analyze_llms_txt in a kit Card with a No credits Badge",
+    "AvailableTools no longer lists those two under AI visibility",
+    "Tests lock no-credits, optional llms.txt, no Fitch/win-rate/Autumn",
+    "src/client/ui/LICENSE.md unchanged. Commit pushed"
   ],
-  "maker": "grok-searchcrew-geo-landing-cards-maker",
+  "maker": "grok-searchcrew-geo-mcp-kit-card-maker",
   "codingTool": "grok",
-  "rollback": "Revert the geo-landing-cards commit on helix/geo-landing-cards.",
+  "rollback": "Revert the geo-mcp-kit-card commit on helix/geo-mcp-kit-card.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
@@ -39,22 +40,22 @@
   },
   "github": {
     "repo": "jaimedhenriques/searchcrew",
-    "branch": "helix/geo-landing-cards",
-    "baseBranch": "helix/geo-dashboard-card",
+    "branch": "helix/geo-mcp-kit-card",
+    "baseBranch": "helix/geo-landing-cards",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds homepage GEO feature cards with local tests. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds an in-app GEO MCP kit card with local tests. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "isolated GEO landing card tests",
+        "name": "isolated GEO MCP kit card tests",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-landing-cards-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-landing-cards"
+    "checker": "independent-searchcrew-geo-mcp-kit-card-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-mcp-kit-card"
   }
 }

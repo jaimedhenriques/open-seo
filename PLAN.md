@@ -127,16 +127,23 @@ Dashboard GEO card linking `/p/$projectId/geo-crawlers` and `/p/$projectId/llms-
 - `hasData: true` so the card sorts with data cards. Copy says uses no credits. Not a ranking or citation lever. No `$10` SKU.
 - Does not replace daisyUI app-wide.
 
-## Increment 15 (this delivery)
+## Increment 15 (PR 28)
 
 Homepage product grid cards for `/features/ai-crawler-access` and `/features/llms-txt`.
 
 - Credit-free blurbs. Optional llms.txt. No ranking or citation claim. No `$10` SKU.
 - Does not replace daisyUI app-wide.
 
+## Increment 16 (this delivery)
+
+GEO MCP tools on `/ai` in a kit `Card` with outline `Badge`.
+
+- `analyze_ai_crawler_access` and `analyze_llms_txt`. Copy says uses no credits. Optional llms.txt. Not a ranking or citation lever. No `$10` SKU.
+- Keep `src/client/ui/LICENSE.md`. Do not replace daisyUI app-wide.
+
 ## Later increments (not this delivery)
 
-16. Broader chrome migration to the UI kit, one surface at a time.
+17. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 
