@@ -112,11 +112,19 @@ Public sibling links between `/features/ai-crawler-access` and `/features/llms-t
 - Featured and related links. Copy says uses no credits. No `$10` SKU.
 - Does not replace daisyUI app-wide.
 
-## Increment 13 (this delivery)
+## Increment 13 (PR 26)
 
 Project sidebar GEO group for `/p/$projectId/geo-crawlers` and `/p/$projectId/llms-txt`.
 
 - First-class GEO nav, not buried in Research. No `$10` SKU.
+- Does not replace daisyUI app-wide.
+
+## Increment 14 (this delivery)
+
+Dashboard GEO card linking `/p/$projectId/geo-crawlers` and `/p/$projectId/llms-txt`.
+
+- Kit `Card` and outline `Button` from `jaimedhenriques/ui`. Keep `src/client/ui/LICENSE.md`.
+- `hasData: true` so the card sorts with data cards. Copy says uses no credits. Not a ranking or citation lever. No `$10` SKU.
 - Does not replace daisyUI app-wide.
 
 ## Later increments (not this delivery)
