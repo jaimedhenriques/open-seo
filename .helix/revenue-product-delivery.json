@@ -3,18 +3,18 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders and SEO operators using the in-app GEO crawler and llms.txt pages",
-  "pain": "GEO error and empty states still use generic cards instead of the kit alert pattern",
-  "revenueHypothesis": "One GEO chrome slice on jaimedhenriques/ui Alert is the next SearchCrew increment while pay is paused, without a $10 hosted SKU",
+  "icp": "Founders and SEO operators moving between crawler access and llms.txt checks",
+  "pain": "The two credit-free GEO pages sit in the same nav group but do not point at each other",
+  "revenueHypothesis": "In-app sibling links on the kit Button are the next SearchCrew GEO slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 8 as GEO status alerts from the UI kit",
-    "Alert is vendored from jaimedhenriques/ui pin 63c1308d without cva/radix",
-    "Crawler and llms.txt error states use destructive Alert; empty states use default",
-    "Repo LICENSE and ui LICENSE.md are unchanged and the commit is pushed"
+    "PLAN.md records increment 9 as GEO sibling links",
+    "Crawler page links to llms.txt and llms.txt links back",
+    "Copy tests lock no-credits and no Fitch/win-rate",
+    "Uses vendored kit Button. LICENSE unchanged. Commit pushed"
   ],
-  "maker": "grok-searchcrew-geo-alert-kit-maker",
+  "maker": "grok-searchcrew-geo-sibling-links-maker",
   "codingTool": "grok",
-  "rollback": "Revert the alert commit on helix/geo-alert-kit.",
+  "rollback": "Revert the sibling-link commit on helix/geo-sibling-links.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
@@ -40,22 +40,22 @@
   "github": {
     "repo": "jaimedhenriques/searchcrew",
     "remote": "origin",
-    "branch": "helix/geo-alert-kit",
-    "baseBranch": "helix/geo-llmstxt-sam",
+    "branch": "helix/geo-sibling-links",
+    "baseBranch": "helix/geo-alert-kit",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment vendors a UI kit Alert for GEO pages. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds in-app GEO links with local tests. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "vitest GEO alert variants",
+        "name": "vitest GEO sibling links",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-alert-kit-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-alert-kit"
+    "checker": "independent-searchcrew-geo-sibling-links-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-sibling-links"
   }
 }

@@ -76,16 +76,23 @@ SAM overlay for `geo-llmstxt`: call `analyze_llms_txt`, open the in-app page, wr
 - Wrap the vendored skill in `samSkills.ts`. Do not edit `geo-*` SKILL.md bodies.
 - Missing file stays optional. No credits. No filesystem write.
 
-## Increment 8 (this delivery)
+## Increment 8 (PR 21)
 
 GEO status alerts from the UI kit on the crawler and llms.txt pages.
 
 - Vendored `Alert` from `jaimedhenriques/ui` pin `63c1308d`. No cva, no radix.
 - Fetch errors use destructive. Empty domain uses default. No `$10` SKU.
 
+## Increment 9 (this delivery)
+
+In-app sibling links between `/p/$projectId/geo-crawlers` and `/p/$projectId/llms-txt`.
+
+- Kit `Button` outline. Copy says uses no credits. No `$10` SKU.
+- Does not replace daisyUI app-wide.
+
 ## Later increments (not this delivery)
 
-9. Broader chrome migration to the UI kit, one surface at a time.
+10. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 

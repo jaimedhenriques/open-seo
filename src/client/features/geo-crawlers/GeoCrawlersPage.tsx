@@ -14,6 +14,7 @@ import {
   tierLabel,
 } from "@/client/features/geo-crawlers/geoCrawlerView";
 import type { AiCrawlerAccessReport } from "@/server/lib/geo/aiCrawlerAccess";
+import { GeoSiblingNav } from "@/client/features/geo/GeoSiblingNav";
 import { geoStatusAlertVariant } from "@/client/features/geo/geoStatusAlert";
 import { Alert, AlertDescription, AlertTitle } from "@/client/ui/alert";
 import { Badge } from "@/client/ui/badge";
@@ -94,6 +95,7 @@ export function GeoCrawlersPage({ projectId }: Props) {
           no credits. Training-bot blocks are a preference, not a ranking
           defect. Squadbots can run the same check through MCP.
         </p>
+        <GeoSiblingNav projectId={projectId} from="crawlers" />
       </header>
 
       <Card>

@@ -10,6 +10,7 @@ import {
   summarizeLlmsTxt,
 } from "@/client/features/llms-txt/llmsTxtView";
 import type { LlmsTxtReport } from "@/server/lib/geo/llmsTxt";
+import { GeoSiblingNav } from "@/client/features/geo/GeoSiblingNav";
 import { geoStatusAlertVariant } from "@/client/features/geo/geoStatusAlert";
 import { Alert, AlertDescription, AlertTitle } from "@/client/ui/alert";
 import { Badge } from "@/client/ui/badge";
@@ -90,6 +91,7 @@ export function LlmsTxtPage({ projectId }: Props) {
           optional. Absence is not a ranking defect, and a published file is not
           a ranking or citation lever.
         </p>
+        <GeoSiblingNav projectId={projectId} from="llms-txt" />
       </header>
 
       <Card>
