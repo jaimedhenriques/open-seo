@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   canSubmitUrl,
+  GEO_CRAWLER_PAGE_BADGE,
   ruleLabel,
   sortCrawlerRows,
   statusBadgeVariant,
@@ -62,6 +63,15 @@ function report(
     ...overrides,
   };
 }
+
+describe("GEO crawler page badge", () => {
+  it("marks the crawler page as an access map, not a ranking lever", () => {
+    expect(GEO_CRAWLER_PAGE_BADGE).toBe("Access map");
+    expect(GEO_CRAWLER_PAGE_BADGE.toLowerCase()).not.toMatch(
+      /fitch|jaime|win-rate|autumn|\$10|ranking|citation|optional/,
+    );
+  });
+});
 
 describe("summarizeGeoCrawlerReport", () => {
   it("counts only search crawlers in the headline", () => {

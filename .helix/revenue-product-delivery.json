@@ -3,19 +3,19 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders and SEO operators checking llms.txt inside a project",
-  "pain": "The llms.txt page says the file is optional in body copy, but the header does not mark it optional",
-  "revenueHypothesis": "A kit Optional Badge on the llms.txt page header is the next SearchCrew GEO chrome slice while pay is paused, without a $10 hosted SKU",
+  "icp": "Founders and SEO operators checking which AI crawlers robots.txt allows",
+  "pain": "The crawler page body says this is an access map, but the header does not mark it that way",
+  "revenueHypothesis": "A kit Access map Badge on the crawler page header is the next SearchCrew GEO chrome slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 20 as an Optional Badge on the llms.txt header",
-    "LlmsTxtPage header renders kit outline Badge Optional",
-    "Crawler page and AvailableTools are not converted",
-    "Tests lock Optional and no Fitch/win-rate/Autumn/$10",
+    "PLAN.md records increment 21 as an Access map Badge on the crawler header",
+    "GeoCrawlersPage header renders kit outline Badge Access map",
+    "llms.txt page and AvailableTools are not converted",
+    "Tests lock Access map and no Fitch/win-rate/Autumn/$10",
     "src/client/ui/LICENSE.md unchanged. Commit pushed"
   ],
-  "maker": "grok-searchcrew-geo-llms-optional-badge-maker",
+  "maker": "grok-searchcrew-geo-crawler-access-map-badge-maker",
   "codingTool": "grok",
-  "rollback": "Revert the geo-llms-optional-badge commit on helix/geo-llms-optional-badge.",
+  "rollback": "Revert the geo-crawler-access-map-badge commit on helix/geo-crawler-access-map-badge.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
@@ -41,22 +41,22 @@
   },
   "github": {
     "repo": "jaimedhenriques/searchcrew",
-    "branch": "helix/geo-llms-optional-badge",
-    "baseBranch": "helix/geo-mcp-sibling",
+    "branch": "helix/geo-crawler-access-map-badge",
+    "baseBranch": "helix/geo-llms-optional-badge",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds an llms.txt header kit Badge with local tests. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds a crawler header kit Badge with local tests. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "isolated llms.txt optional badge tests",
+        "name": "isolated crawler access-map badge tests",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-llms-optional-badge-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-llms-optional-badge"
+    "checker": "independent-searchcrew-geo-crawler-access-map-badge-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-crawler-access-map-badge"
   }
 }

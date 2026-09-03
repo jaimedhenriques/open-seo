@@ -6,6 +6,7 @@ import { getProjects } from "@/serverFunctions/projects";
 import { getStandardErrorMessage } from "@/client/lib/error-messages";
 import {
   canSubmitUrl,
+  GEO_CRAWLER_PAGE_BADGE,
   ruleLabel,
   sortCrawlerRows,
   statusBadgeVariant,
@@ -87,9 +88,12 @@ export function GeoCrawlersPage({ projectId }: Props) {
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 p-4 pb-safe sm:p-6">
       <header className="flex flex-col gap-2">
-        <h1 className="text-balance text-2xl font-semibold tracking-tight text-foreground">
-          AI crawler access
-        </h1>
+        <div className="flex flex-wrap items-center gap-2">
+          <h1 className="text-balance text-2xl font-semibold tracking-tight text-foreground">
+            AI crawler access
+          </h1>
+          <Badge variant="outline">{GEO_CRAWLER_PAGE_BADGE}</Badge>
+        </div>
         <p className="max-w-2xl text-pretty text-sm text-muted-foreground">
           See which named AI search crawlers robots.txt allows or blocks. Uses
           no credits. Training-bot blocks are a preference, not a ranking

@@ -1,6 +1,8 @@
 import type { AiCrawlerAccessReport } from "@/server/lib/geo/aiCrawlerAccess";
 import type { BadgeVariant } from "@/client/ui/badge";
 
+export const GEO_CRAWLER_PAGE_BADGE = "Access map";
+
 type GeoCrawlerRow = AiCrawlerAccessReport["crawlers"][number];
 
 const TIER_ORDER: Record<GeoCrawlerRow["tier"], number> = {
