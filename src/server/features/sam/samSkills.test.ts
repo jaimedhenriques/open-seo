@@ -31,5 +31,10 @@ describe("buildSamSkillSource", () => {
 
     const loaded = await source.load("seo-project-setup");
     expect(loaded?.body).toContain("Surface note: you are SAM");
+    expect(loaded?.body).not.toContain("analyze_ai_crawler_access");
+
+    const geo = await source.load("geo-crawlers");
+    expect(geo?.body).toContain("analyze_ai_crawler_access");
+    expect(geo?.body).toContain("appendResearchLog");
   });
 });
