@@ -6,6 +6,12 @@ type GeoSiblingLink = {
   hint: string;
 };
 
+export const GEO_MCP_NAV = {
+  to: "/ai",
+  label: "MCP tools",
+  hint: "Same checks as analyze_ai_crawler_access and analyze_llms_txt. Uses no credits.",
+} as const;
+
 export function geoSiblingLink(from: GeoSurface): GeoSiblingLink {
   if (from === "crawlers") {
     return {

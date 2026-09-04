@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { canSubmitUrl, summarizeLlmsTxt } from "./llmsTxtView";
+import { canSubmitUrl, LLMS_PAGE_BADGE, summarizeLlmsTxt } from "./llmsTxtView";
 import type { LlmsTxtReport } from "@/server/lib/geo/llmsTxt";
 
 function report(overrides: Partial<LlmsTxtReport> = {}): LlmsTxtReport {
@@ -37,6 +37,13 @@ function report(overrides: Partial<LlmsTxtReport> = {}): LlmsTxtReport {
 }
 
 describe("llmsTxtView", () => {
+  it("marks the llms.txt page as optional, not a ranking lever", () => {
+    expect(LLMS_PAGE_BADGE).toBe("Optional");
+    expect(LLMS_PAGE_BADGE.toLowerCase()).not.toMatch(
+      /fitch|jaime|win-rate|autumn|\$10|ranking|citation/,
+    );
+  });
+
   it("treats a missing file as optional, not a ranking defect", () => {
     const summary = summarizeLlmsTxt(
       report({

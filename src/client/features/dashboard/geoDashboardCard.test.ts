@@ -10,6 +10,7 @@ describe("GEO dashboard card", () => {
   it("links to the credit-free crawler and llms.txt checks", () => {
     expect(GEO_DASHBOARD_HAS_DATA).toBe(true);
     expect(GEO_DASHBOARD_CARD.title).toBe("GEO");
+    expect(geoDashboardCardText()).toContain("No credits");
     expect(geoDashboardLinks().map((item) => item.to)).toEqual([
       "/p/$projectId/geo-crawlers",
       "/p/$projectId/llms-txt",

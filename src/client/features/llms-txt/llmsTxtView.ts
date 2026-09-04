@@ -1,6 +1,8 @@
 import type { BadgeVariant } from "@/client/ui/badge";
 import type { LlmsTxtCheck, LlmsTxtReport } from "@/server/lib/geo/llmsTxt";
 
+export const LLMS_PAGE_BADGE = "Optional";
+
 export function canSubmitUrl(value: string): boolean {
   return value.trim().length > 0;
 }

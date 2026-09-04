@@ -2,6 +2,8 @@ import {
   GEO_MCP_BADGE,
   GEO_MCP_GROUP_LABEL,
   GEO_MCP_HINT,
+  GEO_MCP_TABLE_CAPTION,
+  GEO_MCP_TABLE_HEADS,
   GEO_MCP_TOOLS,
 } from "@/client/features/geo/geoMcpTools";
 import { Badge } from "@/client/ui/badge";
@@ -12,6 +14,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/client/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/client/ui/table";
 
 export function GeoMcpToolsCard() {
   return (
@@ -24,18 +35,26 @@ export function GeoMcpToolsCard() {
         <CardDescription>{GEO_MCP_HINT}</CardDescription>
       </CardHeader>
       <CardContent>
-        <ul className="flex flex-col gap-3">
-          {GEO_MCP_TOOLS.map((tool) => (
-            <li key={tool.name} className="flex flex-col gap-0.5">
-              <span className="font-mono text-sm font-medium text-foreground">
-                {tool.name}
-              </span>
-              <p className="text-pretty text-sm text-muted-foreground">
-                {tool.description}
-              </p>
-            </li>
-          ))}
-        </ul>
+        <Table>
+          <TableCaption>{GEO_MCP_TABLE_CAPTION}</TableCaption>
+          <TableHeader>
+            <TableRow>
+              {GEO_MCP_TABLE_HEADS.map((head) => (
+                <TableHead key={head}>{head}</TableHead>
+              ))}
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {GEO_MCP_TOOLS.map((tool) => (
+              <TableRow key={tool.name}>
+                <TableCell className="font-mono">{tool.name}</TableCell>
+                <TableCell className="whitespace-normal text-pretty text-muted-foreground">
+                  {tool.description}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </CardContent>
     </Card>
   );
