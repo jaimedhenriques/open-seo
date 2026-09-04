@@ -10,7 +10,9 @@ import {
   statusBadgeVariant,
   statusLabel,
   summarizeGeoCrawlerReport,
+  tierBadgeVariant,
   tierLabel,
+  GEO_CRAWLER_EMPTY_FILTER,
 } from "./geoCrawlerView";
 import type { AiCrawlerAccessReport } from "@/server/lib/geo/aiCrawlerAccess";
 
@@ -116,6 +118,21 @@ describe("GEO crawler kind filter", () => {
     expect(
       filterCrawlerRows(rows, "training").map((row) => row.userAgent),
     ).toEqual(["GPTBot"]);
+  });
+
+  it("uses kit Badge variants for Search, Training, and Ecosystem", () => {
+    expect(tierBadgeVariant("search")).toBe("secondary");
+    expect(tierBadgeVariant("training")).toBe("outline");
+    expect(tierBadgeVariant("ecosystem")).toBe("ghost");
+  });
+
+  it("explains an empty kind filter without calling it a ranking defect", () => {
+    const text = GEO_CRAWLER_EMPTY_FILTER.toLowerCase();
+    expect(text).toContain("no crawlers in this kind");
+    expect(text).toContain("preference");
+    expect(text).toContain("not a ranking defect");
+    expect(text).toContain("no credits");
+    expect(text).not.toMatch(/fitch|jaime|win-rate|autumn|\$10|citation/);
   });
 });
 
