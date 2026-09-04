@@ -3,24 +3,26 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders and SEO operators who need to see whether llms.txt is a usable content map",
-  "pain": "Crawler report only says llms.txt exists. Buyers cannot see title, sections, or relative URLs without leaving the app",
-  "revenueHypothesis": "A credit-free llms.txt checker is the next SearchCrew GEO slice while pay is paused, without a $10 hosted SKU",
+  "icp": "Founders and SEO operators looking for crawler and llms.txt checks inside a project",
+  "pain": "The GEO sidebar group does not show that crawler and llms.txt checks use no credits",
+  "revenueHypothesis": "A kit No credits Badge on the GEO nav group is the next SearchCrew GEO chrome slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 5 as an in-app llms.txt checker",
-    "Parser and view-model tests pass",
-    "Page uses vendored jaimedhenriques/ui cards and no paid-plan gate",
-    "Repo LICENSE is unchanged and the commit is pushed to jaimedhenriques/searchcrew"
+    "PLAN.md records increment 17 as a GEO sidebar kit Badge",
+    "Sidebar GEO group label renders kit outline Badge 'No credits'",
+    "Other nav groups stay daisyUI. AvailableTools is not converted",
+    "Tests lock No credits and no Fitch/win-rate/Autumn/$10 in nav labels",
+    "src/client/ui/LICENSE.md unchanged. Commit pushed"
   ],
-  "maker": "grok-searchcrew-geo-llmstxt-maker",
+  "maker": "grok-searchcrew-geo-nav-badge-maker",
   "codingTool": "grok",
-  "rollback": "Revert the llms.txt commit on helix/geo-llmstxt.",
+  "rollback": "Revert the geo-nav-badge commit on helix/geo-nav-badge.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
     "No external send.",
     "Do not claim an Ahrefs/Semrush win-rate.",
-    "Sample /llms.txt only. Do not crawl the whole site.",
+    "Do not replace daisyUI app-wide.",
+    "Do not convert all AvailableTools.",
     "Do not edit vendored geo-* skill bodies.",
     "Do not merge the PR."
   ],
@@ -28,8 +30,7 @@
   "executionEvidence": ".helix/evidence/execution.json",
   "copySafety": {
     "publicPatternSources": [
-      "https://github.com/jaimedhenriques/ui (MIT, LICENSE.md retained)",
-      "Public llmstxt.org format conventions"
+      "https://github.com/jaimedhenriques/ui (MIT, LICENSE.md retained)"
     ],
     "proprietaryAssetsExcluded": true
   },
@@ -40,23 +41,22 @@
   },
   "github": {
     "repo": "jaimedhenriques/searchcrew",
-    "remote": "origin",
-    "branch": "helix/geo-llmstxt",
-    "baseBranch": "main",
+    "branch": "helix/geo-nav-badge",
+    "baseBranch": "helix/geo-mcp-kit-card",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment is an in-app llms.txt checker with local tests. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds a GEO sidebar kit Badge with local tests. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "vitest llms.txt parser and view",
+        "name": "isolated GEO nav badge tests",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-llmstxt-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-llmstxt"
+    "checker": "independent-searchcrew-geo-nav-badge-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-nav-badge"
   }
 }
