@@ -3,26 +3,23 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders and SEO operators running crawler and llms.txt checks from the app or MCP",
-  "pain": "The MCP sibling button on GEO check pages hides its no-credits hint in the title attribute",
-  "revenueHypothesis": "A visible kit Alert for the MCP hint is the next SearchCrew GEO chrome slice while pay is paused, without a $10 hosted SKU",
+  "icp": "First-client SEO/GEO operators reading SearchCrew docs after a hosted-tool quota hit",
+  "pain": "Docs chrome uses fumadocs baseOptions with Resources and GitHub but no /faq, so crawler answers stay hidden on /docs",
+  "revenueHypothesis": "A docs chrome FAQ link is the next SearchCrew GTM slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 22 as a visible MCP hint Alert on GeoSiblingNav",
-    "GeoSiblingNav renders GEO_MCP_NAV.hint in a kit Alert, not only a title",
-    "Tests lock no credits, MCP tool names, no Fitch/win-rate/Autumn/$10",
-    "src/client/ui/LICENSE.md unchanged. Commit pushed"
+    "PLAN.md records increment 33 as a docs chrome FAQ link",
+    "web/src/lib/layout.shared.tsx baseOptions links include FAQ url /faq",
+    "Do not change blog-layout or marketing header. Root LICENSE unchanged"
   ],
-  "maker": "grok-searchcrew-geo-mcp-hint-visible-maker",
+  "maker": "grok-searchcrew-geo-docs-nav-faq-maker",
   "codingTool": "grok",
-  "rollback": "Revert the geo-mcp-hint-visible commit on helix/geo-mcp-hint-visible.",
+  "rollback": "Revert the geo-docs-nav-faq commit on helix/geo-docs-nav-faq.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
     "No external send.",
     "Do not claim an Ahrefs/Semrush win-rate.",
-    "Do not replace daisyUI app-wide.",
-    "Do not convert all AvailableTools.",
-    "Do not add another header Badge.",
+    "Do not change blog-layout or marketing header FAQ links.",
     "Do not edit vendored geo-* skill bodies.",
     "Do not merge the PR."
   ],
@@ -41,22 +38,22 @@
   },
   "github": {
     "repo": "jaimedhenriques/searchcrew",
-    "branch": "helix/geo-mcp-hint-visible",
-    "baseBranch": "helix/geo-crawler-access-map-badge",
+    "branch": "helix/geo-docs-nav-faq",
+    "baseBranch": "helix/geo-blog-nav-faq",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment shows the GEO MCP hint with a kit Alert and local tests. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew marketing/docs site is Cloudflare Workers. This increment adds a docs chrome FAQ link. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "isolated GEO MCP hint visibility tests",
+        "name": "isolated GEO docs nav FAQ tests",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-mcp-hint-visible-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-mcp-hint-visible"
+    "checker": "independent-searchcrew-geo-docs-nav-faq-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-docs-nav-faq"
   }
 }
