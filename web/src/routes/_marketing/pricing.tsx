@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState, type CSSProperties } from "react";
+import { GeoPricingFaq } from "@/components/geo-pricing-faq";
 import { buildPageSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/_marketing/pricing")({
@@ -637,6 +638,8 @@ function Pricing() {
           </div>
         </div>
       </section>
+
+      <GeoPricingFaq />
 
       {/* 4. FAQ */}
       <section className="mt-14">

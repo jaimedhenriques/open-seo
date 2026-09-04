@@ -7,7 +7,20 @@
 
 import { type ReactNode, type SVGProps } from "react";
 import { SiteFooter } from "@/components/site-footer";
+import {
+  GEO_LANDING_SECTION_CARDS,
+  GEO_LANDING_SECTION_HEADING,
+  GEO_LANDING_SECTION_LEAD,
+} from "@/lib/geoLandingSection";
 import { LANDING_FEATURE_CARDS } from "@/lib/landing-feature-cards";
+import { buttonVariants } from "@/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/ui/card";
 import "./landing-page.css";
 
 const SIGNUP_URL = "/get-started";
@@ -172,6 +185,52 @@ function ProductSection() {
           <a href="/features" className="itc-textlink">
             All features <IconArrowRight size={15} className="itc-arrow" />
           </a>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function GeoLandingSection() {
+  return (
+    <section className="itc-section" aria-labelledby="geo-landing-heading">
+      <Container>
+        <div className="itc-narrow">
+          <p className="itc-eyebrow">GEO</p>
+          <h2 id="geo-landing-heading" className="itc-display-lg">
+            {GEO_LANDING_SECTION_HEADING}
+          </h2>
+          <p className="itc-subhead itc-muted" style={{ margin: "20px 0 0" }}>
+            {GEO_LANDING_SECTION_LEAD}
+          </p>
+        </div>
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          {GEO_LANDING_SECTION_CARDS.map((card) => (
+            <Card
+              key={card.href}
+              className="border-[var(--color-border-subtle)] bg-white text-neutral-950 shadow-none"
+            >
+              <CardHeader>
+                <CardTitle>{card.title}</CardTitle>
+                <CardDescription className="text-[var(--color-brand-muted)]">
+                  {card.blurb}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <a
+                  href={card.href}
+                  className={buttonVariants({
+                    variant: "outline",
+                    className:
+                      "border-[var(--color-border-subtle)] bg-white text-neutral-950 no-underline",
+                  })}
+                >
+                  {card.cta}
+                  <IconArrowRight size={16} className="itc-arrow" />
+                </a>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </Container>
     </section>
@@ -596,6 +655,7 @@ export function LandingPage() {
     <div className="itc">
       <Hero />
       <ProductSection />
+      <GeoLandingSection />
       <McpSection />
       <Footer />
     </div>

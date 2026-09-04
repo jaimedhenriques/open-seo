@@ -20,11 +20,18 @@ export const GEO_MCP_TOOLS = [
   },
 ] as const;
 
+export const GEO_MCP_TABLE_HEADS = ["Tool", "Check"] as const;
+
+export const GEO_MCP_TABLE_CAPTION =
+  "Credit-free MCP tools. Presence is not a ranking or citation lever.";
+
 export function geoMcpToolsText(): string {
   return [
     GEO_MCP_GROUP_LABEL,
     GEO_MCP_BADGE,
     GEO_MCP_HINT,
+    GEO_MCP_TABLE_CAPTION,
+    ...GEO_MCP_TABLE_HEADS,
     ...GEO_MCP_TOOLS.map(
       (tool) => `${tool.name} ${tool.title} ${tool.description}`,
     ),
