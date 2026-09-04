@@ -14,6 +14,9 @@ export type GeoCrawlerFilterId = (typeof GEO_CRAWLER_FILTERS)[number]["id"];
 export const GEO_CRAWLER_FILTER_HINT =
   "Training blocks are a preference, not a ranking defect. Uses no credits.";
 
+export const GEO_CRAWLER_EMPTY_FILTER =
+  "No crawlers in this kind. Training blocks stay a preference, not a ranking defect. Uses no credits.";
+
 type GeoCrawlerRow = AiCrawlerAccessReport["crawlers"][number];
 
 const TIER_ORDER: Record<GeoCrawlerRow["tier"], number> = {
@@ -53,6 +56,12 @@ export function tierLabel(tier: GeoCrawlerRow["tier"]): string {
   if (tier === "search") return "Search";
   if (tier === "ecosystem") return "Ecosystem";
   return "Training";
+}
+
+export function tierBadgeVariant(tier: GeoCrawlerRow["tier"]): BadgeVariant {
+  if (tier === "search") return "secondary";
+  if (tier === "training") return "outline";
+  return "ghost";
 }
 
 export function ruleLabel(rule: GeoCrawlerRow["rule"]): string {
