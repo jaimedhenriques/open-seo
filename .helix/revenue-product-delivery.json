@@ -3,27 +3,23 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders and SEO operators checking which AI crawlers robots.txt allows",
-  "pain": "The crawler access map mixes search and training bots, so a GPTBot block looks like a ranking defect",
-  "revenueHypothesis": "A kit Button filter for All/Search/Training is the next SearchCrew GEO chrome slice while pay is paused, without a $10 hosted SKU",
+  "icp": "First-client SEO/GEO operators reading SearchCrew docs after a hosted-tool quota hit",
+  "pain": "Docs chrome uses fumadocs baseOptions with Resources and GitHub but no /faq, so crawler answers stay hidden on /docs",
+  "revenueHypothesis": "A docs chrome FAQ link is the next SearchCrew GTM slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 24 as crawler map kind filter Buttons",
-    "GeoCrawlerResults filters rows with GEO_CRAWLER_FILTERS and kit Buttons",
-    "Copy says training is a preference, uses no credits, no Fitch/win-rate/Autumn/$10 SKU as a product",
-    "src/client/ui/LICENSE.md unchanged. Root LICENSE unchanged. Commit pushed. Do not edit GeoMcpToolsCard"
+    "PLAN.md records increment 33 as a docs chrome FAQ link",
+    "web/src/lib/layout.shared.tsx baseOptions links include FAQ url /faq",
+    "Do not change blog-layout or marketing header. Root LICENSE unchanged"
   ],
-  "maker": "grok-searchcrew-geo-crawler-tier-filter-maker",
+  "maker": "grok-searchcrew-geo-docs-nav-faq-maker",
   "codingTool": "grok",
-  "rollback": "Revert the geo-crawler-tier-filter commit on helix/geo-crawler-tier-filter.",
+  "rollback": "Revert the geo-docs-nav-faq commit on helix/geo-docs-nav-faq.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
     "No external send.",
     "Do not claim an Ahrefs/Semrush win-rate.",
-    "Do not replace daisyUI app-wide.",
-    "Do not convert all AvailableTools.",
-    "Do not add another header Badge.",
-    "Do not change the /ai GEO MCP Badge/Table card.",
+    "Do not change blog-layout or marketing header FAQ links.",
     "Do not edit vendored geo-* skill bodies.",
     "Do not merge the PR."
   ],
@@ -42,22 +38,22 @@
   },
   "github": {
     "repo": "jaimedhenriques/searchcrew",
-    "branch": "helix/geo-crawler-tier-filter",
-    "baseBranch": "helix/geo-mcp-kit-table",
+    "branch": "helix/geo-docs-nav-faq",
+    "baseBranch": "helix/geo-blog-nav-faq",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds crawler kind filter Buttons. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew marketing/docs site is Cloudflare Workers. This increment adds a docs chrome FAQ link. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "isolated GEO crawler kind filter tests",
+        "name": "isolated GEO docs nav FAQ tests",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-crawler-tier-filter-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-crawler-tier-filter"
+    "checker": "independent-searchcrew-geo-docs-nav-faq-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-docs-nav-faq"
   }
 }
