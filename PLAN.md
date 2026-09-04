@@ -90,7 +90,7 @@ In-app sibling links between `/p/$projectId/geo-crawlers` and `/p/$projectId/llm
 - Kit `Button` outline. Copy says uses no credits. No `$10` SKU.
 - Does not replace daisyUI app-wide.
 
-## Increment 10 (this delivery)
+## Increment 10 (PR 23)
 
 JSON-LD presence sample on the checked URL of the crawler report.
 
@@ -98,9 +98,59 @@ JSON-LD presence sample on the checked URL of the crawler report.
 - Missing JSON-LD is optional. Not a ranking or citation lever.
 - Kit Card and Badge. Do not edit vendored `geo-schema` SKILL.md.
 
+## Increment 11 (PR 24)
+
+Public GTM copy on `/features/ai-crawler-access` for the JSON-LD sample.
+
+- Same credit-free check. Missing JSON-LD is optional. Not a ranking or citation lever.
+- No `$10` SKU. Do not replace daisyUI app-wide.
+
+## Increment 12 (PR 25)
+
+Public sibling links between `/features/ai-crawler-access` and `/features/llms-txt`.
+
+- Featured and related links. Copy says uses no credits. No `$10` SKU.
+- Does not replace daisyUI app-wide.
+
+## Increment 13 (PR 26)
+
+Project sidebar GEO group for `/p/$projectId/geo-crawlers` and `/p/$projectId/llms-txt`.
+
+- First-class GEO nav, not buried in Research. No `$10` SKU.
+- Does not replace daisyUI app-wide.
+
+## Increment 14 (PR 27)
+
+Dashboard GEO card linking `/p/$projectId/geo-crawlers` and `/p/$projectId/llms-txt`.
+
+- Kit `Card` and outline `Button` from `jaimedhenriques/ui`. Keep `src/client/ui/LICENSE.md`.
+- `hasData: true` so the card sorts with data cards. Copy says uses no credits. Not a ranking or citation lever. No `$10` SKU.
+- Does not replace daisyUI app-wide.
+
+## Increment 15 (PR 28)
+
+Homepage product grid cards for `/features/ai-crawler-access` and `/features/llms-txt`.
+
+- Credit-free blurbs. Optional llms.txt. No ranking or citation claim. No `$10` SKU.
+- Does not replace daisyUI app-wide.
+
+## Increment 16 (PR 29)
+
+GEO MCP tools on `/ai` in a kit `Card` with outline `Badge`.
+
+- `analyze_ai_crawler_access` and `analyze_llms_txt`. Copy says uses no credits. Optional llms.txt. Not a ranking or citation lever. No `$10` SKU.
+- Keep `src/client/ui/LICENSE.md`. Do not replace daisyUI app-wide.
+
+## Increment 17 (this delivery)
+
+Kit outline `Badge` "No credits" on the project sidebar GEO group label.
+
+- Only the GEO group. Other nav groups stay daisyUI. Do not convert `AvailableTools`.
+- Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
+
 ## Later increments (not this delivery)
 
-11. Broader chrome migration to the UI kit, one surface at a time.
+18. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 
