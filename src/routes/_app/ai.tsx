@@ -4,6 +4,7 @@ import { getAuthMode, isHostedClientAuthMode } from "@/lib/auth-mode";
 import { captureClientEvent } from "@/client/lib/posthog";
 import { ClaudeIcon, CodexIcon } from "@/client/features/ai-mcp/AgentIcons";
 import { AvailableTools } from "@/client/features/ai-mcp/AvailableTools";
+import { GeoMcpToolsCard } from "@/client/features/geo/GeoMcpToolsCard";
 import {
   CodeBlock,
   Collapsible,
@@ -298,7 +299,8 @@ function AiPage() {
 
         <section className="mt-12">
           <h2 className="text-base font-semibold">Available tools</h2>
-          <div className="mt-5">
+          <div className="mt-5 flex flex-col gap-5">
+            <GeoMcpToolsCard />
             <AvailableTools />
           </div>
         </section>
