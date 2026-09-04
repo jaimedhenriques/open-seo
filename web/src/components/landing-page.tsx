@@ -7,7 +7,7 @@
 
 import { type ReactNode, type SVGProps } from "react";
 import { SiteFooter } from "@/components/site-footer";
-import { featurePages } from "@/lib/feature-pages";
+import { LANDING_FEATURE_CARDS } from "@/lib/landing-feature-cards";
 import "./landing-page.css";
 
 const SIGNUP_URL = "/get-started";
@@ -132,20 +132,7 @@ function Hero() {
 
 // ─── Product ─────────────────────────────────────────────────────────
 
-const FEATURE_CARDS = [
-  {
-    page: featurePages.keywordResearch,
-    blurb: "Find ideas, demand, difficulty, intent, and live SERPs.",
-  },
-  {
-    page: featurePages.rankTracking,
-    blurb: "Track keyword positions over time.",
-  },
-  {
-    page: featurePages.siteAudit,
-    blurb: "Crawl pages and surface technical issues.",
-  },
-];
+const FEATURE_CARDS = LANDING_FEATURE_CARDS;
 
 function ProductSection() {
   return (

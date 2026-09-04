@@ -3,23 +3,26 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders and SEO operators who use Squadbots/SAM to check llms.txt",
-  "pain": "Vendored geo-llmstxt tells SAM to write a local analysis file and crawl the site; SAM has no filesystem and the in-app checker already samples /llms.txt",
-  "revenueHypothesis": "A credit-free SAM overlay that opens the llms.txt page and logs the verdict is the next SearchCrew GEO slice while pay is paused, without a $10 hosted SKU",
+  "icp": "Founders and SEO operators looking for crawler and llms.txt checks inside a project",
+  "pain": "The GEO sidebar group does not show that crawler and llms.txt checks use no credits",
+  "revenueHypothesis": "A kit No credits Badge on the GEO nav group is the next SearchCrew GEO chrome slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 7 as a SAM overlay for geo-llmstxt",
-    "composeSamSkillBody prepends the overlay without editing vendored SKILL.md",
-    "Overlay tells SAM to call analyze_llms_txt and appendResearchLog",
-    "Repo LICENSE is unchanged and the commit is pushed to jaimedhenriques/searchcrew"
+    "PLAN.md records increment 17 as a GEO sidebar kit Badge",
+    "Sidebar GEO group label renders kit outline Badge 'No credits'",
+    "Other nav groups stay daisyUI. AvailableTools is not converted",
+    "Tests lock No credits and no Fitch/win-rate/Autumn/$10 in nav labels",
+    "src/client/ui/LICENSE.md unchanged. Commit pushed"
   ],
-  "maker": "grok-searchcrew-geo-llmstxt-sam-maker",
+  "maker": "grok-searchcrew-geo-nav-badge-maker",
   "codingTool": "grok",
-  "rollback": "Revert the SAM overlay commit on helix/geo-llmstxt-sam.",
+  "rollback": "Revert the geo-nav-badge commit on helix/geo-nav-badge.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
     "No external send.",
     "Do not claim an Ahrefs/Semrush win-rate.",
+    "Do not replace daisyUI app-wide.",
+    "Do not convert all AvailableTools.",
     "Do not edit vendored geo-* skill bodies.",
     "Do not merge the PR."
   ],
@@ -27,8 +30,7 @@
   "executionEvidence": ".helix/evidence/execution.json",
   "copySafety": {
     "publicPatternSources": [
-      "https://github.com/jaimedhenriques/ui (MIT, LICENSE.md retained)",
-      "Existing SAM_SURFACE_NOTE overlay pattern"
+      "https://github.com/jaimedhenriques/ui (MIT, LICENSE.md retained)"
     ],
     "proprietaryAssetsExcluded": true
   },
@@ -39,23 +41,22 @@
   },
   "github": {
     "repo": "jaimedhenriques/searchcrew",
-    "remote": "origin",
-    "branch": "helix/geo-llmstxt-sam",
-    "baseBranch": "helix/geo-llmstxt-gtm",
+    "branch": "helix/geo-nav-badge",
+    "baseBranch": "helix/geo-mcp-kit-card",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment is a SAM skill overlay plus tests. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds a GEO sidebar kit Badge with local tests. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "vitest sam llms.txt overlay",
+        "name": "isolated GEO nav badge tests",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-llmstxt-sam-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-llmstxt-sam"
+    "checker": "independent-searchcrew-geo-nav-badge-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-nav-badge"
   }
 }

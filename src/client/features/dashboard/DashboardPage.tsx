@@ -14,6 +14,8 @@ import {
   BacklinkPulseCard,
   GscCard,
 } from "@/client/features/dashboard/DashboardCards";
+import { GeoDashboardCard } from "@/client/features/dashboard/GeoDashboardCard";
+import { GEO_DASHBOARD_HAS_DATA } from "@/client/features/dashboard/geoDashboardCard";
 import { Ga4Card } from "@/client/features/dashboard/Ga4Card";
 import { McpConnectCard } from "@/client/features/dashboard/McpConnectCard";
 import { WorkspaceMergeBanner } from "@/client/features/dashboard/WorkspaceMergeBanner";
@@ -315,6 +317,12 @@ export function DashboardPage({ projectId }: { projectId: string }) {
         <div className="grid items-start gap-5 lg:grid-cols-2">
           {[
             // Array order is the within-bucket order after the data-first sort:
+            // GEO is always available (credit-free), so it leads the data bucket.
+            {
+              key: "geo",
+              hasData: GEO_DASHBOARD_HAS_DATA,
+              node: <GeoDashboardCard projectId={projectId} />,
+            },
             // the MCP pitch leads the setup cards.
             ...(activation.mcp.firstToolCallAt || activation.mcp.cardDismissedAt
               ? []
