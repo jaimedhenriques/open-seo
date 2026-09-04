@@ -51,11 +51,41 @@ describe("fetchAiCrawlerAccess", () => {
     expect(report.robotsTxt.status).toBe("found");
     expect(report.llmsTxt.status).toBe("missing");
     expect(report.pageSample.tokens).toEqual(["noai", "noimageai"]);
+    expect(report.pageSample.jsonLd.status).toBe("missing");
     expect(
       report.crawlers.find((row) => row.userAgent === "GPTBot"),
     ).toMatchObject({ status: "blocked", rule: "specific" });
     expect(
       report.crawlers.find((row) => row.userAgent === "Googlebot"),
     ).toMatchObject({ status: "allowed", rule: "default" });
+  });
+
+  it("samples JSON-LD types from the checked URL", async () => {
+    vi.mocked(fetch).mockImplementation(async (input) => {
+      const url =
+        typeof input === "string"
+          ? input
+          : input instanceof URL
+            ? input.href
+            : input.url;
+      if (url.includes("cloudflare-dns.com")) return jsonDns();
+      if (url.endsWith("/robots.txt")) {
+        return new Response("User-agent: *\nAllow: /\n", { status: 200 });
+      }
+      if (url.endsWith("/llms.txt")) {
+        return new Response("not found", { status: 404 });
+      }
+      return new Response(
+        '<html><script type="application/ld+json">{"@type":"Organization","name":"Example"}</script></html>',
+        { status: 200 },
+      );
+    });
+
+    const report = await fetchAiCrawlerAccess("example.com");
+    expect(report.pageSample.jsonLd).toEqual({
+      status: "found",
+      blockCount: 1,
+      types: ["Organization"],
+    });
   });
 });

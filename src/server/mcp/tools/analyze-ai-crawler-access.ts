@@ -100,6 +100,11 @@ export const analyzeAiCrawlerAccessTool = {
         report.pageSample.tokens.length > 0
           ? `page sample: ${report.pageSample.tokens.join(", ")} at ${report.pageSample.url}`
           : `page sample: no noai or X-Robots-Tag on ${report.pageSample.url}`,
+        report.pageSample.jsonLd.types.length > 0
+          ? `json-ld: ${report.pageSample.jsonLd.types.join(", ")} — presence only, not a ranking or citation lever.`
+          : report.pageSample.jsonLd.status === "invalid"
+            ? "json-ld: invalid JSON on this page."
+            : "json-ld: none on this page (optional).",
         table,
       ].join("\n"),
       meta: buildProjectMeta(context, args.projectId),
