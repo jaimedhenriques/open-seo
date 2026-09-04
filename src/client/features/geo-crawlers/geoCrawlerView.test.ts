@@ -57,6 +57,7 @@ function report(
       robotsMeta: null,
       xRobotsTag: null,
       tokens: [],
+      jsonLd: { status: "missing", blockCount: 0, types: [] },
     },
     ...overrides,
   };
@@ -84,6 +85,7 @@ describe("summarizeGeoCrawlerReport", () => {
           robotsMeta: "noai",
           xRobotsTag: null,
           tokens: ["noai"],
+          jsonLd: { status: "missing", blockCount: 0, types: [] },
         },
       }),
     );
@@ -144,6 +146,36 @@ describe("summarizeGeoCrawlerReport", () => {
     );
     expect(summary.robotsLabel).toBe("Could not read robots.txt");
     expect(summary.llmsLabel).toBe("Could not read llms.txt");
+  });
+
+  it("labels JSON-LD types without calling them a ranking lever", () => {
+    const summary = summarizeGeoCrawlerReport(
+      report({
+        pageSample: {
+          url: "https://example.com/",
+          status: "found",
+          httpStatus: 200,
+          robotsMeta: null,
+          xRobotsTag: null,
+          tokens: [],
+          jsonLd: {
+            status: "found",
+            blockCount: 1,
+            types: ["Organization", "WebSite"],
+          },
+        },
+      }),
+    );
+    expect(summary.jsonLdLabel).toBe("Organization, WebSite");
+    expect(summary.jsonLdHint.toLowerCase()).toContain("not a ranking");
+    expect(summary.jsonLdHint.toLowerCase()).not.toMatch(
+      /fitch|jaime|win-rate|autumn|\$10/,
+    );
+  });
+
+  it("labels missing JSON-LD as optional", () => {
+    const summary = summarizeGeoCrawlerReport(report());
+    expect(summary.jsonLdLabel).toBe("No JSON-LD on this page (optional)");
   });
 });
 

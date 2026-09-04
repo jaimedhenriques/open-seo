@@ -12,6 +12,7 @@ import {
   type PageRobotSample,
   type RobotsTxtFetchStatus,
 } from "@/server/lib/geo/aiCrawlerAccess";
+import { parseJsonLdSample } from "@/server/lib/geo/jsonLd";
 import { parseLlmsTxt, type LlmsTxtReport } from "@/server/lib/geo/llmsTxt";
 
 const FETCH_TIMEOUT_MS = 10_000;
@@ -158,6 +159,9 @@ export async function fetchAiCrawlerAccess(
       robotsMeta,
       xRobotsTag,
       tokens: parsePageRobotTokens(robotsMeta, xRobotsTag),
+      jsonLd: parseJsonLdSample(
+        pageSampleStatus(pageHttp, pageBody) === "found" ? pageBody : null,
+      ),
     },
     ...parsed,
   };

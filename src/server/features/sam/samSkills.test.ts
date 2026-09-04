@@ -31,5 +31,10 @@ describe("buildSamSkillSource", () => {
 
     const loaded = await source.load("seo-project-setup");
     expect(loaded?.body).toContain("Surface note: you are SAM");
+    expect(loaded?.body).not.toContain("analyze_llms_txt");
+
+    const llms = await source.load("geo-llmstxt");
+    expect(llms?.body).toContain("analyze_llms_txt");
+    expect(llms?.body).toContain("appendResearchLog");
   });
 });

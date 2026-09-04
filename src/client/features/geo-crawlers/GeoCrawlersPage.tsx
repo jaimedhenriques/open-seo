@@ -14,6 +14,9 @@ import {
   tierLabel,
 } from "@/client/features/geo-crawlers/geoCrawlerView";
 import type { AiCrawlerAccessReport } from "@/server/lib/geo/aiCrawlerAccess";
+import { GeoSiblingNav } from "@/client/features/geo/GeoSiblingNav";
+import { geoStatusAlertVariant } from "@/client/features/geo/geoStatusAlert";
+import { Alert, AlertDescription, AlertTitle } from "@/client/ui/alert";
 import { Badge } from "@/client/ui/badge";
 import { Button } from "@/client/ui/button";
 import {
@@ -92,6 +95,7 @@ export function GeoCrawlersPage({ projectId }: Props) {
           no credits. Training-bot blocks are a preference, not a ranking
           defect. Squadbots can run the same check through MCP.
         </p>
+        <GeoSiblingNav projectId={projectId} from="crawlers" />
       </header>
 
       <Card>
@@ -146,16 +150,12 @@ export function GeoCrawlersPage({ projectId }: Props) {
       </div>
 
       {analysis.isError ? (
-        <Card className="border-destructive/40">
-          <CardHeader>
-            <CardTitle id={`${urlFieldId}-error`}>
-              Could not read crawler rules
-            </CardTitle>
-            <CardDescription>
-              {getStandardErrorMessage(analysis.error)}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
+        <Alert variant={geoStatusAlertVariant("error")}>
+          <AlertTitle id={`${urlFieldId}-error`}>
+            Could not read crawler rules
+          </AlertTitle>
+          <AlertDescription>
+            <p>{getStandardErrorMessage(analysis.error)}</p>
             <Button
               type="button"
               variant="outline"
@@ -165,8 +165,8 @@ export function GeoCrawlersPage({ projectId }: Props) {
             >
               Try again
             </Button>
-          </CardContent>
-        </Card>
+          </AlertDescription>
+        </Alert>
       ) : null}
 
       {analysis.isFetching && !report ? (
@@ -181,15 +181,13 @@ export function GeoCrawlersPage({ projectId }: Props) {
       ) : null}
 
       {!requestedUrl && !analysis.isFetching && !analysis.isError ? (
-        <Card>
-          <CardHeader>
-            <CardTitle>No domain on this project</CardTitle>
-            <CardDescription>
-              Enter a public URL to see ChatGPT Search, Claude, Perplexity,
-              Googlebot, and training-bot access.
-            </CardDescription>
-          </CardHeader>
-        </Card>
+        <Alert variant={geoStatusAlertVariant("info")}>
+          <AlertTitle>No domain on this project</AlertTitle>
+          <AlertDescription>
+            Enter a public URL to see ChatGPT Search, Claude, Perplexity,
+            Googlebot, and training-bot access.
+          </AlertDescription>
+        </Alert>
       ) : null}
 
       {report && summary ? <GeoCrawlerResults report={report} /> : null}
@@ -228,6 +226,27 @@ function GeoCrawlerResults({ report }: { report: AiCrawlerAccessReport }) {
           hint={summary.pageSampleHint}
         />
       </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>JSON-LD on this page</CardTitle>
+          <CardDescription>{summary.jsonLdHint}</CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-3">
+          <p className="text-pretty text-sm text-foreground">
+            {summary.jsonLdLabel}
+          </p>
+          {report.pageSample.jsonLd.types.length > 0 ? (
+            <div className="flex flex-wrap gap-2">
+              {report.pageSample.jsonLd.types.map((type) => (
+                <Badge key={type} variant="secondary">
+                  {type}
+                </Badge>
+              ))}
+            </div>
+          ) : null}
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>
