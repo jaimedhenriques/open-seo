@@ -7,6 +7,7 @@ import { getStandardErrorMessage } from "@/client/lib/error-messages";
 import {
   canSubmitUrl,
   filterCrawlerRows,
+  GEO_CRAWLER_EMPTY_FILTER,
   GEO_CRAWLER_FILTER_HINT,
   GEO_CRAWLER_FILTERS,
   GEO_CRAWLER_PAGE_BADGE,
@@ -15,6 +16,7 @@ import {
   statusBadgeVariant,
   statusLabel,
   summarizeGeoCrawlerReport,
+  tierBadgeVariant,
   tierLabel,
   type GeoCrawlerFilterId,
 } from "@/client/features/geo-crawlers/geoCrawlerView";
@@ -289,6 +291,12 @@ function GeoCrawlerResults({ report }: { report: AiCrawlerAccessReport }) {
               ))}
             </div>
           </div>
+          {rows.length === 0 ? (
+            <Alert>
+              <AlertTitle>No crawlers in this kind</AlertTitle>
+              <AlertDescription>{GEO_CRAWLER_EMPTY_FILTER}</AlertDescription>
+            </Alert>
+          ) : null}
           <Table>
             <TableCaption>
               Access map only. Not a ranking or citation prediction.
@@ -307,7 +315,11 @@ function GeoCrawlerResults({ report }: { report: AiCrawlerAccessReport }) {
                 <TableRow key={row.userAgent}>
                   <TableCell className="font-medium">{row.userAgent}</TableCell>
                   <TableCell>{row.operator}</TableCell>
-                  <TableCell>{tierLabel(row.tier)}</TableCell>
+                  <TableCell>
+                    <Badge variant={tierBadgeVariant(row.tier)}>
+                      {tierLabel(row.tier)}
+                    </Badge>
+                  </TableCell>
                   <TableCell>
                     <Badge variant={statusBadgeVariant(row)}>
                       {statusLabel(row.status)}
