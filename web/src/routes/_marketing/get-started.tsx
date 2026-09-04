@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { GeoGetStartedPain } from "@/components/geo-get-started-pain";
 import { buildPageSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/_marketing/get-started")({
@@ -76,6 +77,7 @@ function GetStartedPage() {
           </div>
         </section>
       </div>
+      <GeoGetStartedPain />
     </article>
   );
 }

@@ -28,6 +28,7 @@ import { Route as MarketingRoadmapRouteImport } from './routes/_marketing/roadma
 import { Route as MarketingPricingRouteImport } from './routes/_marketing/pricing'
 import { Route as MarketingGoogleSearchConsoleMcpRouteImport } from './routes/_marketing/google-search-console-mcp'
 import { Route as MarketingGetStartedRouteImport } from './routes/_marketing/get-started'
+import { Route as MarketingFaqRouteImport } from './routes/_marketing/faq'
 import { Route as MarketingBacklinkCheckerRouteImport } from './routes/_marketing/backlink-checker'
 import { Route as MarketingLibraryIndexRouteImport } from './routes/_marketing/library/index'
 import { Route as MarketingFeaturesIndexRouteImport } from './routes/_marketing/features/index'
@@ -152,6 +153,11 @@ const MarketingGoogleSearchConsoleMcpRoute =
 const MarketingGetStartedRoute = MarketingGetStartedRouteImport.update({
   id: '/get-started',
   path: '/get-started',
+  getParentRoute: () => MarketingRoute,
+} as any)
+const MarketingFaqRoute = MarketingFaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => MarketingRoute,
 } as any)
 const MarketingBacklinkCheckerRoute =
@@ -335,6 +341,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/backlink-checker': typeof MarketingBacklinkCheckerRoute
+  '/faq': typeof MarketingFaqRoute
   '/get-started': typeof MarketingGetStartedRoute
   '/google-search-console-mcp': typeof MarketingGoogleSearchConsoleMcpRoute
   '/pricing': typeof MarketingPricingRoute
@@ -383,6 +390,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/backlink-checker': typeof MarketingBacklinkCheckerRoute
+  '/faq': typeof MarketingFaqRoute
   '/get-started': typeof MarketingGetStartedRoute
   '/google-search-console-mcp': typeof MarketingGoogleSearchConsoleMcpRoute
   '/pricing': typeof MarketingPricingRoute
@@ -434,6 +442,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/_marketing/backlink-checker': typeof MarketingBacklinkCheckerRoute
+  '/_marketing/faq': typeof MarketingFaqRoute
   '/_marketing/get-started': typeof MarketingGetStartedRoute
   '/_marketing/google-search-console-mcp': typeof MarketingGoogleSearchConsoleMcpRoute
   '/_marketing/pricing': typeof MarketingPricingRoute
@@ -486,6 +495,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/terms-and-conditions'
     | '/backlink-checker'
+    | '/faq'
     | '/get-started'
     | '/google-search-console-mcp'
     | '/pricing'
@@ -534,6 +544,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/terms-and-conditions'
     | '/backlink-checker'
+    | '/faq'
     | '/get-started'
     | '/google-search-console-mcp'
     | '/pricing'
@@ -584,6 +595,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/terms-and-conditions'
     | '/_marketing/backlink-checker'
+    | '/_marketing/faq'
     | '/_marketing/get-started'
     | '/_marketing/google-search-console-mcp'
     | '/_marketing/pricing'
@@ -778,6 +790,13 @@ declare module '@tanstack/react-router' {
       path: '/get-started'
       fullPath: '/get-started'
       preLoaderRoute: typeof MarketingGetStartedRouteImport
+      parentRoute: typeof MarketingRoute
+    }
+    '/_marketing/faq': {
+      id: '/_marketing/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof MarketingFaqRouteImport
       parentRoute: typeof MarketingRoute
     }
     '/_marketing/backlink-checker': {
@@ -988,6 +1007,7 @@ declare module '@tanstack/react-router' {
 
 interface MarketingRouteChildren {
   MarketingBacklinkCheckerRoute: typeof MarketingBacklinkCheckerRoute
+  MarketingFaqRoute: typeof MarketingFaqRoute
   MarketingGetStartedRoute: typeof MarketingGetStartedRoute
   MarketingGoogleSearchConsoleMcpRoute: typeof MarketingGoogleSearchConsoleMcpRoute
   MarketingPricingRoute: typeof MarketingPricingRoute
@@ -1027,6 +1047,7 @@ interface MarketingRouteChildren {
 
 const MarketingRouteChildren: MarketingRouteChildren = {
   MarketingBacklinkCheckerRoute: MarketingBacklinkCheckerRoute,
+  MarketingFaqRoute: MarketingFaqRoute,
   MarketingGetStartedRoute: MarketingGetStartedRoute,
   MarketingGoogleSearchConsoleMcpRoute: MarketingGoogleSearchConsoleMcpRoute,
   MarketingPricingRoute: MarketingPricingRoute,

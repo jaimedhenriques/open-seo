@@ -169,16 +169,105 @@ Kit outline `Badge` "Optional" on the llms.txt page header.
 - Missing `/llms.txt` stays optional, not a ranking or citation lever. One surface only.
 - Do not convert the crawler page or `AvailableTools`. Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
 
-## Increment 21 (this delivery)
+## Increment 21 (PR 34)
 
 Kit outline `Badge` "Access map" on the AI crawler access page header.
 
 - This report is an access map, not a ranking or citation lever. One surface only.
 - Do not convert the llms.txt page or `AvailableTools`. Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
 
+## Increment 22 (PR 35)
+
+Visible kit `Alert` for the MCP hint on GEO check pages.
+
+- `GeoSiblingNav` shows `analyze_ai_crawler_access` / `analyze_llms_txt` uses no credits in the Alert body, not only a button title.
+- One surface only. Do not add another header Badge. Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
+
+## Increment 23 (PR 36)
+
+Kit `Table` for GEO MCP tools on `/ai`.
+
+- `GeoMcpToolsCard` lists `analyze_ai_crawler_access` and `analyze_llms_txt` in the vendored table, not a raw list.
+- Caption says credit-free. Presence is not a ranking or citation lever. One surface only.
+- Do not convert `AvailableTools` or add another header Badge. Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
+
+## Increment 24 (PR 37)
+
+Crawler map kind filter on the in-app access map.
+
+- Kit outline/default `Button` group: All, Search, Training.
+- Training blocks stay a preference, not a ranking defect. Uses no credits.
+- One surface only. Do not change the `/ai` GEO MCP card. Do not add another header Badge. Keep `src/client/ui/LICENSE.md`. No `$10` SKU.
+
+## Increment 25 (PR 38)
+
+Dedicated GEO section on the public landing page.
+
+- Kit `Card` plus outline `Button` styles from `jaimedhenriques/ui` for crawler access and llms.txt.
+- Copy says uses no credits. Presence is not a ranking or citation lever. Not a `$10` SKU.
+- One surface only. Do not change the in-app crawler filter or `/ai` GEO MCP card. Keep root LICENSE and kit LICENSE.md files. No `$10` SKU.
+
+## Increment 26 (PR 39)
+
+Pricing-page GEO FAQ for first-client SEO/GEO.
+
+- Kit `Card` on `/pricing`: quota pain, credit-free crawler and llms.txt checks, not a `$10` SKU.
+- FAQPage JSON-LD for those three questions only. Training-bot blocks stay a preference, not a ranking defect.
+- One surface only. Do not change the homepage GEO section, in-app crawler filter, or `/ai` GEO MCP card. Keep LICENSE files. No `$10` SKU.
+
+## Increment 27 (PR 40)
+
+ICP pain kit `Card` on `/get-started`.
+
+- Quota should not stop a crawler check. Credit-free crawler and llms.txt. Not a `$10` SKU.
+- One surface only. Do not change homepage GEO, pricing FAQ, in-app crawler filter, or `/ai` GEO MCP card. Keep LICENSE files.
+
+## Increment 28 (PR 42)
+
+Dedicated public `/faq` page for first-client SEO/GEO.
+
+- Kit `Card` plus FAQPage JSON-LD: quota pain, no credits, billing paused, not a `$10` SKU, training-bot preference.
+- Sitemap `/faq` and one footer Company link. Do not change homepage GEO, pricing FAQ, get-started Card, in-app crawler filter, or `/ai` GEO MCP card. Keep LICENSE files.
+
+## Increment 29 (PR 43)
+
+Support-page GEO FAQ for first-client SEO/GEO.
+
+- Kit `Card` on `/support`: quota pain, credit-free crawler and llms.txt checks, not a `$10` SKU, link to `/faq`.
+- FAQPage JSON-LD for those three questions only. Training-bot blocks stay a preference, not a ranking defect.
+- One surface only. Do not change `/faq`, homepage GEO, pricing FAQ, get-started Card, in-app crawler filter, or `/ai` GEO MCP card. Keep LICENSE files.
+
+## Increment 30 (PR 44)
+
+Crawler map kind kit `Badge` plus empty-filter `Alert`.
+
+- Kind column uses vendored Badge. Empty kind filter uses kit Alert. Uses no credits. Training blocks stay a preference, not a ranking defect.
+- One surface only. Do not change the All/Search/Training filter buttons, FAQ pages, homepage GEO, get-started Card, or `/ai` GEO MCP card. Keep LICENSE files. No `$10` SKU.
+
+## Increment 31 (PR 45)
+
+Marketing header FAQ link.
+
+- Desktop nav and mobile menu link to `/faq`. Discover the credit-free crawler FAQ without a `$10` SKU.
+- One surface only. Do not rewrite `/faq`, support FAQ, pricing FAQ, crawler map, homepage GEO, or `/ai` GEO MCP card. Keep LICENSE files.
+
+## Increment 32 (PR 46)
+
+Blog-layout FAQ link.
+
+- Blog chrome `navLinks` includes `/faq` so blog readers can reach crawler and llms.txt answers. Not a `$10` SKU.
+- One surface only. Do not change the marketing header, FAQ page copy, crawler map, homepage GEO, or `/ai` GEO MCP card. Keep LICENSE files.
+
+## Increment 33 (this delivery)
+
+Docs chrome FAQ link.
+
+- `baseOptions()` in `layout.shared.tsx` links `/faq` so fumadocs/docs readers can reach crawler and llms.txt answers. Not a `$10` SKU.
+- One surface only. Do not change blog-layout, marketing header, FAQ page copy, crawler map, or `/ai` GEO MCP card. Keep LICENSE files.
+
 ## Later increments (not this delivery)
 
-22. Broader chrome migration to the UI kit, one surface at a time.
+34. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 

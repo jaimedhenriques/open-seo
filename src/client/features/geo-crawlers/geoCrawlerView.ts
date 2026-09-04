@@ -3,6 +3,20 @@ import type { BadgeVariant } from "@/client/ui/badge";
 
 export const GEO_CRAWLER_PAGE_BADGE = "Access map";
 
+export const GEO_CRAWLER_FILTERS = [
+  { id: "all", label: "All" },
+  { id: "search", label: "Search" },
+  { id: "training", label: "Training" },
+] as const;
+
+export type GeoCrawlerFilterId = (typeof GEO_CRAWLER_FILTERS)[number]["id"];
+
+export const GEO_CRAWLER_FILTER_HINT =
+  "Training blocks are a preference, not a ranking defect. Uses no credits.";
+
+export const GEO_CRAWLER_EMPTY_FILTER =
+  "No crawlers in this kind. Training blocks stay a preference, not a ranking defect. Uses no credits.";
+
 type GeoCrawlerRow = AiCrawlerAccessReport["crawlers"][number];
 
 const TIER_ORDER: Record<GeoCrawlerRow["tier"], number> = {
@@ -44,6 +58,12 @@ export function tierLabel(tier: GeoCrawlerRow["tier"]): string {
   return "Training";
 }
 
+export function tierBadgeVariant(tier: GeoCrawlerRow["tier"]): BadgeVariant {
+  if (tier === "search") return "secondary";
+  if (tier === "training") return "outline";
+  return "ghost";
+}
+
 export function ruleLabel(rule: GeoCrawlerRow["rule"]): string {
   if (rule === "specific") return "Named rule";
   if (rule === "wildcard") return "* wildcard";
@@ -56,6 +76,14 @@ export function sortCrawlerRows(rows: GeoCrawlerRow[]): GeoCrawlerRow[] {
     if (tierDiff !== 0) return tierDiff;
     return left.userAgent.localeCompare(right.userAgent);
   });
+}
+
+export function filterCrawlerRows(
+  rows: GeoCrawlerRow[],
+  filter: GeoCrawlerFilterId,
+): GeoCrawlerRow[] {
+  if (filter === "all") return rows;
+  return rows.filter((row) => row.tier === filter);
 }
 
 export function summarizeGeoCrawlerReport(
