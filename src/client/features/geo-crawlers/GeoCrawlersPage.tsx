@@ -6,12 +6,19 @@ import { getProjects } from "@/serverFunctions/projects";
 import { getStandardErrorMessage } from "@/client/lib/error-messages";
 import {
   canSubmitUrl,
+  filterCrawlerRows,
+  GEO_CRAWLER_EMPTY_FILTER,
+  GEO_CRAWLER_FILTER_HINT,
+  GEO_CRAWLER_FILTERS,
+  GEO_CRAWLER_PAGE_BADGE,
   ruleLabel,
   sortCrawlerRows,
   statusBadgeVariant,
   statusLabel,
   summarizeGeoCrawlerReport,
+  tierBadgeVariant,
   tierLabel,
+  type GeoCrawlerFilterId,
 } from "@/client/features/geo-crawlers/geoCrawlerView";
 import type { AiCrawlerAccessReport } from "@/server/lib/geo/aiCrawlerAccess";
 import { GeoSiblingNav } from "@/client/features/geo/GeoSiblingNav";
@@ -87,9 +94,12 @@ export function GeoCrawlersPage({ projectId }: Props) {
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 p-4 pb-safe sm:p-6">
       <header className="flex flex-col gap-2">
-        <h1 className="text-balance text-2xl font-semibold tracking-tight text-foreground">
-          AI crawler access
-        </h1>
+        <div className="flex flex-wrap items-center gap-2">
+          <h1 className="text-balance text-2xl font-semibold tracking-tight text-foreground">
+            AI crawler access
+          </h1>
+          <Badge variant="outline">{GEO_CRAWLER_PAGE_BADGE}</Badge>
+        </div>
         <p className="max-w-2xl text-pretty text-sm text-muted-foreground">
           See which named AI search crawlers robots.txt allows or blocks. Uses
           no credits. Training-bot blocks are a preference, not a ranking
@@ -196,8 +206,9 @@ export function GeoCrawlersPage({ projectId }: Props) {
 }
 
 function GeoCrawlerResults({ report }: { report: AiCrawlerAccessReport }) {
+  const [filter, setFilter] = useState<GeoCrawlerFilterId>("all");
   const summary = summarizeGeoCrawlerReport(report);
-  const rows = sortCrawlerRows(report.crawlers);
+  const rows = filterCrawlerRows(sortCrawlerRows(report.crawlers), filter);
   return (
     <div className="flex flex-col gap-4">
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -256,7 +267,36 @@ function GeoCrawlerResults({ report }: { report: AiCrawlerAccessReport }) {
             Checked {report.origin}.
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="flex flex-col gap-3">
+          <div className="flex flex-col gap-2">
+            <p className="text-pretty text-sm text-muted-foreground">
+              {GEO_CRAWLER_FILTER_HINT}
+            </p>
+            <div
+              className="flex flex-wrap gap-2"
+              role="group"
+              aria-label="Crawler kind"
+            >
+              {GEO_CRAWLER_FILTERS.map((item) => (
+                <Button
+                  key={item.id}
+                  type="button"
+                  size="sm"
+                  variant={filter === item.id ? "default" : "outline"}
+                  aria-pressed={filter === item.id}
+                  onClick={() => setFilter(item.id)}
+                >
+                  {item.label}
+                </Button>
+              ))}
+            </div>
+          </div>
+          {rows.length === 0 ? (
+            <Alert>
+              <AlertTitle>No crawlers in this kind</AlertTitle>
+              <AlertDescription>{GEO_CRAWLER_EMPTY_FILTER}</AlertDescription>
+            </Alert>
+          ) : null}
           <Table>
             <TableCaption>
               Access map only. Not a ranking or citation prediction.
@@ -275,7 +315,11 @@ function GeoCrawlerResults({ report }: { report: AiCrawlerAccessReport }) {
                 <TableRow key={row.userAgent}>
                   <TableCell className="font-medium">{row.userAgent}</TableCell>
                   <TableCell>{row.operator}</TableCell>
-                  <TableCell>{tierLabel(row.tier)}</TableCell>
+                  <TableCell>
+                    <Badge variant={tierBadgeVariant(row.tier)}>
+                      {tierLabel(row.tier)}
+                    </Badge>
+                  </TableCell>
                   <TableCell>
                     <Badge variant={statusBadgeVariant(row)}>
                       {statusLabel(row.status)}
