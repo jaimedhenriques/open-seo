@@ -3,25 +3,23 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders and SEO operators running crawler and llms.txt checks from the app or MCP",
-  "pain": "In-app GEO check pages do not link to the same credit-free MCP tools on /ai",
-  "revenueHypothesis": "A kit MCP sibling button on the GEO check pages is the next SearchCrew GEO slice while pay is paused, without a $10 hosted SKU",
+  "icp": "First-client SEO/GEO operators reading SearchCrew docs after a hosted-tool quota hit",
+  "pain": "Docs chrome uses fumadocs baseOptions with Resources and GitHub but no /faq, so crawler answers stay hidden on /docs",
+  "revenueHypothesis": "A docs chrome FAQ link is the next SearchCrew GTM slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 19 as a GeoSiblingNav MCP button to /ai",
-    "GeoSiblingNav renders a kit outline Button to /ai",
-    "Copy says uses no credits. Tests lock no Fitch/win-rate/Autumn/$10",
-    "src/client/ui/LICENSE.md unchanged. Commit pushed"
+    "PLAN.md records increment 33 as a docs chrome FAQ link",
+    "web/src/lib/layout.shared.tsx baseOptions links include FAQ url /faq",
+    "Do not change blog-layout or marketing header. Root LICENSE unchanged"
   ],
-  "maker": "grok-searchcrew-geo-mcp-sibling-maker",
+  "maker": "grok-searchcrew-geo-docs-nav-faq-maker",
   "codingTool": "grok",
-  "rollback": "Revert the geo-mcp-sibling commit on helix/geo-mcp-sibling.",
+  "rollback": "Revert the geo-docs-nav-faq commit on helix/geo-docs-nav-faq.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
     "No external send.",
     "Do not claim an Ahrefs/Semrush win-rate.",
-    "Do not replace daisyUI app-wide.",
-    "Do not convert all AvailableTools.",
+    "Do not change blog-layout or marketing header FAQ links.",
     "Do not edit vendored geo-* skill bodies.",
     "Do not merge the PR."
   ],
@@ -40,22 +38,22 @@
   },
   "github": {
     "repo": "jaimedhenriques/searchcrew",
-    "branch": "helix/geo-mcp-sibling",
-    "baseBranch": "helix/geo-dashboard-badge",
+    "branch": "helix/geo-docs-nav-faq",
+    "baseBranch": "helix/geo-blog-nav-faq",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds a GEO MCP sibling button with local tests. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew marketing/docs site is Cloudflare Workers. This increment adds a docs chrome FAQ link. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "isolated GEO MCP sibling tests",
+        "name": "isolated GEO docs nav FAQ tests",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-mcp-sibling-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-mcp-sibling"
+    "checker": "independent-searchcrew-geo-docs-nav-faq-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-docs-nav-faq"
   }
 }

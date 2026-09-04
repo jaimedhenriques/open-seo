@@ -6,6 +6,7 @@ const navLinks = [
   { label: "Blog", to: "/blogs" },
   { label: "Docs", to: "/docs" },
   { label: "Pricing", to: "/pricing" },
+  { label: "FAQ", to: "/faq" },
 ] as const;
 
 export function BlogLayout({ children }: { children: ReactNode }) {

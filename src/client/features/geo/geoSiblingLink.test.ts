@@ -24,6 +24,11 @@ describe("geoSiblingLink", () => {
     expect(GEO_MCP_NAV.hint).toContain("analyze_llms_txt");
   });
 
+  it("keeps the MCP hint as visible copy, not only a title", () => {
+    expect(GEO_MCP_NAV.hint.length).toBeGreaterThan(0);
+    expect(GEO_MCP_NAV.hint.toLowerCase()).toContain("no credits");
+  });
+
   it("does not claim Fitch, a win-rate, or a $10 SKU", () => {
     const text = `${geoSiblingLink("crawlers").hint} ${geoSiblingLink("llms-txt").hint} ${GEO_MCP_NAV.hint}`;
     expect(text.toLowerCase()).not.toMatch(/fitch|jaime|win-rate|autumn|\$10/);
