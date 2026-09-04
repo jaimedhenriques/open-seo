@@ -15,6 +15,7 @@ function getMobileNavItems() {
       links: [
         { label: "Features", href: "/features" },
         { label: "Pricing", href: "/pricing" },
+        { label: "FAQ", href: "/faq" },
       ],
     },
     {
@@ -122,6 +123,12 @@ function MarketingLayout() {
               >
                 Pricing
               </Link>
+              <Link
+                to="/faq"
+                className="inline-flex min-h-11 items-center rounded-lg text-sm font-semibold text-neutral-600 transition-colors hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2"
+              >
+                FAQ
+              </Link>
             </div>
 
             <div className="flex items-center justify-end gap-2 sm:gap-3">
@@ -159,6 +166,13 @@ function MarketingLayout() {
                   className="flex h-11 touch-manipulation items-center justify-center rounded-xl border border-[var(--color-border-subtle)] px-3 text-sm font-semibold text-neutral-800 transition-[background-color,border-color,transform] duration-150 hover:border-neutral-900 hover:bg-[#f5f1ec] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
                 >
                   View pricing
+                </a>
+                <a
+                  href="/faq"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex h-11 touch-manipulation items-center justify-center rounded-xl border border-[var(--color-border-subtle)] px-3 text-sm font-semibold text-neutral-800 transition-[background-color,border-color,transform] duration-150 hover:border-neutral-900 hover:bg-[#f5f1ec] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
+                >
+                  FAQ
                 </a>
               </div>
 

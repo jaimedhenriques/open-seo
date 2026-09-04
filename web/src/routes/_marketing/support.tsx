@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { GeoSupportFaq } from "@/components/geo-support-faq";
 import { buildPageSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/_marketing/support")({
@@ -55,6 +56,7 @@ function SupportPage() {
           </a>
         </div>
       </section>
+      <GeoSupportFaq />
     </article>
   );
 }
