@@ -251,16 +251,23 @@ Marketing header FAQ link.
 - Desktop nav and mobile menu link to `/faq`. Discover the credit-free crawler FAQ without a `$10` SKU.
 - One surface only. Do not rewrite `/faq`, support FAQ, pricing FAQ, crawler map, homepage GEO, or `/ai` GEO MCP card. Keep LICENSE files.
 
-## Increment 32 (this delivery)
+## Increment 32 (PR 46)
 
 Blog-layout FAQ link.
 
-- Blog chrome `navLinks` includes `/faq` so docs/blog readers can reach crawler and llms.txt answers. Not a `$10` SKU.
+- Blog chrome `navLinks` includes `/faq` so blog readers can reach crawler and llms.txt answers. Not a `$10` SKU.
 - One surface only. Do not change the marketing header, FAQ page copy, crawler map, homepage GEO, or `/ai` GEO MCP card. Keep LICENSE files.
+
+## Increment 33 (this delivery)
+
+Docs chrome FAQ link.
+
+- `baseOptions()` in `layout.shared.tsx` links `/faq` so fumadocs/docs readers can reach crawler and llms.txt answers. Not a `$10` SKU.
+- One surface only. Do not change blog-layout, marketing header, FAQ page copy, crawler map, or `/ai` GEO MCP card. Keep LICENSE files.
 
 ## Later increments (not this delivery)
 
-33. Broader chrome migration to the UI kit, one surface at a time.
+34. Broader chrome migration to the UI kit, one surface at a time.
 
 ## Stop conditions
 
