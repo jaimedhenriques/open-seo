@@ -1,5 +1,11 @@
 export const GEO_GTM_PATH = "/features/ai-crawler-access";
 
+export const GEO_GTM_SIBLING = {
+  label: "llms.txt map",
+  href: "/features/llms-txt",
+  hint: "Optional content map. Uses no credits.",
+} as const;
+
 export const GEO_GTM_COPY = {
   eyebrow: "AI crawler access",
   navDescription: "See which named AI search crawlers robots.txt allows.",
@@ -22,10 +28,16 @@ export const GEO_GTM_COPY = {
       description:
         "The same credit-free check is available in a SearchCrew project and as analyze_ai_crawler_access for Squadbots and other MCP clients.",
     },
+    {
+      title: "Sample JSON-LD on the checked URL",
+      description:
+        "The same check lists application/ld+json types from that page. Missing JSON-LD is optional. Presence is not a ranking or citation lever.",
+    },
   ],
   useCases: [
     "See whether ChatGPT Search, Claude, Perplexity, or Googlebot is blocked before you rewrite pages for AI answers.",
     "Confirm a training-bot block is intentional instead of treating it as a defect.",
+    "See which JSON-LD types the checked URL publishes, without treating a missing block as a defect.",
   ],
   differentiators: [
     "No credits for this check. Pay is paused and there is no hosted $10 SKU.",
@@ -51,6 +63,11 @@ export const GEO_GTM_COPY = {
       question: "What does this cost?",
       answer:
         "Hosted billing is paused. This check is not sold as a $10 SKU. Self-host if you need it today.",
+    },
+    {
+      question: "Does missing JSON-LD fail this check?",
+      answer:
+        "No. JSON-LD is optional. The report lists types when they exist. That is presence, not a ranking or citation score.",
     },
   ],
 } as const;
@@ -81,5 +98,8 @@ export function geoGtmCopyText(): string {
     ...GEO_GTM_COPY.useCases,
     ...GEO_GTM_COPY.differentiators,
     ...faqs,
+    GEO_GTM_SIBLING.label,
+    GEO_GTM_SIBLING.href,
+    GEO_GTM_SIBLING.hint,
   ].join("\n");
 }

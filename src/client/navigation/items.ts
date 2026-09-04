@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { linkOptions } from "@tanstack/react-router";
 import { GoogleGlyphMuted } from "@/client/features/gsc/GoogleGlyph";
+import { GEO_NAV_GROUP_LABEL, GEO_NAV_ITEMS } from "@/client/navigation/geoNav";
 
 const projectNavItems = [
   {
@@ -116,6 +117,10 @@ export function getProjectNavGroups(projectId: string) {
       items: [byPath("/p/$projectId")],
     },
     {
+      label: GEO_NAV_GROUP_LABEL,
+      items: GEO_NAV_ITEMS.map((item) => byPath(item.to)),
+    },
+    {
       label: "Research",
       items: [
         byPath("/p/$projectId/keywords"),
@@ -123,8 +128,6 @@ export function getProjectNavGroups(projectId: string) {
         byPath("/p/$projectId/backlinks"),
         byPath("/p/$projectId/brand-lookup"),
         byPath("/p/$projectId/prompt-explorer"),
-        byPath("/p/$projectId/geo-crawlers"),
-        byPath("/p/$projectId/llms-txt"),
       ],
     },
     {

@@ -1,5 +1,11 @@
 export const LLMS_GTM_PATH = "/features/llms-txt";
 
+export const LLMS_GTM_SIBLING = {
+  label: "AI crawler access",
+  href: "/features/ai-crawler-access",
+  hint: "robots.txt access map. Uses no credits.",
+} as const;
+
 export const LLMS_GTM_COPY = {
   eyebrow: "llms.txt map",
   navDescription: "Check the optional /llms.txt content map.",
@@ -73,5 +79,8 @@ export function llmsGtmCopyText(): string {
     ...LLMS_GTM_COPY.useCases,
     ...LLMS_GTM_COPY.differentiators,
     ...faqs,
+    LLMS_GTM_SIBLING.label,
+    LLMS_GTM_SIBLING.href,
+    LLMS_GTM_SIBLING.hint,
   ].join("\n");
 }

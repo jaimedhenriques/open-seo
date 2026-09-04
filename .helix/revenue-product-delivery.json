@@ -3,24 +3,26 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders and SEO operators using the in-app GEO crawler and llms.txt pages",
-  "pain": "GEO error and empty states still use generic cards instead of the kit alert pattern",
-  "revenueHypothesis": "One GEO chrome slice on jaimedhenriques/ui Alert is the next SearchCrew increment while pay is paused, without a $10 hosted SKU",
+  "icp": "Founders and SEO operators looking for crawler and llms.txt checks inside a project",
+  "pain": "The GEO sidebar group does not show that crawler and llms.txt checks use no credits",
+  "revenueHypothesis": "A kit No credits Badge on the GEO nav group is the next SearchCrew GEO chrome slice while pay is paused, without a $10 hosted SKU",
   "mvpAcceptance": [
-    "PLAN.md records increment 8 as GEO status alerts from the UI kit",
-    "Alert is vendored from jaimedhenriques/ui pin 63c1308d without cva/radix",
-    "Crawler and llms.txt error states use destructive Alert; empty states use default",
-    "Repo LICENSE and ui LICENSE.md are unchanged and the commit is pushed"
+    "PLAN.md records increment 17 as a GEO sidebar kit Badge",
+    "Sidebar GEO group label renders kit outline Badge 'No credits'",
+    "Other nav groups stay daisyUI. AvailableTools is not converted",
+    "Tests lock No credits and no Fitch/win-rate/Autumn/$10 in nav labels",
+    "src/client/ui/LICENSE.md unchanged. Commit pushed"
   ],
-  "maker": "grok-searchcrew-geo-alert-kit-maker",
+  "maker": "grok-searchcrew-geo-nav-badge-maker",
   "codingTool": "grok",
-  "rollback": "Revert the alert commit on helix/geo-alert-kit.",
+  "rollback": "Revert the geo-nav-badge commit on helix/geo-nav-badge.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
     "No external send.",
     "Do not claim an Ahrefs/Semrush win-rate.",
     "Do not replace daisyUI app-wide.",
+    "Do not convert all AvailableTools.",
     "Do not edit vendored geo-* skill bodies.",
     "Do not merge the PR."
   ],
@@ -39,23 +41,22 @@
   },
   "github": {
     "repo": "jaimedhenriques/searchcrew",
-    "remote": "origin",
-    "branch": "helix/geo-alert-kit",
-    "baseBranch": "helix/geo-llmstxt-sam",
+    "branch": "helix/geo-nav-badge",
+    "baseBranch": "helix/geo-mcp-kit-card",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment vendors a UI kit Alert for GEO pages. Hosting is Cloudflare, not Vercel."
+    "reason": "SearchCrew is a Cloudflare Workers app. This increment adds a GEO sidebar kit Badge with local tests. Hosting is Cloudflare, not Vercel."
   },
   "verification": {
     "checks": [
       {
-        "name": "vitest GEO alert variants",
+        "name": "isolated GEO nav badge tests",
         "evidence": ".helix/evidence/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-alert-kit-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-alert-kit"
+    "checker": "independent-searchcrew-geo-nav-badge-checker",
+    "checkerEvidence": "controller://checker/searchcrew-geo-nav-badge"
   }
 }

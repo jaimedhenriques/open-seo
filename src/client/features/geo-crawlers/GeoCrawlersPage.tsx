@@ -14,6 +14,7 @@ import {
   tierLabel,
 } from "@/client/features/geo-crawlers/geoCrawlerView";
 import type { AiCrawlerAccessReport } from "@/server/lib/geo/aiCrawlerAccess";
+import { GeoSiblingNav } from "@/client/features/geo/GeoSiblingNav";
 import { geoStatusAlertVariant } from "@/client/features/geo/geoStatusAlert";
 import { Alert, AlertDescription, AlertTitle } from "@/client/ui/alert";
 import { Badge } from "@/client/ui/badge";
@@ -94,6 +95,7 @@ export function GeoCrawlersPage({ projectId }: Props) {
           no credits. Training-bot blocks are a preference, not a ranking
           defect. Squadbots can run the same check through MCP.
         </p>
+        <GeoSiblingNav projectId={projectId} from="crawlers" />
       </header>
 
       <Card>
@@ -224,6 +226,27 @@ function GeoCrawlerResults({ report }: { report: AiCrawlerAccessReport }) {
           hint={summary.pageSampleHint}
         />
       </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>JSON-LD on this page</CardTitle>
+          <CardDescription>{summary.jsonLdHint}</CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-3">
+          <p className="text-pretty text-sm text-foreground">
+            {summary.jsonLdLabel}
+          </p>
+          {report.pageSample.jsonLd.types.length > 0 ? (
+            <div className="flex flex-wrap gap-2">
+              {report.pageSample.jsonLd.types.map((type) => (
+                <Badge key={type} variant="secondary">
+                  {type}
+                </Badge>
+              ))}
+            </div>
+          ) : null}
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>
