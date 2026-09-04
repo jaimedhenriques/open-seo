@@ -3,31 +3,35 @@
   "project": "SearchCrew",
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
-  "icp": "Founders and SEO operators who need to see which AI crawlers can read their site",
-  "pain": "robots.txt map exists, but buyers cannot see page-level noai or X-Robots-Tag on the same report",
-  "revenueHypothesis": "A credit-free page-sample on the GEO report is the next SearchCrew GTM slice while pay is paused, without a $10 hosted SKU",
+  "icp": "Founders, growth teams, and SEO operators who need one place to decide what to rank for across Google and AI search",
+  "pain": "The homepage lists capabilities but does not show the product early or explain SearchCrew's SEO plus GEO advantage in one memorable promise",
+  "revenueHypothesis": "A sharper SEO plus GEO proposition, visible product proof, and clearer exploration paths will increase qualified clicks into feature pages, the ROI calculator, and the hosted app",
   "mvpAcceptance": [
-    "PLAN.md records increment 3 as a page-level noai / X-Robots-Tag sample",
-    "Parser and view-model tests pass",
-    "Page uses vendored jaimedhenriques/ui cards and no paid-plan gate",
-    "Repo LICENSE is unchanged and the commit is pushed to jaimedhenriques/searchcrew"
+    "The first viewport explains the SEO plus GEO outcome and shared human and agent workspace",
+    "The homepage shows an original SearchCrew product preview before the feature list",
+    "Navigation includes clear product discovery, launch status, and existing-customer sign-in paths",
+    "No AlphaSense code, assets, copy, trademarks, customer logos, or unsupported proof is used",
+    "Desktop and 390px mobile layouts pass browser QA with no horizontal overflow",
+    "Formatting, type checks, lint, tests, and the marketing build pass",
+    "The exact commit is pushed to jaimedhenriques/searchcrew on codex/alphasense-proposition"
   ],
-  "maker": "grok-searchcrew-geo-page-sample-maker",
-  "codingTool": "grok",
-  "rollback": "Revert the page-sample commit on helix/geo-crawler-access.",
+  "maker": "codex-searchcrew-proposition-maker",
+  "codingTool": "codex",
+  "rollback": "Revert the homepage proposition commit on codex/alphasense-proposition.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
     "No external send.",
-    "Do not claim an Ahrefs/Semrush win-rate.",
-    "Sample the checked URL only. Do not crawl the whole site."
+    "Do not enable public signup or billing.",
+    "Do not copy AlphaSense proprietary code, assets, copy, trademarks, or customer proof.",
+    "Do not deploy production in this design change."
   ],
-  "evidenceDestination": ".helix/evidence",
-  "executionEvidence": ".helix/evidence/execution.json",
+  "evidenceDestination": ".helix/evidence/alphasense-proposition",
+  "executionEvidence": ".helix/evidence/alphasense-proposition/execution.json",
   "copySafety": {
     "publicPatternSources": [
-      "https://github.com/jaimedhenriques/ui (MIT, LICENSE.md retained)",
-      "Public robots meta and X-Robots-Tag tokens"
+      "AlphaSense public homepage structure and interaction patterns, used only as reference",
+      "Existing SearchCrew brand tokens, product capabilities, and routes"
     ],
     "proprietaryAssetsExcluded": true
   },
@@ -39,22 +43,22 @@
   "github": {
     "repo": "jaimedhenriques/searchcrew",
     "remote": "origin",
-    "branch": "helix/geo-crawler-access",
+    "branch": "codex/alphasense-proposition",
     "baseBranch": "main",
     "commit": "HEAD"
   },
   "vercel": {
     "mode": "not_applicable",
-    "reason": "SearchCrew is a Cloudflare Workers app. This increment is an in-app GEO sample with local tests."
+    "reason": "SearchCrew is a Cloudflare Workers app. This task changes marketing UI and will be verified locally without a production deploy."
   },
   "verification": {
     "checks": [
       {
-        "name": "vitest page robot sample",
-        "evidence": ".helix/evidence/checks.json"
+        "name": "marketing build and browser QA",
+        "evidence": ".helix/evidence/alphasense-proposition/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-geo-page-sample-checker",
-    "checkerEvidence": "controller://checker/searchcrew-geo-page-sample"
+    "checker": "independent-searchcrew-proposition-checker",
+    "checkerEvidence": ".helix/evidence/alphasense-proposition/checker.md"
   }
 }
