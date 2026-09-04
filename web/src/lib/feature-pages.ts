@@ -776,8 +776,13 @@ export const featurePages = {
       "No credits for this check. Pay is paused and there is no hosted $10 SKU.",
       "This report is an access map, not a ranking or citation prediction.",
     ],
+    featuredLink: {
+      title: "llms.txt map",
+      description: "Optional content map. Uses no credits.",
+      href: "/features/llms-txt",
+    },
     related: [
-      { label: "AI Brand Visibility", href: "/features/ai-brand-visibility" },
+      { label: "llms.txt map", href: "/features/llms-txt" },
       { label: "SearchCrew MCP", href: "/features/mcp" },
       { label: "AI Crawler Access skill", href: "/docs/skills/geo-crawlers" },
     ],
@@ -856,8 +861,13 @@ export const featurePages = {
       "No credits for this check. Pay is paused and there is no hosted $10 SKU.",
       "Missing llms.txt is optional. Publishing one is not a ranking or citation prediction.",
     ],
+    featuredLink: {
+      title: "AI crawler access",
+      description: "robots.txt access map. Uses no credits.",
+      href: "/features/ai-crawler-access",
+    },
     related: [
-      { label: "AI Crawler Access", href: "/features/ai-crawler-access" },
+      { label: "AI crawler access", href: "/features/ai-crawler-access" },
       { label: "SearchCrew MCP", href: "/features/mcp" },
       { label: "llms.txt skill", href: "/docs/skills/geo-llmstxt" },
     ],
