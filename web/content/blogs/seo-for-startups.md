@@ -50,7 +50,7 @@ SEO tools can help answer questions like:
 
 ## Market Research Techniques
 
-The screenshots below show what this data looks like in SearchCrew.
+The screenshots below illustrate research in SearchCrew using example data. The metrics are not current.
 
 ### Competitor Research
 
@@ -62,7 +62,7 @@ That can shape your strategy. If a competitor gets traffic from a specific page 
 
 For a focused workflow, use the [competitor analysis skill](/docs/skills/competitor-analysis). If you are still figuring out which domains matter, start with the broader [competitive landscape skill](/docs/skills/competitive-landscape).
 
-![SearchCrew domain overview showing top pages, keywords, and estimated traffic](/blog/seo-for-startups/domain-overview.png)
+![SearchCrew Domain Overview showing estimated organic traffic and top keywords](/screenshots/domain-overview.png)
 
 ### Keyword Research
 

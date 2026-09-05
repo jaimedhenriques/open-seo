@@ -1,0 +1,77 @@
+[
+  {
+    "name": "keyword-research",
+    "path": ".helix/evidence/brand-assets/originals/keyword-research.png",
+    "sha256": "c1eb5e3a5dec650ecf44b9531077755b85a8641a46fbf7f16e6afbe1e34f1e4a",
+    "url": "https://imagedelivery.net/ysLOa6bzFaM49Jxok-TAlw/d77077d0-cdf4-4523-0c41-56a7b4861300/public"
+  },
+  {
+    "name": "site-audit",
+    "path": ".helix/evidence/brand-assets/originals/site-audit.png",
+    "sha256": "2d9aa329ae9dec94d6ec0a805297e92b3176ce029fd59fb937191f66e9a4e9c1",
+    "url": "https://imagedelivery.net/ysLOa6bzFaM49Jxok-TAlw/53149e87-0027-4fa8-5d13-bcaab60c7100/public"
+  },
+  {
+    "name": "backlinks",
+    "path": ".helix/evidence/brand-assets/originals/backlinks.png",
+    "sha256": "a06941015f94e08e2e761a8aa8f2c54b4421a0310ae2e7015d63466d84649444",
+    "url": "https://imagedelivery.net/ysLOa6bzFaM49Jxok-TAlw/d97206ed-bd64-447c-2b9e-1b9f07c5ec00/public"
+  },
+  {
+    "name": "domain-overview",
+    "path": ".helix/evidence/brand-assets/originals/domain-overview.png",
+    "sha256": "f80f12ad1b932e17f51e9b75bfb3106099604fcdc3ff646d5a82a19994dcf9f9",
+    "url": "https://imagedelivery.net/ysLOa6bzFaM49Jxok-TAlw/189e22b8-fdf8-46b4-198c-e912beef2300/public"
+  },
+  {
+    "name": "rank-tracking",
+    "path": ".helix/evidence/brand-assets/originals/rank-tracking.png",
+    "sha256": "1a33ed56ec756e0d08c1983ebfd7f0822981d044eebd274160d2408d87006eb5",
+    "url": "https://imagedelivery.net/ysLOa6bzFaM49Jxok-TAlw/4a0f8508-1527-46a8-c91c-086456f21c00/public"
+  },
+  {
+    "name": "saved-keywords",
+    "path": ".helix/evidence/brand-assets/originals/saved-keywords.png",
+    "sha256": "f628f002d7c24a6d1404e336f129fdb727284aa78628a7c53e65e19568c33bfb",
+    "url": "https://imagedelivery.net/ysLOa6bzFaM49Jxok-TAlw/8938a529-b443-4d4f-9869-c972f3cef900/public"
+  },
+  {
+    "name": "ai-brand-visibility",
+    "path": ".helix/evidence/brand-assets/originals/ai-brand-visibility.png",
+    "sha256": "4ac0598c678858bae6468bd2bea940de0c4e36cc4fa06b439c33a2611d863de8",
+    "url": "https://imagedelivery.net/ysLOa6bzFaM49Jxok-TAlw/cde3e4f8-079f-4890-cb17-371087107400/public"
+  },
+  {
+    "name": "ai-search-prompts",
+    "path": ".helix/evidence/brand-assets/originals/ai-search-prompts.png",
+    "sha256": "44f45924b9b610948541bf924c38143dfaffc5104b6a2285dfbd9c1cadd57576",
+    "url": "https://imagedelivery.net/ysLOa6bzFaM49Jxok-TAlw/9f3d38f2-aa97-417c-ca74-ae378654d700/public"
+  },
+  {
+    "name": "readme-demo",
+    "path": ".helix/evidence/brand-assets/originals/readme-demo.png",
+    "sha256": "b92a653dd4d7dc01f281280e22bcc9d282b32b57cf46dd3165dc26a5b30d091d",
+    "url": "https://github.com/user-attachments/assets/fd208249-44ea-4849-bb4b-5fc896aeab73"
+  },
+  {
+    "name": "blog-keyword-research",
+    "path": ".helix/evidence/brand-assets/originals/blog-keyword-research.png",
+    "sha256": "b38fbce16a87ec10950832b2e8cdf6d39fd34b97a20999d499931c6493ced18a",
+    "gitRef": "f2bf93a5fc240362b22bf83a161df75a96402189",
+    "gitPath": "web/public/blog/seo-for-startups/keyword-research.png"
+  },
+  {
+    "name": "blog-backlink-analysis",
+    "path": ".helix/evidence/brand-assets/originals/blog-backlink-analysis.png",
+    "sha256": "827cf03c0c08e988bbdec3f04c4fb71ede28b0b1e47c472c837e8551907f9390",
+    "gitRef": "f2bf93a5fc240362b22bf83a161df75a96402189",
+    "gitPath": "web/public/blog/seo-for-startups/backlink-analysis.png"
+  },
+  {
+    "name": "blog-domain-overview",
+    "path": ".helix/evidence/brand-assets/originals/blog-domain-overview.png",
+    "sha256": "222527c48b69ede3e8b9c1e5410fb66c1b088ade5999d11244f3f636904527a9",
+    "gitRef": "f2bf93a5fc240362b22bf83a161df75a96402189",
+    "gitPath": "web/public/blog/seo-for-startups/domain-overview.png"
+  }
+]

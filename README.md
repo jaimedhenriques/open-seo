@@ -8,7 +8,9 @@ SearchCrew is an SEO and GEO platform for people who find Semrush and Ahrefs exp
 
 Connect with any agent like Claude Code, OpenClaw or Hermes. We have pre-built skills, but you can build your own to tailor SearchCrew to your needs.
 
-<img width="1385" height="794" alt="Image" src="https://github.com/user-attachments/assets/fd208249-44ea-4849-bb4b-5fc896aeab73" />
+<img width="1385" height="794" alt="SearchCrew keyword research with example data" src="web/public/screenshots/readme-demo.png" />
+
+Product preview with example research data. Metrics are not current; hosted signup and billing remain paused.
 
 ## Hosted Version
 

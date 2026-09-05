@@ -10,6 +10,9 @@ export type FeaturePage = {
   secondaryKeywords: string[];
   imageAlt: string;
   imageSrc: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  imageCaption?: string;
   workflows: Array<{
     title: string;
     description: string;
@@ -64,8 +67,9 @@ export const featurePages = {
       "keyword research tools",
     ],
     imageAlt: "SearchCrew keyword research dashboard",
-    imageSrc:
-      "https://imagedelivery.net/ysLOa6bzFaM49Jxok-TAlw/d77077d0-cdf4-4523-0c41-56a7b4861300/public",
+    imageSrc: "/screenshots/keyword-research.png",
+    imageWidth: 1052,
+    imageHeight: 768,
     workflows: [
       {
         title: "Research seed topics",
@@ -174,8 +178,9 @@ export const featurePages = {
       "seo audit tools",
     ],
     imageAlt: "SearchCrew site audit report",
-    imageSrc:
-      "https://imagedelivery.net/ysLOa6bzFaM49Jxok-TAlw/53149e87-0027-4fa8-5d13-bcaab60c7100/public",
+    imageSrc: "/screenshots/site-audit.png",
+    imageWidth: 1051,
+    imageHeight: 768,
     workflows: [
       {
         title: "Run a site crawl",
@@ -247,8 +252,9 @@ export const featurePages = {
       "link profile",
     ],
     imageAlt: "SearchCrew backlinks report",
-    imageSrc:
-      "https://imagedelivery.net/ysLOa6bzFaM49Jxok-TAlw/d97206ed-bd64-447c-2b9e-1b9f07c5ec00/public",
+    imageSrc: "/screenshots/backlinks.png",
+    imageWidth: 1053,
+    imageHeight: 768,
     workflows: [
       {
         title: "Check a domain's backlinks",
@@ -329,8 +335,9 @@ export const featurePages = {
       "website traffic checker",
     ],
     imageAlt: "SearchCrew domain overview",
-    imageSrc:
-      "https://imagedelivery.net/ysLOa6bzFaM49Jxok-TAlw/189e22b8-fdf8-46b4-198c-e912beef2300/public",
+    imageSrc: "/screenshots/domain-overview.png",
+    imageWidth: 1050,
+    imageHeight: 768,
     workflows: [
       {
         title: "Analyze a domain",
@@ -445,8 +452,9 @@ export const featurePages = {
       "google rank tracker",
     ],
     imageAlt: "SearchCrew rank tracking table",
-    imageSrc:
-      "https://imagedelivery.net/ysLOa6bzFaM49Jxok-TAlw/4a0f8508-1527-46a8-c91c-086456f21c00/public",
+    imageSrc: "/screenshots/rank-tracking.png",
+    imageWidth: 1051,
+    imageHeight: 768,
     workflows: [
       {
         title: "Add tracked domains",
@@ -521,8 +529,9 @@ export const featurePages = {
       "keyword planning",
     ],
     imageAlt: "SearchCrew saved keywords list",
-    imageSrc:
-      "https://imagedelivery.net/ysLOa6bzFaM49Jxok-TAlw/8938a529-b443-4d4f-9869-c972f3cef900/public",
+    imageSrc: "/screenshots/saved-keywords.png",
+    imageWidth: 994,
+    imageHeight: 768,
     workflows: [
       {
         title: "Save promising keywords",
@@ -593,8 +602,9 @@ export const featurePages = {
       "answer engine optimization",
     ],
     imageAlt: "SearchCrew AI brand visibility report",
-    imageSrc:
-      "https://imagedelivery.net/ysLOa6bzFaM49Jxok-TAlw/cde3e4f8-079f-4890-cb17-371087107400/public",
+    imageSrc: "/screenshots/ai-brand-visibility.png",
+    imageWidth: 1052,
+    imageHeight: 768,
     workflows: [
       {
         title: "Look up a brand",
@@ -665,8 +675,11 @@ export const featurePages = {
       "answer engine optimization tool",
     ],
     imageAlt: "SearchCrew prompt explorer",
-    imageSrc:
-      "https://imagedelivery.net/ysLOa6bzFaM49Jxok-TAlw/9f3d38f2-aa97-417c-ca74-ae378654d700/public",
+    imageSrc: "/screenshots/ai-search-prompts.png",
+    imageWidth: 1051,
+    imageHeight: 768,
+    imageCaption:
+      "Illustrative interface preview with a sample response. This is not evidence of a current SearchCrew citation.",
     workflows: [
       {
         title: "Test category prompts",
@@ -738,6 +751,9 @@ export const featurePages = {
     ],
     imageAlt: "SearchCrew",
     imageSrc: "/social-card.jpg",
+    imageWidth: 1200,
+    imageHeight: 630,
+    imageCaption: "SearchCrew brand illustration.",
     workflows: [
       {
         title: "Check robots.txt",

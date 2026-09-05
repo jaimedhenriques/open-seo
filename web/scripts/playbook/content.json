@@ -1,0 +1,126 @@
+{
+  "title": "The Keyword Research Playbook",
+  "subtitle": "Eight field-tested plays for finding demand that actually converts — from working SEOs on the Unscripted podcast.",
+  "credit": "Curated by Jeremy Rivera · SEO Arcade",
+  "adaptation": "SearchCrew branding adaptation. Original practitioner, curator and podcast credits retained. Strategies and quoted claims reflect the source interviews; they are not a guarantee of results or a statement of current product availability.",
+  "introduction": "Volume, difficulty, and CPC are the last filter, not the first. The terms that convert come from conversations — customers, sales calls, expert interviews — and the tool's job is to validate and expand them. This playbook is eight plays for doing exactly that, each with the practitioner who endorses it. Use the plays to build your research process, then validate the available metrics in SearchCrew.",
+  "workflow": [
+    "Seed from conversation",
+    "Mine long-tail & questions",
+    "Map search intent",
+    "Cluster into topics",
+    "Size the opportunity",
+    "Validate in SearchCrew"
+  ],
+  "plays": [
+    {
+      "title": "Seed from conversation, not a volume report",
+      "endorsers": "Slaymaker · Bajayo · Digneo · Stox · Long",
+      "why": "The converting terms are too specific, new, or \"wrong\" to register real volume — you only hear them by talking to people.",
+      "steps": [
+        "Interview in order: SME → sales team → customers.",
+        "Capture language verbatim (record + transcribe).",
+        "Harvest the general/\"wrong\" words prospects actually use.",
+        "Only then open the tool to validate & expand."
+      ],
+      "quote": "“I haven’t done keyword research that didn’t start with a conversation in the past year.”",
+      "speaker": "JEREMY RIVERA · Unscripted SEO"
+    },
+    {
+      "title": "Long-tail & question mining",
+      "endorsers": "Baterina · Moser · Barnard",
+      "why": "Near-zero-volume, high-intent terms beat head terms, and keyword tools badly undercount real demand.",
+      "steps": [
+        "Pull PAA and map LLM query fan-out for each seed.",
+        "Apply Baterina's \"rule of three\" — 3+ items before a category page, or it reads as thin.",
+        "Answer each question in a 40–60 word block."
+      ],
+      "quote": "“Someone’s bullet point is someone else’s entire universe.”",
+      "speaker": "STEPHAN BAJAYO · Unscripted SEO"
+    },
+    {
+      "title": "Search-intent mapping (hot / warm / cold)",
+      "endorsers": "Merrilees · Ashford",
+      "why": "Classify every query by buying readiness and route each to the right page depth, offer, and CTA.",
+      "steps": [
+        "Hot = ready to buy → lead with the offer, minimize friction.",
+        "Warm = comparing → lead with proof, cases, comparisons.",
+        "Cold = learning → lead with the problem, educate first."
+      ],
+      "quote": "Name the internal and \"justice\" layer of the problem, not just the external one — even a boring product becomes compelling.",
+      "speaker": "BRUCE ASHFORD · Unscripted Small Business"
+    },
+    {
+      "title": "Opportunity sizing & forecasting",
+      "endorsers": "Rivera · Berkowitz · Baterina",
+      "why": "Model revenue before you commit; A/B-test a page type before scaling it.",
+      "steps": [
+        "Volume → CTR curve → conversions → revenue (state a range).",
+        "Weight effort to bottom/mid-funnel keyword tiers first.",
+        "Run a control-vs-test on a page type before scaling to thousands."
+      ],
+      "quote": "“Traffic is a proxy. It always has been... are you actually losing sales, or are you just losing traffic?”",
+      "speaker": "ERNESTO ORTIZ · Unscripted SEO"
+    },
+    {
+      "title": "Programmatic & data-driven discovery (GSC)",
+      "endorsers": "Rivera · Simmons",
+      "why": "Most of your real query data is hidden — mine it instead of guessing.",
+      "steps": [
+        "Regex-filter Search Console for query patterns you already rank for.",
+        "Triangulate Ahrefs + GA4 + GSC to attribute clicks to likely queries.",
+        "Generate long-tail pages from structured data — each with one unique element."
+      ],
+      "quote": "Only ~3% of query data is visible in GSC — 16 months of history beats recent-only for finding the gaps.",
+      "speaker": "GRANT SIMMONS · Unscripted SEO"
+    },
+    {
+      "title": "Cluster keywords into topical hubs",
+      "endorsers": "Simmons · Homer",
+      "why": "Group by shared SERP and intent bucket; split pages that try to rank for too much.",
+      "steps": [
+        "Detect \"topic drift\" — outlier queries that deserve their own URL.",
+        "Map clusters to Google's ~8 intent buckets.",
+        "Structure the hub \"like a dictionary for Google and AI.\""
+      ],
+      "quote": "Narrow to a few core \"conversations,\" then map them across the keyword set and the venues your audience uses.",
+      "speaker": "HOLLY HOMER · Unscripted SEO"
+    },
+    {
+      "title": "Intent beyond Google (Pinterest, AI, LinkedIn)",
+      "endorsers": "Bocchese · Alfon · Popp",
+      "why": "Demand — and opinion — increasingly forms off Google. Research it where it lives.",
+      "steps": [
+        "Treat Pinterest as an intent-based search engine (pins/boards/profile).",
+        "Optimize the LinkedIn profile as a ranked, keyword-sensitive asset.",
+        "Track branded Google search as the bridge back from social discovery."
+      ],
+      "quote": "“People aren’t going to Pinterest to follow people. They’re searching for information, ideas, inspiration, products.”",
+      "speaker": "JULIA BOCCHESE · Unscripted SEO"
+    },
+    {
+      "title": "Make positioning map to real demand",
+      "endorsers": "Little · Popp · Homer",
+      "why": "Don't name an offering nobody searches for — match the language of a demand wave you don't have to create.",
+      "steps": [
+        "Test whether your category label has real search behind it.",
+        "For a new brand: social handles + forum presence before content.",
+        "Ride existing demand waves by matching their exact query language."
+      ],
+      "quote": "“Fractional” is a relationship word, not a search word — “no market for it, no search around it.”",
+      "speaker": "GEORGE LITTLE · Unscripted SEO"
+    }
+  ],
+  "checklist": [
+    "Interview first. SME → sales → customers. Record and transcribe. (Play 01)",
+    "Harvest verbatim language, including the general/\"wrong\" words prospects use. (Play 01)",
+    "Pull questions — PAA + LLM query fan-out for every seed. (Play 02)",
+    "Tag intent — hot / warm / cold for each term. (Play 03)",
+    "Cluster by shared SERP and intent bucket; flag topic drift. (Play 06)",
+    "Validate & expand in SearchCrew — check available volume, difficulty, SERP and intent data. (Play 05)",
+    "Size it — project traffic → conversions → revenue; pick the tier. (Play 04)",
+    "Check off-Google demand — Pinterest, LinkedIn, LLM surfaces. (Play 07)",
+    "Pressure-test positioning against real search demand. (Play 08)",
+    "Write the brief — validated terms + the real quotes attached."
+  ]
+}
