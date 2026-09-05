@@ -151,14 +151,15 @@ function FeatureImage({ page }: FeaturePageProps) {
       <img
         src={page.imageSrc}
         alt={page.imageAlt}
-        width={1600}
-        height={1000}
+        width={page.imageWidth ?? 1600}
+        height={page.imageHeight ?? 1000}
         loading="eager"
         decoding="async"
-        className="aspect-[16/10] w-full rounded-lg border border-[#ebe4da] object-cover object-top"
+        className="block h-auto w-full rounded-lg border border-[#ebe4da]"
       />
       <figcaption className="px-1 pt-2 text-[11px] text-[var(--color-brand-muted)]">
-        {page.eyebrow} in SearchCrew.
+        {page.imageCaption ??
+          `${page.eyebrow} product preview. Example research data; metrics are not current.`}
       </figcaption>
     </figure>
   );

@@ -4,20 +4,23 @@
   "company": "Helix / SearchCrew",
   "artifactType": "web-product",
   "icp": "Founders, growth teams, and SEO operators who need one place to decide what to rank for across Google and AI search",
-  "pain": "The homepage lists capabilities but does not show the product early or explain SearchCrew's SEO plus GEO advantage in one memorable promise",
-  "revenueHypothesis": "A sharper SEO plus GEO proposition, visible product proof, and clearer exploration paths will increase qualified clicks into feature pages, the ROI calculator, and the hosted app",
+  "pain": "Active feature and blog screenshots still display the upstream OpenSEO identity, breaking SearchCrew brand consistency and customer trust",
+  "revenueHypothesis": "Accurate SearchCrew-branded screenshots will make the product demonstration consistent with the company and remove a visible obstacle to evaluating a paid pilot",
   "mvpAcceptance": [
-    "The first viewport explains the SEO plus GEO outcome and shared human and agent workspace",
-    "The homepage shows an original SearchCrew product preview before the feature list",
-    "Navigation includes clear product discovery, launch status, and existing-customer sign-in paths",
-    "No AlphaSense code, assets, copy, trademarks, customer logos, or unsupported proof is used",
-    "Desktop and 390px mobile layouts pass browser QA with no horizontal overflow",
-    "Formatting, type checks, lint, tests, and the marketing build pass",
-    "The exact commit is pushed to jaimedhenriques/searchcrew on codex/alphasense-proposition"
+    "Every active feature and blog screenshot showing OpenSEO is replaced by a reviewed SearchCrew-branded asset",
+    "Feature screenshots use repository-owned local assets instead of upstream hotlinks",
+    "Charts and numeric values remain unchanged; any data-bearing brand badge is explicitly illustrative, never recast as a verified SearchCrew citation",
+    "README screenshot and eight-page playbook carry SearchCrew branding with all practitioner and upstream credits preserved",
+    "Upstream license attribution remains intact",
+    "Affected pages and assets render at desktop and mobile widths without broken images",
+    "Website type checks, formatting and build pass for the screenshot change",
+    "The exact commit is pushed to jaimedhenriques/searchcrew on codex/searchcrew-brand-assets"
   ],
-  "maker": "codex-searchcrew-proposition-maker",
+  "maker": "codex-searchcrew-brand-assets-maker",
+  "startedAt": "2026-09-05T13:35:00Z",
+  "approval": "Jaime explicitly approved precise scripted branding replacements on 5 September 2026; no production release or billing change is included",
   "codingTool": "codex",
-  "rollback": "Revert the homepage proposition commit on codex/alphasense-proposition.",
+  "rollback": "Revert the isolated screenshot-branding commit; retain original assets and checksums in the evidence folder.",
   "stopConditions": [
     "Pay paused. No hosted SKU, Autumn product, or $10 plan.",
     "No Fitch or employer identity.",
@@ -26,8 +29,8 @@
     "Do not copy AlphaSense proprietary code, assets, copy, trademarks, or customer proof.",
     "Do not deploy production in this design change."
   ],
-  "evidenceDestination": ".helix/evidence/alphasense-proposition",
-  "executionEvidence": ".helix/evidence/alphasense-proposition/execution.json",
+  "evidenceDestination": ".helix/evidence/brand-assets",
+  "executionEvidence": ".helix/evidence/brand-assets/execution.json",
   "copySafety": {
     "publicPatternSources": [
       "AlphaSense public homepage structure and interaction patterns, used only as reference",
@@ -43,7 +46,7 @@
   "github": {
     "repo": "jaimedhenriques/searchcrew",
     "remote": "origin",
-    "branch": "codex/alphasense-proposition",
+    "branch": "codex/searchcrew-brand-assets",
     "baseBranch": "main",
     "commit": "HEAD"
   },
@@ -55,10 +58,10 @@
     "checks": [
       {
         "name": "marketing build and browser QA",
-        "evidence": ".helix/evidence/alphasense-proposition/checks.json"
+        "evidence": ".helix/evidence/brand-assets/checks.json"
       }
     ],
-    "checker": "independent-searchcrew-proposition-checker",
-    "checkerEvidence": ".helix/evidence/alphasense-proposition/checker.md"
+    "checker": "independent-searchcrew-brand-assets-checker",
+    "checkerEvidence": ".helix/evidence/brand-assets/checker.md"
   }
 }
